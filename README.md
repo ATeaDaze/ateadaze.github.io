@@ -1,14 +1,9 @@
 # Rainbow Noise: [ATeaDaze.github.io](https://ateadaze.github.io/)
-### Draw with random shapes, animate them, or both. Colored lines create positive space
-### Language: Javascript, HTML, CSS
+* **Draw with random shapes, animate them, or both. Colored lines create positive space**
+* **Language:** Javascript, HTML, CSS
 
-## Keyboard Map
-```
-[R]un  [P]ause  [C]lear screen   [H]elp  [E]xport/print  Next palette [Spacebar]
-Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y]
-Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
-```
-  
+![rainbow_noise-screenshot-cga8-1](https://user-images.githubusercontent.com/89423150/139571624-538e1220-5620-48b7-8f1e-2b6beef40e00.png)
+
 ## Color palettes
 * **Faded:** rainbow with desaturated colors (pastel)
 * **Rainbow:** classic primary colors
@@ -21,3 +16,10 @@ Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscal
 * **Pyxel Edit:** default color palette for pyxeledit.com
 * **Gameboy:** as green as it was in the 90s
 * **Grayscale:** everything from dim gray to off-white
+
+## Keyboard Map
+```
+                [R]un  [P]ause  [C]lear screen   [H]elp  [E]xport/print  Next palette [Spacebar]
+Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y]
+Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
+```
