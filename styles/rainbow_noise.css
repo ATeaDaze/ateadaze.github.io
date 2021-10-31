@@ -67,7 +67,7 @@ button {
 	color: white;
 	cursor: pointer;
 	width: 120px;
-	height: 37px;
+	height: 40px;
 	text-align: center;
 	align-content: center;
 	align-items: center;
@@ -105,7 +105,7 @@ button.shapeBtn {
 	border-color: darkmagenta;
 	font-size: 10pt;
 	width: 132px;
-	height: 34px;
+	height: 37px;
 }
 button.shapeBtn:hover {
 	border-color: mediumorchid;
@@ -114,8 +114,8 @@ button.helpBtn {
 	font-size: 12pt;
 	border-color: #666666;
 	color: #dddddd;
-	height: 40px;
-	width: 40px;
+	height: 43px;
+	width: 43px;
 	font-weight: normal;
 }
 button.helpBtn:hover {

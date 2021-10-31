@@ -31,10 +31,10 @@
 			<button class="clearBtn" id="button3" onclick="clearScreen();" title="Clear Screen (C)">◪ CLEAR</button>
 		</td>
 		<td align="right" width="10%">
-			<button class="helpBtn" id="button10" onclick="swapColorMode();" title="Next color mode (Spacebar)"></button>
+			<button class="helpBtn" id="button10" onclick="swapColorMode();" title="Next palette (Spacebar)"></button>
 		</td>
 		<td align="left" width="10%">
-			<button class="helpBtn" id="button7" onclick="confirmCanvasOverwrite();" title="Help (H)">❔</button>
+			<button class="helpBtn" id="button8" onclick="setRandomPalette();setBrushColor();" title="Random palette [*]">🎲️</button>
 		</td>
 	</tr>
 	<tr align="left">
@@ -51,10 +51,10 @@
 			title="Lines from a fixed-origin to a random point: (xOrigin,yOrigin), rand((x1,y1))">✺ Starburst</button>
 		</td>
 		<td align="right" width="10%">
-			<button class="helpBtn" id="button9" onclick="xOrigin = 400;yOrigin = 250;setBrushColor();" title="Reset origin to center (O)">⯐</button>
+			<button class="helpBtn" id="button9" onclick="xOrigin = 400;yOrigin = 250;setBrushColor();" title="Reset origin to center (O)">🏠</button>
 		</td>
 		<td align="left" width="10%">
-			<button class="helpBtn" id="button8" onclick="window.print();" title="Print / Export (E)">🖨️</button>
+			<button class="helpBtn" id="button7" onclick="confirmCanvasOverwrite();" title="Help (H)">❔</button>
 		</td>
 	</tr>
 </table>
@@ -65,7 +65,7 @@
 	<tr>
 		<td>
 		<div id="keyMap"><u>Keyboard Map</u>:&nbsp;&nbsp;&nbsp;<b>[R]</b>un&nbsp;&nbsp;<b>[P]</b>ause&nbsp;&nbsp;<b>[C]</b>lear screen&nbsp;&nbsp;
-			<b>[H]</b>elp&nbsp;&nbsp;<b>[E]</b>xport/print&nbsp;&nbsp;Next palette <b>[Spacebar]</b><br>
+			<b>[H]</b>elp&nbsp;&nbsp;<b>[E]</b>xport/print&nbsp;&nbsp;<b>[Spacebar]</b> Next palette<br>
 			Color palettes:&nbsp;Fa<b>[d]</b>ed&nbsp;&nbsp;R<b>[a]</b>inbow&nbsp;<b>[F]</b>ire&nbsp;&nbsp;<b>[I]</b>ce&nbsp;&nbsp;RG<b>[B]</b>&nbsp;&nbsp;
 			C<b>[M]Y</b>&nbsp;&nbsp;CGA-<b>[8]</b>&nbsp;&nbsp;Py<b>[x]</b>el Edit&nbsp;&nbsp;Gamebo<b>[y]</b><br>
 			Animations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>[T]</b>riangle Web&nbsp;<b>[L]</b>ine Scatter&nbsp;<b>[S]</b>tarburst&nbsp;&nbsp;
