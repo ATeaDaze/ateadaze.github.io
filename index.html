@@ -266,7 +266,7 @@ function setBrushColor()
 			divColorMode.innerHTML = "Grayscale";
 			divclr.style.color = "#888888";
 			btn10.innerHTML = "🏁";
-			rainbowBanner.style = "background-image:linear-gradient(to right,#2e2e2e, #4e4e4e, #6e6e6e, #8e8e8e, #9b9b9b, #b2b2b2, #cccccc, #d5d5d5)";
+			rainbowBanner.style = "background-image:linear-gradient(to right, #2e2e2e 12%, #4e4e4e 12% 24%, #6e6e6e 24% 36%, #8e8e8e 36% 48%, #9b9b9b 48% 60%, #b2b2b2 60% 72%, #cccccc 72% 84%, #d5d5d5 84% 100%)";
 			rainbowBanner.title = "Rainbow Noise 🎲 Every color from dim gray to off-white";
 			break;
 		default:
@@ -307,10 +307,10 @@ function updateUI()
  	if((animationSpeed > 0) && (animationSpeed < 6)) {
 			bDisablePhotoWarning = true;
 			rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
-	} else if((animationSpeed > 5) && (animationSpeed < 25)) {
+	} else if((animationSpeed > 7) && (animationSpeed < 25)) {
 			rainbowBanner.innerHTML = "Rainbow Noise 🌪️ Things are about to get a bit hectic...";
 	} else if((animationSpeed > 24) && (animationSpeed < 50)) {
-			rainbowBanner.innerHTML = "Rainbow Noise 🧮 Static and white noise are both made of random data points";
+			rainbowBanner.innerHTML = "Rainbow Noise 🧬 Static and white noise are both made of random data points";
 	} else if((animationSpeed > 49) && (animationSpeed < 75)) {
 			rainbowBanner.innerHTML = "🌠 Random Rainbows 🪐 Jupiter and Beyond the Infinite 🌟";
 	} else if((animationSpeed > 74) && (animationSpeed < 100)) {
@@ -362,7 +362,8 @@ function getKeyboardInput()
 				shapeType = 'triangle'
 				break;
 			case 'o':
-				xOrigin = 400, yOrigin = 250;
+				xOrigin = 400;
+				yOrigin = 250;
 				break;
 			case 'h':
 				confirmCanvasOverwrite();
