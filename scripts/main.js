@@ -237,7 +237,7 @@ function setBrushColor()
 		case 'pyxel':
 		 	currentColor = Math.floor(Math.random() * 15);
 		 	ctx.strokeStyle = randPyxelColor[currentColor];
-			divColorMode.innerHTML = "Pyxel Edit";
+			divColorMode.innerHTML = "Pyxel";
 			divclr.style.color = "#de6e89"
 			btn10.innerHTML = "🎨";
  			rainbowBanner.style = "background-image:linear-gradient(to left, #9b9b9b, #fdfdfd, #de6e89, #bc2532, #493C2B, #A26321, #E98730, #F5E06A, #A1CC26, #44891A, #2F484E, #1B2632, #005784, #31A2F2, #B0DAED);font-weight:bold;";
