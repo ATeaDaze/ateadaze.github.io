@@ -107,14 +107,16 @@ function runAnimation()
 	window.requestAnimationFrame(function loop() {
 		x1 = Math.floor(Math.random() * 820)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
-		x2 = Math.floor(Math.random() * 820)-10;
-		y2 = Math.floor(Math.random() * 520)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
 		if(shapeType == 'triangle') {
+			x2 = Math.floor(Math.random() * 820)-10;
+			y2 = Math.floor(Math.random() * 520)-10;
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
+			x2 = Math.floor(Math.random() * 820)-10;
+			y2 = Math.floor(Math.random() * 520)-10;
 			drawRandomLine();
 		} else {
 			shapeType = 'starburst'
@@ -149,6 +151,8 @@ function drawRandomTriangle()
 
 function drawStarburstLine()
 {
+	x1 = Math.floor(Math.random() * 820)-10;
+	y1 = Math.floor(Math.random() * 520)-10;
 	ctx.moveTo(xOrigin, yOrigin);
 	ctx.lineTo(x1, y1);
 	ctx.stroke();
