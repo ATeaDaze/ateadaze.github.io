@@ -2,12 +2,12 @@
 Rainbow Noise: draw with random shapes, animate them, or both. Colored lines create positive space
 Language: Javascript, HTML, CSS
 
-# Keyboard Map:   [R]un  [P]ause  [C]lear screen   [H]elp  [E]xport/print  Next palette [Spacebar]
-  Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y]
-  Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
+# Keyboard Map
+[R]un  [P]ause  [C]lear screen   [H]elp  [E]xport/print  Next palette [Spacebar]
+Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y]
+Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
   
 # Color palettes
---------------------------------------------------------
 Faded: rainbow with desaturated colors (pastel)
 Rainbow: classic primary colors
 Fire: warm (but not necessarily inviting)
