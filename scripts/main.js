@@ -255,7 +255,7 @@ function setBrushColor()
 			divColorMode.innerHTML = "Grayscale";
 			divclr.style.color = "#888888";
 			btn10.innerHTML = "🏁";
-			rainbowBanner.style = "background-image:linear-gradient(to right, #2e2e2e 12%, #4e4e4e 12% 24%, #6e6e6e 24% 36%, #8e8e8e 36% 48%, #9b9b9b 48% 60%, #b2b2b2 60% 72%, #cccccc 72% 84%, #d5d5d5 84% 100%)";
+			rainbowBanner.style = "background-image:linear-gradient(to right, #2e2e2e, #4e4e4e, #6e6e6e, #8e8e8e, #9b9b9b, #b2b2b2, #cccccc, #d5d5d5)";
 			rainbowBanner.title = "Rainbow Noise 🎲 Every color from dim gray to off-white";
 			break;
 		default:
