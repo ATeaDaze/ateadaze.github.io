@@ -18,7 +18,7 @@ const randGrayscaleColor = new Array("#2e2e2e", "#4e4e4e", "#6e6e6e", "#8e8e8e",
 const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555",
 																"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
 // Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
-const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
+const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
 																	"#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Default color palette = 1st element (faded)
@@ -44,6 +44,10 @@ var animationSpeed = 0;
 var randomTriangleLength, randomTriangleOffset;
 // Default animation shape (triangle, line, starburst)
 var shapeType = 'triangle';
+// Counts number of shapes drawn for help screen
+var nBackgroundLinesDrawn;
+// Used for confirmation dialog
+var r;
 
 // Draw random shape at the mouse cursor
 function drawShape()
@@ -454,7 +458,7 @@ function swapColorMode()
 
 function drawMenuBackground()
 {
-	var nBackgroundLinesDrawn = 0;
+	nBackgroundLinesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background
 	while(nBackgroundLinesDrawn <= 256) {
 		x1 = Math.floor(Math.random() * 820)-10;
