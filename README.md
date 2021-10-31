@@ -1,8 +1,8 @@
-# Rainbow Noise: [ATeaDaze.github.io](https://ateadaze.github.io/)
+# Rainbow Noise: [ateadaze.github.io](https://ateadaze.github.io/)
 * **Draw with random shapes, animate them, or both. Colored lines create positive space**
 * **Language:** Javascript, HTML, CSS
 
-![rainbow_noise-screenshot-cga8-1](https://user-images.githubusercontent.com/89423150/139571624-538e1220-5620-48b7-8f1e-2b6beef40e00.png)
+![rainbow_noise-screenshot-faded-1](https://user-images.githubusercontent.com/89423150/139572006-0dbd8e4e-d02f-4958-9015-9244c65018f7.png)
 
 ## Color palettes
 * **Faded:** rainbow with desaturated colors (pastel)
