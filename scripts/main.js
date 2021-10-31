@@ -1,7 +1,7 @@
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
 const brushSize = 2.75;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
-const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'grayscale');
+const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors (pastel)
 const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodgerblue", "#5d3fd3", "#cf9fff");
 // Rainbow with classic colors (primary)
@@ -12,8 +12,10 @@ const randFireColor = new Array("firebrick", "orangered", "#ffaa33", "khaki");
 const randIceColor = new Array("blue", "dodgerblue", "#088f8f", "#98fB98", "darkblue", "#dddddd");
 // RGB and CMY: both palettes use the same array with offsets to call them separately (RGB = 0:2, CMY = 3:5)
 const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#ff55ff", "#ffff55");
+// Patriot: red, white, and blue
+const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
-const randGrayscaleColor = new Array("#2e2e2e", "#4e4e4e", "#6e6e6e", "#8e8e8e", "#9b9b9b", "#b2b2b2", "#cccccc", "#d5d5d5");
+const randGrayscaleColor = new Array("#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
 // CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
 const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555",
 																"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
@@ -177,7 +179,7 @@ function setBrushColor()
 			divclr.style.color = "#8f7be1";
 			btn10.innerHTML = "🌈"
 			rainbowBanner.style = "background-image:linear-gradient(to left, red, orange, yellow, green, blue, indigo, mediumorchid);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  The classics never fade";
+			rainbowBanner.title = "Rainbow Noise 🍭 The classics never fade";
 			break;
 		case 'fire':
 			currentColor = Math.floor(Math.random() * 4);
@@ -195,7 +197,7 @@ function setBrushColor()
 			divclr.style.color = "dodgerblue"
 			btn10.innerHTML = "🧊";
 			rainbowBanner.style = "background-image:linear-gradient(to right, darkblue, blue, dodgerblue, #088f8f, #98fB98, #bbbbbb);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  Cool and refreshing";
+			rainbowBanner.title = "Rainbow Noise 🍹 Cool and refreshing";
 			break;
 		case 'rgb':
 			currentColor = Math.floor(Math.random() * 3);
@@ -204,7 +206,7 @@ function setBrushColor()
 			divclr.style.color = "#00ff00"
 			btn10.innerHTML = "📊";
 			rainbowBanner.style = "background-image:linear-gradient(to left, #ff0000, #00ff00, #0000ff);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  How your monitor views the world";
+			rainbowBanner.title = "Rainbow Noise 🍭 How your monitor views the world";
 			break;
 		case 'cmy':
 			currentColor = Math.floor(Math.random() * 3) + 3;
@@ -222,7 +224,7 @@ function setBrushColor()
 			divclr.style.color = "#5555ff";
 			btn10.innerHTML = "🦜";
 			rainbowBanner.style = "background-image:linear-gradient(to right, #5555ff, #55ffff, #55ff55, #ff5555, #ff55ff, #ffff55, #ffffff, #555555);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  An 8-color palette used by old DOS games (minus black)";
+			rainbowBanner.title = "Rainbow Noise 🍭 An 8-color palette used by old DOS games (minus black)";
 			break;
 		case 'cga16':
 			currentColor = Math.floor(Math.random() * 15);
@@ -241,7 +243,7 @@ function setBrushColor()
 			divclr.style.color = "#de6e89"
 			btn10.innerHTML = "🎨";
  			rainbowBanner.style = "background-image:linear-gradient(to left, #9b9b9b, #fdfdfd, #de6e89, #bc2532, #493C2B, #A26321, #E98730, #F5E06A, #A1CC26, #44891A, #2F484E, #1B2632, #005784, #31A2F2, #B0DAED);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  Default color palette for 'Pyxel Edit' (minus black)";
+			rainbowBanner.title = "Rainbow Noise 🍭 Default color palette for 'Pyxel Edit' (minus black)";
 			break;
 		case 'gb':
 			currentColor = Math.floor(Math.random() * 4);
@@ -251,7 +253,16 @@ function setBrushColor()
 			btn10.style = "background-color: #777777;";
 			btn10.innerHTML = "🟩";
  			rainbowBanner.style = "background-image:linear-gradient(to right, #003f00 25%, #2e7320 25% 50%, #688c07 50% 75%, #a0cf0a 75% 100%);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  It's just as beautiful and hideous as I remember";
+			rainbowBanner.title = "Rainbow Noise 🍭 It's just as beautiful and hideous as I remember";
+			break;
+		case 'usa':
+			currentColor = Math.floor(Math.random() * 3);
+			ctx.strokeStyle = randPatriotColor[currentColor];
+			divColorMode.innerHTML = "Patriot";
+			divclr.style.color = "#ffffff";
+			btn10.innerHTML = "🧨";
+			rainbowBanner.style = "background-image:linear-gradient(to left, #b31942, #ffffff, #0a3161)";
+			rainbowBanner.title = "Rainbow Noise 🍔 Taste the freedom";
 			break;
 		case 'grayscale':
 			currentColor = Math.floor(Math.random() * 8);
@@ -259,8 +270,8 @@ function setBrushColor()
 			divColorMode.innerHTML = "Grayscale";
 			divclr.style.color = "#888888";
 			btn10.innerHTML = "🏁";
-			rainbowBanner.style = "background-image:linear-gradient(to right, #2e2e2e, #4e4e4e, #6e6e6e, #8e8e8e, #9b9b9b, #b2b2b2, #cccccc, #d5d5d5)";
-			rainbowBanner.title = "Rainbow Noise 🍭  Every color from dim gray to off-white";
+			rainbowBanner.style = "background-image:linear-gradient(to right, #1e1e1e, #3e3e3e, #5e5e5e, #7e7e7e, #9b9b9b, #b2b2b2, #c2c2c2, #d5d5d5)";
+			rainbowBanner.title = "Rainbow Noise 🍭 Every color from dim gray to off-white";
 			break;
 		default:
 			break;
@@ -323,7 +334,7 @@ function updateUI()
 // Use a random color palette on page load
 function setRandomPalette()
 {
-	randomPaletteIndex = Math.floor(Math.random() * 11)
+	randomPaletteIndex = Math.floor(Math.random() * 12)
 	activeColorMode = paletteList[randomPaletteIndex];
 	updateUI();
 }
@@ -446,7 +457,7 @@ function newAnimationInstance()
 // Cycle through available color palettes
 function swapColorMode()
 {
-	if(i == 10){	// Reset index to the start if the last element is called
+	if(i == 11){	// Reset index to the start if the last element is called
 		i = 0;
 	} else {	// Otherwise increment the counter by 1 for the next palette
 		i++;
