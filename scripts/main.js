@@ -300,7 +300,7 @@ function updateUI()
  	if((animationSpeed > 0) && (animationSpeed < 6)) {
 			bDisablePhotoWarning = true;
 			rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
-	} else if((animationSpeed > 7) && (animationSpeed < 25)) {
+	} else if((animationSpeed > 9) && (animationSpeed < 25)) {
 			rainbowBanner.innerHTML = "Rainbow Noise 🌪️ Things are about to get a bit hectic...";
 	} else if((animationSpeed > 24) && (animationSpeed < 50)) {
 			rainbowBanner.innerHTML = "Rainbow Noise 🧬 Static and white noise are both made of random data points";
