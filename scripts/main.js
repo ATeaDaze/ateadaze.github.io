@@ -210,7 +210,7 @@ function setBrushColor()
 			divclr.style.color = "#00ff00"
 			btn10.innerHTML = "📊";
 			rainbowBanner.style = "background-image:linear-gradient(to left, #ff0000, #00ff00, #0000ff);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭 How your monitor views the world";
+			rainbowBanner.title = "Rainbow Noise 🖥️ How your monitor views the world";
 			break;
 		case 'cmy':
 			currentColor = Math.floor(Math.random() * 3) + 3;
@@ -219,7 +219,7 @@ function setBrushColor()
 			divclr.style.color = "#ff55ff"
 			btn10.innerHTML = "✨";
 			rainbowBanner.style = "background-image:linear-gradient(to right, #55ffff, #ff55ff, #ffff55);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  How your printer views the world";
+			rainbowBanner.title = "Rainbow Noise 🖨️  How your printer views the world";
 			break;
 		case 'cga':
 			currentColor = Math.floor(Math.random() * 8);
@@ -263,7 +263,7 @@ function setBrushColor()
 			currentColor = Math.floor(Math.random() * 3);
 			ctx.strokeStyle = randPatriotColor[currentColor];
 			divColorMode.innerHTML = "Patriot";
-			divclr.style.color = "#ffffff";
+			divclr.style.color = "#457bbc";
 			btn10.innerHTML = "🧨";
 			rainbowBanner.style = "background-image:linear-gradient(to left, #b31942, #ffffff, #0a3161)";
 			rainbowBanner.title = "Rainbow Noise 🍔 Taste the freedom";
