@@ -1,6 +1,6 @@
 # Rainbow Noise: [ateadaze.github.io](https://ateadaze.github.io/)
 * **Draw with random shapes, animate them, or both. Colored lines create positive space**
-* **11 color palettes:** if you don't like one then you'll probably like another one
+* **12 color palettes:** if you don't like one then you'll probably like another one
 * **Languages:** [JavaScript](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/scripts) ([main.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/main.js), [drawCanvas.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/drawCanvas.js)), [HTML](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/index.html), [CSS](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/styles/rainbow_noise.css)
 
 ![rainbow_noise-screenshot-faded-1](https://user-images.githubusercontent.com/89423150/139572006-0dbd8e4e-d02f-4958-9015-9244c65018f7.png)
@@ -16,6 +16,7 @@
 * **CGA-16:** full 16-color CGA palette (minus pure black)
 * **Pyxel:** default color palette for [Pyxel Edit](pyxeledit.com)
 * **Gameboy:** as green as it was in the 90s
+* **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
 ## Keyboard Map
