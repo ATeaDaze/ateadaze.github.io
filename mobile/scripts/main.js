@@ -59,8 +59,8 @@ function drawShape()
 		// Disable health warning if mouse is moved over the canvas
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
-		xPos = touches[0].clientX;
-		yPos = touches[0].clientY;
+		xPos = e.touches[0].clientX;
+		yPos = e.touches[0].clientY;
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
