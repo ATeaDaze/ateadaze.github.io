@@ -55,7 +55,7 @@ var r;
 function drawShape()
 {
 		// Check for mouse movement
-		canvas.addEventListener('mousemove', e => {
+		canvas.addEventListener('touchmove', e => {
 		// Disable health warning if mouse is moved over the canvas
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
@@ -86,7 +86,7 @@ function drawShape()
 			ctx.stroke();
 		} else {
 			// Store current mouse cursor position as new origin if a button is clicked
-			canvas.addEventListener('mousedown', e => {
+			canvas.addEventListener('touchdown', e => {
 				xOrigin = xPos;
 				yOrigin = yPos;
 			})
