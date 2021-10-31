@@ -60,8 +60,8 @@ function drawShape()
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
   	const rect = canvas.getBoundingClientRect();
-		xPos = (Math.round(e.touches[0].clientX)) - rect.left;
-		yPos = (Math.round(e.touches[0].clientY)) - rect.top;
+		xPos = Math.round(e.touches[0].clientX) - rect.left;
+		yPos = Math.round(e.touches[0].clientY) - rect.top;
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
