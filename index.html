@@ -9,6 +9,8 @@
 </head>
 <body>
 <script>
+// Default brush size: larger values add more color but can obscure finer details and patterns if set too high
+const brushSize = 2.75;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'grayscale');
 // Rainbow with desaturated colors (pastel)
@@ -17,25 +19,24 @@ const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodg
 const randRainbowColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "mediumorchid");
 // Fire: deep red, orange red, red orange, and pale yellow
 const randFireColor = new Array("firebrick", "orangered", "#ffaa33", "khaki");
-// Ice: shades of blue with a touch of pale green and white
+// Ice: shades of blue with a touch of white and pale green
 const randIceColor = new Array("blue", "dodgerblue", "#088f8f", "#98fB98", "darkblue", "#dddddd");
 // RGB and CMY: both palettes use the same array with offsets to call them separately (RGB = 0:2, CMY = 3:5)
 const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#ff55ff", "#ffff55");
-// Grayscale
+// Grayscale: dim gray to off-white
 const randGrayscaleColor = new Array("#2e2e2e", "#4e4e4e", "#6e6e6e", "#8e8e8e", "#9b9b9b", "#b2b2b2", "#cccccc", "#d5d5d5");
-// CGA = last 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
-const randCGAColor = new Array(	"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa",
-																	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555" );
+// CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
+const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555",
+																"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
 // Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
 const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
 																	"#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
-// Default brush size: larger values add more color but can obscure details and patterns if set too high
-const brushSize = 2.75;
-// Default color palette (faded)
+// Default color palette = 1st element (faded)
 var activeColorMode = paletteList[0];
 // Array index used for palette swapping
 var i = 0;
+// Used for the random palette select function
 var randomPaletteIndex;
 // Runtime values for setting and tracking script states
 var bIsRunning = false;
@@ -52,7 +53,7 @@ var xPos = 0, yPos = 0;
 var animationSpeed = 0;
 // Adds more random variation to triangles
 var randomTriangleLength, randomTriangleOffset;
-// Default animation (triangle, line, starburst)
+// Default animation shape (triangle, line, starburst)
 var shapeType = 'triangle';
 
 // Draw random shape at the mouse cursor
@@ -65,6 +66,7 @@ function drawShape()
 		// Store mouse cursor position
 		xPos = e.offsetX;
 		yPos = e.offsetY;
+		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
 		x1 = Math.floor(Math.random() * 820)-10;
@@ -72,12 +74,14 @@ function drawShape()
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
+		// Draw line from mouse cursor to a random point
 		if(shapeType == 'line') {
 			ctx.moveTo(xPos, yPos);
 			ctx.lineTo(x1, y1);
 			ctx.stroke();
 			ctx.closePath();
 		} else if(shapeType == 'triangle') {
+			// Draw triangle originating from mouse cursor
 			randomTriangleLength = Math.floor(Math.random() * 30)+5;
 			randomTriangleOffset = Math.floor(Math.random() * 35)+5;
 			ctx.moveTo(xPos, yPos);
@@ -86,11 +90,13 @@ function drawShape()
 			ctx.closePath();
 			ctx.stroke();
 		} else {
+			// Store current mouse cursor position as new origin if a button is clicked
 			canvas.addEventListener('mousedown', e => {
-				xOrigin = xPos; // Store current mouse cursor position as the new origin if a button is clicked
+				xOrigin = xPos;
 				yOrigin = yPos;
 			})
-			ctx.moveTo(xOrigin,yOrigin); // Draw a line from the origin to the mouse cursor position
+			// Draw line from the origin to the mouse cursor
+			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
 			ctx.closePath();
 			ctx.stroke();
@@ -119,6 +125,7 @@ function runAnimation()
 			shapeType = 'starburst'
 			drawStarburstLine();
 		}
+		// Pause animation
 		if(!bIsRunning) return;
 		window.requestAnimationFrame(loop);
 	})
@@ -153,7 +160,7 @@ function drawStarburstLine()
 	ctx.closePath();
 }
 
-// Set active brush color, update palette button and color mode display text
+// Set active brush color, update palette button and palette UI text
 function setBrushColor()
 {
 	var btn10 = document.getElementById("button10");
@@ -207,7 +214,7 @@ function setBrushColor()
 			rainbowBanner.title = "Rainbow Noise 🎲 How your monitor views the world";
 			break;
 		case 'cmy':
-			currentColor = Math.floor(Math.random() * 3)+3;
+			currentColor = Math.floor(Math.random() * 3) + 3;
 			ctx.strokeStyle = randRGBCMYColor[currentColor];
 			divColorMode.innerHTML = "C M Y";
 			divclr.style.color = "#ff55ff"
@@ -216,7 +223,7 @@ function setBrushColor()
 			rainbowBanner.title = "Rainbow Noise 🎲 How your printer views the world";
 			break;
 		case 'cga':
-			currentColor = Math.floor((Math.random() * 8)+7); // Odd offset for bright palette
+			currentColor = Math.floor(Math.random() * 8);
 			ctx.strokeStyle = randCGAColor[currentColor];
 			divColorMode.innerHTML = "CGA-8";
 			divclr.style.color = "#5555ff";
@@ -235,7 +242,7 @@ function setBrushColor()
 			rainbowBanner.title = "Rainbow Noise 🎲  A 16-color palette used by old DOS games (minus black)";
 			break;
 		case 'pyxel':
-		 	currentColor = Math.floor(Math.random() * 15); // Offset disables black
+		 	currentColor = Math.floor(Math.random() * 15);
 		 	ctx.strokeStyle = randPyxelColor[currentColor];
 			divColorMode.innerHTML = "Pyxel Edit";
 			divclr.style.color = "#de6e89"
@@ -268,6 +275,7 @@ function setBrushColor()
 updateUI();
 }
 
+// Update button style, animation speed, and banner
 function updateUI()
 {
 	var btn1 = document.getElementById("button1");
@@ -295,8 +303,8 @@ function updateUI()
 		shapeType == 'starburst';
 	}
 	divSpeed.innerHTML = "Speed: " + animationSpeed + "x";
-	// Massive if-else statement for color commentary in the banner
- if((animationSpeed > 0) && (animationSpeed < 6)) {
+	// Display color commentary in the banner
+ 	if((animationSpeed > 0) && (animationSpeed < 6)) {
 			bDisablePhotoWarning = true;
 			rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
 	} else if((animationSpeed > 5) && (animationSpeed < 25)) {
@@ -309,8 +317,6 @@ function updateUI()
 			rainbowBanner.innerHTML = "Rainbow Noise? ☕ Frankly, 'Random Rainbows' and 'RGB Noise' seemed too long";
 	} else if(animationSpeed > 99) {
 			rainbowBanner.innerHTML = "💫 Migraine Simulator 2021  👑 " + animationSpeed + "x speed? Legendary. You absolute madlad";
-			rainbowBanner.style = "transform: rotate(0.5deg);";
-
 	}	else if((!bDisablePhotoWarning) && (animationSpeed == 0)) {
 				rainbowBanner.innerHTML = "⚠ Photosensitivity Warning: this app generates rapid and colorful patterns";
 				rainbowBanner.title = "⚠ Photosensitivity Warning: click the banner, draw on the canvas, or start animation to dismiss";
@@ -321,9 +327,9 @@ function updateUI()
 		}
 }
 
+// Use a random color palette on page load
 function setRandomPalette()
 {
-	// Use a random color palette on page load
 	randomPaletteIndex = Math.floor(Math.random() * 11)
 	activeColorMode = paletteList[randomPaletteIndex];
 	updateUI();
@@ -481,7 +487,6 @@ function drawHelpScreen()
 	ctx.fillStyle = "#eeeeee";
 	ctx.font = "bold 28px Arial";
 	ctx.fillText("Rainbow Noise", leftTextOffset, textMidpoint-123);
-//	ctx.fillText("🟥🟧🟨🟩🟦🟪", leftTextOffset+230, textMidpoint-123);
 	ctx.fillStyle = "#111111";
 	ctx.fillRect(60, 175, (canvas.width-120), 195);
 	ctx.font = "bold 25px Arial";
@@ -493,7 +498,7 @@ function drawHelpScreen()
 	ctx.fillText("✓  Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
 	ctx.fillText("✓  Click the canvas to set a new origin for the starburst animation", leftTextOffset, textMidpoint);
 	ctx.fillText("✓  You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);
-	ctx.fillText("✓  Animations generally look smoother between 1x and 7x speed", leftTextOffset, textMidpoint+60);
+	ctx.fillText("✓  Animations generally look smoother between 1x and 5x speed", leftTextOffset, textMidpoint+60);
 	ctx.fillText("✓  Press spacebar to select the next color palette", leftTextOffset, textMidpoint+90);
 	ctx.fillStyle = "black";
 	bScreenIsClear = true;
