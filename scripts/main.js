@@ -500,7 +500,6 @@ function drawHelpScreen()
 
 function confirmCanvasOverwrite()
 {
-var r;
 	if(!bScreenIsClear) {
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
