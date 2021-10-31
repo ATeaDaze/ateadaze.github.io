@@ -484,7 +484,7 @@ function drawHelpScreen()
 	ctx.fillText("Jeff McMillin", leftTextOffset+500,textMidpoint-123);
 	ctx.fillStyle = "white";
 	ctx.font = "bold 21px Arial";
-	ctx.fillText("✓  Move your mouse over the canvas to paint shapes", leftTextOffset, textMidpoint-60);
+	ctx.fillText("✓  Move your mouse over the canvas to paint with shapes", leftTextOffset, textMidpoint-60);
 	ctx.fillText("✓  Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
 	ctx.fillText("✓  Click the canvas to set a new origin for the starburst animation", leftTextOffset, textMidpoint);
 	ctx.fillText("✓  You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);

@@ -7,6 +7,7 @@ canvas.height = 500;
 const leftTextOffset = 70;
 const textMidpoint = (canvas.height/1.9);
 const ctx = canvas.getContext('2d');
+
 // Main loop
 clearScreen();
 if(bEnableRandomPalette) setRandomPalette();
