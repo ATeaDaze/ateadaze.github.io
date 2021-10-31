@@ -20,6 +20,7 @@
 	font-family: 'Ubuntu Mono', 'Consolas', 'Lucida Console', 'Courier New', monospace;
 	font-size: 11pt;
 	font-weight: bold;
+	text-shadow: 2px 2px 2px #000000;
 	padding: 3px;
 	color: white;
 }
