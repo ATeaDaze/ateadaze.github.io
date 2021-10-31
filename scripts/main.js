@@ -192,7 +192,7 @@ function setBrushColor()
 			divclr.style.color = "coral";
 			btn10.innerHTML = "🔥";
 			rainbowBanner.style = "background-image:linear-gradient(to right, firebrick, orangered, #FFAA33, khaki);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭  Warm but not necessarily inviting";
+			rainbowBanner.title = "Rainbow Noise 💥 Warm but not necessarily inviting";
 			break;
 		case 'ice':
 			currentColor = Math.floor(Math.random() * 6);
@@ -219,7 +219,7 @@ function setBrushColor()
 			divclr.style.color = "#ff55ff"
 			btn10.innerHTML = "✨";
 			rainbowBanner.style = "background-image:linear-gradient(to right, #55ffff, #ff55ff, #ffff55);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🖨️  How your printer views the world";
+			rainbowBanner.title = "Rainbow Noise 🖨️ How your printer views the world";
 			break;
 		case 'cga':
 			currentColor = Math.floor(Math.random() * 8);
@@ -228,7 +228,7 @@ function setBrushColor()
 			divclr.style.color = "#5555ff";
 			btn10.innerHTML = "🦜";
 			rainbowBanner.style = "background-image:linear-gradient(to right, #5555ff, #55ffff, #55ff55, #ff5555, #ff55ff, #ffff55, #ffffff, #555555);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭 An 8-color palette used by old DOS games (minus black)";
+			rainbowBanner.title = "Rainbow Noise 🍭 An 8-color palette used by old PC/DOS games (minus black)";
 			break;
 		case 'cga16':
 			currentColor = Math.floor(Math.random() * 15);
@@ -238,7 +238,7 @@ function setBrushColor()
 		 	btn10.innerHTML = "🦜";
 		 	divclr.style.color = "#55ffff";
 			rainbowBanner.style = "background-image:linear-gradient(to right, #0000aa, #00aaaa, #00aa00, #aa0000, #aa00aa, #aa5500, #aaaaaa, #5555ff, #55ffff, #55ff55, #ff5555, #ff55ff, #ffff55, #ffffff, #555555);font-weight:bold;";
-			rainbowBanner.title = "Rainbow Noise 🍭   A 16-color palette used by old DOS games (minus black)";
+			rainbowBanner.title = "Rainbow Noise 🍭 Full 16-color CGA palette (minus pure black)";
 			break;
 		case 'pyxel':
 		 	currentColor = Math.floor(Math.random() * 15);
