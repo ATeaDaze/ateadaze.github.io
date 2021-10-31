@@ -14,7 +14,7 @@
 * **CMY:** cyan, magenta, yellow
 * **CGA-8:** an old PC/DOS video mode (8-color)
 * **CGA-16:** full 16-color CGA palette (minus pure black)
-* **Pyxel Edit:** default color palette for [pyxeledit.com](pyxeledit.com)
+* **Pyxel:** default color palette for [Pyxel Edit](pyxeledit.com)
 * **Gameboy:** as green as it was in the 90s
 * **Grayscale:** everything from dim gray to off-white
 
