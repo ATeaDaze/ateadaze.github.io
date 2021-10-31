@@ -23,7 +23,6 @@ const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff
 const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
 																	"#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
-const rect = canvas.getBoundingClientRect();
 // Default color palette = 1st element (faded)
 var activeColorMode = paletteList[0];
 // Array index used for palette swapping
@@ -60,6 +59,7 @@ function drawShape()
 		// Disable health warning if mouse is moved over the canvas
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
+  	const rect = canvas.getBoundingClientRect();
 		xPos = (Math.round(e.touches[0].clientX)) - rect.left;
 		yPos = (Math.round(e.touches[0].clientY)) - rect.top;
 		// Update X and Y values on the UI
