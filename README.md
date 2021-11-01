@@ -4,7 +4,7 @@
 * **12 color palettes:** if you don't like one then you'll probably like another one
 * **Languages:** [JavaScript](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/scripts) ([main.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/main.js), [drawCanvas.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/drawCanvas.js)), [HTML](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/index.html), [CSS](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/styles/rainbow_noise.css)
 
-![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/screenshot-faded.png)
+![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 
 ## Color palettes
 * **Faded:** rainbow with desaturated colors (pastel)
