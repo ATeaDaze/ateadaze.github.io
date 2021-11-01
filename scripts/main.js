@@ -15,18 +15,11 @@ const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#
 // Patriot: red, white, and blue
 const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
-const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e",
-																			"#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
+const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
 // CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
-const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555",
-																"#ff55ff", "#ffff55", "#ffffff", "#555555",
-																"#0000aa", "#00aaaa", "#00aa00", "#aa0000",
-																"#aa00aa", "#aa5500", "#aaaaaa");
+const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555", "#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
 // Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
-const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532",
-																	"#493c2b", "#a26321", "#e98730", "#f5e06a",
-																	"#a1cc26", "#44891a", "#2f484e", "#1b2632",
-																	"#005784", "#31a2f2", "#b0daed");
+const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Default color palette = 1st element (faded)
 var activeColorMode = paletteList[0];
@@ -283,7 +276,6 @@ function setBrushColor()
 		default:
 			break;
 		}
-//updateUI();
 updateButtons();
 updateBanner();
 }
@@ -351,7 +343,6 @@ function setRandomPalette()
 	activeColorMode = paletteList[randomPaletteIndex];
 	updateButtons()
 	updateBanner();
-//	updateUI();
 }
 
 // Keyboard shortcuts
@@ -435,11 +426,10 @@ function getKeyboardInput()
 			default:
 				break;
 		}
-	setBrushColor();
+//	setBrushColor();
 	updateCoords();
 	updateButtons();
 	updateBanner();
-//	updateUI();
 	})
 }
 
@@ -469,7 +459,6 @@ function newAnimationInstance()
 	bIsRunning = true;
 	animationSpeed++;
 	setBrushColor();
-//	updateUI();
 	updateButtons();
 	updateBanner();
 	runAnimation();
@@ -488,7 +477,6 @@ function swapColorMode()
 	setBrushColor();
 	updateButtons();
 	updateBanner();
-//	updateUI();
 }
 
 function drawMenuBackground()
