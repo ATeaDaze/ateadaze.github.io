@@ -343,8 +343,6 @@ function setRandomPalette()
 	updateUI();
 }
 
-
-
 function clearScreen()
 {
 	ctx.fillRect(0, 0, 800, 500); // Set the canvas to a solid black 800x500 rectangle

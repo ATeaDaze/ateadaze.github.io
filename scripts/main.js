@@ -58,9 +58,9 @@ function drawShape()
 		canvas.addEventListener('mousemove', e => {
 		// Disable health warning if mouse is moved over the canvas
 		bDisablePhotoWarning = true;
-		// Store mouse cursor position
-		xPos = e.offsetX;
-		yPos = e.offsetY;
+		// Store mouse cursor position minus margin offset
+		xPos = Math.round(e.clientX - rect.left);
+		yPos = Math.round(e.clientY - rect.top);
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)

@@ -3,6 +3,7 @@ const canvas = document.createElement('canvas');
 document.body.appendChild(canvas)
 canvas.width = 800;
 canvas.height = 500;
+const rect = canvas.getBoundingClientRect();
 // Define offsets for text alignment
 const leftTextOffset = 70;
 const textMidpoint = (canvas.height/1.9);
