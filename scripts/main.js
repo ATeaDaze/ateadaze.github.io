@@ -122,7 +122,6 @@ function runAnimation()
 			shapeType = 'starburst'
 			drawStarburstLine();
 		}
-		// Pause animation
 		if(!bIsRunning) return;
 		window.requestAnimationFrame(loop);
 	})
