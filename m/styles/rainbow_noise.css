@@ -33,6 +33,7 @@ body {
 	background-color: #111111;
 	font-size: 11pt;
 	color: #ffffff;
+	overscroll-behavior-y: contain;	
 }
 canvas {
 	padding: 0;
