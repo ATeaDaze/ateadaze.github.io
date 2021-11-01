@@ -499,7 +499,7 @@ function drawHelpScreen()
 	ctx.fillRect(60, 175, (canvas.width-120), 195);
 	ctx.font = "bold 25px Arial";
 	ctx.fillStyle = "#dddddd";
-	ctx.fillText("Jeff McMillin", leftTextOffset+500,textMidpoint-123);
+	ctx.fillText("ateadaze.github.io", leftTextOffset+435,textMidpoint-123);
 	ctx.fillStyle = "white";
 	ctx.font = "bold 21px Arial";
 	ctx.fillText("✓  Move your mouse over the canvas to paint with shapes", leftTextOffset, textMidpoint-60);
