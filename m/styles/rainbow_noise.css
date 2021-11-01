@@ -29,7 +29,6 @@
 	font-size: 10pt;
 }
 body {
-	width: 100%
 	font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
 	background-color: #111111;
 	font-size: 11pt;
@@ -113,7 +112,7 @@ button.shapeBtn:hover {
 	border-color: mediumorchid;
 }
 button.helpBtn {
-	font-size: 14pt;
+	font-size: 15pt;
 	border-color: #666666;
 	color: #dddddd;
 	height: 43px;
