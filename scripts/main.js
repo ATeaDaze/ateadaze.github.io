@@ -279,11 +279,13 @@ function setBrushColor()
 		default:
 			break;
 		}
-updateUI();
+//updateUI();
+updateButtons();
+updateBanner();
 }
 
 // Update button style, animation speed, and banner
-function updateUI()
+function updateButtons()
 {
 	var btn1 = document.getElementById("button1");
 	var btn2 = document.getElementById("button2");
@@ -309,6 +311,10 @@ function updateUI()
 		btn6.style.color = "violet";
 		shapeType == 'starburst';
 	}
+}
+
+function updateBanner()
+{
 	divSpeed.innerHTML = "Speed: " + animationSpeed + "x";
 	// Display color commentary in the banner
  	if((animationSpeed > 0) && (animationSpeed < 6)) {
@@ -339,7 +345,9 @@ function setRandomPalette()
 {
 	randomPaletteIndex = Math.floor(Math.random() * 12)
 	activeColorMode = paletteList[randomPaletteIndex];
-	updateUI();
+	updateButtons()
+	updateBanner();
+//	updateUI();
 }
 
 // Keyboard shortcuts
@@ -425,7 +433,9 @@ function getKeyboardInput()
 		}
 	setBrushColor();
 	updateCoords();
-	updateUI();
+	updateButtons();
+	updateBanner();
+//	updateUI();
 	})
 }
 
@@ -455,7 +465,9 @@ function newAnimationInstance()
 	bIsRunning = true;
 	animationSpeed++;
 	setBrushColor();
-	updateUI();
+//	updateUI();
+	updateButtons();
+	updateBanner();
 	runAnimation();
 	bScreenIsClear = false;
 }
@@ -470,7 +482,9 @@ function swapColorMode()
 	}
 	activeColorMode = paletteList[i];	// Set active color palette, regardless
 	setBrushColor();
-	updateUI();
+	updateButtons();
+	updateBanner();
+//	updateUI();
 }
 
 function drawMenuBackground()
