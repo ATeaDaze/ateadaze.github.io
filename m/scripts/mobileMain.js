@@ -1,7 +1,8 @@
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
 const brushSize = 2.75;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
-const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
+const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy',
+															'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors (pastel)
 const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodgerblue", "#5d3fd3", "#cf9fff");
 // Rainbow with classic colors (primary)
@@ -15,13 +16,18 @@ const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#
 // Patriot: red, white, and blue
 const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
-const randGrayscaleColor = new Array("#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
+const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e",
+																			"#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
 // CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
-const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555",
-																"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
+const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555",
+																"#ff55ff", "#ffff55", "#ffffff", "#555555",
+																"#0000aa", "#00aaaa", "#00aa00", "#aa0000",
+																"#aa00aa", "#aa5500", "#aaaaaa");
 // Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
-const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
-																	"#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
+const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532",
+																	"#493c2b", "#a26321", "#e98730", "#f5e06a",
+																	"#a1cc26", "#44891a", "#2f484e", "#1b2632",
+																	"#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Default color palette = 1st element (faded)
 var activeColorMode = paletteList[0];
@@ -105,18 +111,14 @@ function drawShape()
 function runAnimation()
 {
 	window.requestAnimationFrame(function loop() {
-		x1 = Math.floor(Math.random() * 740)-10;
-		y1 = Math.floor(Math.random() * 500)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
+		x1 = Math.floor(Math.random() * 740)-10;
+		y1 = Math.floor(Math.random() * 500)-10;
 		if(shapeType == 'triangle') {
-			x2 = Math.floor(Math.random() * 740)-10;
-			y2 = Math.floor(Math.random() * 500)-10;
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
-			x2 = Math.floor(Math.random() * 740)-10;
-			y2 = Math.floor(Math.random() * 500)-10;
 			drawRandomLine();
 		} else {
 			shapeType = 'starburst'
@@ -131,6 +133,8 @@ function runAnimation()
 
 function drawRandomLine()
 {
+	x2 = Math.floor(Math.random() * 740)-10;
+	y2 = Math.floor(Math.random() * 500)-10;
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2);
 	ctx.stroke();
@@ -139,6 +143,8 @@ function drawRandomLine()
 
 function drawRandomTriangle()
 {
+	x2 = Math.floor(Math.random() * 740)-10;
+	y2 = Math.floor(Math.random() * 500)-10;
 	randomTriangleLength = Math.floor(Math.random() * 30)+5;
 	randomTriangleOffset = Math.floor(Math.random() * 35)+5;
 	ctx.moveTo(x1, y1);
@@ -151,8 +157,6 @@ function drawRandomTriangle()
 
 function drawStarburstLine()
 {
-	x1 = Math.floor(Math.random() * 740)-10;
-	y1 = Math.floor(Math.random() * 500)-10;
 	ctx.moveTo(xOrigin, yOrigin);
 	ctx.lineTo(x1, y1);
 	ctx.stroke();
@@ -280,7 +284,7 @@ function setBrushColor()
 		default:
 			break;
 		}
-updateUI();
+//updateUI();
 }
 
 // Update button style, animation speed, and banner
@@ -384,7 +388,7 @@ function swapColorMode()
 	}
 	activeColorMode = paletteList[i];	// Set active color palette, regardless
 	setBrushColor();
-	updateUI();
+//	updateUI();
 }
 
 function drawMenuBackground()
