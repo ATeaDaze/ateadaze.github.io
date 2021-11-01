@@ -378,8 +378,8 @@ function getKeyboardInput()
 			case 'e':
 				printCanvas();
 				break;
-			case 'g':
-				activeColorMode = 'grayscale';
+			case 'd':
+				activeColorMode = 'faded';
 				break;
 			case 'a':
 				activeColorMode = 'rainbow';
@@ -396,20 +396,23 @@ function getKeyboardInput()
 			case 'm':
 				activeColorMode = 'cmy';
 				break;
-			case 'd':
-				activeColorMode = 'faded';
-				break;
 			case '8':
 				activeColorMode = 'cga';
 				break;
-				case 'x':
-					activeColorMode = 'pyxel';
-					break;
 			case '6':
 				activeColorMode = 'cga16';
 				break;
+			case 'x':
+					activeColorMode = 'pyxel';
+					break;
 			case 'y':
 				activeColorMode = 'gb';
+				break;
+			case 'u':
+				activeColorMode = 'usa';
+				break;
+			case 'g':
+				activeColorMode = 'grayscale';
 				break;
 			case '*':
 				setRandomPalette();
@@ -442,8 +445,8 @@ function pauseAnimation()
 // Draw current mouse coordinates below the title
 function updateCoords()
 {
-	divCoordsX.innerHTML = "X = " + xPos;
-	divCoordsY.innerHTML = "Y = " + yPos;
+	divCoordsX.innerHTML = "X: " + xPos;
+	divCoordsY.innerHTML = "Y: " + yPos;
 }
 
 // Revisit the looping structure of this entire app
