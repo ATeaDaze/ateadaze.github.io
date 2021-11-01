@@ -1,4 +1,5 @@
-# Rainbow Noise: [ateadaze.github.io](https://ateadaze.github.io/) ([Mobile](https://ateadaze.github.io/m/))
+# Rainbow Noise: [ateadaze.github.io](https://ateadaze.github.io/)
+## Mobile version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 * **Draw with random shapes, animate them, or both. Colored lines create positive space**
 * **12 color palettes:** if you don't like one then you'll probably like another one
 * **Languages:** [JavaScript](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/scripts) ([main.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/main.js), [drawCanvas.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/drawCanvas.js)), [HTML](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/index.html), [CSS](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/styles/rainbow_noise.css)
