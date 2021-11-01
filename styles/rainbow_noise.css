@@ -66,7 +66,7 @@ button {
 	border: 4px outset;
 	color: white;
 	cursor: pointer;
-	width: 120px;
+	width: 128px;
 	height: 40px;
 	text-align: center;
 	align-content: center;
@@ -104,7 +104,7 @@ button.clearBtn:active {
 button.shapeBtn {
 	border-color: darkmagenta;
 	font-size: 10pt;
-	width: 132px;
+	width: 145px;
 	height: 37px;
 }
 button.shapeBtn:hover {
