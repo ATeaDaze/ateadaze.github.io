@@ -15,4 +15,3 @@ if(bEnableRandomPalette) setRandomPalette();
 drawHelpScreen();
 updateUI();
 drawShape();
-//getKeyboardInput();

@@ -51,12 +51,12 @@ var nBackgroundLinesDrawn;
 // Used for confirmation dialog
 var r;
 
-// Draw random shape at the mouse cursor
+// Draw random shape at touchpad input
 function drawShape()
 {
 		// Check for mouse movement
 		canvas.addEventListener('touchmove', e => {
-		// Disable health warning if mouse is moved over the canvas
+		// Disable health warning if canvas is used
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
 		xPos = Math.round(e.touches[0].clientX - rect.left);
