@@ -60,14 +60,14 @@ hr.hidden {
 	background-color: #111111;
 }
 button {
-	font-size: 12pt;
+	font-size: 14pt;
 	font-family: Calibri, Arial, sans-serif;
 	font-weight: bold;
 	border: 4px outset;
 	color: white;
 	cursor: pointer;
-	width: 120px;
-	height: 40px;
+	width: 140px;
+	height: 42px;
 	text-align: center;
 	align-content: center;
 	align-items: center;
@@ -103,9 +103,9 @@ button.clearBtn:active {
 }
 button.shapeBtn {
 	border-color: darkmagenta;
-	font-size: 10pt;
-	width: 132px;
-	height: 37px;
+	font-size: 12pt;
+	width: 150px;
+	height: 38px;
 }
 button.shapeBtn:hover {
 	border-color: mediumorchid;

@@ -37,7 +37,7 @@ var bEnableRandomPalette = false;
 // Used for random lines: (x1,y2),(x2,y2)
 var x1, y1, x2, y2;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 400, yOrigin = 250;
+var xOrigin = 360, yOrigin = 240;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
 // Animations are started manually so this starts at 0
@@ -59,14 +59,13 @@ function drawShape()
 		// Disable health warning if mouse is moved over the canvas
 		bDisablePhotoWarning = true;
 		// Store mouse cursor position
-  	const rect = canvas.getBoundingClientRect();
 		xPos = Math.round(e.touches[0].clientX - rect.left);
 		yPos = Math.round(e.touches[0].clientY - rect.top);
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
-		x1 = Math.floor(Math.random() * 820)-10;
-		y1 = Math.floor(Math.random() * 520)-10;
+		x1 = Math.floor(Math.random() * 740)-10;
+		y1 = Math.floor(Math.random() * 500)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
@@ -87,7 +86,7 @@ function drawShape()
 			ctx.stroke();
 		} else {
 			// Store current mouse cursor position as new origin if a button is clicked
-			canvas.addEventListener('touchdown', e => {
+			canvas.addEventListener('touchend', e => {
 				xOrigin = xPos;
 				yOrigin = yPos;
 			})
@@ -106,18 +105,18 @@ function drawShape()
 function runAnimation()
 {
 	window.requestAnimationFrame(function loop() {
-		x1 = Math.floor(Math.random() * 820)-10;
-		y1 = Math.floor(Math.random() * 520)-10;
+		x1 = Math.floor(Math.random() * 740)-10;
+		y1 = Math.floor(Math.random() * 500)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
 		if(shapeType == 'triangle') {
-			x2 = Math.floor(Math.random() * 820)-10;
-			y2 = Math.floor(Math.random() * 520)-10;
+			x2 = Math.floor(Math.random() * 740)-10;
+			y2 = Math.floor(Math.random() * 500)-10;
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
-			x2 = Math.floor(Math.random() * 820)-10;
-			y2 = Math.floor(Math.random() * 520)-10;
+			x2 = Math.floor(Math.random() * 740)-10;
+			y2 = Math.floor(Math.random() * 500)-10;
 			drawRandomLine();
 		} else {
 			shapeType = 'starburst'
@@ -152,8 +151,8 @@ function drawRandomTriangle()
 
 function drawStarburstLine()
 {
-	x1 = Math.floor(Math.random() * 820)-10;
-	y1 = Math.floor(Math.random() * 520)-10;
+	x1 = Math.floor(Math.random() * 740)-10;
+	y1 = Math.floor(Math.random() * 500)-10;
 	ctx.moveTo(xOrigin, yOrigin);
 	ctx.lineTo(x1, y1);
 	ctx.stroke();
@@ -493,23 +492,25 @@ function drawHelpScreen()
 {
 	drawMenuBackground();
 	ctx.fillStyle = "#222222";
-	ctx.fillRect(60, 105, (canvas.width-120), 50);
+	ctx.fillRect(60, 110, (canvas.width-120), 45);
 	ctx.fillStyle = "#eeeeee";
-	ctx.font = "bold 28px Arial";
-	ctx.fillText("Rainbow Noise", leftTextOffset, textMidpoint-123);
+	ctx.font = "bold 24px Arial";
+	ctx.fillText("Rainbow Noise 📱 Mobile", leftTextOffset, textMidpoint-112);
 	ctx.fillStyle = "#111111";
-	ctx.fillRect(60, 175, (canvas.width-120), 195);
-	ctx.font = "bold 25px Arial";
+	ctx.fillRect(60, 165, (canvas.width-120), 195);
+	ctx.font = "bold 20px Arial";
 	ctx.fillStyle = "#dddddd";
-	ctx.fillText("Jeff McMillin", leftTextOffset+500,textMidpoint-123);
+	ctx.fillText("Jeff McMillin", leftTextOffset+450,textMidpoint-112);
 	ctx.fillStyle = "white";
-	ctx.font = "bold 21px Arial";
-	ctx.fillText("✓  Move your mouse over the canvas to paint with shapes", leftTextOffset, textMidpoint-60);
-	ctx.fillText("✓  Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
-	ctx.fillText("✓  Click the canvas to set a new origin for the starburst animation", leftTextOffset, textMidpoint);
-	ctx.fillText("✓  You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);
-	ctx.fillText("✓  Animations generally look smoother between 1x and 5x speed", leftTextOffset, textMidpoint+60);
-	ctx.fillText("✓  Press spacebar to select the next color palette", leftTextOffset, textMidpoint+90);
+	ctx.font = "normal 18px Arial";
+	ctx.fillText("✔️ Drag your finger over the canvas to paint with shapes", leftTextOffset, textMidpoint-60);
+	ctx.fillText("✔️ Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
+	ctx.fillText("✔️ Tap and drag canvas to set new origin for starburst animation", leftTextOffset, textMidpoint);
+	ctx.fillText("✔️ You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);
+	ctx.fillText("✔️ Animations generally look smoother between 1x and 5x speed", leftTextOffset, textMidpoint+60);
+	ctx.fillStyle = "#c5c5c5";
+	ctx.font = "bold 18px Arial";
+	ctx.fillText("⚠️ Mobile support is basic and needs more testing", leftTextOffset, textMidpoint+90);
 	ctx.fillStyle = "black";
 	bScreenIsClear = true;
 }
