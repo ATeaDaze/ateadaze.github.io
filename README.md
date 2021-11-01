@@ -5,7 +5,7 @@
 * **Languages:** [JavaScript](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/scripts) ([main.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/main.js), [drawCanvas.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/drawCanvas.js)), [HTML](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/index.html), [CSS](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/styles/rainbow_noise.css)
 * **Mobile support**: limited support for mobile resolutions and touch screens (WIP)
 
-![rainbow_noise-screenshot-faded-1](https://user-images.githubusercontent.com/89423150/139572006-0dbd8e4e-d02f-4958-9015-9244c65018f7.png)
+![rainbow_noise-screenshot-faded](https://user-images.githubusercontent.com/89423150/139618032-86ec3124-7a14-427e-8812-7254619519f8.png)
 
 ## Color palettes
 * **Faded:** rainbow with desaturated colors (pastel)
