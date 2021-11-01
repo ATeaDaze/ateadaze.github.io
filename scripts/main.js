@@ -34,20 +34,20 @@ var bIsRunning = false;
 var bScreenIsClear = true;
 var bDisablePhotoWarning = false;
 var bEnableRandomPalette = false;
-// Used for random lines: (x1,y2),(x2,y2)
-var x1, y1, x2, y2;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
 var xOrigin = 400, yOrigin = 250;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
 // Animations are started manually so this starts at 0
 var animationSpeed = 0;
-// Adds more random variation to triangles
-var randomTriangleLength, randomTriangleOffset;
 // Default animation shape (triangle, line, starburst)
 var shapeType = 'triangle';
+// Adds more random variation to triangles
+var randomTriangleLength, randomTriangleOffset;
 // Counts number of shapes drawn for help screen
 var nBackgroundLinesDrawn;
+// Used for random lines: (x1,y2),(x2,y2)
+var x1, y1, x2, y2;
 // Used for confirmation dialog
 var r;
 

@@ -17,8 +17,8 @@
 	cursor: help;
 }
 #divCoordsX, #divCoordsY, #divSpeed, #divColorMode {
-	font-family: 'Ubuntu Mono', 'Consolas', 'Lucida Console', 'Courier New', monospace;
-	font-size: 11pt;
+	font-family: 'Consolas', 'Ubuntu Mono', 'Lucida Console', 'Courier New', monospace;
+	font-size: 12pt;
 	font-weight: bold;
 	text-shadow: 2px 2px 2px #000000;
 	padding: 3px;
@@ -105,8 +105,8 @@ button.clearBtn:active {
 button.shapeBtn {
 	border-color: darkmagenta;
 	font-size: 12pt;
-	width: 150px;
-	height: 38px;
+	width: 154px;
+	height: 40px;
 }
 button.shapeBtn:hover {
 	border-color: mediumorchid;
@@ -115,8 +115,8 @@ button.helpBtn {
 	font-size: 15pt;
 	border-color: #666666;
 	color: #dddddd;
-	height: 43px;
-	width: 43px;
+	height: 48px;
+	width: 48px;
 	font-weight: normal;
 }
 button.helpBtn:hover {
