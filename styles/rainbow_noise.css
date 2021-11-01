@@ -33,6 +33,7 @@ body {
 	background-color: #111111;
 	font-size: 11pt;
 	color: #ffffff;
+	overscroll-behavior-y: contain;
 }
 canvas {
 	padding: 0;
@@ -60,14 +61,14 @@ hr.hidden {
 	background-color: #111111;
 }
 button {
-	font-size: 12pt;
+	font-size: 14pt;
 	font-family: Calibri, Arial, sans-serif;
 	font-weight: bold;
 	border: 4px outset;
 	color: white;
 	cursor: pointer;
-	width: 128px;
-	height: 40px;
+	width: 140px;
+	height: 42px;
 	text-align: center;
 	align-content: center;
 	align-items: center;
@@ -103,15 +104,15 @@ button.clearBtn:active {
 }
 button.shapeBtn {
 	border-color: darkmagenta;
-	font-size: 10pt;
-	width: 145px;
-	height: 37px;
+	font-size: 12pt;
+	width: 150px;
+	height: 38px;
 }
 button.shapeBtn:hover {
 	border-color: mediumorchid;
 }
 button.helpBtn {
-	font-size: 14pt;
+	font-size: 15pt;
 	border-color: #666666;
 	color: #dddddd;
 	height: 43px;
