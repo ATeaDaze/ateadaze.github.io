@@ -345,7 +345,7 @@ function setRandomPalette()
 
 function clearScreen()
 {
-	ctx.fillRect(0, 0, 800, 500); // Set the canvas to a solid black 800x500 rectangle
+	ctx.fillRect(0, 0, 720, 480); // Set the canvas to a solid black 800x500 rectangle
 	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
 }
 
@@ -359,8 +359,8 @@ function pauseAnimation()
 // Draw current mouse coordinates below the title
 function updateCoords()
 {
-	divCoordsX.innerHTML = "X = " + xPos;
-	divCoordsY.innerHTML = "Y = " + yPos;
+	divCoordsX.innerHTML = "X: " + xPos;
+	divCoordsY.innerHTML = "Y: " + yPos;
 }
 
 // Revisit the looping structure of this entire app
@@ -391,7 +391,7 @@ function drawMenuBackground()
 {
 	nBackgroundLinesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background
-	while(nBackgroundLinesDrawn <= 256) {
+	while(nBackgroundLinesDrawn < 256) {
 		x1 = Math.floor(Math.random() * 820)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
 		x2 = Math.floor(Math.random() * 820)-10;
