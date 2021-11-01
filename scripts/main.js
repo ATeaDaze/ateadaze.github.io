@@ -15,13 +15,18 @@ const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#
 // Patriot: red, white, and blue
 const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
-const randGrayscaleColor = new Array("#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
+const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e",
+																			"#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
 // CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
-const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555",
-																"#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
+const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555",
+																"#ff55ff", "#ffff55", "#ffffff", "#555555",
+																"#0000aa", "#00aaaa", "#00aa00", "#aa0000",
+																"#aa00aa", "#aa5500", "#aaaaaa");
 // Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
-const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a",
-																	"#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
+const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532",
+																	"#493c2b", "#a26321", "#e98730", "#f5e06a",
+																	"#a1cc26", "#44891a", "#2f484e", "#1b2632",
+																	"#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Default color palette = 1st element (faded)
 var activeColorMode = paletteList[0];
@@ -35,7 +40,8 @@ var bScreenIsClear = true;
 var bDisablePhotoWarning = false;
 var bEnableRandomPalette = false;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 400, yOrigin = 250;
+var xOrigin = 400;
+yOrigin = 250;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
 // Animations are started manually so this starts at 0
@@ -56,46 +62,46 @@ function drawShape()
 {
 		// Check for mouse movement
 		canvas.addEventListener('mousemove', e => {
-		// Disable health warning if mouse is moved over the canvas
-		bDisablePhotoWarning = true;
-		// Store mouse cursor position minus margin offset
-		xPos = Math.round(e.clientX - rect.left);
-		yPos = Math.round(e.clientY - rect.top);
-		// Update X and Y values on the UI
-		updateCoords();
-		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
-		x1 = Math.floor(Math.random() * 820)-10;
-		y1 = Math.floor(Math.random() * 520)-10;
-		ctx.beginPath();
-		setBrushColor();
-		ctx.lineWidth = brushSize;
-		// Draw line from mouse cursor to a random point
-		if(shapeType == 'line') {
-			ctx.moveTo(xPos, yPos);
-			ctx.lineTo(x1, y1);
-			ctx.stroke();
-			ctx.closePath();
-		} else if(shapeType == 'triangle') {
-			// Draw triangle originating from mouse cursor
-			randomTriangleLength = Math.floor(Math.random() * 30)+5;
-			randomTriangleOffset = Math.floor(Math.random() * 35)+5;
-			ctx.moveTo(xPos, yPos);
-			ctx.lineTo(x1, y1);
-			ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
-			ctx.closePath();
-			ctx.stroke();
-		} else {
-			// Store current mouse cursor position as new origin if a button is clicked
-			canvas.addEventListener('mousedown', e => {
-				xOrigin = xPos;
-				yOrigin = yPos;
-			})
-			// Draw line from the origin to the mouse cursor
-			ctx.moveTo(xOrigin,yOrigin);
-			ctx.lineTo(xPos,yPos);
-			ctx.closePath();
-			ctx.stroke();
-		}
+			// Disable health warning if mouse is moved over the canvas
+			bDisablePhotoWarning = true;
+			// Store mouse cursor position minus margin offset
+			xPos = Math.round(e.clientX - rect.left);
+			yPos = Math.round(e.clientY - rect.top);
+			// Update X and Y values on the UI
+			updateCoords();
+			// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
+			x1 = Math.floor(Math.random() * 820)-10;
+			y1 = Math.floor(Math.random() * 520)-10;
+			ctx.beginPath();
+			setBrushColor();
+			ctx.lineWidth = brushSize;
+			// Draw line from mouse cursor to a random point
+			if(shapeType == 'line') {
+				ctx.moveTo(xPos, yPos);
+				ctx.lineTo(x1, y1);
+				ctx.stroke();
+				ctx.closePath();
+			} else if(shapeType == 'triangle') {
+				// Draw triangle originating from mouse cursor
+				randomTriangleLength = Math.floor(Math.random() * 30)+5;
+				randomTriangleOffset = Math.floor(Math.random() * 35)+5;
+				ctx.moveTo(xPos, yPos);
+				ctx.lineTo(x1, y1);
+				ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
+				ctx.closePath();
+				ctx.stroke();
+			} else {
+				// Store current mouse cursor position as new origin if a button is clicked
+				canvas.addEventListener('mousedown', e => {
+					xOrigin = xPos;
+					yOrigin = yPos;
+				})
+				// Draw line from the origin to the mouse cursor
+				ctx.moveTo(xOrigin,yOrigin);
+				ctx.lineTo(xPos,yPos);
+				ctx.closePath();
+				ctx.stroke();
+			}
 		ctx.fill();
 		bScreenIsClear = false;
 		})
@@ -105,18 +111,14 @@ function drawShape()
 function runAnimation()
 {
 	window.requestAnimationFrame(function loop() {
-		x1 = Math.floor(Math.random() * 820)-10;
-		y1 = Math.floor(Math.random() * 520)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
+		x1 = Math.floor(Math.random() * 820)-10;
+		y1 = Math.floor(Math.random() * 520)-10;
 		if(shapeType == 'triangle') {
-			x2 = Math.floor(Math.random() * 820)-10;
-			y2 = Math.floor(Math.random() * 520)-10;
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
-			x2 = Math.floor(Math.random() * 820)-10;
-			y2 = Math.floor(Math.random() * 520)-10;
 			drawRandomLine();
 		} else {
 			shapeType = 'starburst'
@@ -130,6 +132,8 @@ function runAnimation()
 
 function drawRandomLine()
 {
+	x2 = Math.floor(Math.random() * 820)-10;
+	y2 = Math.floor(Math.random() * 520)-10;
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2);
 	ctx.stroke();
@@ -138,6 +142,8 @@ function drawRandomLine()
 
 function drawRandomTriangle()
 {
+	x2 = Math.floor(Math.random() * 820)-10;
+	y2 = Math.floor(Math.random() * 520)-10;
 	randomTriangleLength = Math.floor(Math.random() * 30)+5;
 	randomTriangleOffset = Math.floor(Math.random() * 35)+5;
 	ctx.moveTo(x1, y1);
@@ -150,8 +156,6 @@ function drawRandomTriangle()
 
 function drawStarburstLine()
 {
-	x1 = Math.floor(Math.random() * 820)-10;
-	y1 = Math.floor(Math.random() * 520)-10;
 	ctx.moveTo(xOrigin, yOrigin);
 	ctx.lineTo(x1, y1);
 	ctx.stroke();
