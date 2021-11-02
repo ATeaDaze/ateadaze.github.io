@@ -56,8 +56,6 @@ function drawShape()
 {
 		// Check for mouse movement
 		document.addEventListener('mousemove', e => {
-			console.log("e.target = " + e.target);
-			console.log("e.button = " + e.button);
 			if(bEnableDrawing) {
 				// Store mouse cursor position minus margin offset
 				xPos = Math.round(e.clientX - rect.left);
@@ -461,7 +459,6 @@ function getKeyboardInput()
 //	updateCoords();
 	updateButtons();
 	updateBanner();
-	console.log("Key: " + e.key);
 	})
 }
 
