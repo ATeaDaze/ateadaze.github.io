@@ -1,12 +1,13 @@
-# Rainbow Noise: [ateadaze.github.io](https://ateadaze.github.io/)
-## Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
+# Rainbow Noise: [Desktop](https://ateadaze.github.io/) or [Mobile](https://ateadaze.github.io/m/)
 * **Draw with random shapes**, **animate them**, or both
   * Colored lines create positive space
   * New shapes and edges are created from like-colored lines
+## Features
 * **12 color palettes:** if you don't like one then you'll probably like another one
 * **Languages:** [JavaScript](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/scripts) ([main.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/main.js), [drawCanvas.js](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/scripts/drawCanvas.js)), [HTML](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/index.html), [CSS](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/styles/rainbow_noise.css)
 * Enable or disable drawing mode with the draw button (or press **[E]**)
 
+# Desktop Version: [ateadaze.github.io/m](https://ateadaze.github.io/)
 ![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 
 ## Color palettes
@@ -29,3 +30,6 @@
 Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  CGA-1[6]  Py[x]el Edit  Gamebo[y]  [U]SA  [G]rayscale
 Animations:  [T]riangle Web   [L]ine Scatter   [S]tarburst   [*] Random palette
 ```
+
+# Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
+![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
