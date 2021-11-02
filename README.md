@@ -2,10 +2,10 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use a mouse or touchpad to draw on a canvas
+* **Draw abstract shapes:** use a mouse or touchpad to draw with random shapes
   * **Colored lines create positive space** on the dark canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run presets
+* **Run animations:** automatically run presets (and combine them with drawing)
 * **12 color palettes** 
 * **Keyboard support** for better control (desktop version)
 
@@ -27,9 +27,10 @@
 ![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 ## Controls
 ```
-Keyboard Map    [R]un  [P]ause  [C]lear screen   [?] Help  [Enter] Toggle draw mode  [Spacebar] Next palette
-Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
-Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
+Keyboard Map    [R]un  [P]ause  [C]lear screen   [Enter] Toggle draw mode  [Spacebar] Next palette
+Color palettes: Fa[d]ed R[a]inbow [F]ire [I]ce RG[B]  C[M]Y CGA-[8] Py[x]el Edit Gamebo[y] [U]SA
+Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale
+[?] Help  [O]rigin reset (center)  [*] Random palette
 ```
 Button|Key|&nbsp;
 ---|---|---|
@@ -37,16 +38,16 @@ Button|Key|&nbsp;
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
 ![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
-![O](/images/origin_reset_button.png)|&nbsp;|Reset origin to center (mobile)
+![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
 
 # Instructions (both versions)
 ▶  **Press RUN repeatedly** to increase the animation speed
 
-✔️ Animations generally look smoother between 1x and 5x speed
+✔️ Animations generally look smoothest between 1x and 5x speed
 
 ✔️ You can draw on the canvas while the animation is running
 
-## Instructions (desktop)
+## Instructions (Desktop)
 ✏️ **Enable drawing mode** and **move your mouse** to paint shapes
 
 ✔️ **Press spacebar** to select the next color palette
@@ -56,12 +57,12 @@ Button|Key|&nbsp;
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
 
-## Instructions (mobile)
+## Instructions (Mobile)
 🖌️ **Drag across the canvas** to paint with shapes
 
 ✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=touchup)
 
-⚠️ **Mobile support is basic** and needs more testing (works but needs work)
+⚠️ **Mobile version is basic** (works but needs work)
 
 # Changes / Issues / Fixes
 * [X] Release a mobile version: touch support
@@ -72,9 +73,9 @@ Button|Key|&nbsp;
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
 * [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
-* [ ] Optimize resolution for the most common setups
+* [ ] Optimize resolution for the most common displays
 ### Mobile
-* [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
+* [ ] More testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
 # Technical Information
