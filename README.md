@@ -64,7 +64,7 @@ Button|Key|&nbsp;
 ⚠️ **Mobile support is basic** and needs more testing (works but needs work)
 
 # Changes / Issues / Fixes
-* [X] Release a mobile version
+* [X] Release a mobile version: touch support
 * [ ] Replace HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
