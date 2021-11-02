@@ -5,7 +5,7 @@
 * **Draw abstract shapes:** use a mouse or touchpad to draw on a canvas
   * **Colored lines create positive space** on the dark canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run preset animations
+* **Run animations:** automatically run presets
 * **12 color palettes available** 
 * **Keyboard support** for better control (desktop version)
 
