@@ -2,7 +2,7 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use a mouse or touchpad to draw on the canvas
+* **Draw abstract shapes:** use a mouse or touchpad to draw on a canvas
   * **Colored lines create positive space** on the dark canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run preset animations
@@ -39,18 +39,19 @@ Button|Key|&nbsp;
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|&nbsp;|Reset origin to center (mobile)
 
-## Instructions (both versions)
-✏️ **Enable drawing mode** and **move your mouse** to paint shapes
-
+# Instructions (both versions)
 ▶  **Press RUN repeatedly** to increase the animation speed
-
-✔️ **Press spacebar** to select the next color palette
-
-✔️ **Click the canvas** to set a new origin for the starburst animation
 
 ✔️ Animations generally look smoother between 1x and 5x speed
 
 ✔️ You can draw on the canvas while the animation is running
+
+## Instructions (desktop)
+✏️ **Enable drawing mode** and **move your mouse** to paint shapes
+
+✔️ **Press spacebar** to select the next color palette
+
+✔️ **Click the canvas** to set a new origin for the starburst animation
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
