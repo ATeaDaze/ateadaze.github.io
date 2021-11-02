@@ -75,7 +75,7 @@ Button|Key|&nbsp;|Button|Key|&nbsp;
 * [ ] Optimize resolution and settings for mobile displays (disable pinch zoom? not sold on that one)
 
 # Technical Information
-### **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
+### **Languages:** **JavaScript** for main app, **HTML** for page elements, and **CSS** for formatting
 ## **Source Code**
 **Desktop:** [JavaScript](/scripts) ([main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js)), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
 
