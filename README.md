@@ -6,7 +6,7 @@
   * **Colored lines create positive space** against the black background (negative space)
   * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run preset animations without any user input
-* **12 color palettes:** if you don't like one then you'll probably like another one
+* **12 color palettes available:** if you don't like one then you'll probably like another one
 * **Keyboard support:** for better control of the canvas (desktop version)
 
 ## Color palettes
@@ -23,6 +23,8 @@
 * **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
+# Desktop Version: [ateadaze.github.io/m](https://ateadaze.github.io/)
+![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 ## Keyboard Map
 ```
 [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw mode  [Spacebar] Next palette
@@ -30,9 +32,6 @@ Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  CGA-1[6]  Py[x]el Edit
 Animations:  [T]riangle Web   [L]ine Scatter   [S]tarburst   [*] Random palette
 ```
 * Enable or disable drawing mode with the draw button or press **[E]** (desktop version)
-
-# Desktop Version: [ateadaze.github.io/m](https://ateadaze.github.io/)
-![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
