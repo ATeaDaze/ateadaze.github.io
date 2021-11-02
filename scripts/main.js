@@ -515,14 +515,14 @@ function togglePaintMode()
 	var btn9 = document.getElementById("button9");
 	if (bEnableDrawing) {
 		bEnableDrawing = false;
-		btn9.style = "filter:saturate(25%);border-color:red";
+		btn9.style = "filter:saturate(25%);border-color:crimson";
 		btn9.title = "Enable drawing mode (Enter)";
 	}	else {
 		bEnableDrawing = true;
 		bDisablePhotoWarning = true;
 		updateBanner();
 		updateButtons();
-		btn9.style = "filter:saturate(100%);border-color:#666666";
+		btn9.style = "filter:saturate(100%);border-color:#74c365;";
 		btn9.title = "Disable drawing mode (Enter)";
 	}
 }
