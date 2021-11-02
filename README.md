@@ -2,12 +2,11 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use a mouse or touchpad to draw with random shapes
-  * **Colored lines create positive space**
-    * **New shapes and patterns emerge** from randomly overlapping lines
+* **Draw abstract shapes:** use a mouse or touch screen to draw with random shapes
+  * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run presets (and combine them with drawing)
 * **12 color palettes**
-* **Keyboard support** for better control (desktop version)
+* **Keyboard support** (desktop version)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
@@ -36,7 +35,7 @@ Button|Key|&nbsp;
 ---|---|---|
 ![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode
+![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable drawing mode
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
 
