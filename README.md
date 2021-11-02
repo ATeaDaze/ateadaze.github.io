@@ -2,7 +2,7 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use your mouse on a desktop or a touch controls with a mobile device
+* **Draw abstract shapes:** use your mouse on a desktop or touchpad with mobile devices
   * **Colored lines create positive space** against the black background (negative space)
   * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run preset animations without any user input
