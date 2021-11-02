@@ -3,7 +3,7 @@
 
 ## Features
 * **Draw abstract shapes:** use a mouse or touchpad to draw with random shapes
-  * **Colored lines create positive space** on the dark canvas
+  * **Colored lines create positive space**
     * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run presets (and combine them with drawing)
 * **12 color palettes** 
@@ -66,7 +66,7 @@ Button|Key|&nbsp;
 
 # Changes / Issues / Fixes
 * [X] Release a mobile version: touch support
-* [ ] Replace HTML legacy tags with CSS
+* [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to toggle drawing mode
@@ -75,11 +75,11 @@ Button|Key|&nbsp;
 * [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
-* [ ] More testing: limited testing done with Chrome device emulation and an S10+
+* [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
 # Technical Information
-### **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
+**Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
 ## **Source Code**
 **Desktop:** [JavaScript](/scripts) ([main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js)), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
 
