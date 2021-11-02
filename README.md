@@ -1,9 +1,8 @@
 # Available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
-
-![rainbow_noise-repo_banner](/images/repo-banner-no_crop-borderless.png)
+![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use your mouse (desktop) or a touch screen (mobile)
+* **Draw abstract shapes:** use your mouse on a desktop or a touch controls with a mobile device
   * **Colored lines create positive space** against the black background (negative space)
   * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run preset animations without any user input
@@ -24,16 +23,6 @@
 * **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
-# Updates / Issues / Changes
-* [X] Release a mobile version: a *lot* of people primarily use their phones for web browsing
-* [X] Expand `mousemove` listener to entire document body (feels goood on the mobile version)
-* [X] Add a button to enable or disable draw mode
-* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
-* [X] Reduce `setBrushColor()` calls: it was checking *and* updating the UI on *each* stroke before
-* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile)
-* [ ] Replace HTML legacy tags with CSS (I haven't written extensively with JS since the mid-200s)
-* [ ] Test the mobile version more extensively: I've barely tested this using Chrome's device emulation and my S10+
-
 ## Keyboard Map
 ```
 [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw mode  [Spacebar] Next palette
@@ -47,6 +36,16 @@ Animations:  [T]riangle Web   [L]ine Scatter   [S]tarburst   [*] Random palette
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
+
+# Updates / Issues
+* [X] Release a mobile version: a *lot* of people primarily use their phones for web browsing
+* [X] Expand `mousemove` listener to entire document body: more satisfying and similar to the mobile version
+* [X] Add a button to enable or disable draw mode (desktop)
+* [X] Separate `updateUI()` function into 2 functions: `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()` as it was checking and updating the UI on *each* stroke
+* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (drawing similar to mobile)
+* [ ] Replace HTML legacy tags with CSS: I haven't written extensively with JS since the mid-2000s (:
+* [ ] Test the mobile version more extensively: I've done limited testing with Chrome's device emulation and my S10+
 
 # Technical Information
 ### **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
