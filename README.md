@@ -6,7 +6,7 @@
   * **Colored lines create positive space** on the dark canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run presets
-* **12 color palettes available** 
+* **12 color palettes** 
 * **Keyboard support** for better control (desktop version)
 
 ## Color Palettes
