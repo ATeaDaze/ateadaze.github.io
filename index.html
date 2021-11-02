@@ -39,19 +39,20 @@
 	</tr>
 	<tr align="left">
 		<td>
-			<button class="shapeBtn" id="button4" onclick="shapeType='triangle';setBrushColor();"
+			<button class="shapeBtn" id="button4" onclick="shapeType='triangle';updateButtons();"
 			title="Triangles rapidly drawn in a random color and location: rand((x1,y1), (x2,y2)), rand((x1+randomOffset,y1+randomLength))">⧎ Triangle Web</button>
 		</td>
 		<td align="center">
-			<button class="shapeBtn" id="button5" onclick="shapeType='line';setBrushColor();"
+			<button class="shapeBtn" id="button5" onclick="shapeType='line';updateButtons();"
 			title="Lines with random coordinates: rand((x1,y1), (x2,y2))">▧ Line Scatter</button>
 		</td>
 		<td align="right">
-			<button class="shapeBtn" id="button6" onclick="shapeType='starburst';setBrushColor();"
+			<button class="shapeBtn" id="button6" onclick="shapeType='starburst';updateButtons();"
 			title="Lines from a fixed-origin to a random point: (xOrigin,yOrigin), rand((x1,y1))">✺ Starburst</button>
 		</td>
 		<td align="right" width="10%">
-			<button class="helpBtn" id="button9" onclick="xOrigin = 400;yOrigin = 250;setBrushColor();" title="Reset origin to center (O)">🏠</button>
+<!--			<button class="helpBtn" id="button9" onclick="xOrigin = 400;yOrigin = 250;setBrushColor();" title="Reset origin to center (O)">🏠</button> -->
+			<button class="helpBtn" id="button9" onclick="togglePaintMode();" title="Enable draw mode (E)" style="filter:saturate(25%);border-color:red">️✏️</button>
 		</td>
 		<td align="left" width="10%">
 			<button class="helpBtn" id="button7" onclick="confirmCanvasOverwrite();" title="Help (H)">❔</button>
@@ -65,7 +66,7 @@
 	<tr>
 		<td>
 		<div id="keyMap"><u>Keyboard Map</u>:&nbsp;&nbsp;&nbsp;<b>[R]</b>un&nbsp;&nbsp;<b>[P]</b>ause&nbsp;&nbsp;<b>[C]</b>lear screen&nbsp;&nbsp;
-			<b>[H]</b>elp&nbsp;&nbsp;<b>[E]</b>xport/print&nbsp;&nbsp;<b>[Spacebar]</b> Next palette<br>
+			<b>[H]</b>elp&nbsp;&nbsp;<b>[E]</b>nable/disable draw mode&nbsp;&nbsp;<b>[Spacebar]</b> Next palette<br>
 			Color palettes:&nbsp;Fa<b>[d]</b>ed&nbsp;&nbsp;R<b>[a]</b>inbow&nbsp;<b>[F]</b>ire&nbsp;&nbsp;<b>[I]</b>ce&nbsp;&nbsp;RG<b>[B]</b>&nbsp;&nbsp;
 			C<b>[M]Y</b>&nbsp;&nbsp;CGA-<b>[8]</b>&nbsp;&nbsp;Py<b>[x]</b>el Edit&nbsp;&nbsp;Gamebo<b>[y]</b>&nbsp;<b>[U]</b>SA<br>
 			Animations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>[T]</b>riangle Web&nbsp;<b>[L]</b>ine Scatter&nbsp;<b>[S]</b>tarburst&nbsp;&nbsp;
