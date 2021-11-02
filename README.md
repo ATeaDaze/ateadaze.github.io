@@ -28,10 +28,9 @@
 * [X] Release a mobile version: a *lot* of people primarily use their phones for web browsing
 * [X] Expand `mousemove` listener to entire document body (feels goood on the mobile version)
 * [X] Add a button to enable or disable draw mode
-* [X] Separate the `updateUI()` function into `updateBanner()` and `updateButtons()` and reduce `setBrushColor()` calls
-  * It was checking *and* updating the buttons with *each* stroke before I did this
-* [ ] Get `actionListener` working properly on `click` so shapes are only drawn with `mousemove` *and* `mousedown` events
-  * I hastily tested this and it draws 50+ shapes on screen with *each click* (brace issue) 
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Reduce `setBrushColor()` calls: it was checking *and* updating the UI on *each* stroke before
+* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile)
 * [ ] Replace HTML legacy tags with CSS (I haven't written extensively with JS since the mid-200s)
 * [ ] Test the mobile version more extensively: I've barely tested this using Chrome's device emulation and my S10+
 
