@@ -407,10 +407,10 @@ function getKeyboardInput()
 				xOrigin = 400;
 				yOrigin = 250;
 				break;
-			case 'h':
+			case '?':
 				confirmCanvasOverwrite();
 				break;
-			case 'e':
+			case 'Enter':
 				togglePaintMode();
 				break;
 			case 'd':
@@ -461,6 +461,7 @@ function getKeyboardInput()
 //	updateCoords();
 	updateButtons();
 	updateBanner();
+	console.log("Key: " + e.key);
 	})
 }
 
@@ -518,14 +519,14 @@ function togglePaintMode()
 	if (bEnableDrawing) {
 		bEnableDrawing = false;
 		btn9.style = "filter:saturate(25%);border-color:red";
-		btn9.title = "Drawing disabled (E)"
+		btn9.title = "Enable drawing mode (Enter)";
 	}	else {
 		bEnableDrawing = true;
 		bDisablePhotoWarning = true;
 		updateBanner();
 		updateButtons();
 		btn9.style = "filter:saturate(100%);border-color:#666666";
-		btn9.title = "Drawing enabled (E)"
+		btn9.title = "Disable drawing mode (Enter)";
 	}
 }
 
