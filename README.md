@@ -36,7 +36,7 @@ Button|Key|&nbsp;
 ---|---|---|
 ![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode
+![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable drawing mode
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
 
