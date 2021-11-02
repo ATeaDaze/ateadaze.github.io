@@ -2,14 +2,14 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use your mouse on a desktop or touchpad with mobile devices
-  * **Colored lines create positive space** against the black background (negative space)
-  * **New shapes and patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run preset animations without any user input
+* **Draw abstract shapes:** use your mouse or touchpad to draw on the canvas (desktop or mobile)
+  * **Colored lines create positive space** on the black canvas
+    * **New shapes and patterns emerge** from randomly overlapping lines
+* **Run animations:** automatically run preset animations without user input
 * **12 color palettes available:** if you don't like one then you'll probably like another one
-* **Keyboard support:** for better control of the canvas (desktop version)
+* **Keyboard support:** allows better control of the canvas (desktop)
 
-## Color palettes
+## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
 * **Rainbow:** classic primary colors
 * **Fire:** warm (but not necessarily inviting)
@@ -31,19 +31,19 @@ Keyboard Map:   [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw m
 Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
 Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
 ```
-* Enable or disable drawing mode with the draw button or press **[E]** (desktop version)
+* Enable or disable drawing mode with the draw button or press `[E]` (desktop version)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
 
-# Updates / Issues
+# Changes / Issues / Fixes
 * [X] Release a mobile version: a *lot* of people primarily use their phones for web browsing
-* [X] Expand `mousemove` listener to entire document body: more satisfying and similar to the mobile version
+* [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to enable or disable draw mode (desktop)
 * [X] Separate `updateUI()` function into 2 functions: `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()` as it was checking and updating the UI on *each* stroke
-* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (drawing similar to mobile)
-* [ ] Replace HTML legacy tags with CSS: I haven't written extensively with JS since the mid-2000s (:
+* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
+* [ ] Replace HTML legacy tags with CSS: I haven't written extensively with HTML/CSS since ~2005
 * [ ] Test the mobile version more extensively: I've done limited testing with Chrome's device emulation and my S10+
 
 # Technical Information
