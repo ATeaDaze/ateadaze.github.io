@@ -40,7 +40,7 @@ Button|Key|&nbsp;
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
 
-# Instructions (both versions)
+# Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
 
 ✔️ Animations generally look smoothest between 1x and 5x speed
