@@ -35,7 +35,7 @@ Button|Key|&nbsp;
 ---|---|---|
 ![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable drawing mode
+![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
 
@@ -47,7 +47,7 @@ Button|Key|&nbsp;
 ✔️ You can draw on the canvas while the animation is running
 
 ## Instructions (Desktop)
-✏️ **Enable drawing mode** and **move your mouse** to paint shapes
+✏️ Drag on the canvas to draw shapes (free mode draws shapes without clicking)
 
 ✔️ **Press spacebar** to select the next color palette
 
@@ -71,7 +71,7 @@ Button|Key|&nbsp;
 * [X] Add a button to toggle drawing mode
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
-* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
+* [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
