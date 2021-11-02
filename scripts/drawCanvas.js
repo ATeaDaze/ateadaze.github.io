@@ -13,5 +13,8 @@ const ctx = canvas.getContext('2d');
 clearScreen();
 if(bEnableRandomPalette) setRandomPalette();
 drawHelpScreen();
+updateButtons();
+updateBanner();
+//togglePaintMode();
 drawShape();
 getKeyboardInput();
