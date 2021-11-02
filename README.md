@@ -7,7 +7,7 @@
     * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run preset animations
 * **12 color palettes available:** if you don't like one then you'll probably like another one
-* **Keyboard support** for better control of the canvas (desktop version)
+* **Keyboard support** for better control (desktop version)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
