@@ -1,4 +1,4 @@
-# Rainbow Noise: [Desktop](https://ateadaze.github.io/) or [Mobile](https://ateadaze.github.io/m/)
+# Rainbow Noise: [Desktop](https://ateadaze.github.io/) / [Mobile](https://ateadaze.github.io/m/)
 * **Draw with random shapes**, **animate them**, or both
   * Colored lines create positive space
   * New shapes and edges are created from like-colored lines
