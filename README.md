@@ -74,7 +74,7 @@ Button|Key|&nbsp;
 * [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common setups
 ### Mobile
-* [ ] Test the mobile version more extensively: limited testing with Chrome device emulation and an S10+
+* [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
 # Technical Information
