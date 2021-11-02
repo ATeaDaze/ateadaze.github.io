@@ -276,6 +276,7 @@ function setBrushColor()
 		default:
 			break;
 		}
+//updateUI();
 }
 
 // Update button style, animation speed, and banner
