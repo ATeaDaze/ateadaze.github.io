@@ -27,9 +27,9 @@
 ![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
 ## Keyboard Map
 ```
-[R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw mode  [Spacebar] Next palette
-Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  CGA-1[6]  Py[x]el Edit  Gamebo[y]  [U]SA  [G]rayscale
-Animations:  [T]riangle Web   [L]ine Scatter   [S]tarburst   [*] Random palette
+Keyboard Map:   [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw mode  [Spacebar] Next palette
+Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
+Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
 ```
 * Enable or disable drawing mode with the draw button or press **[E]** (desktop version)
 
