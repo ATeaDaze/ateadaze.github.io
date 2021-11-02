@@ -56,6 +56,15 @@ function drawShape()
 {
 		// Check for mouse movement
 		document.addEventListener('mousemove', e => {
+				canvas.addEventListener('mousedown', e => {
+						bEnableDrawing = true;
+					})
+				// Store current mouse cursor position as new origin if a button is clicked
+				canvas.addEventListener('mouseup', e => {
+					xOrigin = xPos;
+					yOrigin = yPos;
+					bEnableDrawing = false;
+				})
 			if(bEnableDrawing) {
 				// Store mouse cursor position minus margin offset
 				xPos = Math.round(e.clientX - rect.left);
@@ -84,11 +93,6 @@ function drawShape()
 					ctx.closePath();
 					ctx.stroke();
 				} else {
-					// Store current mouse cursor position as new origin if a button is clicked
-					canvas.addEventListener('mouseup', e => {
-						xOrigin = xPos;
-						yOrigin = yPos;
-					})
 					// Draw line from the origin to the mouse cursor
 					ctx.moveTo(xOrigin,yOrigin);
 					ctx.lineTo(xPos,yPos);
@@ -516,14 +520,14 @@ function togglePaintMode()
 	if (bEnableDrawing) {
 		bEnableDrawing = false;
 		btn9.style = "filter:saturate(25%);border-color:crimson";
-		btn9.title = "Enable drawing mode (Enter)";
+		btn9.title = "Enable free draw mode (Enter)";
 	}	else {
 		bEnableDrawing = true;
 		bDisablePhotoWarning = true;
 		updateBanner();
 		updateButtons();
 		btn9.style = "filter:saturate(100%);border-color:#74c365;";
-		btn9.title = "Disable drawing mode (Enter)";
+		btn9.title = "Disable free draw mode (Enter)";
 	}
 }
 
@@ -559,7 +563,7 @@ function drawHelpScreen()
 	ctx.fillText("ateadaze.github.io", leftTextOffset+435,textMidpoint-123);
 	ctx.fillStyle = "white";
 	ctx.font = "21px Arial";
-	ctx.fillText("✏️ Enable drawing mode and move your mouse to paint shapes", leftTextOffset, textMidpoint-60);
+	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", leftTextOffset, textMidpoint-60);
 	ctx.fillText(" ▶  Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
 	ctx.fillText(" ✓  Click the canvas to set a new origin for the starburst animation", leftTextOffset, textMidpoint);
 	ctx.fillText(" ✓  You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);
