@@ -1,5 +1,6 @@
-# Rainbow Noise: available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
-### **Draw with random shapes**, **animate them**, or both
+# Available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
+
+![rainbow_noise-repo_banner](/images/repo-banner-no_crop-borderless.png)
 
 ## Features
 * **Draw abstract shapes:** use your mouse (desktop) or a touch screen (mobile)
