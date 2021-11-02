@@ -34,7 +34,7 @@ Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscal
 ```
 Button|Key|&nbsp;
 ---|---|---|
-![Spacebar](/images/palette_button.png)|**`SPACE`**|Select the next palette
+![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
 ![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode
 ![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
