@@ -7,7 +7,7 @@
     * **New shapes and patterns emerge** from randomly overlapping lines
 * **Run animations:** automatically run presets (and combine them with drawing)
 * **12 color palettes**
-* **Keyboard support** for better control (desktop version)
+* **Keyboard support** (desktop version)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
