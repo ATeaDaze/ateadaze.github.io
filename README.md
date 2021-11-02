@@ -31,7 +31,9 @@ Keyboard Map:   [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw m
 Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
 Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
 ```
-* Enable or disable drawing mode with the draw button or press ![E](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/draw_button.png?raw=true) (desktop version)
+Button|Key|&nbsp;
+---|---|---
+![E](/images/draw_button.png)|`[E]`|Enable/disable drawing mode
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
