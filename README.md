@@ -3,11 +3,11 @@
 
 ## Features
 * **Draw abstract shapes:** use a mouse or touchpad to draw on the canvas
-  * **Colored lines create positive space** on the black canvas
+  * **Colored lines create positive space** on the dark canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run preset animations for the 3 shapes
+* **Run animations:** automatically run preset animations
 * **12 color palettes available:** if you don't like one then you'll probably like another one
-* **Keyboard support** for better control of the canvas (desktop)
+* **Keyboard support** for better control of the canvas (desktop version)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
@@ -31,10 +31,12 @@ Keyboard Map    [R]un  [P]ause  [C]lear screen   [?] Help  [Enter] Toggle draw m
 Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
 Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
 ```
-Button|Key|&nbsp;|Button|Key|&nbsp;
----|---|---|---|---|---|
-![Spacebar](/images/palette_button.png)|**`SPACE`**|Select the next palette|![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode|![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
+Button|Key|&nbsp;
+---|---|---|
+![Spacebar](/images/palette_button.png)|**`SPACE`**|Select the next palette
+![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
+![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode
+![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|&nbsp;|Reset origin to center (mobile)
 
 ## Instructions (both versions)
@@ -61,13 +63,13 @@ Button|Key|&nbsp;|Button|Key|&nbsp;
 ⚠️ **Mobile support is basic** and needs more testing (works but needs work)
 
 # Changes / Issues / Fixes
-* [X] Release a mobile version: many people primarily use their phone for web browsing
-* [ ] Replace HTML legacy tags with CSS: I haven't written extensively with HTML/CSS since ~2005
+* [X] Release a mobile version
+* [ ] Replace HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to toggle drawing mode
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
-* [X] Remove style changes from `setBrushColor()`: it was checking and updating the UI on *each* stroke
+* [X] Remove style changes from `setBrushColor()`
 * [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common setups
 ### Mobile
