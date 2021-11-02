@@ -2,12 +2,12 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use your mouse or touchpad to draw on the canvas (desktop or mobile)
+* **Draw abstract shapes:** use a mouse or touchpad to draw on the canvas
   * **Colored lines create positive space** on the black canvas
     * **New shapes and patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run preset animations without user input
+* **Run animations:** automatically run preset animations for the 3 shapes
 * **12 color palettes available:** if you don't like one then you'll probably like another one
-* **Keyboard support:** allows better control of the canvas (desktop)
+* **Keyboard support** for better control of the canvas (desktop)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
@@ -23,30 +23,56 @@
 * **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
-# Desktop Version: [ateadaze.github.io/m](https://ateadaze.github.io/)
+# Desktop Version: [ateadaze.github.io](https://ateadaze.github.io/)
 ![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
-## Keyboard Map
+## Controls
 ```
-Keyboard Map:   [R]un  [P]ause  [C]lear screen   [H]elp  [E]nable/disable draw mode  [Spacebar] Next palette
+Keyboard Map    [R]un  [P]ause  [C]lear screen   [?] Help  [Enter] Toggle draw mode  [Spacebar] Next palette
 Color palettes: Fa[d]ed  R[a]inbow [F]ire  [I]ce  RG[B]   C[M]Y  CGA-[8]  Py[x]el Edit  Gamebo[y] [U]SA
 Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale  [*] Random palette
 ```
-Button|Key|&nbsp;
----|---|---
-![E](/images/draw_button.png)|`[E]`|Enable/disable drawing mode
+Button|Key|&nbsp;|Button|Key|&nbsp;
+---|---|---|---|---|---|
+![Spacebar](/images/palette_button.png)|**`SPACE`**|Select the next palette|![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
+![E](/images/draw_button.png)|**`Enter`**|Enable or disable drawing mode|![H](/images/help_button.png)|**`H`**|Print help screen (overwrites canvas with confirmation)
+![O](/images/origin_reset_button.png)|&nbsp;|Reset origin to center (mobile)
+
+## Instructions (both versions)
+✏️ **Enable drawing mode** and **move your mouse** to paint shapes
+
+▶  **Press RUN repeatedly** to increase the animation speed
+
+✔️ **Press spacebar** to select the next color palette
+
+✔️ **Click the canvas** to set a new origin for the starburst animation
+
+✔️ Animations generally look smoother between 1x and 5x speed
+
+✔️ You can draw on the canvas while the animation is running
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
 
+## Instructions (mobile)
+🖌️ **Drag across the canvas** to paint with shapes
+
+✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=touchup)
+
+⚠️ **Mobile support is basic** and needs more testing (works but needs work)
+
 # Changes / Issues / Fixes
-* [X] Release a mobile version: a *lot* of people primarily use their phones for web browsing
-* [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
-* [X] Add a button to enable or disable draw mode (desktop)
-* [X] Separate `updateUI()` function into 2 functions: `updateBanner()` and `updateButtons()`
-* [X] Remove style changes from `setBrushColor()` as it was checking and updating the UI on *each* stroke
-* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
+* [X] Release a mobile version: many people primarily use their phone for web browsing
 * [ ] Replace HTML legacy tags with CSS: I haven't written extensively with HTML/CSS since ~2005
-* [ ] Test the mobile version more extensively: I've done limited testing with Chrome's device emulation and my S10+
+### Desktop
+* [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
+* [X] Add a button to toggle drawing mode
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()`: it was checking and updating the UI on *each* stroke
+* [ ] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
+* [ ] Optimize resolution for the most common setups
+### Mobile
+* [ ] Test the mobile version more extensively: I've done limited testing with Chrome device emulation and an S10+
+* [ ] Optimize resolution and settings for mobile displays (disable pinch zoom? eh, not sold on that one)
 
 # Technical Information
 ### **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
