@@ -3,10 +3,13 @@
 
 ## Features
 * **Draw abstract shapes** with your mouse or touch screen
-  * **New patterns are created** by randomly overlapping lines
+  * **New patterns are created** by lines overlapping randomly
 * **Run animations automatically** (or combine them with drawing)
 * **12 color palettes**
 * **Keyboard support** (desktop version)
+
+### This was hastily drawn but it's vivid and looks deliberate
+![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors (pastel)
@@ -87,4 +90,4 @@ Button|Key|&nbsp;
 ## **Source Code**
 **Desktop:** [JavaScript](/scripts) ([main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js)), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
 
-**Mobile:** [mobileMain.js](/m/scripts/mobileMain.js), [mobileDrawCanvas.js](/m/scripts/mobileDrawCanvas.js), [HTML](/m/index.html)
+**Mobile:** [mobileMain.js](/m/scripts/mobileMain.js), [mobileDrawCanvas.js](/m/scripts/mobileDrawCanvas.js), [HTML](/m/index.html), CSS (same as desktop)
