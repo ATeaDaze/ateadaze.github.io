@@ -408,7 +408,7 @@ function getKeyboardInput()
 				shapeType = 'triangle'
 				break;
 			case 'o':
-				xOrigin = 400;
+				xOrigin = 500;
 				yOrigin = 250;
 				break;
 			case '?':
@@ -539,7 +539,7 @@ function drawMenuBackground()
 	nBackgroundLinesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background
 	while(nBackgroundLinesDrawn < 256) {
-		x1 = Math.floor(Math.random() * 820)-10;
+		x1 = Math.floor(Math.random() * 1020)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
 		x2 = Math.floor(Math.random() * 820)-10;
 		y2 = Math.floor(Math.random() * 520)-10;
@@ -563,7 +563,7 @@ function drawHelpScreen()
 	ctx.fillRect(60, 175, (canvas.width-120), 195);
 	ctx.font = "bold 25px Arial";
 	ctx.fillStyle = "#dddddd";
-	ctx.fillText("ateadaze.github.io", leftTextOffset+435,textMidpoint-123);
+	ctx.fillText("ateadaze.github.io", leftTextOffset+600,textMidpoint-123);
 	ctx.fillStyle = "white";
 	ctx.font = "21px Arial";
 	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", leftTextOffset, textMidpoint-60);
