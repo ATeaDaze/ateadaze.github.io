@@ -117,14 +117,14 @@ button.shapeBtn:hover {
 }
 button.helpBtn {
 	font-size: 15pt;
-	border-color: #666666;
+	border-color: #1e1e1e;
 	color: #dddddd;
 	height: 48px;
 	width: 48px;
 	font-weight: normal;
 }
 button.helpBtn:hover {
-	border-color: #888888;
+	border-color: #7e7e7e;
 }
 button.helpBtn:active {
 	border-color: #aaaaaa;
