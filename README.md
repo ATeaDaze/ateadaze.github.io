@@ -45,7 +45,7 @@ Button|Key|&nbsp;
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
 
-✔️ Animations generally look smoothest between 1x and 5x speed
+✔️ Animations generally look smoothest between 1x and 5x
 
 ✔️ You can draw on the canvas while the animation is running
 
