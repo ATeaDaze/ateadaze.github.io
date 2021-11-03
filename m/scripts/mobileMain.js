@@ -350,6 +350,7 @@ function pauseAnimation()
 	bIsRunning = false;
 	bScreenIsClear = false;
 	animationSpeed = 0;
+	updateUI();
 }
 
 // Draw current mouse coordinates below the title
