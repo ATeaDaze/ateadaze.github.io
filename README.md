@@ -36,9 +36,9 @@ Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscal
 ```
 Button|Key|&nbsp;
 ---|---|---|
-![Spacebar](/images/palette_button.png)|**`Space`**|Select next palette
-![Random](/images/random_palette_button.png)|**`*`**|Select random palette
-![E](/images/draw_button-color.png)|**`Enter`**|Enable/disable free draw mode
+![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
+![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
+![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
 ![?](/images/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`o`**|Reset origin to center
 
@@ -66,7 +66,7 @@ Button|Key|&nbsp;
 
 ✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
 
-⚠️ **Mobile version is basic** (works but needs work)
+ℹ️&nbsp;&nbsp;**Mobile version is basic** (works but needs work)
 
 # Changes / Issues / Fixes
 * [X] Release a mobile version with touch support
@@ -88,6 +88,6 @@ Button|Key|&nbsp;
 # Technical Information
 **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
 ## **Source Code**
-**Desktop:** [main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
+**Desktop:** [JavaScript](/scripts) ([main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js)), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
 
 **Mobile:** [mobileMain.js](/m/scripts/mobileMain.js), [mobileDrawCanvas.js](/m/scripts/mobileDrawCanvas.js), [HTML](/m/index.html), CSS (same as desktop)
