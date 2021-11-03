@@ -9,7 +9,7 @@
 * **Keyboard support** (desktop version)
 
 #### This was hastily drawn but it's vivid and looks deliberate
-![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
+![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-2.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
@@ -26,7 +26,7 @@
 * **Grayscale:** everything from dim gray to off-white
 
 # Desktop Version: [ateadaze.github.io](https://ateadaze.github.io/)
-![screenshot-faded](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/images/rainbow_noise-screenshot-1.png)
+![screenshot-faded](/images/rainbow_noise-screenshot-drawn-faded-2.png)
 ## Controls
 ```
 Keyboard Map    [R]un  [P]ause  [C]lear screen   [Enter] Toggle draw mode  [Spacebar] Next palette
