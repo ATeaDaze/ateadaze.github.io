@@ -12,7 +12,7 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
 
 ## Color Palettes
-* **Faded:** rainbow with desaturated colors (pastel)
+* **Faded:** rainbow with desaturated colors
 * **Rainbow:** classic primary colors
 * **Fire:** warm (but not necessarily inviting)
 * **Ice:** cool and refreshing
@@ -36,9 +36,9 @@ Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscal
 ```
 Button|Key|&nbsp;
 ---|---|---|
-![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
-![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
+![Spacebar](/images/palette_button.png)|**`Space`**|Select next palette
+![Random](/images/random_palette_button.png)|**`*`**|Select random palette
+![E](/images/draw_button-color.png)|**`Enter`**|Enable/disable free draw mode
 ![?](/images/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
 ![O](/images/origin_reset_button.png)|**`o`**|Reset origin to center
 
