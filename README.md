@@ -3,7 +3,7 @@
 
 ## Features
 * **Draw abstract shapes** with your mouse or touch screen
-  * **New patterns are created** by lines overlapping randomly
+  * **New patterns are created** by overlapping lines
 * **Run animations automatically** (or combine them with drawing)
 * **12 color palettes**
 * **Keyboard support** (desktop version)
