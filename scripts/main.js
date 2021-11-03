@@ -60,7 +60,7 @@ function drawShape()
 						bEnableDrawing = true;
 					})
 				// Store current mouse cursor position as new origin if a button is clicked
-				document.addEventListener('mouseup', e => {
+				canvas.addEventListener('mouseup', e => {
 					xOrigin = xPos;
 					yOrigin = yPos;
 					bEnableDrawing = false;
