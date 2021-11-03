@@ -469,7 +469,7 @@ function drawHelpScreen()
 	ctx.fillText("✔️ Animations generally look smoother between 1x and 5x speed", leftTextOffset, textMidpoint+60);
 	ctx.fillStyle = "#c5c5c5";
 	ctx.font = "bold 18px Arial";
-	ctx.fillText("⚠️ Mobile support is basic and needs more testing", leftTextOffset, textMidpoint+90);
+	ctx.fillText("  ℹ️   Mobile support is basic and needs more testing", leftTextOffset, textMidpoint+90);
 	ctx.fillStyle = "black";
 	bScreenIsClear = true;
 }
