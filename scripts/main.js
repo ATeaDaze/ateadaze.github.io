@@ -60,7 +60,7 @@ function drawShape()
 						bEnableDrawing = true;
 					})
 				// Store current mouse cursor position as new origin if a button is clicked
-				canvas.addEventListener('mouseup', e => {
+				document.addEventListener('mouseup', e => {
 					xOrigin = xPos;
 					yOrigin = yPos;
 					bEnableDrawing = false;
@@ -526,7 +526,7 @@ function togglePaintMode()
 // border-color:#555555
 	}	else {
 		bEnableDrawing = true;
-		bDisablePhotoWarning = true;
+//		bDisablePhotoWarning = true;
 		updateBanner();
 		updateButtons();
 		btn9.style = "filter:saturate(100%);border-color:#74c365;";
