@@ -76,6 +76,7 @@ Button|Key|&nbsp;
 ### Mobile
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
+* [ ] Fix pause button text color
 
 # Technical Information
 **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
