@@ -88,6 +88,6 @@ Button|Key|&nbsp;
 # Technical Information
 **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
 ## **Source Code**
-**Desktop:** [JavaScript](/scripts) ([main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js)), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
+**Desktop:** [main.js](/scripts/main.js), [drawCanvas.js](/scripts/drawCanvas.js), [HTML](index.html), [CSS](/styles/rainbow_noise.css)
 
 **Mobile:** [mobileMain.js](/m/scripts/mobileMain.js), [mobileDrawCanvas.js](/m/scripts/mobileDrawCanvas.js), [HTML](/m/index.html), CSS (same as desktop)
