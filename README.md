@@ -8,7 +8,7 @@
 * **12 color palettes**
 * **Keyboard support** (desktop version)
 
-### This was hastily drawn but it's vivid and looks deliberate
+#### This was hastily drawn but it's vivid and looks deliberate
 ![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
 
 ## Color Palettes
