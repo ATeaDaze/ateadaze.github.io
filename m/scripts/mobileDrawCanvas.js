@@ -1,7 +1,7 @@
 // Create an 800x600 canvas and add it to the document body
 const canvas = document.createElement('canvas');
 document.body.appendChild(canvas)
-canvas.width = 720;
+canvas.width = 780;
 canvas.height = 480;
 const rect = canvas.getBoundingClientRect();
 // Define offsets for text alignment

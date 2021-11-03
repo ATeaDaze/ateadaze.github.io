@@ -35,7 +35,7 @@ var bEnableRandomPalette = false;
 // Used for random lines: (x1,y2),(x2,y2)
 var x1, y1, x2, y2;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 360, yOrigin = 240;
+var xOrigin = 390, yOrigin = 240;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
 // Animations are started manually so this starts at 0
@@ -62,18 +62,20 @@ function drawShape()
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
-		x1 = Math.floor(Math.random() * 740)-10;
+		x1 = Math.floor(Math.random() * 900)-10;
 		y1 = Math.floor(Math.random() * 500)-10;
 		ctx.beginPath();
 		setBrushColor();
-		ctx.lineWidth = brushSize;
+//		ctx.lineWidth = brushSize;
 		// Draw line from mouse cursor to a random point
 		if(shapeType == 'line') {
+			ctx.lineWidth = 1.25;
 			ctx.moveTo(xPos, yPos);
 			ctx.lineTo(x1, y1);
 			ctx.stroke();
 			ctx.closePath();
 		} else if(shapeType == 'triangle') {
+			ctx.lineWidth = brushSize;
 			// Draw triangle originating from mouse cursor
 			randomTriangleLength = Math.floor(Math.random() * 30)+5;
 			randomTriangleOffset = Math.floor(Math.random() * 35)+5;
@@ -89,6 +91,7 @@ function drawShape()
 				yOrigin = yPos;
 			})
 			// Draw line from the origin to the mouse cursor
+			ctx.lineWidth = 1;
 			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
 			ctx.closePath();
@@ -106,7 +109,7 @@ function runAnimation()
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
-		x1 = Math.floor(Math.random() * 740)-10;
+		x1 = Math.floor(Math.random() * 900)-10;
 		y1 = Math.floor(Math.random() * 500)-10;
 		if(shapeType == 'triangle') {
 			drawRandomTriangle();
@@ -125,7 +128,7 @@ function runAnimation()
 
 function drawRandomLine()
 {
-	x2 = Math.floor(Math.random() * 740)-10;
+	x2 = Math.floor(Math.random() * 900)-10;
 	y2 = Math.floor(Math.random() * 500)-10;
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2);
@@ -135,7 +138,7 @@ function drawRandomLine()
 
 function drawRandomTriangle()
 {
-	x2 = Math.floor(Math.random() * 740)-10;
+	x2 = Math.floor(Math.random() * 900)-10;
 	y2 = Math.floor(Math.random() * 500)-10;
 	randomTriangleLength = Math.floor(Math.random() * 30)+5;
 	randomTriangleOffset = Math.floor(Math.random() * 35)+5;
@@ -378,7 +381,7 @@ function setRandomPalette()
 
 function clearScreen()
 {
-	ctx.fillRect(0, 0, 720, 480); // Set the canvas to a solid black 800x500 rectangle
+	ctx.fillRect(0, 0, 780, 480); // Set the canvas to a solid black 800x500 rectangle
 	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
 }
 
