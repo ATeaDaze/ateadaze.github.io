@@ -70,18 +70,17 @@ Button|Key|&nbsp;
 
 # Changes / Issues / Fixes
 * [X] Release a mobile version with touch support
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()`
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to toggle drawing mode
-* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
-* [X] Remove style changes from `setBrushColor()`
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
+* [X] Expand `mouseup` to `document`
 * [ ] Optimize resolution for the most common displays
 ### Mobile
 * [X] Fix button colors not updating
-* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
-* [X] Remove style changes from `setBrushColor()`
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
