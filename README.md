@@ -2,9 +2,9 @@
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
-* **Draw abstract shapes:** use a mouse or touch screen to draw
-  * **New patterns emerge** from randomly overlapping lines
-* **Run animations:** automatically run presets (or combine them with drawing)
+* **Draw abstract shapes** with your mouse or touch screen
+  * **New patterns are created** by randomly overlapping lines
+* **Run animations automatically** (or combine them with drawing)
 * **12 color palettes**
 * **Keyboard support** (desktop version)
 
@@ -37,7 +37,7 @@ Button|Key|&nbsp;
 ![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
 ![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
 ![?](/images/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
-![O](/images/origin_reset_button.png)|**`O`**|Reset origin to center
+![O](/images/origin_reset_button.png)|**`o`**|Reset origin to center
 
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
@@ -47,24 +47,26 @@ Button|Key|&nbsp;
 ✔️ You can draw on the canvas while the animation is running
 
 ## Instructions (Desktop)
-✏️ Drag on the canvas to draw shapes (free mode draws shapes without clicking)
+✏️ Click and drag on the canvas to draw shapes
+
+✔️ Free drawing mode paints shapes with mouse movement (no clicking)
 
 ✔️ **Press spacebar** to select the next color palette
 
-✔️ **Click the canvas** to set a new origin for the starburst animation
+✔️ **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
 
 ## Instructions (Mobile)
-🖌️ **Drag across the canvas** to paint with shapes
+🖌️ **Tap and drag across the canvas** to paint with shapes
 
-✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=touchup)
+✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
 
 ⚠️ **Mobile version is basic** (works but needs work)
 
 # Changes / Issues / Fixes
-* [X] Release a mobile version: touch support
+* [X] Release a mobile version with touch support
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
@@ -74,9 +76,9 @@ Button|Key|&nbsp;
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
+* [X] Fix pause button color not updating
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
-* [ ] Fix pause button text color
 
 # Technical Information
 **Languages:** **JavaScript** for the main app, **HTML** for page elements, and **CSS** for formatting
