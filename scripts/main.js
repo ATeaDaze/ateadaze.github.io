@@ -521,8 +521,9 @@ function togglePaintMode()
 	var btn9 = document.getElementById("button9");
 	if (bEnableDrawing) {
 		bEnableDrawing = false;
-		btn9.style = "filter:saturate(25%);border-color:crimson";
+		btn9.style = "filter:saturate(25%);#1e1e1e";
 		btn9.title = "Enable free draw mode (Enter)";
+// border-color:#555555
 	}	else {
 		bEnableDrawing = true;
 		bDisablePhotoWarning = true;
