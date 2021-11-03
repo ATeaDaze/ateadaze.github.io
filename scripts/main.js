@@ -363,7 +363,7 @@ function updateBanner()
 	}	else if(!bDisablePhotoWarning) {
 				rainbowBanner.innerHTML = "⚠ Photosensitivity Warning: this app generates rapid and colorful patterns";
 				rainbowBanner.title = "⚠ Photosensitivity Warning: click the banner, draw on the canvas, or start animation to dismiss";
-				rainbowBanner.style = "background-image:linear-gradient(to right, firebrick, maroon, red)";
+				rainbowBanner.style = "background-image:linear-gradient(to right, maroon, firebrick, red)";
 		} else {
 			rainbowBanner.innerHTML = "Rainbow Noise 🎲 Draw with random shapes, animate them, or both";
 			rainbowBanner.title = "Rainbow Noise 🎲 Colored lines create positive space";
