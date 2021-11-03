@@ -56,7 +56,7 @@ Button|Key|&nbsp;
 ✔️ **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
-![mobile_screenshot](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/images/rainbow_noise-screenshot-mobile.png)
+![mobile_screenshot](/images/rainbow_noise-screenshot-mobile.png)
 
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
@@ -76,7 +76,9 @@ Button|Key|&nbsp;
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
-* [X] Fix pause button color not updating
+* [X] Fix button colors not updating
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()`
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
