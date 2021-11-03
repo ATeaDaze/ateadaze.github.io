@@ -521,17 +521,17 @@ function togglePaintMode()
 	var btn9 = document.getElementById("button9");
 	if (bEnableDrawing) {
 		bEnableDrawing = false;
-		btn9.style = "filter:saturate(25%);#1e1e1e";
+		btn9.style = "filter:saturate(32%);#1e1e1e";
 		btn9.title = "Enable free draw mode (Enter)";
 // border-color:#555555
 	}	else {
 		bEnableDrawing = true;
 //		bDisablePhotoWarning = true;
-		updateBanner();
-		updateButtons();
 		btn9.style = "filter:saturate(100%);border-color:#74c365;";
 		btn9.title = "Disable free draw mode (Enter)";
 	}
+	updateBanner();
+	updateButtons();
 }
 
 function drawMenuBackground()
