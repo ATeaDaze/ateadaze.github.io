@@ -34,7 +34,7 @@ var bDisablePhotoWarning = false;
 var bEnableRandomPalette = false;
 var bEnableDrawing = false;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 400;
+var xOrigin = 500;
 yOrigin = 250;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
@@ -56,7 +56,7 @@ function drawShape()
 {
 		// Check for mouse movement
 		document.addEventListener('mousemove', e => {
-				canvas.addEventListener('mousedown', e => {
+						canvas.addEventListener('mousedown', e => {
 						bEnableDrawing = true;
 					})
 				// Store current mouse cursor position as new origin if a button is clicked
@@ -72,7 +72,7 @@ function drawShape()
 				// Update X and Y values on the UI
 				updateCoords();
 				// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
-				x1 = Math.floor(Math.random() * 820)-10;
+				x1 = Math.floor(Math.random() * 1020)-10;
 				y1 = Math.floor(Math.random() * 520)-10;
 				ctx.beginPath();
 				setBrushColor();
@@ -112,7 +112,7 @@ function runAnimation()
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
-		x1 = Math.floor(Math.random() * 820)-10;
+		x1 = Math.floor(Math.random() * 1020)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
 		if(shapeType == 'triangle') {
 			drawRandomTriangle();
@@ -122,7 +122,9 @@ function runAnimation()
 			shapeType = 'starburst'
 			drawStarburstLine();
 		}
-		if(!bIsRunning) return;
+		if(!bIsRunning) {
+			return;
+		}
 		window.requestAnimationFrame(loop);
 	})
 	bScreenIsClear = false;
@@ -130,7 +132,7 @@ function runAnimation()
 
 function drawRandomLine()
 {
-	x2 = Math.floor(Math.random() * 820)-10;
+	x2 = Math.floor(Math.random() * 1020)-10;
 	y2 = Math.floor(Math.random() * 520)-10;
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2);
@@ -140,7 +142,7 @@ function drawRandomLine()
 
 function drawRandomTriangle()
 {
-	x2 = Math.floor(Math.random() * 820)-10;
+	x2 = Math.floor(Math.random() * 1020)-10;
 	y2 = Math.floor(Math.random() * 520)-10;
 	randomTriangleLength = Math.floor(Math.random() * 30)+5;
 	randomTriangleOffset = Math.floor(Math.random() * 35)+5;
@@ -468,7 +470,7 @@ function getKeyboardInput()
 
 function clearScreen()
 {
-	ctx.fillRect(0, 0, 800, 500); // Set the canvas to a solid black 800x500 rectangle
+	ctx.fillRect(0, 0, 1000, 500); // Set the canvas to a solid black 800x500 rectangle
 	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
 }
 
