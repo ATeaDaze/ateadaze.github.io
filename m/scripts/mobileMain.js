@@ -435,7 +435,7 @@ function drawMenuBackground()
 	nBackgroundLinesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background
 	while(nBackgroundLinesDrawn < 256) {
-		x1 = Math.floor(Math.random() * 820)-10;
+		x1 = Math.floor(Math.random() * 920)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
 		x2 = Math.floor(Math.random() * 820)-10;
 		y2 = Math.floor(Math.random() * 520)-10;
