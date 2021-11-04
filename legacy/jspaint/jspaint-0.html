@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>JSPaint</title>		
+	<link href="jspaint.css" rel="stylesheet">
+</head>
+
+<body onload="clearScreen()">
+<center>
+<h3>JSPaint</h3>
+<p id="p1">X = 0<br>Y = 0</p>
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<script>
+	var x1, y1, x2, y2;
+	const lineColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "violet");
+	const canvas = document.getElementById('canvas');
+	const ctx = canvas.getContext('2d');
+
+	function globalActionListener(targetID, eventType)
+	{
+		targetID.addEventListener(eventType, e => {
+			x = e.offsetX;
+			y = e.offsetY;
+			p1.innerHTML = "X = " + x;
+			p1.innerHTML += "<br>";
+			p1.append("Y = " + y);
+			if(targetID == canvas) drawLine(ctx, x1, y1, x2, y2, lineColor);
+		})
+	}
+
+	function drawLine(ctx, x1, y1, x2, y2, lineColor)
+	{
+//		x1 = Math.floor(Math.random() * 830) - 10;
+//		y1 = Math.floor(Math.random() * 630) - 10;
+		x1 = x;
+		y1 = y;
+		x2 = Math.floor(Math.random() * 830) - 10;
+		y2 = Math.floor(Math.random() * 630) - 10;
+		colorIndex = Math.floor(Math.random() * 7);
+		ctx.beginPath();
+		ctx.strokeStyle = lineColor[colorIndex];
+		ctx.lineWidth = 1;
+		ctx.moveTo(x1, y1);
+		ctx.lineTo(x2, y2);
+		ctx.stroke();
+		ctx.closePath();
+	}
+
+	function clearScreen()
+	{
+		ctx.fillRect(0, 0, 800, 600);
+	}
+
+	globalActionListener(canvas, 'mousemove');
+</script>
+
+<br><br>
+<input type="button" value="Clear Screen" onclick="clearScreen()">
+</center>
+</body>
+</html>

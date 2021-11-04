@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Click Simulator 2021</title>		
+		<link href="sandbox.css" rel="stylesheet">
+		<script language="javascript">	
+			// Set default message
+			var curentMessage;
+			var review1 = "<i>Why am I still doing this?</i>";
+			var review2 = "<i>I may need professional help.</i>";
+			var review3 = "<i>Well, I'm at least getting to 500...</i>";
+			var review4 = "<i>Did I actually win?</i>";
+			var review5 = "<i>I've wasted my life.</i>";
+			var review6 = "<i>Acceptance is the final stage.</i>";
+			var nClicks = 0;
+			function DrawCounter()
+			{
+				// Increment counter by 1 each time this is called
+				nClicks++;
+				// Display unique messages after a certain number of clicks with multiline if-else statement
+				if( (nClicks > 24 ) && (nClicks < 31) ) {
+					currentMessage = "Persistent, aren't you?";
+					}
+				else if( (nClicks > 29 ) && (nClicks < 34) ) {
+					currentMessage = "OK, I'll keep counting (I actually never stopped)";
+					}
+				else if( (nClicks > 49) && (nClicks < 56) ) {
+					currentMessage = "I can LITERALLY do this all day...";
+					DrawQuote(review1);
+					}
+				else if ( (nClicks > 99) && (nClicks < 145) ) {
+					currentMessage = nClicks + " clicks? You've earned a break! 👍";
+					}
+				else if ( (nClicks > 144) && (nClicks < 151) ) {
+					currentMessage = "I meant that....";
+					}
+				else if ( (nClicks > 149) && (nClicks < 156) ) {
+					currentMessage = "🏞️ Seriously, go for a walk or something.";
+					DrawQuote(review2);
+					}
+				 else if ( (nClicks > 199) && (nClicks < 251) ) {
+					currentMessage = "⛔ Please, no more. (" + nClicks + ")";
+					}
+				 else if ( (nClicks > 249) && (nClicks < 256) ) {
+					currentMessage = "💊 Don't worry. It's going to be OK...";
+					}
+				 else if (( nClicks > 254) && (nClicks < 261)) {
+					currentMessage = "🥼 Behavioral health unit dispatched";
+					}
+				 else if ((nClicks > 259) && (nClicks < 276)) {
+					currentMessage = "⚕ Just relax, they're here to help you.";
+					}
+				 else if ((nClicks > 274) && (nClicks < 281)) {
+					currentMessage = "Fine...";
+					}
+				 else if ((nClicks > 299) && (nClicks < 306)) {
+					currentMessage = "You're a real over-achiever, by the way.";
+					DrawQuote(review3);
+					}				
+				 else if ((nClicks > 511) && (nClicks < 517)) {
+					currentMessage = "🎉 Congratulations!";
+					DrawQuote(review4);
+					}	
+				 else if ((nClicks > 516) && (nClicks < 531)) {
+					currentMessage = "🙃 This is your life now.";
+					DrawQuote(review5);
+					}	
+				 else if ( (nClicks > 999)  && (nClicks < 1011) ) {
+					currentMessage = " 💀 I am become death. Destroyer of worlds.";
+					DrawQuote(review6);
+					}	
+				else {
+					currentMessage = nClicks;
+					}
+			document.getElementById("p1").innerHTML = currentMessage
+			document.addEventListener('keyup',logKey)
+	 		function logKey(e) {
+		 		document.getElementById("theButton").style.opacity = "100%";
+		 		}
+			}
+
+			function DrawQuote(fakeReview)
+			{
+				document.getElementById("testimonial").innerHTML = fakeReview;
+			}
+
+			function ResetCounter()
+			{
+				DrawCounter();
+				nClicks = 0;
+				currentMessage ="Do <b>NOT</b> press this button or <b>ANY</b> key</p>"
+				document.getElementById("p1").innerHTML = currentMessage			
+			}
+		</script>
+	</head>
+	<body>	
+		<center>
+			<h1><font color="#0000ff">Click Simulator 2021</font></h1>
+			<h2 id="testimonial"><i>Wow, what a waste of time!</i></h2>
+			<h3>-You (Probably)</h3><br>
+
+			<div class="container">
+				<img id="theButton" src="gray_blank_button.png" alt="Do NOT press this button or ANY key" onclick="DrawCounter();"><br>
+				<div class="center"><p id="p1" onclick="DrawCounter();">Do <b>NOT</b> press this button or <b>ANY</b> key</p></div>
+			</div><br><br>
+		</center>
+
+		<table width="100%" align="center" valign="center" border="0">
+			<tr>
+				<td width="33%"><input type="button" value="New Game?" onclick="ResetCounter();"></td>
+<!--				<td width="33%" align="center"><input type="button" id="playButton" value="PLAY!" onclick="DrawCounter"></td> -->
+				<td width="33%" align="right"><input type="button" value="Exit Game" onclick="javascript:(window.close())"></td>
+			</tr>
+		</table>	
+
+		<script>
+			document.getElementById("testimonial").style.color ="purple";
+			document.addEventListener('keydown', logKey);
+			function logKey(e) {
+		 		document.getElementById("theButton").style.opacity = "90%";
+		 		DrawCounter();
+			  	}
+		</script>
+		<hr>
+		<u>Instructions:</u>
+		<ul>
+			<li>How do I play this amazing game?</li>
+			<ul>
+				<li>Click the button</li>
+				<li>Press any key</li>
+			</ul>
+			<li>Re-evaluate how you spend your free time</li>
+			<ul>
+				<li>Click [Exit Game]</li>
+			</ul>
+		</ul>
+		<hr>
+		<u>Reviews and Accolades:</u><br><br>
+		<i>The subtle Dadaist influence may be lost on less-observant gamers.</i> <b>(6/10)</b><br>-Some hipster at Starbucks<br><br>
+		<i>Understated minimalism yet free of any pretention. This game is a masterpiece.</i> <b>(9.5/10)</b><br>-IGN<br><br>
+		<i>Expectations subverted!</i> <b>(8/10)</b><br>-Rian Johnson<br><br>
+		<i>What the hell is this? It's a massive if-else statement with a counter. Terrible code!</i> <b>(2/10)</b><br>-A former friend
+	</body>
+</html>

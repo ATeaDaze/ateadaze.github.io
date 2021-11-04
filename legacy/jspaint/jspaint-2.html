@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Rainbow Lines</title>		
+	<link href="jspaint.css" rel="stylesheet">
+</head>
+
+<body onload="clearScreen()">
+<center>
+<div id="title">Rainbow Lines</div>
+<div id="divCoords">
+<p id="p1">X = 0<br>Y = 0</p>
+</div>
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<script>
+	var x1, y1, x2, y2;
+	const lineColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "violet");
+	const canvas = document.getElementById('canvas');
+	const ctx = canvas.getContext('2d');
+
+	function globalActionListener(targetID, eventType)
+	{
+		targetID.addEventListener(eventType, e => {
+			x = e.offsetX;
+			y = e.offsetY;
+			drawCoords();
+			drawLine(ctx, x, y, x2, y2, lineColor);
+		})
+	}
+
+	function drawLine(ctx, x, y, x2, y2, lineColor)
+	{
+		x2 = Math.floor(Math.random() * 860);
+		y2 = Math.floor(Math.random() * 660);
+		colorIndex = Math.floor(Math.random() * 7);
+		ctx.beginPath();
+		ctx.strokeStyle = lineColor[colorIndex];
+		ctx.lineWidth = 2;
+		ctx.moveTo(x, y);
+		ctx.lineTo(x2, y2);
+		ctx.stroke();
+		ctx.closePath();
+	}
+
+	function drawCoords()
+	{
+		p1.innerHTML = "X = " + x;
+		p1.innerHTML += "<br>";
+		p1.append("Y = " + y);
+	}
+
+	function clearScreen()
+	{
+		ctx.fillRect(0, 0, 800, 600);
+	}
+
+	globalActionListener(canvas, 'mousemove');
+
+
+</script>
+
+<br><br>
+<button class="buttonClear" onclick="clearScreen()">Clear Screen</button>
+
+</center>
+</body>
+</html>
