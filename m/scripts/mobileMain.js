@@ -49,34 +49,32 @@ var nBackgroundLinesDrawn;
 // Used for confirmation dialog
 var r;
 
-// Draw random shape at touchpad input
+// Draw a random shape from touch location (x,y)
 function drawShape()
 {
-		// Check for mouse movement
+		// Check for touch movement
 		canvas.addEventListener('touchmove', e => {
 		// Disable health warning if canvas is used
 		bDisablePhotoWarning = true;
-		// Store mouse cursor position
+		// Store location of most recent touch event
 		xPos = Math.round(e.touches[0].clientX - rect.left);
 		yPos = Math.round(e.touches[0].clientY - rect.top);
 		// Update X and Y values on the UI
 		updateCoords();
-		// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
+		// Two random numbers for a line with extra pixels on the edges for coverage (-10:889, -10:-489)
 		x1 = Math.floor(Math.random() * 900)-10;
 		y1 = Math.floor(Math.random() * 500)-10;
 		ctx.beginPath();
 		setBrushColor();
-//		ctx.lineWidth = brushSize;
-		// Draw line from mouse cursor to a random point
+		ctx.lineWidth = brushSize;
+		// Draw line from touch location to a random point
 		if(shapeType == 'line') {
-			ctx.lineWidth = 1.25;
 			ctx.moveTo(xPos, yPos);
 			ctx.lineTo(x1, y1);
 			ctx.stroke();
 			ctx.closePath();
 		} else if(shapeType == 'triangle') {
-			ctx.lineWidth = brushSize;
-			// Draw triangle originating from mouse cursor
+			// Draw triangle originating from touch event
 			randomTriangleLength = Math.floor(Math.random() * 30)+5;
 			randomTriangleOffset = Math.floor(Math.random() * 35)+5;
 			ctx.moveTo(xPos, yPos);
@@ -85,13 +83,12 @@ function drawShape()
 			ctx.closePath();
 			ctx.stroke();
 		} else {
-			// Store current mouse cursor position as new origin if a button is clicked
+			// Store current touch location as origin if drag action ends
 			canvas.addEventListener('touchend', e => {
 				xOrigin = xPos;
 				yOrigin = yPos;
 			})
-			// Draw line from the origin to the mouse cursor
-			ctx.lineWidth = 1;
+			// Draw line from the origin to the touch event
 			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
 			ctx.closePath();
@@ -119,13 +116,14 @@ function runAnimation()
 			shapeType = 'starburst'
 			drawStarburstLine();
 		}
-		// Pause animation
+		// Pause animation if flag is set
 		if(!bIsRunning) return;
 		window.requestAnimationFrame(loop);
 	})
 	bScreenIsClear = false;
 }
 
+// All 3 shapes use random numbers (no user input)
 function drawRandomLine()
 {
 	x2 = Math.floor(Math.random() * 900)-10;
@@ -242,10 +240,10 @@ function updateButtons()
 		btn6.style.color = "violet";
 		shapeType == 'starburst';
 	}
-
 	var btn10 = document.getElementById("button10");
 	var divclr = document.getElementById("divColorMode");
 	btn10.style = "filter:saturate(100%)";
+
 	switch(activeColorMode) {
 		case 'faded':
 			divColorMode.innerHTML = "Faded";
@@ -362,19 +360,17 @@ function updateBanner()
 				rainbowBanner.innerHTML = "⚠ Photosensitivity Warning: this app generates rapid and colorful patterns";
 				rainbowBanner.title = "⚠ Photosensitivity Warning: click the banner, draw on the canvas, or start animation to dismiss";
 				rainbowBanner.style = "background-image:linear-gradient(to right, maroon, firebrick, red)";
-		} else {
-			rainbowBanner.innerHTML = "Rainbow Noise 🎲 Draw with random shapes, animate them, or both";
-			rainbowBanner.title = "Rainbow Noise 🎲 Colored lines create positive space";
-		}
+	} else {
+		rainbowBanner.innerHTML = "Rainbow Noise 🎲 Draw with random shapes, animate them, or both";
+		rainbowBanner.title = "Rainbow Noise 🎲 Colored lines create positive space";
+	}
 }
 
-
-// Use a random color palette on page load
+// Selects a random color palette
 function setRandomPalette()
 {
 	randomPaletteIndex = Math.floor(Math.random() * 12)
 	activeColorMode = paletteList[randomPaletteIndex];
-//	updateUI();
 	updateButtons();
 	updateBanner();
 }
@@ -390,19 +386,18 @@ function pauseAnimation()
 	bIsRunning = false;
 	bScreenIsClear = false;
 	animationSpeed = 0;
-//	updateUI();
 	updateButtons();
 	updateBanner();
 }
 
-// Draw current mouse coordinates below the title
+// Draw X and Y coordinates of most recent touch event
 function updateCoords()
 {
 	divCoordsX.innerHTML = "X: " + xPos;
 	divCoordsY.innerHTML = "Y: " + yPos;
 }
 
-// Revisit the looping structure of this entire app
+// TODO: Revisit the looping structure of this entire app
 function newAnimationInstance()
 {
 	bIsRunning = true;
@@ -427,7 +422,6 @@ function swapColorMode()
 	setBrushColor();
 	updateButtons();
 	updateBanner();
-//	updateUI();
 }
 
 function drawMenuBackground()
@@ -476,6 +470,7 @@ function drawHelpScreen()
 
 function confirmCanvasOverwrite()
 {
+	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
@@ -484,6 +479,7 @@ function confirmCanvasOverwrite()
 			bScreenIsClear = true;
 		}
 	} else {
+		// Otherwise draw help screen without prompt
 		drawHelpScreen();
 		}
 }
