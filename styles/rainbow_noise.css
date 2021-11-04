@@ -85,6 +85,7 @@ button:active {
 	transform: translateX(-1px);
 	border: 4px inset;
 }
+/* main buttons */
 button.runBtn {
 	border-color: forestgreen;
 }
@@ -106,6 +107,7 @@ button.clearBtn:hover {
 button.clearBtn:active {
 	color: dodgerblue;
 }
+/* shape buttons */
 button.shapeBtn {
 	border-color: darkmagenta;
 	font-size: 14pt;
@@ -115,6 +117,7 @@ button.shapeBtn {
 button.shapeBtn:hover {
 	border-color: mediumorchid;
 }
+/* help buttons */
 button.helpBtn {
 	font-size: 17pt;
 	border-color: #1e1e1e;
