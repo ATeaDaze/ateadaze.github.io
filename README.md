@@ -50,7 +50,7 @@ Button|Key|&nbsp;
 ✔️ You can draw on the canvas while the animation is running
 
 ## Instructions (Desktop)
-✏️ Click and drag on the canvas to draw shapes
+✏️ **Click and drag on the canvas** to draw shapes
 
 ✔️ Free drawing mode paints shapes with mouse movement (no clicking)
 
