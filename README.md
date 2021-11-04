@@ -3,13 +3,13 @@
 
 ## Features
 * **Draw abstract shapes** with your mouse or touch screen
-  * **New patterns are created** by overlapping lines
+  * **New patterns are created** by lines overlapping randomly
 * **Run animations automatically** (or combine them with drawing)
 * **12 color palettes**
 * **Keyboard support** (desktop version)
 
 #### This was hastily drawn but it's vivid and looks deliberate
-![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
+![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-2.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
@@ -45,7 +45,7 @@ Button|Key|&nbsp;
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
 
-✔️ Animations generally look smoothest between 1x and 5x
+✔️ Animations generally look smoothest between 1x and 5x speed
 
 ✔️ You can draw on the canvas while the animation is running
 
@@ -70,16 +70,18 @@ Button|Key|&nbsp;
 
 # Changes / Issues / Fixes
 * [X] Release a mobile version with touch support
-* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
-* [X] Remove style changes from `setBrushColor()`
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to toggle drawing mode
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()`
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
 * [X] Fix button colors not updating
+* [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
+* [X] Remove style changes from `setBrushColor()`
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
