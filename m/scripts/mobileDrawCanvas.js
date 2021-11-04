@@ -1,4 +1,4 @@
-// Create an 800x600 canvas and add it to the document body
+// Create an 780x480 canvas and add it to the document body
 const canvas = document.createElement('canvas');
 document.body.appendChild(canvas)
 canvas.width = 780;
@@ -13,7 +13,6 @@ const ctx = canvas.getContext('2d');
 clearScreen();
 if(bEnableRandomPalette) setRandomPalette();
 drawHelpScreen();
-//updateUI();
 updateButtons();
 updateBanner();
 drawShape();
