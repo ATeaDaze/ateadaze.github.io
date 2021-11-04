@@ -59,8 +59,7 @@ Button|Key|&nbsp;
 ✔️ **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
-![mobile_screenshot](/images/rainbow_noise-screenshot-mobile.png)
-
+![mobile_screenshot](/images/Screenshot_20211104-173850_Chrome.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
