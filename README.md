@@ -72,6 +72,7 @@ Button|Key|&nbsp;
 * [X] Release a mobile version with touch support
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
+* [ ] Add more variety: shapes, brush width, etc.
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
