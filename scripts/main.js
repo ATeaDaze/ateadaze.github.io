@@ -33,7 +33,7 @@ var bScreenIsClear = true;
 var bDisablePhotoWarning = false;
 var bEnableRandomPalette = false;
 var bEnableDrawing = false;
-// Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
+// Set center as default origin for starburst animation on an 1000x500 canvas (center = width/2)
 var xOrigin = 500;
 yOrigin = 250;
 // Default mouse cursor position
@@ -71,7 +71,7 @@ function drawShape()
 				yPos = Math.round(e.clientY - rect.top);
 				// Update X and Y values on the UI
 				updateCoords();
-				// Two random numbers for a line with 18 extra pixels on the edges for coverage (-9:809, -9:509)
+				// Two random numbers for a line with extra pixels on the edges for coverage (-10:1009, -10:509)
 				x1 = Math.floor(Math.random() * 1020)-10;
 				y1 = Math.floor(Math.random() * 520)-10;
 				ctx.beginPath();
@@ -162,7 +162,7 @@ function drawStarburstLine()
 	ctx.closePath();
 }
 
-// Set active brush color, update palette button and palette UI text
+// Set random brush color for active palette
 function setBrushColor()
 {
 	switch(activeColorMode) {
@@ -219,7 +219,7 @@ function setBrushColor()
 		}
 }
 
-// Update button style, animation speed, and banner
+// Update button styles
 function updateButtons()
 {
 	var btn1 = document.getElementById("button1");
@@ -345,6 +345,7 @@ function updateButtons()
 		}
 }
 
+// Draw color commentary in the banner
 function updateBanner()
 {
 	divSpeed.innerHTML = "Speed: " + animationSpeed + "x";
@@ -372,7 +373,7 @@ function updateBanner()
 		}
 }
 
-// Use a random color palette on page load
+// Use a random color palette on page load (bEnableRandomPalette)
 function setRandomPalette()
 {
 	randomPaletteIndex = Math.floor(Math.random() * 12)
@@ -462,7 +463,6 @@ function getKeyboardInput()
 			default:
 				break;
 		}
-//	updateCoords();
 	updateButtons();
 	updateBanner();
 	})
@@ -470,8 +470,10 @@ function getKeyboardInput()
 
 function clearScreen()
 {
-	ctx.fillRect(0, 0, 1000, 500); // Set the canvas to a solid black 800x500 rectangle
-	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
+	// Set the canvas to a solid black 800x500 rectangle
+	ctx.fillRect(0, 0, 1000, 500);
+	// Allows screen clearing without stopping the animation
+	if(!bIsRunning) bScreenIsClear = true;
 }
 
 function pauseAnimation()
@@ -483,7 +485,7 @@ function pauseAnimation()
 	updateBanner();
 }
 
-// Draw current mouse coordinates below the title
+// Draw current mouse coordinates
 function updateCoords()
 {
 	divCoordsX.innerHTML = "X: " + xPos;
@@ -505,9 +507,11 @@ function newAnimationInstance()
 // Cycle through available color palettes
 function swapColorMode()
 {
-	if(i == 11){	// Reset index to the start if the last element is called
+	// Reset index to the start if the last element is called
+	if(i == 11) {
 		i = 0;
-	} else {	// Otherwise increment the counter by 1 for the next palette
+		// Otherwise increment the counter by 1 for the next palette
+	} else {
 		i++;
 	}
 	activeColorMode = paletteList[i];	// Set active color palette, regardless
@@ -516,6 +520,7 @@ function swapColorMode()
 	updateBanner();
 }
 
+// Enable or disable free draw mode and update buttons
 function togglePaintMode()
 {
 	var btn9 = document.getElementById("button9");
@@ -523,10 +528,8 @@ function togglePaintMode()
 		bEnableDrawing = false;
 		btn9.style = "filter:saturate(32%);#1e1e1e";
 		btn9.title = "Enable free draw mode (Enter)";
-// border-color:#555555
 	}	else {
 		bEnableDrawing = true;
-//		bDisablePhotoWarning = true;
 		btn9.style = "filter:saturate(100%);border-color:#74c365;";
 		btn9.title = "Disable free draw mode (Enter)";
 	}
@@ -551,33 +554,36 @@ function drawMenuBackground()
 	}
 }
 
+// Prints instructions on the canvas (overwrites occupied pixels)
 function drawHelpScreen()
 {
 	drawMenuBackground();
 	ctx.fillStyle = "#222222";
-	ctx.fillRect(60, 105, (canvas.width-120), 50);
+	ctx.fillRect(160, 105, (canvas.width-333), 50);
 	ctx.fillStyle = "#eeeeee";
 	ctx.font = "bold 28px Arial";
-	ctx.fillText("Rainbow Noise", leftTextOffset, textMidpoint-123);
+	ctx.fillText("Rainbow Noise", leftTextOffset+105, textMidpoint-123);
 	ctx.fillStyle = "#111111";
-	ctx.fillRect(60, 175, (canvas.width-120), 195);
+	ctx.fillRect(160, 175, (canvas.width-333), 195);
 	ctx.font = "bold 25px Arial";
 	ctx.fillStyle = "#dddddd";
-	ctx.fillText("ateadaze.github.io", leftTextOffset+600,textMidpoint-123);
+	ctx.fillText("ateadaze.github.io", leftTextOffset+520,textMidpoint-123);
 	ctx.fillStyle = "white";
 	ctx.font = "21px Arial";
-	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", leftTextOffset, textMidpoint-60);
-	ctx.fillText(" ▶  Press RUN repeatedly to increase the animation speed", leftTextOffset, textMidpoint-30);
-	ctx.fillText(" ✓  Click the canvas to set a new origin for the starburst animation", leftTextOffset, textMidpoint);
-	ctx.fillText(" ✓  You can draw on the canvas while the animation is running", leftTextOffset, textMidpoint+30);
-	ctx.fillText(" ✓  Animations generally look smoother between 1x and 5x speed", leftTextOffset, textMidpoint+60);
-	ctx.fillText(" ✓  Press spacebar to select the next color palette", leftTextOffset, textMidpoint+90);
+	var helpTextOffset = leftTextOffset + 100;
+	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", helpTextOffset, textMidpoint-60);
+	ctx.fillText(" ▶  Press RUN repeatedly to increase the animation speed", helpTextOffset, textMidpoint-30);
+	ctx.fillText(" ✓  Click the canvas to set a new origin for the starburst animation", helpTextOffset, textMidpoint);
+	ctx.fillText(" ✓  You can draw on the canvas while the animation is running", helpTextOffset, textMidpoint+30);
+	ctx.fillText(" ✓  Animations generally look smoother between 1x and 5x speed", helpTextOffset, textMidpoint+60);
+	ctx.fillText(" ✓  Press spacebar to select the next color palette", helpTextOffset, textMidpoint+90);
 	ctx.fillStyle = "black";
 	bScreenIsClear = true;
 }
 
 function confirmCanvasOverwrite()
 {
+	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
@@ -586,6 +592,7 @@ function confirmCanvasOverwrite()
 			bScreenIsClear = true;
 		}
 	} else {
+		// Otherwise draw help screen without prompt
 		drawHelpScreen();
 		}
 }
