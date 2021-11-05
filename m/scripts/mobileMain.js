@@ -1,5 +1,5 @@
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
-const brushSize = 2.75;
+const brushSize = 3.25;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors (pastel)
@@ -35,9 +35,11 @@ var bEnableRandomPalette = false;
 // Used for random lines: (x1,y2),(x2,y2)
 var x1, y1, x2, y2;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 390, yOrigin = 240;
+var xOrigin = 390;
+var yOrigin = 240;
 // Default mouse cursor position
-var xPos = 0, yPos = 0;
+var xPos = 0;
+var yPos = 0;
 // Animations are started manually so this starts at 0
 var animationSpeed = 0;
 // Adds more random variation to triangles
@@ -46,8 +48,6 @@ var randomTriangleLength, randomTriangleOffset;
 var shapeType = 'triangle';
 // Counts number of shapes drawn for help screen
 var nBackgroundLinesDrawn;
-// Used for confirmation dialog
-var r;
 
 // Draw a random shape from touch location (x,y)
 function drawShape()
@@ -377,7 +377,8 @@ function setRandomPalette()
 
 function clearScreen()
 {
-	ctx.fillRect(0, 0, 780, 480); // Set the canvas to a solid black 800x500 rectangle
+	// Set canvas to a solid black 720x480 rectangle
+	ctx.fillRect(0, 0, 780, 480);
 	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
 }
 
@@ -403,7 +404,6 @@ function newAnimationInstance()
 	bIsRunning = true;
 	animationSpeed++;
 	setBrushColor();
-//	updateUI();
 	updateButtons();
 	updateBanner();
 	runAnimation();
@@ -413,12 +413,15 @@ function newAnimationInstance()
 // Cycle through available color palettes
 function swapColorMode()
 {
-	if(i == 11){	// Reset index to the start if the last element is called
+// Reset index to the start if the last element is called
+	if(i == 11) {
 		i = 0;
-	} else {	// Otherwise increment the counter by 1 for the next palette
+		// Otherwise increment the counter by 1 for the next palette
+	} else {
 		i++;
 	}
-	activeColorMode = paletteList[i];	// Set active color palette, regardless
+	// Set active color palette, regardless
+	activeColorMode = paletteList[i];
 	setBrushColor();
 	updateButtons();
 	updateBanner();
@@ -472,6 +475,7 @@ function confirmCanvasOverwrite()
 {
 	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
+		var r;
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
 			pauseAnimation();
