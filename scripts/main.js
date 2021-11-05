@@ -1,5 +1,5 @@
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
-const brushSize = 2.75;
+const brushSize = 3.25;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors (pastel)
