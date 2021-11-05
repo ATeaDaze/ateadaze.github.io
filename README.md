@@ -23,7 +23,7 @@
 ![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
-![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-1.png)
+![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-2.png)
 
 #### ▧ Line Scatter 🎲 RGB
 ![line_scatter-rgb](/images/screenshots/rn_screen-line_scatter-rgb-1.png)
