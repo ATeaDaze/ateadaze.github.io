@@ -15,6 +15,5 @@ if(bEnableRandomPalette) setRandomPalette();
 drawHelpScreen();
 updateButtons();
 updateBanner();
-//togglePaintMode();
 drawShape();
 getKeyboardInput();
