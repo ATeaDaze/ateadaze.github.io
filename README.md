@@ -70,18 +70,18 @@ Button|Key|&nbsp;
 ## Instructions (Desktop)
 ✏️ **Click and drag on the canvas** to draw shapes
 
-✔️ Free drawing mode paints shapes with mouse movement (no clicking)
+✏️ Free drawing mode paints shapes with mouse movement (no clicking)
 
 ✔️ **Press spacebar** to select the next color palette
 
-✔️ **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
+🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
-✔️ **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
+🏠 **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
 
 ℹ️&nbsp;&nbsp;**Mobile version is basic** (works but needs work)
 
@@ -98,6 +98,7 @@ Button|Key|&nbsp;
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
+* [X] Disable down swipe refresh gesture
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
