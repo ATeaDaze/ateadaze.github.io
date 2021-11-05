@@ -1,4 +1,4 @@
-# 💻[Desktop](https://ateadaze.github.io/) and 📱[Mobile](https://ateadaze.github.io/m/)
+# Available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
