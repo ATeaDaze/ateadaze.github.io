@@ -22,9 +22,9 @@
 ### Triangle Web 🎲 CGA-8
 ![triangle_web-cga8](/images/screenshots/rn_screen-cga8-generated-1.png)
 
-&nbsp;|&nbsp;|&nbsp;|&nbsp;
----|---|---|---|
-🖌️|**Drawn by hand**|🎲|**Randomly generated**
+🖌️|**Drawn by hand**
+---|---|
+🎲|**Randomly generated**
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
