@@ -11,16 +11,16 @@
 ## Screenshots
 #### 🖌️ = Drawn by hand, 🎲 = Randomly generated
 
-## Triangle Web 🖌️ Faded
+### Triangle Web 🖌️ Faded
 ![triangle_web](/images/screenshots/rn_screen-faded-drawn-1.png)
 
-## Line Scatter 🖌️ Ice
+### Line Scatter 🖌️ Ice
 ![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
 
-## Starburst 🎲 Fire
+### Starburst 🎲 Fire
 ![starburst](/images/screenshots/rn_screen-starburst-fire.png)
 
-## Triangle Web 🎲 CGA-8
+### Triangle Web 🎲 CGA-8
 ![triangle_web-cga8](/images/screenshots/rn_screen-cga8-generated-1.png)
 
 ## Color Palettes
@@ -83,7 +83,7 @@ Button|Key|&nbsp;
 * [X] Release a mobile version with touch support
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
-* [ ] Add more variety: shapes, brush width, etc.
+* [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
