@@ -19,7 +19,7 @@
 ### ✺ Starburst 🎲 Fire
 ![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
-### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
+##### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
 ![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
