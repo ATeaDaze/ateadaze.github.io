@@ -11,7 +11,7 @@
 ## Screenshots
 
 ### ⧎ Triangle Web 🖌️ Faded
-![triangle_web](/images/screenshots/rn_screen-faded-drawn-1.png)
+![triangle_web](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
 
 ### ▧ Line Scatter 🖌️ Ice
 ![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
@@ -26,10 +26,10 @@
 ![triangle_web-cga8](/images/screenshots/rn_screen-cga8-gen-1.png)
 
 #### ⧎ Triangle  Web 🖌️ Grayscale
-![line_scatter-grayscale](/images/screenshots/rn_screen-grayscale-drawn-1.png)
+![line_scatter-grayscale](/images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
 
 #### ✺ Starburst 🎲 Patriot
-![starburst](/images/screenshots/rn_screen-patriot-starburst-gen.png)
+![starburst](/images/screenshots/rn_screen-starburst-patriot-gen.png)
 
 🖌️|**Hand drawn**
 ---|---|
