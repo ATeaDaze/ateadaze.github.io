@@ -1,21 +1,27 @@
-# Available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
+# Available for 💻[Desktop](https://ateadaze.github.io/) and 📱[Mobile](https://ateadaze.github.io/m/)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
 * **Draw abstract shapes** with your mouse or touch screen
-  * **New patterns are created** by lines overlapping randomly
+  * **New patterns emerge** from random lines overlapping
 * **Run animations automatically** (or combine them with drawing)
 * **12 color palettes**
 * **Keyboard support** (desktop version)
 
-### Triangle Web / Faded
+## Screenshots
+#### 🖌️ = Drawn by hand, 🎲 = Randomly generated
+
+## Triangle Web 🖌️ Faded
 ![triangle_web](/images/screenshots/rn_screen-faded-drawn-1.png)
 
-### Line Scatter / Ice
+## Line Scatter 🖌️ Ice
 ![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
 
-### Starburst / Fire
+## Starburst 🎲 Fire
 ![starburst](/images/screenshots/rn_screen-starburst-fire.png)
+
+## Triangle Web 🎲 CGA-8
+![triangle_web-cga8](/images/screenshots/rn_screen-cga8-generated-1.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
