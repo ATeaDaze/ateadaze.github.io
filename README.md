@@ -20,10 +20,10 @@
 ![starburst](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
 ### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
-![faded_mix](/images/screenshots/rn_screen-faded-gen-mix-1.png)
+![faded_mix](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
-![triangle_web-cga8](/images/screenshots/rn_screen-cga8-gen-1.png)
+![triangle_web-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-1.png)
 
 #### ⧎ Triangle  Web 🖌️ Grayscale
 ![line_scatter-grayscale](/images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
