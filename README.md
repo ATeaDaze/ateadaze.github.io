@@ -89,6 +89,7 @@ Button|Key|&nbsp;
 * [X] Release a mobile version with touch support
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
+* [X] Fix button colors not updating
 * [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
@@ -97,7 +98,6 @@ Button|Key|&nbsp;
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
-* [X] Fix button colors not updating
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
