@@ -28,7 +28,7 @@
 #### ✺ Starburst 🎲 Patriot
 ![starburst](/images/screenshots/rn_screen-patriot-starburst-gen.png)
 
-🖌️|**Drawn by hand**
+🖌️|**Hand drawn**
 ---|---|
 🎲|**Randomly generated**
 
