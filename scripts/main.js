@@ -35,7 +35,7 @@ var bEnableRandomPalette = false;
 var bEnableDrawing = false;
 // Set center as default origin for starburst animation on an 1000x500 canvas (center = width/2)
 var xOrigin = 500;
-yOrigin = 250;
+var yOrigin = 250;
 // Default mouse cursor position
 var xPos = 0, yPos = 0;
 // Animations are started manually so this starts at 0
@@ -48,8 +48,6 @@ var randomTriangleLength, randomTriangleOffset;
 var nBackgroundLinesDrawn;
 // Used for random lines: (x1,y2),(x2,y2)
 var x1, y1, x2, y2;
-// Used for confirmation dialog
-var r;
 
 // Draw random shape at the mouse cursor
 function drawShape()
@@ -585,6 +583,7 @@ function confirmCanvasOverwrite()
 {
 	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
+		var r;
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
 			pauseAnimation();
