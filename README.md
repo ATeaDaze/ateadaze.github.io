@@ -19,19 +19,19 @@
 ### ✺ Starburst 🎲 Fire
 ![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
-##### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
+### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
 ![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
-#### ⧎ Triangle Web 🎲 CGA-8
+### ⧎ Triangle Web 🎲 CGA-8
 ![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-2.png)
 
-#### ▧ Line Scatter 🎲 RGB
+### ▧ Line Scatter 🎲 RGB
 ![line_scatter-rgb](/images/screenshots/rn_screen-line_scatter-rgb-1.png)
 
-#### ⧎ Triangle  Web 🖌️ Grayscale
+### ⧎ Triangle  Web 🖌️ Grayscale
 ![line_scatter-grayscale](/images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
 
-#### ✺ Starburst 🎲 Patriot
+### ✺ Starburst 🎲 Patriot
 ![starburst](/images/screenshots/rn_screen-starburst-patriot-gen.png)
 
 🖌️|**Hand drawn**
