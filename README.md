@@ -98,7 +98,7 @@ Button|Key|&nbsp;
 * [X] Get `actionListener` working properly with `mousemove` *and* `mousedown` events (similar to mobile drawing)
 * [ ] Optimize resolution for the most common displays
 ### Mobile
-* [X] Disable down swipe refresh gesture
+* [X] Disable swipe down refresh gesture
 * [ ] Needs more testing: limited testing done with Chrome device emulation and an S10+
 * [ ] Optimize resolution and settings for mobile displays
 
