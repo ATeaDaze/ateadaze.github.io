@@ -17,13 +17,16 @@
 ![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
 
 ### ✺ Starburst 🎲 Fire
-![starburst](/images/screenshots/rn_screen-starburst-fire.png)
+![starburst](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
-### ⧎ Triangle Web 🎲 CGA-8
-![triangle_web-cga8](/images/screenshots/rn_screen-cga8-generated-1.png)
+#### ⧎ Triangle Web 🎲 CGA-8
+![triangle_web-cga8](/images/screenshots/rn_screen-cga8-gen-1.png)
 
-### ⧎ Triangle  Web 🖌️ Grayscale
+#### ⧎ Triangle  Web 🖌️ Grayscale
 ![line_scatter-grayscale](/images/screenshots/rn_screen-grayscale-drawn-1.png)
+
+#### ✺ Starburst 🎲 Patriot
+![starburst](/images/screenshots/rn_screen-patriot-starburst-gen.png)
 
 🖌️|**Drawn by hand**
 ---|---|
