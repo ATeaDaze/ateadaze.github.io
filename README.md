@@ -8,8 +8,14 @@
 * **12 color palettes**
 * **Keyboard support** (desktop version)
 
-#### This was hastily drawn but it's vivid and looks deliberate
-![rainbow_noise-repo_banner](/images/rainbow_noise-screenshot-drawn-faded-1-1000px.png)
+### Triangle Web / Faded
+![triangle_web](/images/screenshots/rn_screen-faded-drawn-1.png)
+
+### Line Scatter / Ice
+![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
+
+### Starburst / Fire
+![starburst](/images/screenshots/rn_screen-starburst-fire.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
@@ -26,7 +32,7 @@
 * **Grayscale:** everything from dim gray to off-white
 
 # Desktop Version: [ateadaze.github.io](https://ateadaze.github.io/)
-![screenshot-faded](/images/rainbow_noise-screenshot-drawn-faded-2.png)
+![screenshot-faded](/images/screenshots/rn_screen-desktop.png)
 ## Controls
 ```
 Keyboard Map    [R]un  [P]ause  [C]lear screen   [Enter] Toggle draw mode  [Spacebar] Next palette
@@ -36,11 +42,11 @@ Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscal
 ```
 Button|Key|&nbsp;
 ---|---|---|
-![Spacebar](/images/palette_button.png)|**`Space`**|Select the next palette
-![Random](/images/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
-![?](/images/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
-![O](/images/origin_reset_button.png)|**`o`**|Reset origin to center
+![Spacebar](/images/buttons/palette_button.png)|**`Space`**|Select the next palette
+![Random](/images/buttons/random_palette_button.png)|**`*`**|Select a random palette
+![E](/images/buttons/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
+![?](/images/buttons/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
+![O](/images/buttons/origin_reset_button.png)|**`o`**|Reset origin to center
 
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
@@ -59,7 +65,7 @@ Button|Key|&nbsp;
 ✔️ **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
-![mobile_screenshot](/images/Screenshot_20211104-173850_Chrome.jpg)
+![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
