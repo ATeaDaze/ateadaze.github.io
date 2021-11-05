@@ -11,19 +11,22 @@
 ## Screenshots
 
 ### ⧎ Triangle Web 🖌️ Faded
-![triangle_web](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
+![triangles-faded](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
 
 ### ▧ Line Scatter 🖌️ Ice
-![line_scatter](/images/screenshots/rn_screen-line_scatter-ice.png)
+![line_scatter-ice](/images/screenshots/rn_screen-line_scatter-ice.png)
 
 ### ✺ Starburst 🎲 Fire
-![starburst](/images/screenshots/rn_screen-starburst-fire-gen.png)
+![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
 ### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
-![faded_mix](/images/screenshots/rn_screen-mix-faded-gen-1.png)
+![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
-![triangle_web-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-1.png)
+![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-1.png)
+
+#### ▧ Line Scatter 🎲 RGB
+![line_scatter-rgb](/images/screenshots/rn_screen-line_scatter-rgb-1.png)
 
 #### ⧎ Triangle  Web 🖌️ Grayscale
 ![line_scatter-grayscale](/images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
