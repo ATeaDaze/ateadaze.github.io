@@ -100,15 +100,12 @@ function drawShape()
 					ctx.stroke();
 					// Fill triangle with black to create more negative space (too similar to line scanner w/out the fill)
 					ctx.fill();
-				} else if(shapeType == 'starburst') {
+				} else {
 					// Draw line from the origin to the mouse cursor
 					ctx.moveTo(xOrigin,yOrigin);
 					ctx.lineTo(xPos,yPos);
 					ctx.closePath();
 					ctx.stroke();
-				} else {
-					// TODO: add more shape variety
-					// I don't know how you got here
 				}
 			}
 			// Disable drawing on mouseup
@@ -132,10 +129,8 @@ function runAnimation()
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
 			drawRandomLine();
-		} else if(shapeType == 'starburst') {
-			drawStarburstLine();
 		} else {
-			// Do nothing
+			drawStarburstLine();
 		}
 		// Loop animation until bIsRunning is set to false
 		if(!bIsRunning) return;
