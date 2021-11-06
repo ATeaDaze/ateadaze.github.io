@@ -1,3 +1,5 @@
+// Rainbow Noise: draw random shapes with the mouse or animate them automatically
+// TODO: improve overall structure and flow
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
 const brushSize = 3.25;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
@@ -56,7 +58,7 @@ function drawShape()
 		canvas.addEventListener('touchmove', e => {
 		// Disable health warning if canvas is used
 		bDisablePhotoWarning = true;
-		// Store location of most recent touch event
+		// Store location of most recent touchstart event and set as origin
 		xPos = Math.round(e.touches[0].clientX - rect.left);
 		yPos = Math.round(e.touches[0].clientY - rect.top);
 		canvas.addEventListener('touchstart', e => {
@@ -87,7 +89,6 @@ function drawShape()
 			ctx.closePath();
 			ctx.stroke();
 		} else if(shapeType == 'starburst') {
-			// Store current touch location as origin if drag action ends
 			// Draw line from the origin to the touch event
 			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
@@ -223,6 +224,7 @@ function updateButtons()
 	var btn4 = document.getElementById("button4");
 	var btn5 = document.getElementById("button5");
 	var btn6 = document.getElementById("button6");
+
 	// Set colors for shape and animation buttons
 	if(bIsRunning) {
 		btn1.style.color = "palegreen";
@@ -381,7 +383,8 @@ function clearScreen()
 {
 	// Set canvas to a solid black 720x480 rectangle
 	ctx.fillRect(0, 0, 780, 480);
-	if(!bIsRunning) bScreenIsClear = true; // Allows screen clearing without stopping the animation
+	// Allows screen clearing without stopping the animation
+	if(!bIsRunning) bScreenIsClear = true;
 }
 
 function pauseAnimation()
