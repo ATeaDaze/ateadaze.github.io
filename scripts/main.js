@@ -111,13 +111,11 @@ function drawShape()
 					// I don't know how you got here
 				}
 			}
-
 			// Disable drawing on mouseup
 			canvas.addEventListener('mouseup', e => {
 				bEnableDrawing = false;
 				bScreenIsClear = false;
 			})
-
 	})
 }
 
