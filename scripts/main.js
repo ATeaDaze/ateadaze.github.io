@@ -1,14 +1,16 @@
+// Rainbow Noise: draw random shapes with the mouse or animate them automatically
+// TODO: improve overall structure and flow
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
 const brushSize = 3.25;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
-// Rainbow with desaturated colors (pastel)
+// Rainbow with desaturated colors
 const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodgerblue", "#5d3fd3", "#cf9fff");
-// Rainbow with classic colors (primary)
+// Rainbow with classic primary colors (ROYGBIV)
 const randRainbowColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "mediumorchid");
 // Fire: deep red, orange red, red orange, and pale yellow
 const randFireColor = new Array("firebrick", "orangered", "#ffaa33", "khaki");
-// Ice: shades of blue with a touch of white and pale green
+// Ice: shades of blue with hints of white and pale green
 const randIceColor = new Array("blue", "dodgerblue", "#088f8f", "#98fB98", "darkblue", "#dddddd");
 // RGB and CMY: both palettes use the same array with offsets to call them separately (RGB = 0:2, CMY = 3:5)
 const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#ff55ff", "#ffff55");
@@ -16,37 +18,43 @@ const randRGBCMYColor = new Array("#ff0000", "#00ff00", "#0000ff", "#55ffff", "#
 const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
 const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
-// CGA = first 8 elements (intense colors), CGA-16 = all 15 elements (uses brown instead of dark yellow)
+// CGA-8 = intense colors = first 8 elements (0:7), CGA-16 = all 15 colors (0:14)
 const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555", "#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
-// Pyxel: default color palette for pyxeledit.com (1st element not called as pure black is overpowering)
+// Pyxel: default color palette for pyxeledit.com (no pure black as it creates too much negative space)
 const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
+// Gameboy: mostly official colors for the classic hand-held (3rd color is darkened as it was indistinguishable from the last one on a modern monitor)
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
-// Default color palette = 1st element (faded)
-var activeColorMode = paletteList[0];
 // Array index used for palette swapping
 var i = 0;
-// Used for the random palette select function
+// Default color palette = 1st element = palleteList[0] = 'faded'
+var activeColorMode = paletteList[i];
+// Array index for selecting a random palette
 var randomPaletteIndex;
 // Runtime values for setting and tracking script states
 var bIsRunning = false;
+// Used to minimize the number of confirmation prompts
 var bScreenIsClear = true;
+// Enable or disable the Photosensitivity warning
 var bDisablePhotoWarning = false;
+// Select a random palette on page load if set to true
 var bEnableRandomPalette = false;
+// Draw shapes on the canvas while true
 var bEnableDrawing = false;
-// Set center as default origin for starburst animation on an 1000x500 canvas (center = width/2)
+// Set center as default origin for starburst animation on an 1000x500 canvas (center = length/2)
 var xOrigin = 500;
 var yOrigin = 250;
 // Default mouse cursor position
-var xPos = 0, yPos = 0;
+var xPos = 0;
+var yPos = 0;
 // Animations are started manually so this starts at 0
 var animationSpeed = 0;
 // Default animation shape (triangle, line, starburst)
 var shapeType = 'triangle';
 // Adds more random variation to triangles
 var randomTriangleLength, randomTriangleOffset;
-// Counts number of shapes drawn for help screen
-var nBackgroundLinesDrawn;
-// Used for random lines: (x1,y2),(x2,y2)
+// Counts number of shapes drawn for help screen (255 drawn by default)
+var nBackgroundShapesDrawn;
+// Used for random lines (x1,y1),(x2,y2)
 var x1, y1, x2, y2;
 
 // Draw random shape at the mouse cursor
@@ -54,22 +62,22 @@ function drawShape()
 {
 		// Check for mouse movement
 		document.addEventListener('mousemove', e => {
-						canvas.addEventListener('mousedown', e => {
-						bEnableDrawing = true;
-					})
-				// Store current mouse cursor position as new origin if a button is clicked
-				canvas.addEventListener('mouseup', e => {
-					xOrigin = xPos;
-					yOrigin = yPos;
-					bEnableDrawing = false;
-				})
+			// Store mouse cursor position minus margin offset
+			xPos = Math.round(e.clientX - rect.left);
+			yPos = Math.round(e.clientY - rect.top);
+			// Enable drawing on mousedown
+			canvas.addEventListener('mousedown', e => {
+				bEnableDrawing = true;
+				// Store mouse cursor location as the new origin for starburst
+				xOrigin = xPos;
+				yOrigin = yPos;
+			})
+			// Draw a shape if drawing mode is enabled
 			if(bEnableDrawing) {
-				// Store mouse cursor position minus margin offset
-				xPos = Math.round(e.clientX - rect.left);
-				yPos = Math.round(e.clientY - rect.top);
-				// Update X and Y values on the UI
+				// Update mouse X,Y values on the UI
 				updateCoords();
-				// Two random numbers for a line with extra pixels on the edges for coverage (-10:1009, -10:509)
+				// Two random numbers for a line with 10 extra pixels on the edges for coverage (-10:1009, -10:509)
+				// TODO: make a random number function to reduce repeated Math() calls: getRandomNumber(x,y); | x = upper limit, y = offset
 				x1 = Math.floor(Math.random() * 1020)-10;
 				y1 = Math.floor(Math.random() * 520)-10;
 				ctx.beginPath();
@@ -90,16 +98,26 @@ function drawShape()
 					ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
 					ctx.closePath();
 					ctx.stroke();
-				} else {
+					// Fill triangle with black to create more negative space (too similar to line scanner w/out the fill)
+					ctx.fill();
+				} else if(shapeType == 'starburst') {
 					// Draw line from the origin to the mouse cursor
 					ctx.moveTo(xOrigin,yOrigin);
 					ctx.lineTo(xPos,yPos);
 					ctx.closePath();
 					ctx.stroke();
+				} else {
+					// TODO: add more shape variety
+					// I don't know how you got here
 				}
-			ctx.fill();
-			bScreenIsClear = false;
 			}
+
+			// Disable drawing on mouseup
+			canvas.addEventListener('mouseup', e => {
+				bEnableDrawing = false;
+				bScreenIsClear = false;
+			})
+
 	})
 }
 
@@ -107,27 +125,28 @@ function drawShape()
 function runAnimation()
 {
 	window.requestAnimationFrame(function loop() {
+		x1 = Math.floor(Math.random() * 1020)-10;
+		y1 = Math.floor(Math.random() * 520)-10;
 		ctx.beginPath();
 		setBrushColor();
 		ctx.lineWidth = brushSize;
-		x1 = Math.floor(Math.random() * 1020)-10;
-		y1 = Math.floor(Math.random() * 520)-10;
 		if(shapeType == 'triangle') {
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
 			drawRandomLine();
-		} else {
-			shapeType = 'starburst'
+		} else if(shapeType == 'starburst') {
 			drawStarburstLine();
+		} else {
+			// Do nothing
 		}
-		if(!bIsRunning) {
-			return;
-		}
+		// Loop animation until bIsRunning is set to false
+		if(!bIsRunning) return;
 		window.requestAnimationFrame(loop);
 	})
 	bScreenIsClear = false;
 }
 
+// Random line = (x1,y1), (x2,y2)
 function drawRandomLine()
 {
 	x2 = Math.floor(Math.random() * 1020)-10;
@@ -138,6 +157,7 @@ function drawRandomLine()
 	ctx.closePath();
 }
 
+// Random triangle = (x1,y1), (x2,y2), (x1+randomOffset,y1+randomLength)
 function drawRandomTriangle()
 {
 	x2 = Math.floor(Math.random() * 1020)-10;
@@ -149,9 +169,11 @@ function drawRandomTriangle()
 	ctx.lineTo(x1+randomTriangleOffset, y1+randomTriangleLength);
 	ctx.closePath();
 	ctx.stroke();
+	// Fill triangle with black
 	ctx.fill();
 }
 
+// Random starburst line = (xOrigin,yOrigin), (x1,y1)
 function drawStarburstLine()
 {
 	ctx.moveTo(xOrigin, yOrigin);
@@ -160,7 +182,7 @@ function drawStarburstLine()
 	ctx.closePath();
 }
 
-// Set random brush color for active palette
+// Select random brush color from active palette
 function setBrushColor()
 {
 	switch(activeColorMode) {
@@ -217,14 +239,17 @@ function setBrushColor()
 		}
 }
 
-// Update button styles
+// Update button styles: needs optimization (a lot of conditionals and document edits)
 function updateButtons()
 {
+	// Used for readability (TODO: add proper button names)
 	var btn1 = document.getElementById("button1");
 	var btn2 = document.getElementById("button2");
 	var btn4 = document.getElementById("button4");
 	var btn5 = document.getElementById("button5");
 	var btn6 = document.getElementById("button6");
+	var btn10 = document.getElementById("button10");
+	var divclr = document.getElementById("divColorMode");
 	// Set colors for shape and animation buttons
 	if(bIsRunning) {
 		btn1.style.color = "palegreen";
@@ -244,9 +269,6 @@ function updateButtons()
 		btn6.style.color = "violet";
 		shapeType == 'starburst';
 	}
-
-	var btn10 = document.getElementById("button10");
-	var divclr = document.getElementById("divColorMode");
 	btn10.style = "filter:saturate(100%)";
 	switch(activeColorMode) {
 		case 'faded':
@@ -343,32 +365,35 @@ function updateButtons()
 		}
 }
 
-// Draw color commentary in the banner
+// Print color commentary in the banner
 function updateBanner()
 {
+	// Update animation speed on UI
 	divSpeed.innerHTML = "Speed: " + animationSpeed + "x";
-	// Display color commentary in the banner
- 	if((animationSpeed > 0) && (animationSpeed < 6)) {
-			bDisablePhotoWarning = true;
-			rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
-	} else if((animationSpeed > 9) && (animationSpeed < 25)) {
-			rainbowBanner.innerHTML = "Rainbow Noise 🌪️ Things are about to get a bit hectic...";
-	} else if((animationSpeed > 24) && (animationSpeed < 50)) {
-			rainbowBanner.innerHTML = "Rainbow Noise 🧬 Static and white noise are both made of random data points";
-	} else if((animationSpeed > 49) && (animationSpeed < 75)) {
-			rainbowBanner.innerHTML = "🌠 Random Rainbows 🪐 Jupiter and Beyond the Infinite 🌟";
-	} else if((animationSpeed > 74) && (animationSpeed < 100)) {
-			rainbowBanner.innerHTML = "Rainbow Noise? ☕ Frankly, 'Random Rainbows' and 'RGB Noise' seemed too long";
+	// Print color commentary in the banner (1:5, 10:24, 25:49, 50:74, 75:99, 100:animationSpeed)
+	if( (animationSpeed > 0) && (animationSpeed < 6) ) {
+		rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
+		bDisablePhotoWarning = true;
+	} else if( (animationSpeed > 9) && (animationSpeed < 25 ) ) {
+		rainbowBanner.innerHTML = "Rainbow Noise 🌪️ Things are about to get a bit hectic...";
+	} else if( (animationSpeed > 24) && (animationSpeed < 50) ) {
+		rainbowBanner.innerHTML = "Rainbow Noise 🧬 Static and white noise are both made of random data points";
+	} else if( (animationSpeed > 49) && (animationSpeed < 75) ) {
+		rainbowBanner.innerHTML = "🌠 Random Rainbows 🪐 Jupiter and Beyond the Infinite 🌟";
+	} else if( (animationSpeed > 74) && (animationSpeed < 100) ) {
+		rainbowBanner.innerHTML = "Rainbow Noise? ☕ Frankly, 'Random Rainbows' and 'RGB Noise' seemed too long";
 	} else if(animationSpeed > 99) {
-			rainbowBanner.innerHTML = "💫 Migraine Simulator 2021  👑 " + animationSpeed + "x speed? Legendary. You absolute madlad";
+		rainbowBanner.innerHTML = "💫 Migraine Simulator 2021  👑 " + animationSpeed + "x speed? Legendary. You absolute madlad";
 	}	else if(!bDisablePhotoWarning) {
-				rainbowBanner.innerHTML = "⚠ Photosensitivity Warning: this app generates rapid and colorful patterns";
-				rainbowBanner.title = "⚠ Photosensitivity Warning: click the banner, draw on the canvas, or start animation to dismiss";
-				rainbowBanner.style = "background-image:linear-gradient(to right, maroon, firebrick, red)";
-		} else {
-			rainbowBanner.innerHTML = "Rainbow Noise 🎲 Draw with random shapes, animate them, or both";
-			rainbowBanner.title = "Rainbow Noise 🎲 Colored lines create positive space";
-		}
+		// Display photosensitivity warning in the banner
+		rainbowBanner.innerHTML = "⚠ Photosensitivity Warning: this app generates rapid and colorful patterns";
+		rainbowBanner.title = "⚠ Photosensitivity Warning: click the banner, draw on the canvas, or start animation to dismiss";
+		rainbowBanner.style = "background-image:linear-gradient(to right, maroon, firebrick, red)";
+	} else {
+		// Default banner text
+		rainbowBanner.innerHTML = "Rainbow Noise 🎲 Draw with random shapes, animate them, or both";
+		rainbowBanner.title = "Rainbow Noise 🎲 Colored lines create positive space";
+	}
 }
 
 // Use a random color palette on page load (bEnableRandomPalette)
@@ -386,9 +411,7 @@ function getKeyboardInput()
 	document.addEventListener('keypress', e => {
 		switch(e.key) {
 			case 'r':
-				bIsRunning = true;
-				animationSpeed++;
-				runAnimation();
+				newAnimationInstance();
 				break;
 			case 'p':
 				bIsRunning = false;
@@ -490,16 +513,13 @@ function updateCoords()
 	divCoordsY.innerHTML = "Y: " + yPos;
 }
 
-// Revisit the looping structure of this entire app
 function newAnimationInstance()
 {
 	bIsRunning = true;
 	animationSpeed++;
-	setBrushColor();
+	runAnimation();
 	updateButtons();
 	updateBanner();
-	runAnimation();
-	bScreenIsClear = false;
 }
 
 // Cycle through available color palettes
@@ -537,9 +557,9 @@ function togglePaintMode()
 
 function drawMenuBackground()
 {
-	nBackgroundLinesDrawn = 0;
+	nBackgroundShapesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background
-	while(nBackgroundLinesDrawn < 256) {
+	while(nBackgroundShapesDrawn < 256) {
 		x1 = Math.floor(Math.random() * 1020)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
 		x2 = Math.floor(Math.random() * 820)-10;
@@ -548,7 +568,7 @@ function drawMenuBackground()
 		setBrushColor();
 		ctx.lineWidth = brushSize;
 		drawRandomTriangle();
-		nBackgroundLinesDrawn++;
+		nBackgroundShapesDrawn++;
 	}
 }
 

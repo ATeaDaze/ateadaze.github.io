@@ -59,6 +59,10 @@ function drawShape()
 		// Store location of most recent touch event
 		xPos = Math.round(e.touches[0].clientX - rect.left);
 		yPos = Math.round(e.touches[0].clientY - rect.top);
+		canvas.addEventListener('touchstart', e => {
+			xOrigin = xPos;
+			yOrigin = yPos;
+		})
 		// Update X and Y values on the UI
 		updateCoords();
 		// Two random numbers for a line with extra pixels on the edges for coverage (-10:889, -10:-489)
@@ -82,17 +86,15 @@ function drawShape()
 			ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
 			ctx.closePath();
 			ctx.stroke();
-		} else {
+		} else if(shapeType == 'starburst') {
 			// Store current touch location as origin if drag action ends
-			canvas.addEventListener('touchend', e => {
-				xOrigin = xPos;
-				yOrigin = yPos;
-			})
 			// Draw line from the origin to the touch event
 			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
 			ctx.closePath();
 			ctx.stroke();
+		} else {
+			// Do nothing
 		}
 		ctx.fill();
 		bScreenIsClear = false;
@@ -403,11 +405,9 @@ function newAnimationInstance()
 {
 	bIsRunning = true;
 	animationSpeed++;
-	setBrushColor();
+	runAnimation();
 	updateButtons();
 	updateBanner();
-	runAnimation();
-	bScreenIsClear = false;
 }
 
 // Cycle through available color palettes
