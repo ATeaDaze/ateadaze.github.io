@@ -88,14 +88,12 @@ function drawShape()
 			ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
 			ctx.closePath();
 			ctx.stroke();
-		} else if(shapeType == 'starburst') {
+		} else {
 			// Draw line from the origin to the touch event
 			ctx.moveTo(xOrigin,yOrigin);
 			ctx.lineTo(xPos,yPos);
 			ctx.closePath();
 			ctx.stroke();
-		} else {
-			// Do nothing
 		}
 		ctx.fill();
 		bScreenIsClear = false;
@@ -115,10 +113,9 @@ function runAnimation()
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
 			drawRandomLine();
-		} else if(shapeType == 'starburst') {
-			drawStarburstLine();
 		} else {
-			// idk how you got here
+			shapeType = 'starburst'
+			drawStarburstLine();
 		}
 		// Pause animation if flag is set
 		if(!bIsRunning) return;
