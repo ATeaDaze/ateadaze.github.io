@@ -115,9 +115,10 @@ function runAnimation()
 			drawRandomTriangle();
 		} else if(shapeType == 'line') {
 			drawRandomLine();
-		} else {
-			shapeType = 'starburst'
+		} else if(shapeType == 'starburst') {
 			drawStarburstLine();
+		} else {
+			// idk how you got here
 		}
 		// Pause animation if flag is set
 		if(!bIsRunning) return;
