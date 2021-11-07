@@ -98,7 +98,7 @@ function drawShape()
 					ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
 					ctx.closePath();
 					ctx.stroke();
-					// Fill triangle with black to create more negative space (too similar to line scanner w/out the fill)
+					// Fill triangle with black to create more negative space (too similar to line scatter w/out the fill)
 					ctx.fill();
 				} else {
 					// Draw line from the origin to the mouse cursor
