@@ -484,7 +484,7 @@ function getKeyboardInput()
 
 function clearScreen()
 {
-	// Set the canvas to a solid black 800x500 rectangle
+	// Set the canvas to a solid black 1000x500 rectangle
 	ctx.fillRect(0, 0, 1000, 500);
 	// Allows screen clearing without stopping the animation
 	if(!bIsRunning) bScreenIsClear = true;
