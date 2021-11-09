@@ -100,7 +100,7 @@ Button|Key|&nbsp;
 * [X] Remove style changes from `setBrushColor()`
 * [X] Fix button colors not updating
 * [X] Change origin setpoint to `mousedown`  (instead of `mouseup`)
-* [X] Added custom mouse cusors
+* [X] Added custom mouse cursors
 * [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
