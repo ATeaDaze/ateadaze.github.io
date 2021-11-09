@@ -99,6 +99,8 @@ Button|Key|&nbsp;
 * [X] Separate `updateUI()` function into `updateBanner()` and `updateButtons()`
 * [X] Remove style changes from `setBrushColor()`
 * [X] Fix button colors not updating
+* [X] Change origin setpoint to `mousedown`  (instead of `mouseup`)
+* [X] Added custom mouse cusors
 * [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
 ### Desktop
