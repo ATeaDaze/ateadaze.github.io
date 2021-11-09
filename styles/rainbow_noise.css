@@ -45,8 +45,13 @@ canvas {
 	display: block;
 	border: 3px solid #5e5e5e;
 	outline: 2px solid #222222;
-	cursor: crosshair;
+	cursor: url('../images/brush_cursor-32.png'), auto;
 }
+/*	cursor: grab; */
+canvas:active {
+	cursor: url('../images/brush_cursor-32-down.png'), auto;
+}
+/*	cursor: grabbing; */
 hr {
 	padding: 0px;
 	margin-top: 0;
