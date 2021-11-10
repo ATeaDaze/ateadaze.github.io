@@ -90,7 +90,7 @@ Button|Key|&nbsp;
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
-🏠 **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
+🏠 **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchstart)
 
 ℹ️&nbsp;&nbsp;**Mobile version is basic** (works but needs work)
 
