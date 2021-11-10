@@ -83,7 +83,7 @@ Button|Key|&nbsp;
 
 ✔️ **Press spacebar** to select the next color palette
 
-🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
+🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mousedown)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
