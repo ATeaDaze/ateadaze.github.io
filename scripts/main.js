@@ -24,9 +24,9 @@ const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff
 const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 // Gameboy: mostly official colors for the classic hand-held (3rd color is darkened as it was indistinguishable from the last one on a modern monitor)
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
-// Array index used for palette swapping
+// Array index used for palette swapping (0:11)
 let i = 0;
-// Default color palette = 1st element = palleteList[0] = 'faded'
+// Default color palette, i = 0, 1st element = palleteList[0] = 'faded'
 let activeColorMode = paletteList[i];
 // Array index for selecting a random palette
 let randomPaletteIndex;
@@ -243,7 +243,7 @@ function updateButtons()
 	let btn6 = document.getElementById("button6");
 	let btn10 = document.getElementById("button10");
 	let divclr = document.getElementById("divColorMode");
-	// Set colors for shape and animation buttons
+	// Run button colors
 	if(bIsRunning) {
 		btn1.style.color = "palegreen";
 		btn2.style.color = "white";
@@ -254,6 +254,7 @@ function updateButtons()
 	btn4.style.color = "white";
 	btn5.style.color = "white";
 	btn6.style.color = "white";
+	// Shape button colors
 	if(shapeType == 'triangle') {
 		btn4.style.color = "violet";
 	} else if(shapeType == 'line') {
@@ -550,7 +551,7 @@ function togglePaintMode()
 function drawMenuBackground()
 {
 	nBackgroundShapesDrawn = 0;
-	// Draw 256 triangles in the selected color as a background
+	// Draw 256 triangles in the selected color as a background (0:255)
 	while(nBackgroundShapesDrawn < 256) {
 		x1 = Math.floor(Math.random() * 1020)-10;
 		y1 = Math.floor(Math.random() * 520)-10;
@@ -569,11 +570,13 @@ function drawHelpScreen()
 {
 	drawMenuBackground();
 	ctx.fillStyle = "#222222";
+	// Dim gray header
 	ctx.fillRect(160, 105, (canvas.width-333), 50);
 	ctx.fillStyle = "#eeeeee";
 	ctx.font = "bold 28px Arial";
 	ctx.fillText("Rainbow Noise", leftTextOffset+105, textMidpoint-123);
 	ctx.fillStyle = "#111111";
+	// Dark gray backdrop
 	ctx.fillRect(160, 175, (canvas.width-333), 195);
 	ctx.font = "bold 25px Arial";
 	ctx.fillStyle = "#dddddd";
@@ -582,11 +585,11 @@ function drawHelpScreen()
 	ctx.font = "21px Arial";
 	let helpTextOffset = leftTextOffset + 100;
 	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", helpTextOffset, textMidpoint-60);
-	ctx.fillText(" ▶  Press RUN repeatedly to increase the animation speed", helpTextOffset, textMidpoint-30);
-	ctx.fillText(" ✓  Click the canvas to set a new origin for the starburst animation", helpTextOffset, textMidpoint);
-	ctx.fillText(" ✓  You can draw on the canvas while the animation is running", helpTextOffset, textMidpoint+30);
-	ctx.fillText(" ✓  Animations generally look smoother between 1x and 5x speed", helpTextOffset, textMidpoint+60);
-	ctx.fillText(" ✓  Press spacebar to select the next color palette", helpTextOffset, textMidpoint+90);
+	ctx.fillText("✏️  Click the canvas to set a new origin for the starburst animation", helpTextOffset, textMidpoint);
+	ctx.fillText("✏️  Press RUN repeatedly to increase the animation speed", helpTextOffset, textMidpoint-30);
+	ctx.fillText("✔️  You can draw on the canvas while the animation is running", helpTextOffset, textMidpoint+30);
+	ctx.fillText("✔️  Animations generally look smoother between 1x and 5x speed", helpTextOffset, textMidpoint+60);
+	ctx.fillText("🎨  Press spacebar to select the next color palette", helpTextOffset, textMidpoint+90);
 	ctx.fillStyle = "black";
 	bScreenIsClear = true;
 }
