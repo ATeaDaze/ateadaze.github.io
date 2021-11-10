@@ -1,7 +1,7 @@
 // Rainbow Noise: draw random shapes with the mouse or animate them automatically
 // TODO: improve overall structure and flow
 // Default brush size: larger values add more color but can obscure finer details and patterns if set too high
-const brushSize = 3.25;
+const brushSize = 2.73;
 // Palette list: cycles through each element (resets to the first element if the last element is called)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors
@@ -573,16 +573,16 @@ function drawHelpScreen()
 	// Dim gray header
 	ctx.fillRect(160, 105, (canvas.width-333), 50);
 	ctx.fillStyle = "#eeeeee";
-	ctx.font = "bold 28px Arial";
+	ctx.font = "bold 25px Arial,Helvetica";
 	ctx.fillText("Rainbow Noise", leftTextOffset+105, textMidpoint-123);
 	ctx.fillStyle = "#111111";
 	// Dark gray backdrop
 	ctx.fillRect(160, 175, (canvas.width-333), 195);
-	ctx.font = "bold 25px Arial";
+	ctx.font = "bold 23px monospace";
 	ctx.fillStyle = "#dddddd";
-	ctx.fillText("ateadaze.github.io", leftTextOffset+520,textMidpoint-123);
+	ctx.fillText("ateadaze.github.io", leftTextOffset+460,textMidpoint-123);
 	ctx.fillStyle = "white";
-	ctx.font = "21px Arial";
+	ctx.font = "20px Helvetica,Arial";
 	let helpTextOffset = leftTextOffset + 100;
 	ctx.fillText("✏️ Drag your mouse to paint shapes (or use free draw mode)", helpTextOffset, textMidpoint-60);
 	ctx.fillText("✏️  Click the canvas to set a new origin for the starburst animation", helpTextOffset, textMidpoint);
