@@ -24,32 +24,32 @@ const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff
 const randPyxelColor = new Array(	"#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Default color palette = 1st element (faded)
-var activeColorMode = paletteList[0];
+let activeColorMode = paletteList[0];
 // Array index used for palette swapping
-var i = 0;
+let i = 0;
 // Used for the random palette select function
-var randomPaletteIndex;
+let randomPaletteIndex;
 // Runtime values for setting and tracking script states
-var bIsRunning = false;
-var bScreenIsClear = true;
-var bDisablePhotoWarning = false;
-var bEnableRandomPalette = false;
+let bIsRunning = false;
+let bScreenIsClear = true;
+let bDisablePhotoWarning = false;
+let bEnableRandomPalette = false;
 // Used for random lines: (x1,y2),(x2,y2)
-var x1, y1, x2, y2;
+let x1, y1, x2, y2;
 // Set center as default origin for starburst animation on an 800x500 canvas (center = width/2)
-var xOrigin = 390;
-var yOrigin = 240;
+let xOrigin = 390;
+let yOrigin = 240;
 // Default mouse cursor position
-var xPos = 0;
-var yPos = 0;
+let xPos = 0;
+let yPos = 0;
 // Animations are started manually so this starts at 0
-var animationSpeed = 0;
+let animationSpeed = 0;
 // Adds more random variation to triangles
-var randomTriangleLength, randomTriangleOffset;
+let randomTriangleLength, randomTriangleOffset;
 // Default animation shape (triangle, line, starburst)
-var shapeType = 'triangle';
+let shapeType = 'triangle';
 // Counts number of shapes drawn for help screen
-var nBackgroundLinesDrawn;
+let nBackgroundLinesDrawn;
 
 // Draw a random shape from touch location (x,y)
 function drawShape()
@@ -217,11 +217,11 @@ function setBrushColor()
 // Update button style, animation speed, and banner
 function updateButtons()
 {
-	var btn1 = document.getElementById("button1");
-	var btn2 = document.getElementById("button2");
-	var btn4 = document.getElementById("button4");
-	var btn5 = document.getElementById("button5");
-	var btn6 = document.getElementById("button6");
+	let btn1 = document.getElementById("button1");
+	let btn2 = document.getElementById("button2");
+	let btn4 = document.getElementById("button4");
+	let btn5 = document.getElementById("button5");
+	let btn6 = document.getElementById("button6");
 
 	// Set colors for shape and animation buttons
 	if(bIsRunning) {
@@ -242,8 +242,8 @@ function updateButtons()
 		btn6.style.color = "violet";
 		shapeType == 'starburst';
 	}
-	var btn10 = document.getElementById("button10");
-	var divclr = document.getElementById("divColorMode");
+	let btn10 = document.getElementById("button10");
+	let divclr = document.getElementById("divColorMode");
 	btn10.style = "filter:saturate(100%)";
 
 	switch(activeColorMode) {
@@ -476,7 +476,7 @@ function confirmCanvasOverwrite()
 {
 	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
-		var r;
+		let r;
 		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
 			pauseAnimation();
