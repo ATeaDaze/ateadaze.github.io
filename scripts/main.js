@@ -25,11 +25,11 @@ const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#
 // Gameboy: mostly official colors for the classic hand-held (3rd color is darkened as it was indistinguishable from the last one on a modern monitor)
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
 // Array index used for palette swapping (0:11)
-let i = 0;
-// Default color palette, i = 0, 1st element = palleteList[0] = 'faded'
-let activeColorMode = paletteList[i];
+let palletIndex = 0;
 // Array index for selecting a random palette
 let randomPaletteIndex;
+// Default color palette = palleteList[0] = 'faded'
+let activeColorMode = paletteList[0];
 // Runtime values for setting and tracking script states
 let bIsRunning = false;
 // Used to minimize the number of confirmation prompts
@@ -62,19 +62,18 @@ function drawShape()
 {
 		// Check for mouse movement
 		document.addEventListener('mousemove', e => {
-			// Store mouse cursor position minus margin offset
+			// Get a random value originating from the mouse cursour to the canvas boundaries
 			xPos = Math.round(e.clientX - rect.left);
 			yPos = Math.round(e.clientY - rect.top);
 			// Enable drawing on mousedown
 			canvas.addEventListener('mousedown', e => {
 				bEnableDrawing = true;
-				// Store mouse cursor location as the new origin for starburst
+				// Store mouse cursor location as the new origin for starburst animation
 				xOrigin = xPos;
 				yOrigin = yPos;
 			})
-			// Draw a shape if drawing mode is enabled
+			// Draw shape if drawing mode enabled
 			if(bEnableDrawing) {
-				// Update mouse X,Y values on the UI
 				updateCoords();
 				// Random point (x1,y1): Two random numbers for lines with 10 extra pixels on the edges for coverage (-10:1009, -10:509)
 				// TODO: make a random number function to reduce repeated Math.random() calls: getRandomNumber(x,y); | x = upper limit, y = offset
@@ -261,7 +260,6 @@ function updateButtons()
 		btn5.style.color = "violet";
 	} else {
 		btn6.style.color = "violet";
-//		shapeType = 'starburst';
 	}
 	btn10.style = "filter:saturate(100%)";
 	switch(activeColorMode) {
@@ -322,7 +320,7 @@ function updateButtons()
 			btn10.style = "filter:saturate(50%)";
 		 	btn10.innerHTML = "🦜";
 		 	divclr.style.color = "#55ffff";
-			rainbowBanner.style = "background-image:linear-gradient(to right, #0000aa, #00aaaa, #00aa00, #aa0000, #aa00aa, #aa5500, #aaaaaa, #5555ff, #55ffff, #55ff55, #ff5555, #ff55ff, #ffff55, #ffffff, #555555);font-weight:bold;";
+			rainbowBanner.style = "background-image:linear-gradient(to right, #0000aa, #00aa00, #00aaaa, #aa0000, #aa00aa, #aa5500, #aaaaaa, #5555ff, #55ff55, #55ffff, #ff5555, #ff55ff, #ffff55, #ffffff, #555555);font-weight:bold;";
 			rainbowBanner.title = "Rainbow Noise 🍭 Full 16-color CGA palette (minus pure black)";
 			break;
 		case 'pyxel':
@@ -519,13 +517,13 @@ function newAnimationInstance()
 function swapColorMode()
 {
 	// Reset index to the start if the last element is called
-	if(i == 11) {
-		i = 0;
+	if(palletIndex == 11) {
+		palletIndex = 0;
 		// Otherwise increment the counter by 1 for the next palette
 	} else {
-		i++;
+		palletIndex++;
 	}
-	activeColorMode = paletteList[i];	// Set active color palette, regardless
+	activeColorMode = paletteList[palletIndex];	// Set active color palette, regardless
 	setBrushColor();
 	updateButtons();
 	updateBanner();
