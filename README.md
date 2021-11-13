@@ -1,4 +1,4 @@
-# Available for [Desktop](https://ateadaze.github.io/) and [Mobile](https://ateadaze.github.io/m/)
+# Available for [Desktop](https://ateadaze.github.io/) or [Mobile](https://ateadaze.github.io/m/)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
@@ -10,6 +10,10 @@
 
 ## Screenshots
 
+🖌️|**Hand drawn**
+---|---|
+🎲|**Randomly generated**
+
 #### ⧎ Triangle Web 🖌️ Faded
 ![triangles-faded](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
 
@@ -18,6 +22,9 @@
 
 #### ✺ Starburst 🎲 Fire
 ![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
+
+#### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
+![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
 ![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-2.png)
@@ -30,14 +37,6 @@
 
 #### ✺ Starburst 🎲 Patriot
 ![starburst](/images/screenshots/rn_screen-starburst-patriot-gen.png)
-
-#### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
-![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
-
-
-🖌️|**Hand drawn**
----|---|
-🎲|**Randomly generated**
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
@@ -84,14 +83,14 @@ Button|Key|&nbsp;
 
 ✔️ **Press spacebar** to select the next color palette
 
-🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mousedown)
+🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
-🏠 **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchstart)
+🏠 **Tap and drag canvas** to set new origin for starburst animation (setpoint=canvas.touchup)
 
 ℹ️&nbsp;&nbsp;**Mobile version is basic** (works but needs work)
 
