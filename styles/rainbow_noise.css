@@ -76,8 +76,8 @@ button {
 	border: 4px outset;
 	color: white;
 	cursor: pointer;
-	width: 150px;
-	height: 48px;
+	width: 145px;
+	height: 45px;
 	text-align: center;
 	align-content: center;
 	align-items: center;
@@ -115,9 +115,9 @@ button.clearBtn:active {
 /* shape buttons */
 button.shapeBtn {
 	border-color: darkmagenta;
-	font-size: 14pt;
+	font-size: 12pt;
 	width: 170px;
-	height: 48px;
+	height: 42px;
 }
 button.shapeBtn:hover {
 	border-color: mediumorchid;
