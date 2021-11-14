@@ -9,7 +9,7 @@
 	<link href="styles/rainbow_noise.css" rel="stylesheet">
 	<link href="images/rainbow_noise.ico" rel="shortcut icon" type="image/x-icon">
 </head>
-<!-- TODO: replace HTML formatting with CSS, old man -->
+<!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names -->
 <body>
 <script src="scripts/main.js"></script>
 <div id="rainbowBanner" onclick="bDisablePhotoWarning=true;setBrushColor();updateButtons();updateBanner();"></div>
@@ -21,7 +21,6 @@
 		<td align="center" valign="bottom"><div id="divCoordsY">Y: 0</div></td>
 		<td align="center" valign="bottom" width="100" colspan="2"><div id="divColorMode">Grayscale</div></td>
 	</tr>
-	<!-- TODO: give the buttons proper names -->
 	<tr align="left">
 		<td align="left">
 			<button class="runBtn" id="button1" onclick="newAnimationInstance();" title="Run [r]">▶ RUN</button>
