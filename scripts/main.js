@@ -1,14 +1,12 @@
-// Rainbow Noise: draw random shapes with the mouse or animate them automatically
-// TODO: improve overall structure and flow
-// Default brush size: larger values add more color but can obscure finer details and patterns if set too high
-const brushSize = 2.73;
-// Palette list: cycles through each element (resets to the first element if the last element is called)
+// TODO: improve the overall structure and flow, double-check for unncessary function calls, pass palette array values directly to the banner gradient (possible w/ CSS syntax?)
+// --------------------------------------------------------------
+// Color palette list is an array of strings (12 total)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
 // Rainbow with desaturated colors
 const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodgerblue", "#5d3fd3", "#cf9fff");
 // Rainbow with classic primary colors (ROYGBIV)
 const randRainbowColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "mediumorchid");
-// Fire: deep red, orange red, red orange, and pale yellow
+// Fire: deep red, orange red, red orange, pale yellow
 const randFireColor = new Array("firebrick", "orangered", "#ffaa33", "khaki");
 // Ice: shades of blue with hints of white and pale green
 const randIceColor = new Array("blue", "dodgerblue", "#088f8f", "#98fB98", "darkblue", "#dddddd");
@@ -19,24 +17,22 @@ const randPatriotColor = new Array("#b31942", "#ffffff", "#0a3161");
 // Grayscale: dim gray to off-white
 const randGrayscaleColor = new Array(	"#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e", "#9b9b9b", "#b2b2b2", "#c2c2c2", "#d5d5d5");
 // CGA-8 = intense colors = first 8 elements (0:7), CGA-16 = all 15 colors (0:14)
-const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#555555", "#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa");
+const randCGAColor = new Array(	"#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#aaaaaa", "#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#555555");
 // Pyxel: default color palette for pyxeledit.com (no pure black as it creates too much negative space)
 const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
-// Gameboy: mostly official colors for the classic hand-held (3rd color is darkened as it was indistinguishable from the last one on a modern monitor)
+// Gameboy: mostly official colors for the classic handheld (3rd color is darkened as it was indistinguishable from the last one on a modern monitor)
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
-// Array index used for palette swapping (0:11)
-let palletIndex = 0;
-// Array index for selecting a random palette
-let randomPaletteIndex;
-// Default color palette = palleteList[0] = 'faded'
-let activeColorMode = paletteList[0];
+// Array index used to cycle through the palettes (0:11)
+let paletteIndex = 0;
+// Default color palette
+let activeColorPalette = 'faded'
 // Runtime values for setting and tracking script states
 let bIsRunning = false;
 // Used to minimize the number of confirmation prompts
 let bScreenIsClear = true;
 // Enable or disable the Photosensitivity warning
 let bDisablePhotoWarning = false;
-// Select a random palette on page load if set to true
+// Select a random palette on page load
 let bEnableRandomPalette = false;
 // Draw shapes on the canvas while true
 let bEnableDrawing = false;
@@ -46,73 +42,72 @@ let yOrigin = 250;
 // Default mouse cursor position
 let xPos = 0;
 let yPos = 0;
-// Animations are started manually so this starts at 0
+// Animations are started manually so this always starts at 0
 let animationSpeed = 0;
 // Default animation shape (triangle, line, starburst)
 let shapeType = 'triangle';
 // Adds more random variation to triangles
 let randomTriangleLength, randomTriangleOffset;
-// Counts number of shapes drawn for help screen (255 drawn by default)
-let nBackgroundShapesDrawn;
 // Used for random lines (x1,y1),(x2,y2)
 let x1, y1, x2, y2;
+// Default brush size: larger values add more color but can obscure finer details and patterns if set too high (TODO: add option to change brush size on UI)
+let brushSize = 2.73;
 
 // Draw random shape at the mouse cursor
 function drawShape()
 {
-		// Check for mouse movement
-		document.addEventListener('mousemove', e => {
-			// Get a random value originating from the mouse cursour to the canvas boundaries
-			xPos = Math.round(e.clientX - rect.left);
-			yPos = Math.round(e.clientY - rect.top);
-			// Enable drawing on mousedown
-			canvas.addEventListener('mousedown', e => {
-				bEnableDrawing = true;
-				// Store mouse cursor location as the new origin for starburst animation
-				xOrigin = xPos;
-				yOrigin = yPos;
-			})
-			// Draw shape if drawing mode enabled
-			if(bEnableDrawing) {
-				updateCoords();
-				// Random point (x1,y1): Two random numbers for lines with 10 extra pixels on the edges for coverage (-10:1009, -10:509)
-				// TODO: make a random number function to reduce repeated Math.random() calls: getRandomNumber(x,y); | x = upper limit, y = offset
-				x1 = Math.floor(Math.random() * 1020)-10;
-				y1 = Math.floor(Math.random() * 520)-10;
-				ctx.beginPath();
-				setBrushColor();
-				ctx.lineWidth = brushSize;
-				// Line scatter: draw line from mouse cursor to a random point
-				if(shapeType == 'line') {
-					ctx.moveTo(xPos, yPos);
-					ctx.lineTo(x1, y1);
-					ctx.stroke();
-					ctx.closePath();
-				} else if(shapeType == 'triangle') {
-					// Triangle web: draw triangle originating from mouse cursor
-					randomTriangleLength = Math.floor(Math.random() * 30)+5;
-					randomTriangleOffset = Math.floor(Math.random() * 35)+5;
-					ctx.moveTo(xPos, yPos);
-					ctx.lineTo(x1, y1);
-					ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
-					ctx.closePath();
-					ctx.stroke();
-					// Fill triangle with black to create more negative space (too similar to line scatter w/out the fill)
-					ctx.fill();
-				} else {
-					// Starburst: draw line from origin point to mouse cursor
-					ctx.moveTo(xOrigin,yOrigin);
-					ctx.lineTo(xPos,yPos);
-					ctx.closePath();
-					ctx.stroke();
-				}
-			}
-			// Disable drawing on mouseup
-			canvas.addEventListener('mouseup', e => {
-				bEnableDrawing = false;
-				bScreenIsClear = false;
-			})
-	})
+	// Check for mouse movement
+	document.addEventListener('mousemove', e => {
+		// Get current mouse position minus margin offsets
+		xPos = Math.round(e.clientX - rect.left);
+		yPos = Math.round(e.clientY - rect.top);
+		canvas.addEventListener('mousedown', e => {
+      // Enable drawing on mousedown
+			bEnableDrawing = true;
+			// Store mouse cursor location as the new origin for starburst animation
+			xOrigin = xPos;
+			yOrigin = yPos;
+		})
+		// Draw shape if drawing mode enabled
+		if(bEnableDrawing) {
+			updateCoords();
+			// Random point (x1,y1): Two random numbers for lines with 10 extra pixels on the edges for coverage (-10:1009, -10:509)
+			x1 = Math.floor(Math.random() * 1020)-10;
+			y1 = Math.floor(Math.random() * 520)-10;
+			ctx.beginPath();
+			setBrushColor();
+			ctx.lineWidth = brushSize;
+		if(shapeType == 'line') {
+      // Line scatter: draw line from mouse cursor to a random point
+			ctx.moveTo(xPos, yPos);
+			ctx.lineTo(x1, y1);
+			ctx.stroke();
+			ctx.closePath();
+		} else if(shapeType == 'triangle') {
+      // Triangle web: draw triangle originating from mouse cursor
+		  randomTriangleLength = Math.floor(Math.random() * 30)+5;
+			randomTriangleOffset = Math.floor(Math.random() * 35)+5;
+			ctx.moveTo(xPos, yPos);
+			ctx.lineTo(x1, y1);
+			ctx.lineTo(x1+randomTriangleOffset,y1+randomTriangleLength);
+			ctx.closePath();
+			ctx.stroke();
+			// Fill triangle with black to create more negative space (too similar to line scatter w/out the fill)
+			ctx.fill();
+		} else {
+			// Starburst: draw line from origin point to mouse cursor
+			ctx.moveTo(xOrigin,yOrigin);
+			ctx.lineTo(xPos,yPos);
+			ctx.closePath();
+			ctx.stroke();
+		}
+	}
+	// Disable drawing on mouseup
+	canvas.addEventListener('mouseup', e => {
+  	bEnableDrawing = false;
+  	bScreenIsClear = false;
+    })
+  })
 }
 
 // Run animation without user input
@@ -177,7 +172,7 @@ function drawStarburstLine()
 // Select random brush color from active palette
 function setBrushColor()
 {
-	switch(activeColorMode) {
+	switch(activeColorPalette) {
 		case 'faded':
 			currentColor = Math.floor(Math.random() * 7);
 			ctx.strokeStyle = randFadedColor[currentColor];
@@ -262,7 +257,8 @@ function updateButtons()
 		btn6.style.color = "violet";
 	}
 	btn10.style = "filter:saturate(100%)";
-	switch(activeColorMode) {
+  // Update palette button, banner tooltip, and color gradient
+	switch(activeColorPalette) {
 		case 'faded':
 			divColorMode.innerHTML = "Faded";
 			btn10.style = "filter:saturate(45%)";
@@ -357,12 +353,11 @@ function updateButtons()
 		}
 }
 
-// Print color commentary in the banner
+	// Print color commentary in the banner (1:5, 10:24, 25:49, 50:74, 75:99, 100:animationSpeed)
 function updateBanner()
 {
 	// Update animation speed on UI
 	divSpeed.innerHTML = "Speed: " + animationSpeed + "x";
-	// Print color commentary in the banner (1:5, 10:24, 25:49, 50:74, 75:99, 100:animationSpeed)
 	if( (animationSpeed > 0) && (animationSpeed < 6) ) {
 		rainbowBanner.innerHTML = "Rainbow Noise 🍀 Running at an optimal speed (1:5)";
 		bDisablePhotoWarning = true;
@@ -388,11 +383,20 @@ function updateBanner()
 	}
 }
 
-// Use a random color palette on page load (bEnableRandomPalette)
+// Select a random color palette
 function setRandomPalette()
 {
-	randomPaletteIndex = Math.floor(Math.random() * 12)
-	activeColorMode = paletteList[randomPaletteIndex];
+  // Store active color palette for comparison
+  let lastColorPalette = activeColorPalette;
+  // Array index for selecting a random palette (0:11)
+  let randomPaletteIndex = Math.floor(Math.random() * 12)
+  // Select a random palette
+	activeColorPalette = paletteList[randomPaletteIndex];
+  // Reroll until the new palette is not the current one
+  while(activeColorPalette == lastColorPalette) {
+    randomPaletteIndex = Math.floor(Math.random() * 12)
+	  activeColorPalette = paletteList[randomPaletteIndex];
+  }
 	updateButtons()
 	updateBanner();
 }
@@ -401,89 +405,89 @@ function setRandomPalette()
 function getKeyboardInput()
 {
 	document.addEventListener('keypress', e => {
-		switch(e.key) {
-			case 'r':
-				newAnimationInstance();
+	switch(e.key) {
+		case 'r':
+			newAnimationInstance();
+			break;
+		case 'p':
+			bIsRunning = false;
+			pauseAnimation();
+			break;
+		case 'c':
+			clearScreen();
+			break;
+		case 's':
+			shapeType = 'starburst'
+			break;
+		case 'l':
+			shapeType = 'line'
+			break;
+		case 't':
+			shapeType = 'triangle'
+			break;
+		case 'o':
+			xOrigin = 500;
+			yOrigin = 250;
+			break;
+		case '?':
+			confirmCanvasOverwrite();
+			break;
+		case 'Enter':
+			togglePaintMode();
+			break;
+		case 'd':
+			activeColorPalette = 'faded';
+			break;
+		case 'a':
+			activeColorPalette = 'rainbow';
+			break;
+		case 'f':
+			activeColorPalette = 'fire';
+			break;
+		case 'i':
+			activeColorPalette = 'ice';
+			break;
+		case 'b':
+			activeColorPalette = 'rgb';
+			break;
+		case 'm':
+			activeColorPalette = 'cmy';
+			break;
+		case '8':
+			activeColorPalette = 'cga';
+			break;
+		case '6':
+			activeColorPalette = 'cga16';
+			break;
+		case 'x':
+				activeColorPalette = 'pyxel';
 				break;
-			case 'p':
-				bIsRunning = false;
-				pauseAnimation();
-				break;
-			case 'c':
-				clearScreen();
-				break;
-			case 's':
-				shapeType = 'starburst'
-				break;
-			case 'l':
-				shapeType = 'line'
-				break;
-			case 't':
-				shapeType = 'triangle'
-				break;
-			case 'o':
-				xOrigin = 500;
-				yOrigin = 250;
-				break;
-			case '?':
-				confirmCanvasOverwrite();
-				break;
-			case 'Enter':
-				togglePaintMode();
-				break;
-			case 'd':
-				activeColorMode = 'faded';
-				break;
-			case 'a':
-				activeColorMode = 'rainbow';
-				break;
-			case 'f':
-				activeColorMode = 'fire';
-				break;
-			case 'i':
-				activeColorMode = 'ice';
-				break;
-			case 'b':
-				activeColorMode = 'rgb';
-				break;
-			case 'm':
-				activeColorMode = 'cmy';
-				break;
-			case '8':
-				activeColorMode = 'cga';
-				break;
-			case '6':
-				activeColorMode = 'cga16';
-				break;
-			case 'x':
-					activeColorMode = 'pyxel';
-					break;
-			case 'y':
-				activeColorMode = 'gb';
-				break;
-			case 'u':
-				activeColorMode = 'usa';
-				break;
-			case 'g':
-				activeColorMode = 'grayscale';
-				break;
-			case '*':
-				setRandomPalette();
-				break;
-			case ' ':
-				swapColorMode();
-				break;
-			default:
-				break;
+		case 'y':
+			activeColorPalette = 'gb';
+			break;
+		case 'u':
+			activeColorPalette = 'usa';
+			break;
+		case 'g':
+			activeColorPalette = 'grayscale';
+			break;
+		case '*':
+			setRandomPalette();
+			break;
+		case ' ':
+			swapColorMode();
+			break;
+		default:
+			break;
 		}
 	updateButtons();
 	updateBanner();
 	})
 }
 
+// Set the canvas to a solid black 1000x500 rectangle
 function clearScreen()
 {
-	// Set the canvas to a solid black 1000x500 rectangle
 	ctx.fillRect(0, 0, 1000, 500);
 	bScreenIsClear = true;
 }
@@ -504,6 +508,7 @@ function updateCoords()
 	divCoordsY.innerHTML = "Y: " + yPos;
 }
 
+// Each new instance increments the number of shapes drawn per cycle
 function newAnimationInstance()
 {
 	bIsRunning = true;
@@ -517,13 +522,14 @@ function newAnimationInstance()
 function swapColorMode()
 {
 	// Reset index to the start if the last element is called
-	if(palletIndex == 11) {
-		palletIndex = 0;
+	if(paletteIndex == 11) {
+		paletteIndex = 0;
 		// Otherwise increment the counter by 1 for the next palette
 	} else {
-		palletIndex++;
+		paletteIndex++;
 	}
-	activeColorMode = paletteList[palletIndex];	// Set active color palette, regardless
+  // Set active color palette, regardless
+	activeColorPalette = paletteList[paletteIndex];
 	setBrushColor();
 	updateButtons();
 	updateBanner();
@@ -548,7 +554,7 @@ function togglePaintMode()
 
 function drawMenuBackground()
 {
-	nBackgroundShapesDrawn = 0;
+	let nBackgroundShapesDrawn = 0;
 	// Draw 256 triangles in the selected color as a background (0:255)
 	while(nBackgroundShapesDrawn < 256) {
 		x1 = Math.floor(Math.random() * 1020)-10;
@@ -563,7 +569,7 @@ function drawMenuBackground()
 	}
 }
 
-// Prints instructions on the canvas (overwrites occupied pixels)
+// Print instructions on the canvas (overwrites occupied pixels)
 function drawHelpScreen()
 {
 	drawMenuBackground();
@@ -596,8 +602,7 @@ function confirmCanvasOverwrite()
 {
 	// Display a confirmation prompt if the canvas has been used
 	if(!bScreenIsClear) {
-		let r;
-		r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
+		let r = confirm("Animation will pause and instructions will partially overwrite the canvas. Overwrite?");
 		if (r == true) {
 			pauseAnimation();
 			drawHelpScreen();
