@@ -1,4 +1,4 @@
-// Create an 1000x600 canvas and add it to the document body
+// Create an 1000x500 canvas and add it to the document body
 const canvas = document.createElement('canvas');
 document.body.appendChild(canvas)
 canvas.width = 1000;
