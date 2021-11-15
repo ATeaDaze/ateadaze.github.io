@@ -23,9 +23,6 @@
 #### ✺ Starburst 🎲 Fire
 ![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
 
-#### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
-![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
-
 #### ⧎ Triangle Web 🎲 CGA-8
 ![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-2.png)
 
@@ -37,6 +34,10 @@
 
 #### ✺ Starburst 🎲 Patriot
 ![starburst](/images/screenshots/rn_screen-starburst-patriot-gen.png)
+
+
+#### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
+![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 ## Color Palettes
 * **Faded:** rainbow with desaturated colors
