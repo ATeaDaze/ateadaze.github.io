@@ -1,138 +1,138 @@
 #rainbowBanner {
-	padding: 5px;
-	margin: auto;
-	display: block;
-	background-image: linear-gradient(to right, red, maroon);
-	color: white;
-	font-family:  'Calibri', 'Helvetica', 'Arial', sans-serif;
-	font-size: 17px;
-	font-weight: bold;
-	text-align: left;
-	text-shadow: 2px 2px 2px #000000;
-	padding-left: 140px;
-	height: 25px;
-	width: 640px;
+  padding: 5px;
+  margin: auto;
+  display: block;
+  background-image: linear-gradient(to right, red, maroon);
+  color: white;
+  font-family:  'Calibri', 'Helvetica', 'Arial', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 2px 2px 2px #000000;
+  padding-left: 140px;
+  height: 25px;
+  width: 640px;
 }
 #rainbowBanner:hover {
-	cursor: help;
+  cursor: help;
 }
 #divCoordsX, #divCoordsY, #divSpeed, #divColorMode {
-	font-family: 'Consolas', 'Ubuntu Mono', 'Lucida Console', 'Courier New', monospace;
-	font-size: 12pt;
-	font-weight: bold;
-	text-shadow: 2px 2px 2px #000000;
-	padding: 3px;
-	color: white;
+  font-family: 'Consolas', 'Ubuntu Mono', 'Lucida Console', 'Courier New', monospace;
+  font-size: 12pt;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #000000;
+  padding: 3px;
+  color: white;
 }
 #keyMap {
-	font-family: 'Consolas', 'Ubuntu Mono', 'Lucida  Consola', 'Courier New';
-	font-size: 10pt;
+  font-family: 'Consolas', 'Ubuntu Mono', 'Lucida  Consola', 'Courier New';
+  font-size: 10pt;
 }
 body {
-	font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
-	background-color: #111111;
-	font-size: 11pt;
-	color: #ffffff;
-	overscroll-behavior-y: contain;
-	-webkit-user-select: none; /* Safari */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+  font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
+  background-color: #111111;
+  font-size: 11pt;
+  color: #ffffff;
+  overscroll-behavior-y: contain;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 canvas {
-	padding: 0;
-	margin: auto;
-	display: block;
-	border: 3px solid #5e5e5e;
-	outline: 2px solid #222222;
-	cursor: url('../images/brush_cursor-32.png'), auto;
+  padding: 0;
+  margin: auto;
+  display: block;
+  border: 3px solid #5e5e5e;
+  outline: 2px solid #222222;
+  cursor: url('../images/brush_cursor-32.png'), auto;
 }
 canvas:active {
-	cursor: url('../images/brush_cursor-32-down.png'), auto;
+  cursor: url('../images/brush_cursor-32-down.png'), auto;
 }
 button {
-	font-size: 15pt;
-	font-family: Calibri, Arial, sans-serif;
-	font-weight: bold;
-	border: 4px outset;
-	color: white;
-	cursor: pointer;
-	width: 145px;
-	height: 45px;
-	text-align: center;
-	align-content: center;
-	align-items: center;
-	background-color: black;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+  font-size: 15pt;
+  font-family: Calibri, Arial, sans-serif;
+  font-weight: bold;
+  border: 4px outset;
+  color: white;
+  cursor: pointer;
+  width: 145px;
+  height: 45px;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  background-color: black;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 button:active {
-	transform: translateX(-1px);
-	border: 4px inset;
+  transform: translateX(-1px);
+  border: 4px inset;
 }
 /* main buttons */
 button.runBtn {
-	border-color: forestgreen;
+  border-color: forestgreen;
 }
 button.runBtn:hover {
-	border-color: limegreen;
+  border-color: limegreen;
 }
 button.pauseBtn {
-	border-color: firebrick;
+  border-color: firebrick;
 }
 button.pauseBtn:hover {
-	border-color: indianred;
+  border-color: indianred;
 }
 button.clearBtn {
-	border-color: mediumblue;
+  border-color: mediumblue;
 }
 button.clearBtn:hover {
-	border-color: dodgerblue;
+  border-color: dodgerblue;
 }
 button.clearBtn:active {
-	color: dodgerblue;
+  color: dodgerblue;
 }
 /* shape buttons */
 button.shapeBtn {
-	border-color: darkmagenta;
-	font-size: 12pt;
-	width: 170px;
-	height: 42px;
+  border-color: darkmagenta;
+  font-size: 12pt;
+  width: 170px;
+  height: 42px;
 }
 button.shapeBtn:hover {
-	border-color: mediumorchid;
+  border-color: mediumorchid;
 }
 /* help buttons */
 button.helpBtn {
-	font-size: 17pt;
-	border-color: #1e1e1e;
-	color: #dddddd;
-	height: 52px;
-	width: 52px;
-	font-weight: normal;
+  font-size: 17pt;
+  border-color: #1e1e1e;
+  color: #dddddd;
+  height: 52px;
+  width: 52px;
+  font-weight: normal;
 }
 button.helpBtn:hover {
-	border-color: #7e7e7e;
+  border-color: #7e7e7e;
 }
 button.helpBtn:active {
-	border-color: #aaaaaa;
-	color: #aaaaaa;
+  border-color: #aaaaaa;
+  color: #aaaaaa;
 }
 hr {
-	padding: 0px;
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: auto;
-	margin-right: auto;
-	border-style: solid;
-	border-width: 1px;
-	background-color: #333333;
-	color: #222222;
+  padding: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #333333;
+  color: #222222;
 }
 hr.hidden {
-	padding: 1px;
-	border-style: solid;
-	color: #111111;
-	background-color: #111111;
+  padding: 1px;
+  border-style: solid;
+  color: #111111;
+  background-color: #111111;
 }
