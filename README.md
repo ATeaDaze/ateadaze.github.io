@@ -102,8 +102,10 @@ Button|Key|&nbsp;
 * [X] Fix button colors not updating
 * [X] Change origin setpoint to `mousedown`  (instead of `mouseup`)
 * [X] Added custom mouse cursors
+* [X] Set indentation style to `2` tabs
 * [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
+
 ### Desktop
 * [X] Expand `mousemove` listener to entire document body: wilder but more satisfying
 * [X] Add a button to toggle drawing mode
