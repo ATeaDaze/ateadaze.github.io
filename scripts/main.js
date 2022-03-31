@@ -1,8 +1,5 @@
-// Rainbow Noise: JavaScript app that uses the 2D canvas element to draw random shapes
-// Contact: https://github.com/ATeaDaze/ateadaze.github.io
-// TODO: improve the overall structure and flow, double-check for unncessary function calls, 
-// pass palette array values directly to the banner gradient (possible w/ CSS syntax?), 
-// use jQuery for styling elements to elminiate "document.getElementbyId() hell", as I call it
+// Rainbow Noise: use the JavaScript 2D canvas element to draw random shapes
+// Homepage: https://github.com/ATeaDaze/ateadaze.github.io
 // --------------------------------------------------------------------------------------------
 // Color palette list is an array of strings (12 total)
 const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
