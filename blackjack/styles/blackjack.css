@@ -1,0 +1,213 @@
+body {
+  font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
+  background-color: #154700; /*#0F3300;*/
+  font-size: 28pt;
+  font-weight: bold;
+  color: #ffffff;
+  -webkit-text-stroke: 1px black;
+}
+
+button {
+  background-color: #111111;
+  color: #dddddd;
+  font-size: 20pt;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 3pt;
+  width: 25%;
+  height: 50px;
+}
+
+button:hover {
+  color: #ffffff;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.btnNewGame {
+  width: 53%;
+}
+
+table {
+/*  border: 2px solid darkgreen; */
+  width: 40%;
+  padding: 3px;
+}
+
+hr {
+  background-color: white;
+  border: 1px solid black;
+  height: 4px;
+}
+
+#gameBoardPlayer, #gameBoardDealer {
+  font-family: serif, 'Times New Roman';
+  font-size: 42pt;
+  font-weight: bold;
+
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.mainHeader {
+  font-size: 45pt;
+}
+
+.btnTable {
+  text-align: center;
+  padding: 5px;
+}
+
+.statusOutline {
+  border: 1px solid #555555;
+  background-color: #000000;
+  padding: 5px;
+}
+
+.helpTxt {
+  font-family: 'Consolas', fixed;
+  font-size: 20pt;
+}
+
+#playerScoreTxt,#dealerScoreTxt {
+  font-size: 30pt;
+  font-weight: bold;
+  text-align: right;
+}
+
+#playerScoreTotalTxt,#dealerScoreTotalTxt {
+  font-style: italic;
+/*  font-weight: normal; */
+  text-align: left;
+}
+
+#btnHit {
+  color: chartreuse;
+}
+
+#btnHit:hover {
+  color: #AFFF60;
+}
+
+#btnStand {
+  color: indianred;
+}
+
+#btnStand:hover {
+  color: #F26D6D;
+}
+
+#statusBarTxt {
+  font-size: 28pt;
+  text-align: center;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;  
+}
+
+@keyframes anim-flipX {
+  0% {
+    opacity: 0;
+    transform: rotateX(90def);
+  }
+  50% {
+    opacity: 1;
+    transform: rotateX(720deg);
+  }
+  100% {
+    /* animate nothing to pause animation at the end */
+    opacity: 1;
+    transform: rotateX(720deg);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/*
+
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  border: 3px solid #5e5e5e;
+  outline: 2px solid #222222;
+}
+
+documentElement {
+}
+
+documentElement.documentID {
+  border-color: firebrick;
+}
+
+documentElement.hidden {
+  padding: 1px;
+  border-style: solid;
+  color: #111111;
+  background-color: #111111;
+}
+
+#classValue {
+  padding: 5px;
+  margin: auto;
+  display: block;
+  background-image: linear-gradient(to right, red, maroon);
+  color: white;
+  font-family:  'Calibri', 'Helvetica', 'Arial', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 2px 2px 2px #000000;
+  padding-left: 140px;
+  height: 25px;
+  width: 640px;
+}
+
+a {
+  font-size: 14pt;
+  text-decoration: none;
+  color: mediumorchid;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: orchid;
+}
+
+a:visted {
+  color: orchid;
+  }
+
+*/

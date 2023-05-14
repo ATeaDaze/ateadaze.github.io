@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="ENTER A BRIEF DESCRIPTION" />
+  <meta name="keywords" content="ADD, COMMA, SEPARATED, KEYWORDS" />
+  <title>🃏 Blackjack</title>
+  <link href="styles/blackjack.css" rel="stylesheet">
+  <!-- <link href="images/blackjack.ico" rel="shortcut icon" type="image/x-icon"> -->
+  <base target="_blank">
+</head>
+<body onload="mainGameLoop();">
+
+<script src="main.js"></script>
+
+<center>
+
+<span class="mainHeader">♥️ ♠️ B L A C K J A C K ♣️ ♦️</span>
+
+<table>
+  <tr>
+    <td class="statusOutline">
+      <!-- Status Bar -->
+      <div id="statusBarTxt">Good Luck 🍀 ($5 / hand)</div>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <hr class="hidden">
+      <div id="gameBoardPlayer"></div>
+      <div id="playerScoreTxt"></div>
+      <div id="playerScoreTotalTxt"></div>
+      <hr>
+      <div id="gameBoardDealer"></div>
+      <div id="dealerScoreTxt"></div>
+      <div id="dealerScoreTotalTxt"></div>
+    </td>
+  </tr>
+  <tr>
+    <td class="btnTable">
+      <button onclick="restartGame();" class="btnNewGame">DEAL NEW HAND</button><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="btnTable">
+      <button id="btnStand" onclick="stand();">STAND</button>&nbsp;&nbsp;
+      <button onclick="drawPlayerCard();" id="btnHit">HIT</button><hr class="hidden">
+      <span class="helpTxt">Keyboard:&nbsp;[N]ew Hand&nbsp;[S]tand&nbsp;[H]it</span>
+    </td>
+  </tr>
+</table>
+
+</center>
+
+</body>
+</html>
