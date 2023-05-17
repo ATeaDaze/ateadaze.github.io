@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="A basic blackjack game written in JavaScript" />
+  <meta name="keywords" content="blackjack, javascript, app, online, casino" />
+  <title>Blackjack</title>
+  <link href="styles/blackjack.css" rel="stylesheet">
+  <link href="images/blackjack.ico" rel="shortcut icon" type="image/x-icon">
+  <base target="_blank">
+</head>
+
+<!-- Deal new hand on page load -->
+<body onload="mainGameLoop();">
+<script src="main.js"></script>
+
+<center>
+<!-- ♠️ ♥️ B L A C K J A C K ♦️ ♣️ -->
+
+<span class="cardDeckFontRed">🃊</span><span class="cardDeckFontBlack">🂡</span>&nbsp;&nbsp;
+<span class="mainHeader">B L A C K J A C K</span>&nbsp;&nbsp;
+<span class="cardDeckFontBlack">🃑</span><span class="cardDeckFontRed2">🂺</span>
+
+<!-- Notification when 52 cards have been used -->
+<span id="toastMessage">52 Cards Used 🎲 Shuffling Deck</span>
+
+<!-- Status bar -->
+<table>
+  <tr>
+    <td class="statusOutline">
+      <!-- Status Bar -->
+      <div id="statusBarTxt">$50 / hand 🍀 Blackjack Pays $125</div>
+    </td>
+  </tr>
+</table>
+
+<hr class="hidden">
+
+<!-- Player game board for cards -->
+<table>
+  <tr>
+    <td>
+      <div id="gameBoardPlayer"></div>
+    </td>
+  </tr>
+</table>
+
+<!-- Player score and money -->
+<table>
+  <tr>
+      <td><div id="playerScoreTotalTxt">$250</div></td>
+      <td><div id="playerScoreTxt">Player: 0</div></td>
+  </tr>
+</table>
+<hr width="42%">
+
+<!-- Dealer game board for cards -->
+<table>
+  <tr>
+    <td>
+      <div id="gameBoardDealer"></div>
+    </td>
+  </tr>
+</table>
+
+<!-- Dealer score and bank -->
+<table>
+  <tr>
+    <td><div id="dealerScoreTotalTxt">$1000</div></td>
+    <td><div id="dealerScoreTxt">Dealer: 0</div></td>
+ </tr>
+</table>
+<hr width="42%">
+
+<!-- [DEAL NEW HAND], [STAND], and [HIT] buttons -->
+<table>
+   <tr>
+    <td class="btnTable">
+      <button onclick="reloadPage()" class="btnNewGameStyle">START NEW GAME</button>
+      <hr class="smallLine">
+      <button class="btnNewGameStyle" onclick="doubleDown();" id="btnDoubleDown">DOUBLE DOWN</button>
+    </td>
+    <td class="btnTable">
+      <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle">DEAL NEW HAND</button>
+      <hr class="smallLine">
+      <button id="btnStand" onclick="stand();">STAND</button>&nbsp;&nbsp;
+      <button onclick="drawPlayerCard();" id="btnHit">HIT</button>
+    </td>
+  </tr>
+</table>
+<!-- Keyboard shortcut guide -->
+<span class="keyGuideTxt">Key Map:&nbsp;[N]ew Hand&nbsp;[S]tand&nbsp;[H]it&nbsp;[D]ouble Down</span>
+
+</center>
+
+</body>
+</html>
