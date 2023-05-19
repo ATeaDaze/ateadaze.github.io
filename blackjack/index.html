@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="A basic blackjack game written in JavaScript" />
+  <meta name="keywords" content="blackjack, javascript, app, online, casino" />
+  <title>Blackjack</title>
+  <link href="styles/blackjack.css" rel="stylesheet">
+  <link href="images/blackjack.ico" rel="shortcut icon" type="image/x-icon">
+  <base target="_blank">
+<script src="scripts/jquery-3.7.0.min.js"></script>
+</head>
+<!-- Deal new hand on page load -->
+<body onload="mainGameLoop();">
+  <script src="scripts/main.js"></script>
+
+  <center>
+    <!-- Display BLACKJACK banner with ornamental cards -->
+    <span class="cardDeckFontRed">🃊</span><span class="cardDeckFontBlack">🂡</span>&nbsp;&nbsp;
+    <span class="mainHeader">B L A C K J A C K</span>&nbsp;&nbsp;
+    <span class="cardDeckFontBlack">🃑</span><span class="cardDeckFontRed2">🂺</span>
+    <!-- Notification when 52 cards have been used -->
+    <span id="toastMessage">52 Cards Used 🎲 Shuffling Deck</span>
+ 
+    <!-- Status bar -->
+    <table>
+      <tr>
+        <td class="statusOutline">
+          <!-- Status Bar -->
+          <div id="statusBarTxt"></div>
+        </td>
+      </tr>
+    </table>
+    <hr class="hidden">
+  
+    <!-- Player game board for cards -->
+    <div class="fixedTable">
+    <table>
+      <tr id="gameBoardPlayer">    
+        <!-- Card go here in their own TD -->
+      </tr>
+    </table>
+    </div><hr class="smallLine">
+    <!-- Player score and money -->
+    <table class="fixedTable">
+      <tr>
+          <td><div id="playerScoreTotalTxt">$250</div></td>
+          <td><div id="playerScoreTxt">Player: 0</div></td>
+      </tr>
+    </table>
+    <hr>
+
+    <!-- Dealer game board for cards -->
+    <div class="fixedTable">
+    <table>
+      <tr id="gameBoardDealer">    
+        <!-- Card go here in their own TD -->
+      </tr>
+    </table>
+    </div><hr class="smallLine">
+    <!-- Player score and money -->
+    <table class="fixedTable">
+      <tr>
+          <td><div id="dealerScoreTotalTxt">$1000</div></td>
+          <td><div id="dealerScoreTxt">Dealer: 0</div></td>
+      </tr>
+    </table>
+    <hr>
+
+    <!-- [DEAL NEW HAND], [DOUBLE DOWN], [STAND], and [HIT] buttons -->
+    <table>
+       <tr>
+        <td class="btnTable">
+<!--          <button onclick="reloadPage()" class="btnNewGameStyle" title="Start a new game">START NEW GAME</button> -->
+
+<!--        <button class="btnBet" id="btnBet50" onclick="betAmount=50;updateBet();">$50</button> 
+            <button class="btnBet" id="btnBet100" onclick="betAmount=100;updateBet();">$100</button> 
+            <button class="btnBet" id="btnBet200" onclick="betAmount=200;updateBet();">$200</button>
+
+-->
+
+          <img src="images/50.png" class="btnBet" id="btnBet50" onclick="betAmount=50;updateBet();">
+          <img src="images/100.png" class="btnBet" id="btnBet100" onclick="betAmount=100;updateBet();"> 
+          <img src="images/200.png" class="btnBet" id="btnBet200" onclick="betAmount=200;updateBet();">  
+
+          <hr class="smallLine">
+
+          <button class="btnNewGameStyle" onclick="doubleDown();" id="btnDoubleDown" title="Draw 1 more card for 2x payout">DOUBLE DOWN</button>
+<!--          <img src="images/double_down.png" class="btnNewGameStyle" onclick="doubleDown();" id="btnDoubleDown" title="Draw 1 more card for 2x payout"> -->
+
+
+        </td>
+        <td class="btnTable">
+          <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle" title="Deal a new hand">DEAL NEW HAND</button>
+          <hr class="smallLine">
+          <button id="btnStand" onclick="stand();" title="Stop drawing cards">STAND</button>&nbsp;
+          <button onclick="drawPlayerCard();" id="btnHit" title="Draw 1 card">HIT</button>
+        </td>
+      </tr>
+    </table>
+    <!-- Keyboard shortcut guide -->
+    <span class="keyGuideTxt">Key Map:&nbsp;[N]ew Hand&nbsp;[S]tand&nbsp;[H]it&nbsp;[D]ouble Down</span>
+  </center>
+
+<!-- Preload images to prevent load latency -->
+<img src="images/50.png" class="hidden">
+<img src="images/100.png" class="hidden">
+<img src="images/200.png" class="hidden">
+<img src="images/50active.png" class="hidden">
+<img src="images/100active.png" class="hidden">
+<img src="images/200active.png" class="hidden">
+<img src="images/50outline.png" class="hidden">
+<img src="images/100outline.png" class="hidden">
+<img src="images/200outline.png" class="hidden">
+
+</body>
+</html>
