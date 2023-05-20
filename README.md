@@ -1,7 +1,7 @@
 # Basic Blackjack
 A Blackjack app written in JavaScript
 
-## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/m/blackjack)
+## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
 
 ## Features
