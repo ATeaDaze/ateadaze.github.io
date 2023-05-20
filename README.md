@@ -1,8 +1,24 @@
 # Basic Blackjack
+A Blackjack app written in JavaScript
+
 ## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://m.ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
 
+## Features
+* **Play Blackjack** against an "AI" dealer
+  * **Dealer stands on all 17's**
+  * **Blackjack pays 3:2**
+* **Place bets:** $25, $50, $100, $200
+* **Double Down** if you're feeling lucky
+* **52-card deck:** no duplicate cards (needs optimization)
+
+### Keyboard Map
+```
+[H]it   [S]tand   [D]ouble Down   [N]ew Hand
+```
+
 # Rainbow Noise
+A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 
 ## [Desktop](https://ateadaze.github.io/) || [Mobile](https://ateadaze.github.io/m/)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
