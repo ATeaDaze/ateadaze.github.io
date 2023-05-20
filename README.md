@@ -1,4 +1,10 @@
-# [Desktop](https://ateadaze.github.io/) || [Mobile](https://ateadaze.github.io/m/)
+# Basic Blackjack
+## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://m.ateadaze.github.io/blackjack)
+![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
+
+# Rainbow Noise
+
+## [Desktop](https://ateadaze.github.io/) || [Mobile](https://ateadaze.github.io/m/)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
