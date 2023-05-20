@@ -14,7 +14,8 @@ A Blackjack app written in JavaScript
 
 ### Keyboard Map
 ```
-[H]it [S]tand [D]ouble Down [N]ew Hand
+[H]it [S]tand [D]ouble Down
+Deal a [N]ew Hand
 ```
 
 # Rainbow Noise
