@@ -121,7 +121,7 @@ a:hover {
 
 /* Digital scoreboard style for top status bar */
 .statusOutline {
-  width: 325px;
+  width: 350px;
   height: 20px;
   border: 1px solid #555555;
   background-color: #000000;
