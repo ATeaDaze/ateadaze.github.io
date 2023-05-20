@@ -239,7 +239,7 @@ a:hover {
 /* LCD font looks terrible in Chromium browsers */
 /*  font-family: 'Digital-7 Mono', 'LCDMono2'; */
 /*  font-family: 'Impact', 'Haettenschweiler', sans-serif; */
-  font-size: 14pt;
+  font-size: 12pt;
   letter-spacing: 1pt;
   text-align: center;
   animation: fadeIn 2s;
