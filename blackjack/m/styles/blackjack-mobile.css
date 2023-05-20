@@ -43,6 +43,15 @@ hr {
   margin-bottom: 7px;
 }
 
+a,a:visited {
+  text-decoration: none;
+  color: #7eabcc;
+}
+
+a:hover {
+  color: #9db8cc;
+}
+
 /* Larege BLACKJACK banner on top */
 .mainHeader {
   font-size: 20pt;
