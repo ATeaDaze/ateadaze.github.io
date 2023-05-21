@@ -1,3 +1,32 @@
+# Basic Blackjack
+A Blackjack app written in JavaScript
+
+## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
+![blackjack_banner](/blackjack/images/blackjack_banner.png)
+
+## Features
+* **Play Blackjack** against an "AI" dealer
+  * **Dealer stands on all 17's**
+  * **Blackjack pays 3:2**
+* **Place bets:** $25, $50, $100, $200
+* **Double Down** if you're feeling lucky
+* **52-card deck:** no duplicate cards (needs optimization)
+
+### Keyboard Map
+```
+[H]it [S]tand [D]ouble Down
+Deal a [N]ew Hand
+```
+
+* **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
+* **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/blackjack)**
+
+# 💻 Desktop Version: [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
+![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
+
+# 📱 Mobile Version: [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
+![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
+
 # TODO
 
 ```
@@ -85,19 +114,4 @@ stand()
 restartGame()
   clearScoreboard()
 reloadPage()
-```
-
-# COLOR LIST
-```
-card deck red:    #FF5555
-card deck black:  #333333
-
-red:              #ff0000
-pale red:         #ff3232
-
-indianred:        #cd5c5c
-pale indianred:   #f26d6d
-
-chartreuse:   
-pale chartreuse:   #afff60
 ```
