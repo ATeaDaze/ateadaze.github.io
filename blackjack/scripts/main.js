@@ -7,7 +7,7 @@ const fullDeck = [
   ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
 ];
 // Commonly used strings
-const defaultGreeting = "BLACKJACK PAYS 3:2 🍀 Dealer stands on 17";
+const defaultGreeting = "BLACKJACK PAYS 3:2 🍀 DEALER STANDS ON 17";
 const btnDisableCSS = "background-color: #222222; cursor: not-allowed";
 const btnEnableCSS = "background-color: #111111; cursor: pointer";
 const statusBarWinCSS = "color: chartreuse; animation: 2s anim-flipX ease 1;";
@@ -43,21 +43,22 @@ let bAceSwappedDealer = false;
 // Flags for tracking game
 let bGameOver = false;
 let bPlayerWon = false;
+let bEnableSound = true;
 let bDuplicateFound;
 // Display string for cards
 let cardFaceSuit;
 let cardFaceRank;
 let bShowHelp = false;
-let bShowKeyHelp = false;
-
-/*$(document).ready(function(){
-    $("#helpMenuTxt").hide();
-}); */
+let audioCard = new Audio("card_flip.mp3");
+let audioShuffle = new Audio("card_shuffle.mp3");
+let audioDing = new Audio("ding.mp3");
 
 // Generate 52 card deck
 generateCardDeck();
 // Watch for keyboard input (N, S, H)
 getKeyboardInput();
+// Play deck shuffle sound
+audioShuffle.play();
 
 function mainGameLoop() {
   statusBarTxt.innerHTML = defaultGreeting;
@@ -82,6 +83,7 @@ function restartGame() {
     betAmount = betAmount / 2;
     bDoubleDownLastRound = false;
   }
+  if(bEnableSound) audioShuffle.play();
   playerScore = 0;
   dealerScore = 0;
   nDealerCards = 0;
@@ -121,6 +123,7 @@ function drawPlayerCard() {
   cleanCardString();
   playerScore = getCardValue(playerScore);
   nPlayerCards++;
+  if((nPlayerCards > 2)&&(bEnableSound)) audioCard.play();
   updateCards(gameBoardPlayer);
   updateScore();
   checkForWins();
@@ -133,6 +136,7 @@ function drawDealerCard() {
   cleanCardString();
   dealerScore = getCardValue(dealerScore);
   nDealerCards++;
+  if((nDealerCards > 1)&&(bEnableSound)) audioCard.play();
   updateCards(gameBoardDealer);
   updateScore();
   checkForWins();
@@ -268,6 +272,7 @@ function updateCards(gb) {
     },
     duration: 250
   }, 'linear');
+
 }
 
 // Clear scores
@@ -340,6 +345,7 @@ function checkForWins() {
       statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
       statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
       bPlayerWon = true;
+      if(bEnableSound) audioDing.play();
       // Double payout for blackjack (base payout + 0.5x bonus = 1.5x payout)
       playerMoney = playerMoney + betAmountWithOdds;
       dealerMoney = dealerMoney - betAmountWithOdds;
@@ -387,6 +393,7 @@ function checkForWins() {
         statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
         statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
         bPlayerWon = true;
+        if(bEnableSound) audioDing.play();
         // Double payout for blackjack (1.5x bonus + 1x final payout)
         playerMoney = playerMoney + betAmountWithOdds;
         dealerMoney = dealerMoney - betAmountWithOdds;
@@ -488,6 +495,13 @@ function getKeyboardInput() {
     if((e.key == 'n')&&(bGameOver)) {
       restartGame();
     }  
+    if(e.key == 'a') {
+      if(bEnableSound == true) {
+        bEnableSound = false;
+      } else {
+        bEnableSound = true;
+      }
+    }
   })
 }
 
@@ -559,13 +573,3 @@ let x = document.getElementById("helpMenuTxt");
   }
 }
 
-function showKeyBinds() {
-let x = document.getElementById("keyGuideTxt");
-  if(!bShowKeyHelp) {
-    x.className = "show";
-    bShowKeyHelp = true;
-  } else {
-    x.className = "hide";
-    bShowKeyHelp = false;
-  }
-}

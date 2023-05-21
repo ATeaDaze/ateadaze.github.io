@@ -48,11 +48,14 @@ let bDuplicateFound;
 let cardFaceSuit;
 let cardFaceRank;
 let bShowHelp = false;
+let audioCard = new Audio("../card_flip.mp3");
+let audioShuffle = new Audio("../card_shuffle.mp3");
+let audioDing = new Audio("../ding.mp3");
 
 // Generate 52 card deck
 generateCardDeck();
-// Watch for keyboard input (N, S, H)
-getKeyboardInput();
+// Play deck shuffle sound
+audioShuffle.play();
 
 function mainGameLoop() {
   statusBarTxt.innerHTML = defaultGreeting;
@@ -78,6 +81,7 @@ function restartGame() {
     betAmount = betAmount / 2;
     bDoubleDownLastRound = false;
   }
+  audioShuffle.play();
   playerScore = 0;
   dealerScore = 0;
   nDealerCards = 0;
@@ -117,6 +121,7 @@ function drawPlayerCard() {
   cleanCardString();
   playerScore = getCardValue(playerScore);
   nPlayerCards++;
+  if(nPlayerCards > 2) audioCard.play();
   updateCards(gameBoardPlayer);
   updateScore();
   checkForWins();
@@ -129,6 +134,7 @@ function drawDealerCard() {
   cleanCardString();
   dealerScore = getCardValue(dealerScore);
   nDealerCards++;
+  if(nDealerCards > 1) audioCard.play();
   updateCards(gameBoardDealer);
   updateScore();
   checkForWins();
@@ -231,23 +237,6 @@ function updateScore() {
     btnDoubleDown.disabled = true;
     btnDoubleDown.style = btnDisableCSS;
   }
-/*
-  // Shows how much money you've earned/lost (distracting)
-  playerMoneyDifference = playerMoney - 2000;
-  playerScoreTotalTxt.title = "Up/Down: " + playerMoneyDifference;
-  if(playerMoneyDifference < 0 ) {
-    playerWinningsLead.innerHTML = "↓";
-    playerWinningsTxt.innerHTML = "$" + -1*(playerMoneyDifference);
-    playerWinningsTxt.style = "color: #ff6161";
-  } else if (playerMoneyDifference > 0) {
-    playerWinningsLead.innerHTML = "↑";
-    playerWinningsTxt.innerHTML = "$" + playerMoneyDifference;
-    playerWinningsTxt.style = "color: chartreuse";
-  } else {
-    playerWinningsLead.innerHTML = "";
-    playerWinningsTxt.innerHTML = "$" + playerMoneyDifference;
-    playerWinningsTxt.style = "color: #c0c0c0";
-  } */
   playerBetTxt.innerHTML = "$" + betAmount;
 
 }
@@ -353,6 +342,7 @@ function checkForWins() {
       statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
       statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
       bPlayerWon = true;
+      audioDing.play();
       // Double payout for blackjack (base payout + 0.5x bonus = 1.5x payout)
       playerMoney = playerMoney + betAmountWithOdds;
       dealerMoney = dealerMoney - betAmountWithOdds;
@@ -400,6 +390,7 @@ function checkForWins() {
         statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
         statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
         bPlayerWon = true;
+        audioDing.play();
         // Double payout for blackjack (1.5x bonus + 1x final payout)
         playerMoney = playerMoney + betAmountWithOdds;
         dealerMoney = dealerMoney - betAmountWithOdds;
@@ -479,29 +470,6 @@ function endCurrentRound() {
   // Enable [DEAL NEW HAND] button
   btnNewGame.disabled = false;
   btnNewGame.style = btnEnableCSS;
-}
-
-// Keyboard shortcuts
-function getKeyboardInput() {
-  document.addEventListener('keypress', e => {
-    // Disable [H]it and [S]tand buttons if game is over
-    if(!bGameOver) {
-      switch(e.key) {
-        case 'h':
-          drawPlayerCard();
-          break;
-        case 's':
-          stand();
-          break;
-      }
-      if((e.key == 'd')&&(nPlayerCards < 3)) {
-        doubleDown();
-      }
-    }
-    if((e.key == 'n')&&(bGameOver)) {
-      restartGame();
-    }  
-  })
 }
 
 function updateBetAmount(newBet) {

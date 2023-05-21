@@ -44,12 +44,14 @@ hr {
   background-color: white;
   border: 1px solid black;
   height: 4px;
-  width: 700px;
+  width: 710px;
   margin-top: 0px;
   margin-bottom: 7px;
 }
 
 a,a:visited {
+  font-weight: normal;
+  -webkit-text-stroke: 0px;
   color: #c0c0c0;
 }
 
@@ -60,6 +62,7 @@ a:hover {
 /* Larege BLACKJACK banner on top */
 .mainHeader {
   font-size: 40pt;
+  letter-spacing: 15pt;
   font-family: 'Book Antiqua', serif, 'Times New Roman';
 }
 
@@ -173,6 +176,10 @@ a:hover {
 /* Bet buttons */
 .btnBet {
   width: 75px;
+}
+
+.btnBet:hover {
+  filter: brightness(1.2);
 }
 
 /* Buttons are aligned to the bottom center */
@@ -300,7 +307,7 @@ a:hover {
   border-radius: 2px;
   padding: 15px;
   cursor: pointer;
-  width: 38%;
+  width: 38.5%;
   position: fixed;
   z-index: 1;
   left: 30%;
@@ -316,7 +323,7 @@ hr.helpLine {
   width: 100%;
 }
 
-/* Font for keyboard shortcut guide */
+/* 
 #keyGuideTxt {
   font-family: 'Consolas', monospace;
   font-size: 22pt;
@@ -338,23 +345,16 @@ hr.helpLine {
 }
 #keyGuideTxt.show {
   visibility: visible;
-}
+} */
 
 .btnHelpStyle {
   color: #d0d0d0;
-  font-size: 22pt;
-  width: 25%;
+  font-size: 20pt;
   cursor: pointer;
 }
 
 .btnHelpStyle:hover {
   color: #ffffff;
-}
-
-.btnHelpStyle {
-  font-size: 22pt;
-  width: 25%;
-  cursor: pointer;
 }
 
 /* Toast message for deck shuffle */
@@ -373,7 +373,7 @@ hr.helpLine {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 352px;
+  top: 340px;
 }
 #toastMessage.show {
   visibility: visible;
