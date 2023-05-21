@@ -24,53 +24,51 @@ Deal a [N]ew Hand
 # Mobile 📱 [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
 
+## Key:
+* [TEST] = Added, needs more testing
+* [WIP] = Work in progress
+* ~~Strikethrough~~ = Cancelled
+
 # TODO
 
-```
-Key: [x]=Done, [t]=Added, needs more testing, [w]=WIP, [o]=Needs optimization, [-]=Cancelled
+* [ ] [WIP] Use images for buttons
+* [x] Make bet buttons look like casino chips (CSS circles or images)
+* [ ] Generate 2 to  5 decks: `deck2 = deck1; shuffle(deck2)...`
+* [x] [TEST] Track number of aces to subtract 10 if over 21
+* [x] [TEST] Push when both scores are 21 but not blackjack (currently evaluates on `stand()`)
+* [ ] Add -1/0/+1 values to practice card counting
+* [x] Add double down button
+  * [x] Disable double down with >= 3 cards
 
-[w] Bet buttons
-[x] Make bet buttons look like casino chips (CSS circles or images)
-[ ] Generate 2 decks: deck2 = deck1, shuffle(deck2)
-[t] Track number of aces to subtract 10 if over 21
-[t] Push when both scores are 21 but not blackjack
-[ ] Add values for card counting
-[x] Add double down button
-  [x] Disable double down with >= 3 cards
+* [ ] Get rid of extraneous code
+  * [ ] Cleaning card strings/text
+  * [ ] Repeated strings/operations
+  * [ ] Combine and clean up winner checks
+    * [ ] checkForWins()
+    * [ ] checkFinalScore()
 
-[ ] Add 2 to 5 more decks
-[ ] Get rid of extraneous code
-  [ ] Cleaning card strings/text
-  [ ] Repeated strings/operations
-  [ ] Combine and clean up winner checks
-    [ ] checkForWins()
-    [ ] checkFinalScore()
+* [ ] Change dealer strategy: draw to 16, stand on 17
+  * [ ] When to hit on 16?
+* [x] Add bet amount buttons
+* [ ] Add buttons to increase/decrease bet by X
+* [x] [WIP] Spruce and clean up code with jQuery
 
-[ ] Change dealer strategy: draw to 16, stand on 17
-  [ ] When to hit on 16?
-[-] Add bet amount buttons (+10/-10, +50/-50)
-[w] Clean up code with jQuery
-[ ] Add split function
+* [ ] [WIP] Evaluate
+  * [ ] Check for win conditions
+  * [ ] [TEST] Handle ties better
+  * [x] [TEST] Set check for rare double blackjack
+  * [x] [TEST] Handle Blackjack vs regular 21 (Blackjack wins over 21)
 
-[w] Evaluate
-  [o] Check for win conditions
-  [t] Handle ties better
-  [t] Test evaluation for double blackjack
-  [t] Handle Blackjack vs regular 21 (Blackjack wins over 21)
-
-[w] Make mobile version (smaller screen)
-
-```
+* [ ] [WIP] Make mobile version (smaller screen)
+* [ ] Add split function
 
 # BUGS
 
-```
-[ ] Tie at 21 doesn't evaluate until you stand
-[ ] Infrequent freezes when looking for new card
-  [ ] Need to optimize fineUniqueCard()
-  [ ] Clean up the card check
-  [ ] Possibly hitting an out-of-range array value
-```
+* [ ] Tie at 21 doesn't evaluate until you stand
+* [ ] Infrequent freezes when looking for new card
+  * [ ] Need to optimize fineUniqueCard()
+  * [ ] Clean up the card check
+  * [ ] Possibly hitting an out-of-range array value
 
 
 # Function Outline
