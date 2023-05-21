@@ -12,7 +12,7 @@ A Blackjack app written in JavaScript
 * **Double Down** if you're feeling lucky
 * **52-card deck:** no duplicate cards (needs optimization)
 
-# 💻 Desktop Version: [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
+# 💻 Desktop: [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
 
 ### Keyboard Map
@@ -21,7 +21,7 @@ A Blackjack app written in JavaScript
 Deal a [N]ew Hand
 ```
 
-# 📱 Mobile Version: [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
+# 📱 Mobile: [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
 
 # TODO
