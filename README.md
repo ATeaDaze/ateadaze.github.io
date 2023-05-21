@@ -18,7 +18,8 @@ A Blackjack app written in JavaScript
 Deal a [N]ew Hand
 ```
 
-* **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/README.md)**
+* **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
+* **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/blackjack)**
 
 # 💻 Desktop Version: [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
