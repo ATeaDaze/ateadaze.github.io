@@ -2,7 +2,7 @@
 A Blackjack app written in JavaScript
 
 ## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
-![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
+![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
 ## Features
 * **Play Blackjack** against an "AI" dealer
@@ -17,6 +17,14 @@ A Blackjack app written in JavaScript
 [H]it [S]tand [D]ouble Down
 Deal a [N]ew Hand
 ```
+
+* **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/README.md)**
+
+# 💻 Desktop Version: [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
+![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
+
+# 📱 Mobile Version: [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
+![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
 
 # Rainbow Noise
 A time-waster app: draw with random shapes and patterns on a JavaScript canvas
@@ -76,7 +84,7 @@ A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 * **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
-# Desktop Version: [ateadaze.github.io](https://ateadaze.github.io/)
+# 💻 Desktop Version: [ateadaze.github.io](https://ateadaze.github.io/)
 ![screenshot-faded](/images/screenshots/rn_screen-desktop.png)
 ## Controls
 ```
@@ -109,7 +117,7 @@ Button|Key|&nbsp;
 
 🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
-# Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
+# 📱 Mobile Version: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
