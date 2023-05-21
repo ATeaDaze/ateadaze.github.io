@@ -65,7 +65,7 @@ A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 * **Patriot:** red, white, and blue
 * **Grayscale:** everything from dim gray to off-white
 
-# 💻 Desktop: [ateadaze.github.io](https://ateadaze.github.io/)
+# Desktop 💻 [ateadaze.github.io](https://ateadaze.github.io/)
 ![screenshot-faded](/images/screenshots/rn_screen-desktop.png)
 ## Controls
 ```
@@ -98,7 +98,7 @@ Button|Key|&nbsp;
 
 🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
-# 📱 Mobile: [ateadaze.github.io/m](https://ateadaze.github.io/m/)
+# Mobile 📱 [ateadaze.github.io/m](https://ateadaze.github.io/m/)
 ![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
