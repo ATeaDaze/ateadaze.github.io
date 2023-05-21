@@ -50,12 +50,11 @@ hr {
 }
 
 a,a:visited {
-  text-decoration: none;
-  color: #7eabcc;
+  color: #c0c0c0;
 }
 
 a:hover {
-  color: #9db8cc;
+  color: #dddddd;
 }
 
 /* Larege BLACKJACK banner on top */
