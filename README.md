@@ -4,14 +4,6 @@ A Blackjack app written in JavaScript
 ## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
-## Features
-* **Play Blackjack** against an "AI" dealer
-  * **Dealer stands on all 17's**
-  * **Blackjack pays 3:2**
-* **Place bets:** $25, $50, $100, $200
-* **Double Down** if you're feeling lucky
-* **52-card deck:** no duplicate cards (needs optimization)
-
 * **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/blackjack)**
 
