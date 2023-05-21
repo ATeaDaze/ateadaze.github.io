@@ -66,6 +66,7 @@ Deal a [N]ew Hand
 * [x] Add double down button
   * [x] Disable button with > 2 cards
 * [ ] Add -1/0/+1 values to practice card counting
+* [ ] Add a help menu (simple popup with hide/close buttons)
 
 # BUGS
 
