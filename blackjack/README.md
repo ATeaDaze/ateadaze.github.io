@@ -58,6 +58,7 @@ Deal a [N]ew Hand
   * [ ] When to hit on 16?
 
 ## User Interface
+* [x] Add help menu with instructions and rules
 * [ ] [WIP] Use images for buttons
 * [x] Make bet buttons look like casino chips (CSS circles or images)
 * [x] Add bet amount buttons

@@ -120,7 +120,7 @@ a:hover {
 
 /* Digital scoreboard style for top status bar */
 .statusOutline {
-  width: 350px;
+  width: 325px;
   height: 20px;
   border: 1px solid #555555;
   background-color: #000000;
@@ -266,6 +266,33 @@ a:hover {
 @-ms-keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+#helpMenuTxt {
+  font-size: 12pt;
+  font-weight: bold;
+  visibility: hidden;
+  background-color: #2a2a2a;
+  color: #efefef;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 2px;
+  padding: 10px;
+  cursor: pointer;
+  width: 85%;
+  position: fixed;
+  z-index: 1;
+  left: 5%;
+  top: 5%;
+}
+#helpMenuTxt.show {
+  visibility: visible;
+}
+hr.helpLine {
+  background-color: white;
+  border: 1px solid black;
+  height: 4px;
+  width: 100%;
 }
 
 /* Toast message for deck shuffle */

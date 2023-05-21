@@ -47,6 +47,7 @@ let bDuplicateFound;
 // Display string for cards
 let cardFaceSuit;
 let cardFaceRank;
+let bShowHelp = false;
 
 // Generate 52 card deck
 generateCardDeck();
@@ -558,4 +559,15 @@ function enableBets() {
   btnBet50.style = "cursor:pointer";
   btnBet100.style = "cursor:pointer";
   btnBet200.style = "cursor:pointer";
+}
+
+function showHelpMenu() {
+let x = document.getElementById("helpMenuTxt");
+  if(!bShowHelp) {
+    x.className = "show";
+    bShowHelp = true;
+  } else {
+    x.className = "hide";
+    bShowHelp = false;
+  }
 }

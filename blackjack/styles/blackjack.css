@@ -31,13 +31,13 @@ button:hover {
   border-color: #555555;  
 }
 
-/*
-table,tr,td,div {
+
+/*table,tr,td,div {
   border: 2px solid darkgreen;
 }
 div,span,tr,td  {
   border: 2px solid forestgreen;
-} */
+}*/
 
 /* Horizontal rule is large white line with black outline (casino style) */
 hr {
@@ -283,6 +283,78 @@ a:hover {
 @-ms-keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+#btnHelp {
+  cursor: pointer;
+}
+
+#helpMenuTxt {
+  font-size: 20pt;
+  font-weight: bold;
+  visibility: hidden;
+  background-color: #2a2a2a;
+  color: #efefef;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 2px;
+  padding: 15px;
+  cursor: pointer;
+  width: 38%;
+  position: fixed;
+  z-index: 1;
+  left: 30%;
+  top: 8%;
+}
+#helpMenuTxt.show {
+  visibility: visible;
+}
+hr.helpLine {
+  background-color: white;
+  border: 1px solid black;
+  height: 4px;
+  width: 100%;
+}
+
+/* Font for keyboard shortcut guide */
+#keyGuideTxt {
+  font-family: 'Consolas', monospace;
+  font-size: 22pt;
+  font-weight: bold;
+  visibility: hidden;
+  background-color: #2a2a2a;
+  color: #efefef;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
+  width: 38%;
+  position: fixed;
+  z-index: 1;
+  left: 30%;
+  top: 80%;
+  cursor: pointer;
+}
+#keyGuideTxt.show {
+  visibility: visible;
+}
+
+.btnHelpStyle {
+  color: #d0d0d0;
+  font-size: 22pt;
+  width: 25%;
+  cursor: pointer;
+}
+
+.btnHelpStyle:hover {
+  color: #ffffff;
+}
+
+.btnHelpStyle {
+  font-size: 22pt;
+  width: 25%;
+  cursor: pointer;
 }
 
 /* Toast message for deck shuffle */

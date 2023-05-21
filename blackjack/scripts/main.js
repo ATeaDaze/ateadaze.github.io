@@ -47,6 +47,12 @@ let bDuplicateFound;
 // Display string for cards
 let cardFaceSuit;
 let cardFaceRank;
+let bShowHelp = false;
+let bShowKeyHelp = false;
+
+/*$(document).ready(function(){
+    $("#helpMenuTxt").hide();
+}); */
 
 // Generate 52 card deck
 generateCardDeck();
@@ -229,23 +235,6 @@ function updateScore() {
     btnDoubleDown.disabled = true;
     btnDoubleDown.style = btnDisableCSS;
   }
-/*
-  // Shows how much money you've earned/lost (distracting)
-  playerMoneyDifference = playerMoney - 2000;
-  playerScoreTotalTxt.title = "Up/Down: " + playerMoneyDifference;
-  if(playerMoneyDifference < 0 ) {
-    playerWinningsLead.innerHTML = "↓";
-    playerWinningsTxt.innerHTML = "$" + -1*(playerMoneyDifference);
-    playerWinningsTxt.style = "color: #ff6161";
-  } else if (playerMoneyDifference > 0) {
-    playerWinningsLead.innerHTML = "↑";
-    playerWinningsTxt.innerHTML = "$" + playerMoneyDifference;
-    playerWinningsTxt.style = "color: chartreuse";
-  } else {
-    playerWinningsLead.innerHTML = "";
-    playerWinningsTxt.innerHTML = "$" + playerMoneyDifference;
-    playerWinningsTxt.style = "color: #c0c0c0";
-  } */
   playerBetTxt.innerHTML = "$" + betAmount;
 
 }
@@ -557,4 +546,26 @@ function enableBets() {
   btnBet50.style = "cursor:pointer";
   btnBet100.style = "cursor:pointer";
   btnBet200.style = "cursor:pointer";
+}
+
+function showHelpMenu() {
+let x = document.getElementById("helpMenuTxt");
+  if(!bShowHelp) {
+    x.className = "show";
+    bShowHelp = true;
+  } else {
+    x.className = "hide";
+    bShowHelp = false;
+  }
+}
+
+function showKeyBinds() {
+let x = document.getElementById("keyGuideTxt");
+  if(!bShowKeyHelp) {
+    x.className = "show";
+    bShowKeyHelp = true;
+  } else {
+    x.className = "hide";
+    bShowKeyHelp = false;
+  }
 }
