@@ -4,7 +4,7 @@ A Blackjack app written in JavaScript
 ## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
-* **[README.MD](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
+* **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/blackjack)**
 
 # Rainbow Noise
