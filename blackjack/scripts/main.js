@@ -24,9 +24,9 @@ let dealerScore = 0;
 // Total money available
 let playerMoney = 2000;
 let dealerMoney = 10000;
-let playerMoneyDifference = playerMoney - 2000;
 let betAmount = 100;
 let betAmountWithOdds = betAmount*0.5;
+// Track double bets to reset bet to 1x
 let bDoubleDownLastRound = false;
 // Number of cards in-play
 let nDealerCards = 0;
@@ -269,21 +269,19 @@ function updateCards(gb) {
   $(newTD).appendTo(gb).show();
   // Flip cards to add some life to the game
   $(newTD).animate({ transformValue: +360 }, {
-    step: function(now,fx) {
+    step: function(now, fx) {
       $(this).css('transform','rotatey('+now+'deg)');  
     },
     duration: 250
   }, 'linear');
-
 }
 
-// Clear scores
 function clearScoreboard() {
   gameBoardPlayer.innerHTML = "";
   gameBoardDealer.innerHTML = "";
 }
 
-// Draw 1 card, multiply bet by 2 and stand
+// Draw 1 card, multiply bet by 2, and stand
 function doubleDown() {
   betAmount = betAmount*2;
   bDoubleDownLastRound = true;
@@ -293,7 +291,7 @@ function doubleDown() {
 
 // Stop dealing cards to player
 function stand() {
-  // Dealer draws 1 card if they only have 1 showing
+  // Dealer draws to 17 and stands
   while(dealerScore < 17) {
     drawDealerCard();
   }
@@ -323,12 +321,7 @@ function shuffleDeck() {
   nTotalCards = 0;
   // Shuffle the deck
   card = card.sort((a, b) => 0.5 - Math.random());
-  // Display notification
-  let x = document.getElementById("toastMessage");
-  x.className = "show";
-  setTimeout(function() {
-    x.className = x.className.replace("show", "");
-  }, 2500);
+  displayShuffleToast();
 }
 
 // Check for win conditions // TODO: optimize, combine with checkFinalScore()
@@ -496,9 +489,8 @@ function getKeyboardInput() {
         doubleDown();
       }
     }
-    if((e.key == 'n')&&(bGameOver)) {
-      restartGame();
-    }  
+    if((e.key == 'n')&&(bGameOver)) restartGame();
+    // Toggle audio when user press A
     if(e.key == 'a') {
       if(bEnableSound == true) {
         bEnableSound = false;
@@ -510,8 +502,8 @@ function getKeyboardInput() {
 }
 
 function updateBetAmount(newBet) {
-    betAmount = newBet;
-    updateBetButtons();
+  betAmount = newBet;
+  updateBetButtons();
 }
 
 function updateBetButtons() {
@@ -566,6 +558,7 @@ function enableBets() {
   btnBet200.style = "cursor:pointer";
 }
 
+// Toggle help window
 function showHelpMenu() {
 let x = document.getElementById("helpMenuTxt");
   if(!bShowHelp) {
@@ -577,3 +570,11 @@ let x = document.getElementById("helpMenuTxt");
   }
 }
 
+function displayShuffleToast() {
+  // Display notification
+  let x = document.getElementById("toastMessage");
+  x.className = "show";
+  setTimeout(function() {
+    x.className = x.className.replace("show", "");
+  }, 2500);
+}

@@ -17,7 +17,7 @@ body {
 
 button {
   background-color: #111111;
-  border-color: #333333;
+  border-color: #555555;
   color: #dddddd;
   font-size: 22pt;
   font-weight: bold;
@@ -28,16 +28,8 @@ button {
 }
 button:hover {
   color: #ffffff;
-  border-color: #555555;  
+  border-color: #777777;
 }
-
-
-/*table,tr,td,div {
-  border: 2px solid darkgreen;
-}
-div,span,tr,td  {
-  border: 2px solid forestgreen;
-}*/
 
 /* Horizontal rule is large white line with black outline (casino style) */
 hr {
@@ -49,7 +41,7 @@ hr {
   margin-bottom: 7px;
 }
 
-a,a:visited {
+a, a:visited {
   font-weight: normal;
   -webkit-text-stroke: 0px;
   color: #c0c0c0;
@@ -59,32 +51,19 @@ a:hover {
   color: #dddddd;
 }
 
+/*table, tr, td {
+  border: 2px solid darkgreen;
+}
+div, span  {
+  border: 2px solid forestgreen;
+}*/
+
 /* Larege BLACKJACK banner on top */
 .mainHeader {
   font-size: 40pt;
   letter-spacing: 15pt;
   font-family: 'Book Antiqua', serif, 'Times New Roman';
 }
-
-.gbSingleCard {
-  display: none;
-  background-color: white;
-  border: 2px solid #000000;
-  border-radius: 10px;
-  color: #333333;
-  width: 98px;
-  text-align: center;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.gbSingleCard:hover {
-  background-color: #eeeeee;
-  border-color: #333333;
-} 
-
 /* Banner cards use a white background with black text */
 .cardDeckFontBlack {
   font-size: 35pt;
@@ -92,7 +71,7 @@ a:hover {
   background-color: white;
   border-radius: 2px;
   font-weight: normal;
-/* This limits the text for a faux card effect */
+/* Limits text for a faux card effect */
   display: inline-block;
   line-height: 100%;
   height: 100%;
@@ -125,9 +104,24 @@ a:hover {
   height: 100%;
   -webkit-text-stroke: 0px;
   transform: rotate(30deg);
-  }
+}
 
-/* Digital scoreboard style for top status bar */
+/* Set most elements to fixed 730px width */
+.fixedTable {
+  width: 705px;
+  text-align: left;
+}
+
+/* A smaller, invisible <hr> for smaller gaps */
+.smallLine {
+  visibility: hidden;
+  height: 7px;
+  width: 100px;
+  margin-top: 0pt;
+  margin-bottom: 0pt;
+}
+
+/* Gradient gives status bar a "scoreboard" */
 .statusOutline {
   width: 700px;
   height: 32px;
@@ -144,123 +138,8 @@ a:hover {
   );
 }
 
-/* [HIT] button */
-#btnHit {
-  height: 60px;
-  color: chartreuse;
-}
-#btnHit:hover {
-  color: #afff60;
-}
-
-/* [STAND] button */
-#btnStand {
-  height: 60px;
-  color: indianred;
-}
-#btnStand:hover {
-  color: #f26d6d;
-}
-
-/* [DEAL NEW HAND] button */
-#btnNewGame {
-  height: 60px;
-  width: 250pt;
-}
-
-#btnDoubleDown {
-  height: 50px;
-  width: 250pt;
-}
-
-/* Bet buttons */
-.btnBet {
-  width: 75px;
-}
-
-.btnBet:hover {
-  filter: brightness(1.2);
-}
-
-/* Buttons are aligned to the bottom center */
-.btnTable {
-  text-align: center;
-  vertical-align: bottom;
-  padding: 5px;
-}
-
-/* Font for keyboard shortcut guide */
-.keyGuideTxt {
-  font-family: 'Consolas', fixed;
-  font-size: 18pt;
-}
-
-/* A smaller, invisible <hr> for smaller gaps */
-.smallLine {
-  visibility: hidden;
-  height: 7px;
-  width: 100px;
-  margin-top: 0pt;
-  margin-bottom: 0pt;
-}
-
-/* Set most elements to fixed 730px width */
-.fixedTable {
-  width: 705px;
-  text-align: left;
-}
-
-.hidden {
-  visibility: hidden;
-  height: 1px;
-}
-
-/* Player and dealer's total money */
-#playerScoreTotalTxt, #dealerScoreTotalTxt {
-/*  font-weight: normal; */
-  font-size: 24pt;
-  text-align: right;
-  align-content: right;
-  width: 20%;
-  cursor: pointer;
-}
-
-.betLead {
-  font-size: 22pt;
-  width: 25%;
-  text-align: right;
-}
-
-#playerBetTxt, #playerWinningsTxt {
-  font-size: 22pt;
-  color: #afff60;
-  text-align: left;
-  cursor: pointer;
-  width: 30%;
-}
-
-/* Player and dealer's score for current hand */
-#playerScoreTxt, #dealerScoreTxt {
-  font-size: 24pt;
-  font-weight: bold;
-  text-align: left;
-}
-
-/* Main game board where cards are displayed, Serif font looks similar to a card font */
-#gameBoardPlayer, #gameBoardDealer {
-/*  color: #333333; */
-  font-family: 'Book Antiqua', serif, 'Times New Roman'; /* 'Book Antiqua', 'Rockwell' */
-  font-size: 45pt;
-  font-weight: bold;
-  height: 160px;
-  cursor: pointer;
-}
-
 /* Add fade animation to scoreboard */
 #statusBarTxt {
-/* LCD font looks terrible in Chromium browsers */
-/*  font-family: 'Digital-7 Mono', 'LCDMono2'; */
-/*  font-family: 'Impact', 'Haettenschweiler', sans-serif; */
   font-size: 18pt;
   letter-spacing: 2pt;
   text-align: center;
@@ -292,9 +171,126 @@ a:hover {
   100% { opacity: 1; }
 }
 
-#btnHelp {
+#playerScoreTxt, #dealerScoreTxt {
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: left;
+}
+
+.betLead {
+  font-size: 22pt;
+  width: 25%;
+  text-align: right;
+}
+
+#playerBetTxt, #playerWinningsTxt {
+  font-size: 22pt;
+  color: #afff60;
+  text-align: left;
+  cursor: pointer;
+  width: 30%;
+}
+
+#playerScoreTotalTxt, #dealerScoreTotalTxt {
+/*  font-weight: normal; */
+  font-size: 24pt;
+  text-align: right;
+  align-content: right;
+  width: 20%;
+  cursor: pointer;
+}
+
+#gameBoardPlayer, #gameBoardDealer {
+/*  color: #333333; */
+  font-family: 'Book Antiqua', serif, 'Times New Roman'; /* 'Book Antiqua', 'Rockwell' */
+  font-size: 45pt;
+  font-weight: bold;
+  height: 160px;
+  cursor: pointer;
+}
+
+/* Mimics the style of a 52-deck card (hidden by default) */
+.gbSingleCard {
+  display: none;
+  background-color: white;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  color: #333333;
+  width: 98px;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.gbSingleCard:hover {
+  background-color: #eeeeee;
+  border-color: #333333;
+}
+
+/* Gameplay buttons */
+#btnHit {
+  height: 60px;
+  color: chartreuse;
+  border-color: chartreuse;
+  -webkit-text-stroke: 0px;
+  letter-spacing: 5px;
+}
+#btnHit:hover {
+  color: #afff60;
+  border-color: #afff60;
+}
+
+/* [STAND] button */
+#btnStand {
+  height: 60px;
+  color: indianred;
+  border-color: indianred;
+  -webkit-text-stroke: 0px;
+  letter-spacing: 5px;
+}
+#btnStand:hover {
+  color: #f26d6d;
+  border-color: #f26d6d;
+}
+
+/* [DEAL NEW HAND] button */
+#btnNewGame {
+  height: 60px;
+  width: 250pt;
+  letter-spacing: 2px;
+}
+
+#btnDoubleDown {
+  height: 50px;
+  width: 250pt;
+  letter-spacing: 3px;
+}
+
+/* Bet buttons */
+.btnBet {
+  width: 75px;
+}
+.btnBet:hover {
+  filter: brightness(1.2);
+}
+
+/* Buttons are aligned to the bottom center */
+.btnTable {
+  text-align: center;
+  vertical-align: bottom;
+  padding: 5px;
+}
+
+/* Help button and popup menu */
+.btnHelpStyle {
+  color: #d0d0d0;
+  font-size: 20pt;
   cursor: pointer;
   text-align: center;
+}
+.btnHelpStyle:hover {
+  color: #ffffff;
 }
 
 #helpMenuTxt {
@@ -324,40 +320,6 @@ hr.helpLine {
   width: 100%;
 }
 
-/* 
-#keyGuideTxt {
-  font-family: 'Consolas', monospace;
-  font-size: 22pt;
-  font-weight: bold;
-  visibility: hidden;
-  background-color: #2a2a2a;
-  color: #efefef;
-  font-weight: bold;
-  text-align: left;
-  border-radius: 2px;
-  padding: 5px;
-  cursor: pointer;
-  width: 38%;
-  position: fixed;
-  z-index: 1;
-  left: 30%;
-  top: 80%;
-  cursor: pointer;
-}
-#keyGuideTxt.show {
-  visibility: visible;
-} */
-
-.btnHelpStyle {
-  color: #d0d0d0;
-  font-size: 20pt;
-  cursor: pointer;
-}
-
-.btnHelpStyle:hover {
-  color: #ffffff;
-}
-
 /* Toast message for deck shuffle */
 #toastMessage {
   font-size: 18pt;
@@ -383,4 +345,9 @@ hr.helpLine {
 @keyframes fadeintoast {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+.hidden {
+  visibility: hidden;
+  height: 1px;
 }
