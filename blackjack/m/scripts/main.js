@@ -48,9 +48,11 @@ let bDuplicateFound;
 let cardFaceSuit;
 let cardFaceRank;
 let bShowHelp = false;
-let audioCard = new Audio("../card_flip.mp3");
-let audioShuffle = new Audio("../card_shuffle.mp3");
-let audioDing = new Audio("../ding.mp3");
+const audioCard = new Audio("../audio/card_flip.mp3");
+const audioShuffle = new Audio("../audio/card_shuffle.mp3");
+const audioWin = new Audio("../audio/casino_chip.mp3");
+const audioLose = new Audio("../audio/tick.mp3");
+const audioJackpot = new Audio("../audio/jackpot.mp3");
 
 // Generate 52 card deck
 generateCardDeck();
@@ -342,7 +344,7 @@ function checkForWins() {
       statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
       statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
       bPlayerWon = true;
-      audioDing.play();
+      audioJackpot.play();
       // Double payout for blackjack (base payout + 0.5x bonus = 1.5x payout)
       playerMoney = playerMoney + betAmountWithOdds;
       dealerMoney = dealerMoney - betAmountWithOdds;
@@ -390,7 +392,7 @@ function checkForWins() {
         statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
         statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
         bPlayerWon = true;
-        audioDing.play();
+        audioJackpot.play();
         // Double payout for blackjack (1.5x bonus + 1x final payout)
         playerMoney = playerMoney + betAmountWithOdds;
         dealerMoney = dealerMoney - betAmountWithOdds;
@@ -443,6 +445,7 @@ function endCurrentRound() {
   if(bPlayerWon) {
     playerMoney = playerMoney + betAmount;
     dealerMoney = dealerMoney - betAmount;
+    audioWin.play();
   } else {
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
@@ -451,6 +454,7 @@ function endCurrentRound() {
   if(nDealerCards == 1) {
     drawDealerCard();
     checkFinalScore();
+    audioLose.play();
   }
   updateScore();
   bGameOver = true;

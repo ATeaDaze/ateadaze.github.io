@@ -294,6 +294,7 @@ a:hover {
 
 #btnHelp {
   cursor: pointer;
+  text-align: center;
 }
 
 #helpMenuTxt {
