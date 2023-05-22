@@ -13,9 +13,9 @@ button {
   background-color: #111111;
   border-color: #333333;
   color: #dddddd;
-  font-size: 14pt;
+  font-size: 16pt;
   letter-spacing: 4pt;
-  height: 45px;
+  height: 50px;
   font-weight: bold;
   cursor: pointer;
   width: 45%;
@@ -208,18 +208,16 @@ a:hover {
 
 /* [HIT] button */
 #btnHit {
-  color: chartreuse;
-}
-#btnHit:hover {
   color: #afff60;
+  border-color: #afff60;
+  letter-spacing: 5px
 }
 
 /* [STAND] button */
 #btnStand {
-  color: indianred;
-}
-#btnStand:hover {
   color: #f26d6d;
+  border-color: #f26d6d;
+  letter-spacing: 5px;
 }
 
 /* Main game board where cards are displayed, Serif font looks similar to a card font */
