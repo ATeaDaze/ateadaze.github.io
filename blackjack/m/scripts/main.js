@@ -449,12 +449,12 @@ function endCurrentRound() {
   } else {
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
+    if(playerScore != dealerScore) audioLose.play();
   }
   // Draw dealer card if only 1 is showing
   if(nDealerCards == 1) {
     drawDealerCard();
     checkFinalScore();
-    audioLose.play();
   }
   updateScore();
   bGameOver = true;
