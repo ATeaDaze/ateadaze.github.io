@@ -452,7 +452,7 @@ function endCurrentRound() {
   } else {
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
-    if(bEnableSound) audioLose.play();
+    if((bEnableSound)&&(playerScore != dealerScore)) audioLose.play();
   }
   // Draw dealer card if only 1 is showing
   if(nDealerCards == 1) {
