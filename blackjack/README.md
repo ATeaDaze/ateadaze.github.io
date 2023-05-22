@@ -17,8 +17,8 @@ A Blackjack app written in JavaScript
 
 ### Keyboard Map
 ```
-[H]it [S]tand [D]ouble Down
-Deal a [N]ew Hand
+[H]it | [S]tand | [D]ouble Down
+Deal [N]ew Hand | Toggle [A]udio
 ```
 
 # Mobile 📱 [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
