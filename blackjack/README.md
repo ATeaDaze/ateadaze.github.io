@@ -19,10 +19,10 @@ A Blackjack app written in native JavaScript. No libraries or anything fancy
 
 Key|&nbsp;|Description
 ---|:--|:--
-|**`  S  `**|Stand| Stop dealing cards to the player and let the dealer play their hand
-|**`  H  `**|Hit| Deal 1 card to the player
-|**`  D  `**|Double down| Double your bet, deal 1 more card, and stand
-|**`  N  `**|Deal| Start a new hand (disabled if hand is already active)
+|**` S `**|Stand| Stop dealing cards to the player and let the dealer play their hand
+|**` H `**|Hit| Deal 1 card to the player
+|**` D `**|Double down| Double your bet, deal 1 more card, and stand
+|**` N `**|Deal| Start a new hand (disabled if hand is already active)
 
 # Mobile 📱 [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
