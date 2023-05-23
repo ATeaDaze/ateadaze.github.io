@@ -206,7 +206,7 @@ div,span {
 /* Main game board where cards are displayed, Serif font looks similar to a card font */
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
-  font-family: 'Book Antiqua', serif, 'Times New Roman'; /* 'Book Antiqua', 'Rockwell' */
+  font-family: 'Agency FB', serif, 'Times New Roman';
   font-size: 24pt;
   font-weight: bold;
   height: 100px;
