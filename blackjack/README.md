@@ -1,25 +1,23 @@
 # Basic Blackjack
-A Blackjack app written in JavaScript
+A Blackjack app written in native JavaScript. No libraries or anything fancy
 
 ## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
 ## Features
-* **Play Blackjack** against an "AI" dealer
+* **Play Blackjack** against a computer-controlled dealer
   * **Dealer stands on all 17's**
-  * **Blackjack pays 3:2**
+  * **Blackjack pays 3:2** odds (150%)
 * **Place bets:** $25, $50, $100, $200
 * **Double Down** if you're feeling lucky
-* **52-card deck:** no duplicate cards (needs optimization)
+* **Single 52-card deck:** no duplicate cards drawn
 
 # Desktop 💻 [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
 
-### Keyboard Map
-```
-[H]it | [S]tand | [D]ouble Down
-Deal [N]ew Hand | Toggle [A]udio
-```
+## Keyboard Map
+| `  S  ` | Stand | `  H  ` | Hit | `  N  ` | Deal a new hand | `  D  ` | Double down |
+---|---|---|---|---|---|---|---
 
 # Mobile 📱 [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
@@ -29,93 +27,62 @@ Deal [N]ew Hand | Toggle [A]udio
 * [WIP] = Work in progress
 * ~~Strikethrough~~ = Cancelled
 
+# BUGS
+
+* [ ] Tie at 21 doesn't evaluate until you stand
+* [x] [TEST] Occasionally froze when looking for a new card
+  * Cause: crashed on `shuffleDeck()` if `nTotalCards` was > 51
+  * Fix: set card offset to limit range of check `(52-cardsInPlay-4)`
+* [ ] [WIP] Optimize `findUniqueCard()`
+
 # TODO
 
 ## General
-* [ ] Get rid of extraneous code
-  * [ ] Cleaning card strings/text
+* [ ] Get rid of extraneous code and optimize
+  * [ ] Player strings and text: `number()`, `toLocale()`
   * [ ] Repeated strings/operations
-  * [ ] Combine and clean up winner checks
-    * [ ] `checkForWins()`
-    * [ ] `checkFinalScore()`
-* [ ] [WIP] Make mobile version (smaller screen)
-* [ ] Add split function
+* [ ] [WIP] Make mobile version
+* [ ] Add split feature
+    * [ ] Requires a 2nd game board for each player (screen space)
 
 ## Card Deck Generation
-* [ ] Generate 2 to  5 decks: `deck2 = deck1; shuffle(deck2)...`
-* [x] [TEST] Track number of aces to subtract 10 if over 21
+* [ ] Generate 2 to  5 decks
+`currentDeck = deck1;`
+- Start a new game
+- Use all cards in `deck1`
+```
+deck2 = deck1;
+shuffle(deck2);
+currentDeck = deck2...
+```
+* [x] Track number of aces to subtract 10 if over 21
 * [x] [TEST] Push when both scores are 21 but not blackjack (currently evaluates on `stand()`)
 
 ## Score Evaluation
 * [ ] [WIP] Improve score evaluation
-  * [ ] Check for win conditions
-  * [ ] [WIP] Handle ties better
+  * [ ] Combine and clean up winner checks
+    * [ ] Use priority order to optimize and fix rare bugs (e.g. 21/21 tie)
+    * [ ] `checkForWins()`
+    * [ ] `checkFinalScore()`
+  * [x] [TEST] Handle ties better
   * [x] [TEST] Set check for rare double blackjack
-  * [x] [TEST] Handle Blackjack vs regular 21 (Blackjack wins over 21)
+  * [x] Handle Blackjack vs regular 21 (Blackjack wins over 21)
 
 ## Dealer
-* [ ] Change dealer strategy: draw to 16, stand on 17
-  * [ ] When to hit on 16?
+* [ ] Change dealer strategy: draw to 16 / stand on 17's
+ * [ ] `drawDealerCard()` to 16 (when to hit on 16?)
+* [ ] `stand()` on 17
 
 ## User Interface
 * [x] Add sound effects
-  * [x] Add hotkey to disable sound (A)
+  * [x] Add button to disable sound effects
 * [x] Add help menu with instructions and rules
 * [ ] [WIP] Use images for buttons
-* [x] Make bet buttons look like casino chips (CSS circles or images)
+* [x] Make bet buttons look like casino chips
 * [x] Add bet amount buttons
-* [ ] Add buttons to increase/decrease bet by X
+  * [ ] Add buttons to increase/decrease bet by X
 * [ ] [WIP] Spruce and clean up code with jQuery
 * [x] Add double down button
   * [x] Disable button with > 2 cards
 * [ ] Add -1/0/+1 values to practice card counting
-* [ ] Add a help menu (simple popup with hide/close buttons)
-
-# BUGS
-
-* [ ] Tie at 21 doesn't evaluate until you stand
-* [ ] Infrequent freezes when looking for new card
-  * [ ] Need to optimize findUniqueCard()
-  * [ ] Clean up the card check
-  * [ ] Possibly hitting an out-of-range array value
-
-
-# Function Outline
-
-## Main
-```
-mainGameLoop()
-  generateCardDeck()
-  getKeyboardInput()
-  shuffleCardDeck()
-```
-## Deal Card and Find Value
-```
-drawPlayerCard()
-drawDealerCard()
-  findUniqueCard()
-  cleanCardString()
-  getCardValue()
-```
-### Update Score and Game Board
-```
-updateScore()
-updateCards()
-```
-#### Check for Winners
-```
-  checkForWins()
-  checkFinalScore()
-```
-## Player Actions
-```
-doubleDown()
-stand()
-  endCurrentRound()
-```
-## Miscellaneous
-```
-restartGame()
-  clearScoreboard()
-reloadPage()
-```
+* [x] Add a help menu (simple popup with hide/close buttons)
