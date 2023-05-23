@@ -2,7 +2,7 @@
 body {
   font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
   background-color: #154700; /*#0F3300;*/
-  font-size: 18pt;
+  font-size: 20pt;
   font-weight: bold;
   color: #ffffff;
   /* Add black outline to text for contrast */
@@ -17,7 +17,7 @@ body {
 
 button {
   background-color: #111111;
-  border-color: #555555;
+  border-color: #777777;
   color: #dddddd;
   font-size: 22pt;
   font-weight: bold;
@@ -28,7 +28,7 @@ button {
 }
 button:hover {
   color: #ffffff;
-  border-color: #777777;
+  border-color: #999999;
 }
 
 /* Horizontal rule is large white line with black outline (casino style) */
@@ -51,12 +51,14 @@ a:hover {
   color: #dddddd;
 }
 
-/*table, tr, td {
+/*
+table, tr, td {
   border: 2px solid darkgreen;
 }
 div, span  {
-  border: 2px solid forestgreen;
-}*/
+  border: 2px solid limegreen;
+}
+*/
 
 /* Larege BLACKJACK banner on top */
 .mainHeader {
@@ -183,7 +185,7 @@ div, span  {
   text-align: right;
 }
 
-#playerBetTxt, #playerWinningsTxt {
+#playerBetTxt, #playerWinningsTxt, {
   font-size: 22pt;
   color: #afff60;
   text-align: left;
@@ -262,7 +264,7 @@ div, span  {
 }
 
 #btnDoubleDown {
-  height: 50px;
+  height: 60px;
   width: 250pt;
   letter-spacing: 3px;
 }
@@ -286,11 +288,38 @@ div, span  {
 .btnHelpStyle {
   color: #d0d0d0;
   font-size: 20pt;
-  cursor: pointer;
+  cursor: help;
   text-align: center;
 }
 .btnHelpStyle:hover {
   color: #ffffff;
+}
+
+.btnAudioStatus {
+  color: #d0d0d0;
+  font-size: 20pt;
+  cursor: pointer;
+}
+.btnAudioStatus:hover {
+  filter: brightness(1.2);
+}
+
+.evenWidthCell {
+  width: 50%;
+}
+.evenRightCell {
+  width: 50%;
+  text-align: right;
+}
+
+#btnAudioStatusLead {
+  width: 50%;
+  text-align: right;
+}
+
+#btnAudioStatusValue {
+  text-align: left;
+  color: #afff60;
 }
 
 #helpMenuTxt {
@@ -317,6 +346,11 @@ hr.helpLine {
   background-color: white;
   border: 1px solid black;
   height: 4px;
+  width: 100%;
+}
+
+.keyMapStyle {
+  font-family: 'Consolas', monospace;
   width: 100%;
 }
 

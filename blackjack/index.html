@@ -93,49 +93,60 @@
       <button onclick="drawPlayerCard();" id="btnHit" title="Draw 1 card">HIT</button>
     </td>
   </tr>
-</table>
-<br>
+</table><hr class="hidden">
 
-<!-- Help button: clicking toggles help window, div centers text -->
-<div>
-<span id="btnHelp" onclick="showHelpMenu();" title="Click to toggle the help window" class="btnHelpStyle">Help</span>
-<!-- HELP MENU conents (hidden by default) -->
-<span id="helpMenuTxt" onclick="showHelpMenu();">
-  <center>♠️ ♥️ HOW TO PLAY BLACKJACK ♣️ ♦️</center>
-  <hr class="helpLine">
-  Rules: the goal of Blackjack is to score higher than the dealer without going over 21
-  <ul type="square">
-    <li>Cards 2 to 10 are scored as their base value 2=2, 10=10, etc.</li>
-    <li>Face cards are worth 10 (Jacks, Queens, and Kings)</li>
-    <li>Aces are worth 1 or 11 (whichever benefits the player)</li>
-  </ul>
-  <ol>
-    <li>Player with the score closest to 21 wins</li>
-    <li>Scores over 21 automatically lose (bust)</li>
-    <li>Blackjack beats a 21 scored with 3+ cards</li>
-  </ol>
-  <ul type="square">
-    Words to Know
-    <li>Hit: draw 1 more card from the deck</li>
-    <li>Stand: stop drawing cards and end your hand</li>
-    <li>Double Down: double your bet, draw 1 card, and stand</li>
-    <li>Blackjack: a score of 21 with <i>only</i> 2 cards (Ace + 10)</li>
-  </ul>
-  <table width="100%">
-    <tr>
-      <td>Keyboard:</td>
-      <td>[N]ew Hand</td>
-      <td>[D]ouble Down</td>
-      <td>[S]tand</td>
-      <td>[H]it</td>
-      <td>[A]udio</td>
-    </tr>
-  </table>
-  <hr class="helpLine">
-  <a href="https://ateadaze.github.io/blackjack/m/index.html">Mobile Version</a><br>
-  <a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
-</span>
-</div>
+<!-- Footer -->
+<table class="fixedTable">
+  <tr>
+    <td class="evenWidthCell">
+      <!-- Toggle SFX button -->
+      <div onclick="toggleAudio();" class="btnAudioStatus">
+      <span id="btnAudioStatusLead">Sound: </span><span id="btnAudioStatusValue">ON</span>
+      </div>
+  </td>
+  <td class="evenRightCell">
+  <!-- Help button: clicking toggles help window, div centers text -->
+  <div>
+  <span id="btnHelp" onclick="showHelpMenu();" title="Click to toggle the help window" class="btnHelpStyle">Help</span>
+  <!-- HELP MENU conents (hidden by default) -->
+  <span id="helpMenuTxt" onclick="showHelpMenu();">
+    <center>♠️ ♥️ HOW TO PLAY BLACKJACK ♣️ ♦️</center>
+    <hr class="helpLine">
+    Rules: the goal of Blackjack is to score higher than the dealer without going over 21
+    <ul type="square">
+      <li>Cards 2 to 10 are scored as their base value</li>
+      <li>Face cards are worth 10 (Jacks, Queens, Kings)</li>
+      <li>Aces are worth 1 or 11 (whichever helps the player)</li>
+    </ul>
+    <ol>
+      <li>Player with a score closest to 21 wins</li>
+      <li>Scores over 21 automatically lose (bust)</li>
+      <li>Blackjack beats a 21 scored with 3+ cards</li>
+    </ol>
+    <ul type="square">
+      Glossary
+      <li>Hit: draw 1 more card from the deck</li>
+      <li>Stand: stop drawing cards and end your hand</li>
+      <li>Double Down: double your bet, draw 1 card, and stand</li>
+      <li>Blackjack: a score of 21 with <i>only</i> 2 cards (Ace + 10)</li>
+    </ul>
+    <table class="keyMapStyle">
+      <tr>
+        <td>Keyboard:</td>
+        <td>[N]ew Hand</td>
+        <td>[D]ouble Down</td>
+        <td>[S]tand</td>
+        <td>[H]it</td>
+      </tr>
+    </table>
+    <hr class="helpLine">
+    <a href="https://ateadaze.github.io/blackjack/m/index.html">Mobile Version</a><br>
+    <a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
+  </span>
+  </div>
+  </td>
+</tr>
+</table>
 
 <!-- Preload game SFX -->
 <audio src="audio/card_flip.mp3"></audio>
