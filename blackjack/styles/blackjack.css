@@ -204,10 +204,11 @@ div, span  {
 
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
-  font-family: 'Book Antiqua', serif, 'Times New Roman'; /* 'Book Antiqua', 'Rockwell' */
-  font-size: 45pt;
+  font-family: 'Agency FB', serif, 'Times New Roman';
+  /* 'Agency FB', 'Book Antiqua', 'Dungeon', 'MS Gothic', 'Rockwell Condensed' */
+  font-size: 50pt;
   font-weight: bold;
-  height: 160px;
+  height: 175px;
   cursor: pointer;
 }
 
@@ -218,7 +219,7 @@ div, span  {
   border: 2px solid #000000;
   border-radius: 10px;
   color: #333333;
-  width: 98px;
+  width: 100px;
   text-align: center;
   padding-left: 0px;
   padding-right: 0px;
@@ -332,7 +333,7 @@ div, span  {
   text-align: left;
   border-radius: 2px;
   padding: 15px;
-  cursor: pointer;
+  cursor: help;
   width: 38.5%;
   position: fixed;
   z-index: 1;
@@ -370,7 +371,7 @@ hr.helpLine {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 340px;
+  top: 355px;
 }
 #toastMessage.show {
   visibility: visible;
