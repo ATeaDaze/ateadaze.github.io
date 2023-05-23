@@ -6,7 +6,10 @@ body {
   font-weight: bold;
   color: #ffffff;
   /* Add black outline to text for contrast */
-  cursor: default;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */  
 }
 
 button {
@@ -17,21 +20,8 @@ button {
   letter-spacing: 4pt;
   height: 50px;
   font-weight: bold;
-  cursor: pointer;
   width: 45%;
 }
-button:hover {
-  color: #ffffff;
-  border-color: #555555;  
-}
-
-
-/*table,tr,td,div {
-  border: 2px solid darkgreen;
-}
-div,span,tr,td  {
-  border: 2px solid forestgreen;
-}*/
 
 /* Horizontal rule is large white line with black outline (casino style) */
 hr {
@@ -47,9 +37,12 @@ a,a:visited {
   color: #c0c0c0;
 }
 
-a:hover {
-  color: #dddddd;
+/*table,tr,td {
+  border: 1px solid limegreen;
 }
+div,span {
+  border: 1px solid darkgreen;
+}*/
 
 /* Larege BLACKJACK banner on top */
 .mainHeader {
@@ -71,14 +64,9 @@ a:hover {
   padding-bottom: 1px;
 }
 
-.gbSingleCard:hover {
-  background-color: #eeeeee;
-  border-color: #333333;
-} 
-
 /* Banner cards use a white background with black text */
 .cardDeckFontBlack {
-  font-size: 20pt;
+  font-size: 18pt;
   color: black;
   background-color: white;
   border-radius: 2px;
@@ -87,13 +75,12 @@ a:hover {
   display: inline-block;
   line-height: 100%;
   height: 100%;
-  -webkit-text-stroke: 0px;
 /* Middle card is not rotated but set to 0 so it sits on top */
   transform: rotate(0deg);
   }
 /* Red text for hearts and diamonds, rotate card for style */
 .cardDeckFontRed {
-  font-size: 20pt;
+  font-size: 18pt;
   color: red;
   background-color: white;
   border-radius: 2px;
@@ -101,12 +88,11 @@ a:hover {
   display: inline-block;
   line-height: 100%;
   height: 100%;
-  -webkit-text-stroke: 0px;
   transform: rotate(-20deg);
   }
 /* The 2nd red card is rotated more and in the opposite direction */
 .cardDeckFontRed2 {
-  font-size: 20pt;
+  font-size: 18pt;
   color: red;
   background-color: white;
   border-radius: 2px;
@@ -114,7 +100,6 @@ a:hover {
   display: inline-block;
   line-height: 100%;
   height: 100%;
-  -webkit-text-stroke: 0px;
   transform: rotate(30deg);
   }
 
@@ -142,8 +127,7 @@ a:hover {
 
 /* Bet buttons */
 .btnBet {
-  width: 60px;
-  cursor: pointer;
+  width: 65px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -202,7 +186,6 @@ a:hover {
   font-size: 14pt;
   color: #afff60;
   text-align: left;
-  cursor: pointer;
   width: 20%;
 }
 
@@ -228,14 +211,10 @@ a:hover {
   font-weight: bold;
   height: 100px;
   width: 100%;
-  cursor: pointer;
 }
 
 /* Add fade animation to scoreboard */
 #statusBarTxt {
-/* LCD font looks terrible in Chromium browsers */
-/*  font-family: 'Digital-7 Mono', 'LCDMono2'; */
-/*  font-family: 'Impact', 'Haettenschweiler', sans-serif; */
   font-size: 12pt;
   letter-spacing: 1pt;
   text-align: center;
@@ -266,6 +245,30 @@ a:hover {
   100% { opacity: 1; }
 }
 
+#btnAudioStatusValue {
+  color: #afff60;
+}
+
+.evenWidthCell {
+  width: 50%;
+}
+.evenRightCell {
+  width: 50%;
+  text-align: right;
+}
+
+/* Help button and popup menu */
+.btnHelpStyle {
+  color: #d0d0d0;
+  font-size: 16pt;
+  text-align: center;
+}
+.btnAudioStatus {
+  color: #d0d0d0;
+  font-size: 16pt;
+}
+
+
 #helpMenuTxt {
   font-size: 12pt;
   font-weight: bold;
@@ -276,7 +279,6 @@ a:hover {
   text-align: left;
   border-radius: 2px;
   padding: 10px;
-  cursor: pointer;
   width: 85%;
   position: fixed;
   z-index: 1;

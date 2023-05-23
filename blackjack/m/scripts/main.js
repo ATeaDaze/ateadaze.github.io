@@ -8,14 +8,14 @@ const fullDeck = [
 ];
 // Commonly used strings
 const defaultGreeting = "BLACKJACK 3:2 🍀 DEALER S17";
-const btnDisableCSS = "background-color: #222222; cursor: not-allowed";
-const btnEnableCSS = "background-color: #111111; cursor: pointer";
-const statusBarWinCSS = "color: chartreuse; animation: 2s anim-flipX ease 1;";
+const btnDisableCSS = "background-color: #222222;";
+const btnEnableCSS = "background-color: #111111;";
+const statusBarWinCSS = "color: chartreuse; animation: 1.5s anim-flipX ease 1;";
 const statusBarLoseCSS = "color: #ff6161";
 // Counter for deck generation
 let count = 0;
 // Clear card deck
-let card = [];
+let currentDeck = [];
 // Tracks used cards to prevent duplicates
 let usedCard = [];
 // Score for each hand
@@ -24,14 +24,17 @@ let dealerScore = 0;
 // Total money available
 let playerMoney = 2000;
 let dealerMoney = 10000;
-let playerMoneyDifference = playerMoney - 2000;
+let playerMoneyDisplayTxt;
+let dealerMoneyDisplayTxt;
 let betAmount = 100;
-let betAmountWithOdds = betAmount*0.5;
+let betAmountWithOdds = betAmount * 0.5;
+// Track double bets to reset bet to 1x
 let bDoubleDownLastRound = false;
 // Number of cards in-play
 let nDealerCards = 0;
 let nPlayerCards = 0;
 let nTotalCards = 0;
+let nCardsInPlay = 0;
 // Track number of aces to modify values
 let currentPlayer = "Player";
 let nAcesPlayer = 0;
@@ -43,6 +46,7 @@ let bAceSwappedDealer = false;
 // Flags for tracking game
 let bGameOver = false;
 let bPlayerWon = false;
+let bEnableSound = true;
 let bDuplicateFound;
 // Display string for cards
 let cardFaceSuit;
@@ -69,12 +73,12 @@ function mainGameLoop() {
   drawPlayerCard();
   // Deal 1 card to dealer at start
   drawDealerCard();
-
   checkForWins();
-  // If the entire deck has been used then shuffle the deck (52 max but 46 is safer)
-  if(nTotalCards > 46) {
+  // If the entire deck has been used then shuffle it (offset prevents out-of-range crash)
+  if(nTotalCards > nCardOffset) {
     shuffleDeck();
   }
+
 }
 
 // Reset values and start a new hand
@@ -83,11 +87,12 @@ function restartGame() {
     betAmount = betAmount / 2;
     bDoubleDownLastRound = false;
   }
-  audioShuffle.play();
+  if(bEnableSound) audioShuffle.play();
   playerScore = 0;
   dealerScore = 0;
   nDealerCards = 0;
   nPlayerCards = 0;
+  nCardsInPlay = 0;
   currentPlayer = "Player";
   nAcesPlayer = 0;
   nAcesDealer = 0;
@@ -123,7 +128,7 @@ function drawPlayerCard() {
   cleanCardString();
   playerScore = getCardValue(playerScore);
   nPlayerCards++;
-  if(nPlayerCards > 2) audioCard.play();
+  if((nPlayerCards > 2)&&(bEnableSound)) audioCard.play();
   updateCards(gameBoardPlayer);
   updateScore();
   checkForWins();
@@ -136,7 +141,7 @@ function drawDealerCard() {
   cleanCardString();
   dealerScore = getCardValue(dealerScore);
   nDealerCards++;
-  if(nDealerCards > 1) audioCard.play();
+  if((nDealerCards > 1)&&(bEnableSound)) audioCard.play();
   updateCards(gameBoardDealer);
   updateScore();
   checkForWins();
@@ -147,16 +152,37 @@ function findUniqueCard() {
   bDuplicateFound = true;
   // Look for a new card and skip duplicates
   while(bDuplicateFound) {
+    // Random card from 0:51 (52 out of range, max value when tested = 51)
     randCardIndex = Math.floor(Math.random() * 52);
     // Use current card pick if it's not in-use
-    if(card[randCardIndex] != usedCard[randCardIndex]) {
-      newCard = card[randCardIndex];
+    if(currentDeck[randCardIndex] != usedCard[randCardIndex]) {
+      newCard = currentDeck[randCardIndex];
       // Add drawn card to the list of used cards
       usedCard[randCardIndex] = newCard;
       bDuplicateFound = false;
       nTotalCards++;
     }
   }
+}
+
+// Generate 52 card currentDeck from 2-dimensional array
+function generateCardDeck() {
+  for(suit = 0; suit<4; suit++) {
+    for(rank = 0; rank<13; rank++) {
+      currentDeck[count] = fullDeck[0][suit] + fullDeck[1][rank];
+      count++;
+    }
+  }
+}
+
+// Randomizes card order
+function shuffleDeck() {
+  // Clear the list of used cards (prevents memory leak)
+  usedCard = [];
+  nTotalCards = 0;
+  // Shuffle the currentDeck
+  currentDeck = currentDeck.sort((a, b) => 0.5 - Math.random());
+  displayShuffleToast();
 }
 
 function cleanCardString() {
@@ -209,28 +235,33 @@ function getCardValue(score, bAceDrawn) {
 
 // Update the scoreboard and dollar amounts
 function updateScore() {
-  let playerMoneyDisplayTxt = playerMoney.toLocaleString("en-US");
-  let dealerMoneyDisplayTxt = dealerMoney.toLocaleString("en-US");
-
+  // Disable bets once a card is drawn
   if(nPlayerCards > 2) {
     disableBets();
   }
+  // Update scores as integers
   playerScoreTxt.innerHTML = "Player: " + Number(playerScore);
   dealerScoreTxt.innerHTML = "Dealer: " + Number(dealerScore);
   // Change text color to red if money is negative
   if(playerMoney < 0) {
+    // Convert and format display text if it's negative
+    playerMoneyDisplayTxt = displayNegativeMoney(playerMoneyDisplayTxt, playerMoney);
     playerScoreTotalTxt.style = statusBarLoseCSS
     // Format string with negative symbol leading dollar sign
-    playerScoreTotalTxt.innerHTML = "-$" + -1*(playerMoneyDisplayTxt);
+    playerScoreTotalTxt.innerHTML = "-$" + playerMoneyDisplayTxt;
     // Otherwise set the text back to white
   } else {
+    // Simply format display text as a string with commas
+    playerMoneyDisplayTxt = playerMoney.toLocaleString("en-US");
     playerScoreTotalTxt.style = "color: #ffffff";
     playerScoreTotalTxt.innerHTML = "$" + playerMoneyDisplayTxt;
   }
   if(dealerMoney < 0) {
+    dealerMoneyDisplayTxt = displayNegativeMoney(dealerMoneyDisplayTxt, dealerMoney);
     dealerScoreTotalTxt.style = statusBarLoseCSS
-    dealerScoreTotalTxt.innerHTML = "-$" + -1*(dealerMoneyDisplayTxt);
+    dealerScoreTotalTxt.innerHTML = "-$" + dealerMoneyDisplayTxt;
   } else {
+    dealerMoneyDisplayTxt = dealerMoney.toLocaleString("en-US");
     dealerScoreTotalTxt.style = "color: #ffffff";
     dealerScoreTotalTxt.innerHTML = "$" + dealerMoneyDisplayTxt;
   }
@@ -239,12 +270,24 @@ function updateScore() {
     btnDoubleDown.disabled = true;
     btnDoubleDown.style = btnDisableCSS;
   }
+  // Update bet amount
   playerBetTxt.innerHTML = "$" + betAmount;
+}
 
+// Convert display text to a number and make it negative
+function displayNegativeMoney(strCash, intCash) {
+  strCash = Number(strCash);
+  strCash = intCash * -1;
+  // Format with commas and return as a string
+  strCash = strCash.toLocaleString("en-US");
+  return(strCash);
 }
 
 // Update player cards on screen
 function updateCards(gb) {
+  nCardsInPlay = nPlayerCards + nDealerCards;
+  // Offset number of cards minus 4 to prevent crashes on shuffle (out of range index)
+  nCardOffset = (52 - nCardsInPlay) - 4;
   // Separate newCard's suit and rank
   cardFaceSuit = newCard.slice(0,1);
   cardFaceRank = newCard.slice(1,3);
@@ -267,20 +310,19 @@ function updateCards(gb) {
   $(newTD).appendTo(gb).show();
   // Flip cards to add some life to the game
   $(newTD).animate({ transformValue: +360 }, {
-    step: function(now,fx) {
+    step: function(now, fx) {
       $(this).css('transform','rotatey('+now+'deg)');  
     },
     duration: 250
   }, 'linear');
 }
 
-// Clear scores
 function clearScoreboard() {
   gameBoardPlayer.innerHTML = "";
   gameBoardDealer.innerHTML = "";
 }
 
-// Draw 1 card, multiply bet by 2 and stand
+// Draw 1 card, multiply bet by 2, and stand
 function doubleDown() {
   betAmount = betAmount*2;
   bDoubleDownLastRound = true;
@@ -290,7 +332,7 @@ function doubleDown() {
 
 // Stop dealing cards to player
 function stand() {
-  // Dealer draws 1 card if they only have 1 showing
+  // Dealer draws to 17 and stands
   while(dealerScore < 17) {
     drawDealerCard();
   }
@@ -302,30 +344,6 @@ function stand() {
 function checkScoreDifference() {
   playerDiff = 21 - playerScore;
   dealerDiff = 21 - dealerScore;
-}
-
-// Generate 52 card deck from 2-dimensional array
-function generateCardDeck() {
-  for(suit = 0; suit<4; suit++) {
-    for(rank = 0; rank<13; rank++) {
-      card[count] = fullDeck[0][suit] + fullDeck[1][rank]
-      count++;
-    }
-  }
-}
-
-function shuffleDeck() {
-  // Clear the list of used cards (prevents memory leak)
-  usedCard = [];
-  nTotalCards = 0;
-  // Shuffle the deck
-  card = card.sort((a, b) => 0.5 - Math.random());
-  // Display notification
-  let x = document.getElementById("toastMessage");
-  x.className = "show";
-  setTimeout(function() {
-    x.className = x.className.replace("show", "");
-  }, 2500);
 }
 
 // Check for win conditions // TODO: optimize, combine with checkFinalScore()
@@ -342,9 +360,9 @@ function checkForWins() {
     if((playerScore == 21)&&(nPlayerCards == 2)&&(dealerScore != 21)) {
       // Player has 21 and only 2 cards
       statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
-      statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
+      statusBarTxt.style = "color: #CF9FFF; animation: 3s anim-flipX ease 3;";
       bPlayerWon = true;
-      audioJackpot.play();
+      if(bEnableSound) audioJackpot.play();
       // Double payout for blackjack (base payout + 0.5x bonus = 1.5x payout)
       playerMoney = playerMoney + betAmountWithOdds;
       dealerMoney = dealerMoney - betAmountWithOdds;
@@ -390,9 +408,9 @@ function checkForWins() {
       if((nPlayerCards < nDealerCards)&&(nPlayerCards == 2)) {
       // Player Blackjack
         statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount*1.5;
-        statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
+        statusBarTxt.style = "color: #CF9FFF; animation: 3s anim-flipX ease 3;";
         bPlayerWon = true;
-        audioJackpot.play();
+        if(bEnableSound) audioJackpot.play();
         // Double payout for blackjack (1.5x bonus + 1x final payout)
         playerMoney = playerMoney + betAmountWithOdds;
         dealerMoney = dealerMoney - betAmountWithOdds;
@@ -445,11 +463,11 @@ function endCurrentRound() {
   if(bPlayerWon) {
     playerMoney = playerMoney + betAmount;
     dealerMoney = dealerMoney - betAmount;
-    audioWin.play();
+    if(bEnableSound) audioWin.play();
   } else {
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
-    audioLose.play();
+    if(bEnableSound) audioLose.play();
   }
   // Draw dealer card if only 1 is showing
   if(nDealerCards == 1) {
@@ -477,8 +495,8 @@ function endCurrentRound() {
 }
 
 function updateBetAmount(newBet) {
-    betAmount = newBet;
-    updateBetButtons();
+  betAmount = newBet;
+  updateBetButtons();
 }
 
 function updateBetButtons() {
@@ -516,10 +534,6 @@ function disableBets() {
   $( "#btnBet50" ).prop( "disabled", true );
   $( "#btnBet100" ).prop( "disabled", true );
   $( "#btnBet200" ).prop( "disabled", true );
-  btnBet25.style = "cursor:not-allowed";
-  btnBet50.style = "cursor:not-allowed";
-  btnBet100.style = "cursor:not-allowed";
-  btnBet200.style = "cursor:not-allowed";
 }
 
 function enableBets() {
@@ -527,12 +541,9 @@ function enableBets() {
   $( "#btnBet50" ).prop( "disabled", false );
   $( "#btnBet100" ).prop( "disabled", false );
   $( "#btnBet200" ).prop( "disabled", false );
-  btnBet25.style = "cursor:pointer";
-  btnBet50.style = "cursor:pointer";
-  btnBet100.style = "cursor:pointer";
-  btnBet200.style = "cursor:pointer";
 }
 
+// Toggle help window
 function showHelpMenu() {
 let x = document.getElementById("helpMenuTxt");
   if(!bShowHelp) {
@@ -542,4 +553,25 @@ let x = document.getElementById("helpMenuTxt");
     x.className = "hide";
     bShowHelp = false;
   }
+}
+
+function toggleAudio() {
+  if(bEnableSound == true) {
+    btnAudioStatusValue.style = "color: #f26d6d";
+    btnAudioStatusValue.innerHTML = "OFF";
+    bEnableSound = false;
+  } else {
+    btnAudioStatusValue.style = "color: #afff60";
+    btnAudioStatusValue.innerHTML = "ON";
+    bEnableSound = true;
+  }
+}
+
+function displayShuffleToast() {
+  // Display notification
+  let x = document.getElementById("toastMessage");
+  x.className = "show";
+  setTimeout(function() {
+    x.className = x.className.replace("show", "");
+  }, 2500);
 }
