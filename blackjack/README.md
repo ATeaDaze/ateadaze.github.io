@@ -10,7 +10,7 @@ A Blackjack app written in (mostly) native JavaScript. Uses some jQuery for clea
   * **Blackjack pays 3:2** odds (150%)
 * **Place bets:** $25, $50, $100, $200
 * **Double Down** if you're feeling lucky
-* **Single 52-card deck:** no duplicate cards drawn
+* **Two 52-card decks:** no duplicate cards drawn
 
 # 💻 [Desktop](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
@@ -40,6 +40,13 @@ Key|&nbsp;|Description
   * Fix: set card offset to limit range of check `(52-cardsInPlay-4)`
 * [ ] [WIP] Optimize `findUniqueCard()`
 
+# POSSIBLE BUG
+
+**NOTE:** Blackjack typically used 2 to 5 decks shuffled together. This may not be a bug so increasing the pool to draw from all 104 cards may be a more accurate solution
+
+* [ ] Rarely draws duplicate cards when deck changes or is shuffled (duplicates don't carry over)
+  * [ ] Possible fix: force a shuffle or deck swap on new hands if < X cards remain
+
 # TODO
 
 ## General
@@ -51,15 +58,7 @@ Key|&nbsp;|Description
     * [ ] Requires a 2nd game board for each player (screen space)
 
 ## Card Deck Generation
-* [ ] Generate 2 to  5 decks
-`currentDeck = deck1;`
-- Start a new game
-- Use all cards in `deck1`
-```
-deck2 = deck1;
-shuffle(deck2);
-currentDeck = deck2...
-```
+* [x] Generate 2 to  5 decks
 * [x] Track number of aces to subtract 10 if over 21
 * [x] [TEST] Push when both scores are 21 but not blackjack (currently evaluates on `stand()`)
 
