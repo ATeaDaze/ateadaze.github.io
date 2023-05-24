@@ -12,7 +12,7 @@ A Blackjack app written in (mostly) native JavaScript. Uses some jQuery for clea
 * **Double Down** if you're feeling lucky
 * **Single 52-card deck:** no duplicate cards drawn
 
-# Desktop 💻 [ateadaze.github.io/blackjack](https://ateadaze.github.io/blackjack)
+# 💻 [Desktop](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
 
 ## Keyboard Map
@@ -24,7 +24,7 @@ Key|&nbsp;|Description
 |**` D `**|Double down| Double your bet, deal 1 more card, and stand
 |**` N `**|Deal| Start a new hand
 
-# Mobile 📱 [ateadaze.github.io/blackjack/m](https://ateadaze.github.io/blackjack/m/)
+# 📱 [Mobile](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
 
 ### Key:
