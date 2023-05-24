@@ -6,22 +6,20 @@ const fullDeck = [
   ['♠','♥','♣','♦'],
   ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
 ];
-// Commonly used strings
 const defaultGreeting = "BLACKJACK 3:2 🍀 DEALER S17";
 const btnDisableCSS = "background-color: #222222;";
 const btnEnableCSS = "background-color: #111111;";
 const statusBarWinCSS = "color: chartreuse; animation: 1.5s anim-flipX ease 1;";
 const statusBarLoseCSS = "color: #ff6161";
-// Counter for deck generation
-let count = 0;
-// Clear card deck
-let currentDeck = [];
+// Clear both card decks
+let deck1 = [];
+let deck2 = [];
+let currentDeck;
+let nDeck = 1;
 // Tracks used cards to prevent duplicates
 let usedCard = [];
-// Score for each hand
 let playerScore = 0;
 let dealerScore = 0;
-// Total money available
 let playerMoney = 2000;
 let dealerMoney = 10000;
 let playerMoneyDisplayTxt;
@@ -30,7 +28,6 @@ let betAmount = 100;
 let betAmountWithOdds = betAmount * 0.5;
 // Track double bets to reset bet to 1x
 let bDoubleDownLastRound = false;
-// Number of cards in-play
 let nDealerCards = 0;
 let nPlayerCards = 0;
 let nTotalCards = 0;
@@ -43,7 +40,6 @@ let bFullAcePlayer = false;
 let bFullAceDealer = false;
 let bAceSwappedPlayer = false;
 let bAceSwappedDealer = false;
-// Flags for tracking game
 let bGameOver = false;
 let bPlayerWon = false;
 let bEnableSound = true;
@@ -58,9 +54,11 @@ const audioWin = new Audio("../audio/casino_chip.mp3");
 const audioLose = new Audio("../audio/tick.mp3");
 const audioJackpot = new Audio("../audio/jackpot.mp3");
 
-// Generate 52 card deck
-generateCardDeck();
-// Play deck shuffle sound
+// Generate 2 52-card decks (104)
+deck1 = generateCardDeck();
+deck2 = deck1;
+currentDeck = deck1;
+shuffleDeck(currentDeck);
 audioShuffle.play();
 
 function mainGameLoop() {
@@ -74,14 +72,14 @@ function mainGameLoop() {
   // Deal 1 card to dealer at start
   drawDealerCard();
   checkForWins();
-  // If the entire deck has been used then shuffle it (offset prevents out-of-range crash)
+  // If the entire deck has been used then swap them
   if(nTotalCards > nCardOffset) {
-    shuffleDeck();
+    swapDecks(currentDeck);
+    shuffleDeck(currentDeck);
   }
 
 }
 
-// Reset values and start a new hand
 function restartGame() {
   if(bDoubleDownLastRound) {
     betAmount = betAmount / 2;
@@ -121,7 +119,6 @@ function restartGame() {
   mainGameLoop();
 }
 
-// Draw 1 card for player
 function drawPlayerCard() {
   currentPlayer = "Player";
   findUniqueCard();
@@ -134,7 +131,6 @@ function drawPlayerCard() {
   checkForWins();
 }
 
-// Draw 1 card for dealer
 function drawDealerCard() {
   currentPlayer = "Dealer";
   findUniqueCard();
@@ -147,14 +143,50 @@ function drawDealerCard() {
   checkForWins();
 }
 
+// Generate 52 card deck
+function generateCardDeck() {
+let count = 0;
+let baseDeck = [];
+  for(suit = 0; suit<4; suit++) {
+    for(rank = 0; rank<13; rank++) {
+      baseDeck[count] = fullDeck[0][suit] + fullDeck[1][rank];
+      count++;
+    }
+  }
+  return(baseDeck);
+}
+
+// Swap decks when 52 card are used
+function swapDecks() {
+  nTotalCards = 0;
+  usedCard = [];
+  if(currentDeck == deck1) {
+    currentDeck = deck2;
+  } else {
+    currentDeck = deck1;
+  }
+  nDeck++;
+  if(nDeck > 2) {
+    nDeck = 1;
+    displayShuffleToast();
+  }
+  return(currentDeck);
+}  
+
+// Randomize card deck array
+function shuffleDeck(newDeck) {
+  newDeck = newDeck.sort((a, b) => 0.5 - Math.random());
+  return(newDeck);
+}
+
 // Verify drawn card is not in-use
 function findUniqueCard() {
   bDuplicateFound = true;
   // Look for a new card and skip duplicates
   while(bDuplicateFound) {
-    // Random card from 0:51 (52 out of range, max value when tested = 51)
+    // Random card index (range = 0:51)
     randCardIndex = Math.floor(Math.random() * 52);
-    // Use current card pick if it's not in-use
+    // Select card if it's not in-use
     if(currentDeck[randCardIndex] != usedCard[randCardIndex]) {
       newCard = currentDeck[randCardIndex];
       // Add drawn card to the list of used cards
@@ -163,26 +195,6 @@ function findUniqueCard() {
       nTotalCards++;
     }
   }
-}
-
-// Generate 52 card currentDeck from 2-dimensional array
-function generateCardDeck() {
-  for(suit = 0; suit<4; suit++) {
-    for(rank = 0; rank<13; rank++) {
-      currentDeck[count] = fullDeck[0][suit] + fullDeck[1][rank];
-      count++;
-    }
-  }
-}
-
-// Randomizes card order
-function shuffleDeck() {
-  // Clear the list of used cards (prevents memory leak)
-  usedCard = [];
-  nTotalCards = 0;
-  // Shuffle the currentDeck
-  currentDeck = currentDeck.sort((a, b) => 0.5 - Math.random());
-  displayShuffleToast();
 }
 
 function cleanCardString() {
@@ -283,7 +295,6 @@ function displayNegativeMoney(strCash, intCash) {
   return(strCash);
 }
 
-// Update player cards on screen
 function updateCards(gb) {
   nCardsInPlay = nPlayerCards + nDealerCards;
   // Offset number of cards minus 4 to prevent crashes on shuffle (out of range index)
@@ -457,7 +468,6 @@ function checkFinalScore() {
   }
 }
 
-// End the round
 function endCurrentRound() {
   // Add and subtract bets from totals
   if(bPlayerWon) {
