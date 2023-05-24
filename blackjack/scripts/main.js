@@ -9,10 +9,11 @@ const btnDisableCSS = "background-color: #222222; cursor: not-allowed";
 const btnEnableCSS = "background-color: #111111; cursor: pointer";
 const statusBarWinCSS = "color: chartreuse; animation: 1.5s anim-flipX ease 1;";
 const statusBarLoseCSS = "color: #ff6161";
-// Counter for deck generation
-let count = 0;
-// Clear card deck
-let currentDeck = [];
+// Clear both card decks
+let deck1 = [];
+let deck2 = [];
+let currentDeck;
+let nDeck = 1;
 // Tracks used cards to prevent duplicates
 let usedCard = [];
 let playerScore = 0;
@@ -22,8 +23,8 @@ let dealerMoney = 10000;
 let playerMoneyDisplayTxt;
 let dealerMoneyDisplayTxt;
 let betAmount = 100;
-// Add 50% to bet for Blackjacj (3:2 odds)
-let betAmountWithOdds = betAmount * 0.5;
+// Add 50% to bet for Blackjack (3:2 odds)
+const betAmountWithOdds = betAmount * 0.5;
 // Track double bets to reset bet to 100%
 let bDoubleDownLastRound = false;
 let nDealerCards = 0;
@@ -53,9 +54,14 @@ const audioWin = new Audio("audio/casino_chip.mp3");
 const audioLose = new Audio("audio/tick.mp3");
 const audioJackpot = new Audio("audio/jackpot.mp3");
 
-generateCardDeck();
-getKeyboardInput();
+// Generate 2 52-card decks (104)
+deck1 = generateCardDeck();
+deck2 = deck1;
+currentDeck = deck1;
+shuffleDeck(currentDeck);
 audioShuffle.play();
+
+getKeyboardInput();
 
 function mainGameLoop() {
   statusBarTxt.innerHTML = defaultGreeting;
@@ -68,9 +74,10 @@ function mainGameLoop() {
   // Deal 1 card to dealer at start
   drawDealerCard();
   checkForWins();
-  // If the entire deck has been used then shuffle it
+  // If the entire deck has been used then swap them
   if(nTotalCards > nCardOffset) {
-    shuffleDeck();
+    swapDecks(currentDeck);
+    shuffleDeck(currentDeck);
   }
 }
 
@@ -141,6 +148,42 @@ function drawDealerCard() {
   checkForWins();
 }
 
+// Generate 52 card deck
+function generateCardDeck() {
+let count = 0;
+let baseDeck = [];
+  for(suit = 0; suit<4; suit++) {
+    for(rank = 0; rank<13; rank++) {
+      baseDeck[count] = fullDeck[0][suit] + fullDeck[1][rank];
+      count++;
+    }
+  }
+  return(baseDeck);
+}
+
+// Swap decks when 52 card are used
+function swapDecks() {
+  nTotalCards = 0;
+  usedCard = [];
+  if(currentDeck == deck1) {
+    currentDeck = deck2;
+  } else {
+    currentDeck = deck1;
+  }
+  nDeck++;
+  if(nDeck > 2) {
+    nDeck = 1;
+    displayShuffleToast();
+  }
+  return(currentDeck);
+}  
+
+// Randomize card deck array
+function shuffleDeck(newDeck) {
+  newDeck = newDeck.sort((a, b) => 0.5 - Math.random());
+  return(newDeck);
+}
+
 // Verify drawn card is not in-use
 function findUniqueCard() {
   bDuplicateFound = true;
@@ -157,26 +200,6 @@ function findUniqueCard() {
       nTotalCards++;
     }
   }
-}
-
-// Generate 52 card deck
-function generateCardDeck() {
-  for(suit = 0; suit<4; suit++) {
-    for(rank = 0; rank<13; rank++) {
-      currentDeck[count] = fullDeck[0][suit] + fullDeck[1][rank];
-      count++;
-    }
-  }
-}
-
-// Randomize cards an reset card count
-function shuffleDeck() {
-  // Clear the list of used cards (prevents memory leak)
-  usedCard = [];
-  nTotalCards = 0;
-  // Shuffle the currentDeck
-  currentDeck = currentDeck.sort((a, b) => 0.5 - Math.random());
-  displayShuffleToast();
 }
 
 function cleanCardString() {
@@ -290,7 +313,6 @@ function updateCards(gb) {
   newTD.append(cardFaceRank);
   newTD.append(cardLineBreak);
   newTD.append(cardFaceSuit);
-//  newTD.title = cardFaceSuit + " " + cardFaceRank;
   $(newTD).addClass("gbSingleCard");
   // Display with red text for diamonds and hearts
   if((cardFaceSuit == '♦')||(cardFaceSuit == '♥')) {
