@@ -204,7 +204,7 @@ div,span {
 
 @font-face { 
   font-family: "52_card_font"; 
-  src: url("../../fonts/card_characters.ttf"); 
+  src: url("../../fonts/numbers_deuce.ttf"); 
 } 
 
 /* Main game board where cards are displayed, Serif font looks similar to a card font */
