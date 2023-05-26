@@ -200,14 +200,15 @@ div, span  {
 
 @font-face { 
   font-family: "52_card_font"; 
-  src: url("../fonts/numbers_deuce.ttf"); 
-} 
+  src: url("../fonts/card_characters.ttf"); 
+}
+/* numbers_deuce calling_cards, calling_cards-bold card_characters */
 
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
   font-family: '52_card_font', 'Agency FB', serif, 'Times New Roman';
   /* 'Calling Cards', 'Agency FB', 'Book Antiqua', 'Dungeon', 'MS Gothic', 'Rockwell Condensed' */
-  font-size: 50pt;
+  font-size: 40pt;
   font-weight: normal;
   height: 175px;
   cursor: pointer;
