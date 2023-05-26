@@ -18,7 +18,7 @@ button {
   color: #dddddd;
   font-size: 16pt;
   letter-spacing: 4pt;
-  height: 50px;
+  height: 45px;
   font-weight: bold;
   width: 45%;
 }
@@ -46,7 +46,8 @@ div,span {
 
 /* Larege BLACKJACK banner on top */
 .mainHeader {
-  font-size: 20pt;
+  font-size: 18pt;
+  letter-spacing: 5pt;
   font-family: 'Book Antiqua', serif, 'Times New Roman';
 }
 
@@ -66,7 +67,7 @@ div,span {
 
 /* Banner cards use a white background with black text */
 .cardDeckFontBlack {
-  font-size: 18pt;
+  font-size: 16pt;
   color: black;
   background-color: white;
   border-radius: 2px;
@@ -80,7 +81,7 @@ div,span {
   }
 /* Red text for hearts and diamonds, rotate card for style */
 .cardDeckFontRed {
-  font-size: 18pt;
+  font-size: 16pt;
   color: red;
   background-color: white;
   border-radius: 2px;
@@ -92,7 +93,7 @@ div,span {
   }
 /* The 2nd red card is rotated more and in the opposite direction */
 .cardDeckFontRed2 {
-  font-size: 18pt;
+  font-size: 16pt;
   color: red;
   background-color: white;
   border-radius: 2px;
@@ -127,7 +128,7 @@ div,span {
 
 /* Bet buttons */
 .btnBet {
-  width: 65px;
+  width: 55px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -211,7 +212,7 @@ div,span {
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
   font-family: '52_card_font', 'Agency FB', 'SamsungOne', 'SF Pro Display', sans-serif, 'Times New Roman';
-  font-size: 24pt;
+  font-size: 30pt;
   font-weight: bold;
   height: 100px;
   width: 100%;
