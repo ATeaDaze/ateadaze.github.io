@@ -11,7 +11,7 @@
   * **Blackjack pays 3:2** odds (150%)
 * **Place bets:** $25, $50, $100, $200
 * **Double Down** if you're feeling lucky
-* **Uses two 52-card decks:** no duplicate cards drawn
+* **Uses six 52-card decks:** no duplicate cards drawn
 
 # 💻 [Desktop](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
@@ -76,7 +76,7 @@ if(nTotalCards > nCardOffset) {
 
 ## Card Deck Generation
 * [x] Generate 2 to 6 decks
- * [ ] Combine both decks into a single pool of 104
+ * [x] Combine decks into a single pool of 312
 * [x] Track number of aces to subtract 10 if over 21
 
 ## Winner Checks
@@ -106,10 +106,8 @@ This doesn't seem significantly different than simply drawing to 17
 * [ ] Update UI to properly render on a wider variety of devices
   * Refresh my knowledge of CSS: viewport, vh, absolute/relative, etc. 
   * This could make the mobile port redundant if done properly 
-* [ ] [WIP] Display running total (-1/0/+1) to practice card counting
- * I've written and tested this but haven't implemented it in the current version
- * Adding a button to toggle the feature on/off
-  * It seems more useful if the game is updated to use 6 decks as the count resets often with only 2
+* [x] [TEST] Display true count (card counting)
+  * `True count = (running count / decks remaining)` 
 * [ ] [WIP] Use images for all buttons
 * [x] Add sound effects
   * [x] Add button to disable sound effects
