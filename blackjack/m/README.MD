@@ -1,1 +1,1 @@
-# Basic and terrible mobile port of basic Blackjack app
+# A very basic mobile port of Blackjack
