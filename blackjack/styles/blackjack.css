@@ -51,14 +51,12 @@ a:hover {
   color: #dddddd;
 }
 
-/*
-table, tr, td {
+/*table, tr, td {
   border: 2px solid darkgreen;
 }
 div, span  {
   border: 2px solid limegreen;
-}
-*/
+}*/
 
 /* Larege BLACKJACK banner on top */
 .mainHeader {
@@ -164,50 +162,53 @@ div, span  {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-@-o-keyframes fadeIn {
+
+/* @-o-keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 @-ms-keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
-}
+} */
 
 #playerScoreTxt, #dealerScoreTxt {
   font-size: 24pt;
   font-weight: bold;
   text-align: left;
+  width: 33%;
 }
 
 .betLead {
   font-size: 22pt;
-  width: 25%;
   text-align: right;
+  width: 16.5%;
 }
 
-#playerBetTxt, #playerWinningsTxt, {
+#playerBetTxt {
   font-size: 22pt;
   color: #afff60;
   text-align: left;
-  cursor: pointer;
-  width: 30%;
+  width: 16.5%;
 }
 
 #playerScoreTotalTxt, #dealerScoreTotalTxt {
-/*  font-weight: normal; */
   font-size: 24pt;
   text-align: right;
-  align-content: right;
-  width: 20%;
-  cursor: pointer;
+  width: 33%;
 }
+
+@font-face { 
+  font-family: "52_card_font"; 
+  src: url("../fonts/numbers_deuce.ttf"); 
+} 
 
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
-  font-family: 'Agency FB', serif, 'Times New Roman';
-  /* 'Agency FB', 'Book Antiqua', 'Dungeon', 'MS Gothic', 'Rockwell Condensed' */
+  font-family: '52_card_font', 'Agency FB', serif, 'Times New Roman';
+  /* 'Calling Cards', 'Agency FB', 'Book Antiqua', 'Dungeon', 'MS Gothic', 'Rockwell Condensed' */
   font-size: 50pt;
-  font-weight: bold;
+  font-weight: normal;
   height: 175px;
   cursor: pointer;
 }
@@ -305,6 +306,19 @@ div, span  {
   filter: brightness(1.2);
 }
 
+#cardCounterTxt {
+  color: #d0d0d0;
+  cursor: pointer;
+  width: 10%;
+}
+#cardCounterTxt:hover {
+  filter: brightness(1.2);
+}
+#cardCounterTxt.hide {
+  visibility: hidden;
+  cursor: default;
+}
+
 .evenWidthCell {
   width: 50%;
 }
@@ -393,7 +407,7 @@ hr.helpLine {
 @keyframes anim-flipX {
   0% {
     opacity: 0;
-    transform: rotateX(90def);
+    transform: rotateX(90deg);
   }
   50% {
     opacity: 1;

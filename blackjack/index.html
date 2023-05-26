@@ -19,7 +19,7 @@
 <span class="mainHeader">BLACKJACK</span>
 <span class="cardDeckFontBlack">🃑</span><span class="cardDeckFontRed2">🂺</span>
 <!-- Notification when 104 cards have been used -->
-<span id="toastMessage">2 Decks Used 🎲 Shuffling Cards</span>
+<span id="toastMessage">All 6 Decks Used 🎲 Shuffling Cards</span>
 
 <!-- Status bar -->
 <table class="fixedTable">
@@ -36,8 +36,8 @@
   <tr>
     <td id="playerScoreTxt"></td>
     <td class="betLead">Bet:</td>
-    <td id="playerBetTxt" title="Current Bet"></td>
-    <td id="playerScoreTotalTxt" title="Player Cash">$250</td>
+    <td id="playerBetTxt"></td>
+    <td id="playerScoreTotalTxt">$250</td>
   </tr>
 </table>
 <hr>
@@ -56,7 +56,7 @@
 <table class="fixedTable">
   <tr>
     <td id="dealerScoreTxt"></td>
-      <td id="dealerScoreTotalTxt" title="Casino Bank">$1000</td>
+      <td id="dealerScoreTotalTxt">$1000</td>
   </tr>
 </table>
 <hr>
@@ -76,19 +76,19 @@
   <tr>
     <!-- BET [$25], [$50], [$100], [$200], and [DOUBLE DOWN] buttons -->
     <td class="btnTable">
-      <input type="image" src="images/25.png" title="$25" class="btnBet" id="btnBet25" onclick="updateBetAmount(25);">
-      <input type="image" src="images/50.png" title="$50" class="btnBet" id="btnBet50" onclick="updateBetAmount(50);">
-      <input type="image" src="images/100.png" title="$100" class="btnBet" id="btnBet100" onclick="updateBetAmount(100);"> 
-      <input type="image" src="images/200.png" title="$200" class="btnBet" id="btnBet200" onclick="updateBetAmount(200);">  
+      <input type="image" src="images/25.png" class="btnBet" id="btnBet25" onclick="updateBetAmount(25);">
+      <input type="image" src="images/50.png" class="btnBet" id="btnBet50" onclick="updateBetAmount(50);">
+      <input type="image" src="images/100.png" class="btnBet" id="btnBet100" onclick="updateBetAmount(100);"> 
+      <input type="image" src="images/200.png" class="btnBet" id="btnBet200" onclick="updateBetAmount(200);">  
       <hr class="smallLine">
-      <button onclick="doubleDown();" id="btnDoubleDown" title="Draw 1 more card for 2x payout">DOUBLE DOWN</button>
+      <button onclick="doubleDown();" id="btnDoubleDown">DOUBLE DOWN</button>
     </td>
     <!-- [DEAL NEW HAND], [STAND], and [HIT] buttons -->
     <td class="btnTable">
-      <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle" title="Deal a new hand">DEAL NEW HAND</button>
+      <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle">DEAL NEW HAND</button>
       <hr class="smallLine"><hr class="smallLine">
-      <button id="btnStand" onclick="stand();" title="Stop drawing cards">STAND</button>&nbsp;
-      <button onclick="drawPlayerCard();" id="btnHit" title="Draw 1 card">HIT</button>
+      <button id="btnStand" onclick="stand();">STAND</button>&nbsp;
+      <button onclick="drawPlayerCard();" id="btnHit">HIT</button>
     </td>
   </tr>
 </table><hr class="hidden">
@@ -98,14 +98,17 @@
   <tr>
     <td class="evenWidthCell">
       <!-- Toggle SFX button -->
-      <div onclick="toggleAudio();" class="btnAudioStatus">
-      <span id="btnAudioStatusLead">Sound: </span><span id="btnAudioStatusValue">ON</span>
-      </div>
+      <span class="btnAudioStatus">
+      <span id="btnAudioStatusLead" onclick="toggleAudio();">Sound:&nbsp;</span><span id="btnAudioStatusValue" onclick="toggleAudio();">ON</span>
+      </span>
   </td>
+
+  <td><span id="cardCounterTxt" onclick="hideRunningCount();" title="Running Count (click to hide)"></td>
+
   <td class="evenRightCell">
   <!-- Help button: clicking toggles help window, div centers text -->
   <div>
-  <span id="btnHelp" onclick="showHelpMenu();" title="Click to toggle the help window" class="btnHelpStyle">Help</span>
+  <span id="btnHelp" onclick="showHelpMenu();" class="btnHelpStyle">Help</span>
   <!-- HELP MENU conents (hidden by default) -->
   <span id="helpMenuTxt" onclick="showHelpMenu();">
     <center>♠️ ♥️ HOW TO PLAY BLACKJACK ♣️ ♦️</center>
