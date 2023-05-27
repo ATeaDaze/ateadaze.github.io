@@ -163,7 +163,7 @@ div,span {
 
 /* Player and dealer's score for current hand */
 #playerScoreTxt, #dealerScoreTxt {
-  font-size: 16pt;
+  font-size: 15pt;
   font-weight: bold;
   text-align: left;
 }
@@ -183,7 +183,7 @@ div,span {
 
 /* Player and dealer's total money */
 #playerScoreTotalTxt, #dealerScoreTotalTxt {
-  font-size: 16pt;
+  font-size: 15pt;
   text-align: right;
   align-content: right;
   width: 33%;
@@ -205,14 +205,14 @@ div,span {
 
 @font-face { 
   font-family: "52_card_font"; 
-  src: url("../../fonts/numbers_deuce.ttf"); 
+  src: url("../../fonts/card_characters.ttf"); 
 } 
 
 /* Main game board where cards are displayed, Serif font looks similar to a card font */
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
   font-family: '52_card_font', 'Agency FB', 'SamsungOne', 'SF Pro Display', sans-serif, 'Times New Roman';
-  font-size: 30pt;
+  font-size: 28pt;
   font-weight: bold;
   height: 100px;
   width: 100%;
@@ -266,15 +266,16 @@ div,span {
 /* Help button and popup menu */
 .btnHelpStyle {
   color: #d0d0d0;
-  font-size: 16pt;
+  font-size: 14pt;
   text-align: center;
 }
 .btnAudioStatus {
   color: #d0d0d0;
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 #cardCounterTxt {
+  font-size: 14pt;
   color: #d0d0d0;
   width: 10%;
 }
