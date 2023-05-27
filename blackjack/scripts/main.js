@@ -210,11 +210,12 @@ function getCardValue(score, bAceDrawn) {
   decksLeft = (deckSize - nTotalCards) / 52;
   // Round to nearest half-deck
   decksLeft = Math.round((decksLeft * 2)) / 2;
-  if(decksLeft < 0.6) decksLeft = 0.5;
+  decksLeft = Math.floor(decksLeft);
+  if(decksLeft < 1) decksLeft = 1;
   trueCount = runningCount / decksLeft;
   // Round true count down to nearest integer
   trueCount = Math.floor(trueCount);
-  updateRunningTotal();
+  updateTrueCount();
   // Use base card value if it's 2:10
   if( (newCardValue > 1) && (newCardValue < 11) ) {
     score = score + newCardValue;
@@ -286,9 +287,8 @@ function updateScore() {
   playerBetTxt.innerHTML = "$" + betAmount;
 }
 
-function updateRunningTotal() {
+function updateTrueCount() {
   cardCounterTxt.innerHTML = trueCount;
-//  cardCounterTxt.title = runningCount;
 }
 
 // Convert display text to a number and make it negative
@@ -581,7 +581,7 @@ let x = document.getElementById("helpMenuTxt");
   }
 }
 
-function hideRunningCount() {
+function hideTrueCount() {
 let x = document.getElementById("cardCounterTxt");
   x.className = "hide";
 }
