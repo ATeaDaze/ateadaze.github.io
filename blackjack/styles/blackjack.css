@@ -235,7 +235,7 @@ div, span  {
 
 /* Gameplay buttons */
 #btnHit {
-  height: 55px;
+  height: 60px;
   color: chartreuse;
   border-color: chartreuse;
   -webkit-text-stroke: 0px;
@@ -248,7 +248,7 @@ div, span  {
 
 /* [STAND] button */
 #btnStand {
-  height: 55px;
+  height: 60px;
   color: indianred;
   border-color: indianred;
   -webkit-text-stroke: 0px;
@@ -261,13 +261,13 @@ div, span  {
 
 /* [DEAL NEW HAND] button */
 #btnNewGame {
-  height: 55px;
+  height: 60px;
   width: 250pt;
   letter-spacing: 2px;
 }
 
 #btnDoubleDown {
-  height: 55px;
+  height: 60px;
   width: 250pt;
   letter-spacing: 3px;
 }
