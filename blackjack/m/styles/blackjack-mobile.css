@@ -2,6 +2,9 @@
 body {
   font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
   background-color: #154700; /*#0F3300;*/
+  background-image: url("../../images/casino_table.png");
+  background-size: 50%;
+  background-repeat: repeat
   font-size: 18pt;
   font-weight: bold;
   color: #ffffff;
