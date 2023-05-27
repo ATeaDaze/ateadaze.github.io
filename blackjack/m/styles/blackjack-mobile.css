@@ -212,8 +212,8 @@ div,span {
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
   font-family: '52_card_font', 'Agency FB', 'SamsungOne', 'SF Pro Display', sans-serif, 'Times New Roman';
-  font-size: 28pt;
-  font-weight: bold;
+  font-size: 26pt;
+  font-weight: normal;
   height: 100px;
   width: 100%;
 }
