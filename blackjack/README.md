@@ -18,12 +18,12 @@
 
 ## Keyboard Map
 
-Key|Description
----|:--
-|**` S `** Stand| Stop dealing cards to the player and let the dealer play their hand
-|**` H `** Hit| Deal 1 card to the player
-|**` D `** Double Down| Double your bet, deal 1 more card, and stand
-|**` N `** New Hand| Deal a new hand
+Key|&nbsp;|Description
+---|:--|:--
+|**` S `** |Stand| Stop dealing cards to the player and let the dealer play their hand
+|**` H `** |Hit| Deal 1 card to the player
+|**` D `** |Double down| Double your bet, deal 1 more card, and stand
+|**` N `** |New hand| Deal a new hand
 
 # 📱 [Mobile](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
