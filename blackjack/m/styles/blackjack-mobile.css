@@ -154,7 +154,7 @@ a, a:visited {
 /* Gameplay buttons */
 #btnHit {
   height: 45px;
-  width: 48%;
+  width: 45%;
   color: chartreuse;
   border-color: chartreuse;
   letter-spacing: 5px;
@@ -163,7 +163,7 @@ a, a:visited {
 /* [STAND] button */
 #btnStand {
   height: 45px;
-  width: 48%;
+  width: 45%;
   color: indianred;
   border-color: indianred;
   letter-spacing: 5px;
@@ -172,13 +172,13 @@ a, a:visited {
 /* [DEAL NEW HAND] button */
 #btnDealNewHand {
   height: 45px;
-  width: 48%;
+  width: 45%;
   letter-spacing: 5px;
 }
 
 #btnDoubleDown {
   height: 45px;
-  width: 48%;
+  width: 45%;
   letter-spacing: 2px;
   font-size: 12pt;
 }
