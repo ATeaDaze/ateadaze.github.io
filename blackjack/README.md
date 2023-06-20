@@ -10,20 +10,24 @@
   * **Dealer stands on all 17's**
   * **Blackjack pays 3:2** odds (150%)
 * **Place bets:** $25, $50, $100, $200
-* **Double Down** if you're feeling lucky
-* **Uses six 52-card decks:** no duplicate cards drawn
+* **Double down** if you're feeling lucky
+* **Uses six 52-card decks**
+  * All dealt cards are tracked to prevent duplicates
+  * Deck is shuffled when all 312 cards have been used
+* **True count** is displayed on the bottom for card counting
+  * Click on the true count if you'd prefer to hide it
+
+## Keyboard Map (desktop only)
+
+&nbsp;|Description|&nbsp;|Bet Amount
+---|:--|---|:--
+|**` S `** |**Stand:** stop drawing cards and let the dealer play|**` 1 `** |$25
+|**` H `** |**Hit:** draw 1 more card|**` 2 `** |$50
+|**` D `** |**Double down:** double bet, draw 1 card, and stand|**` 3 `** |$100
+|**` N `** |**New hand:** deal a new hand|**` 4 `** |$200
 
 # 💻 [Desktop](https://ateadaze.github.io/blackjack)
 ![blackjack_screenshot.png](/blackjack/images/blackjack_screenshot.png)
-
-## Keyboard Map
-
-Key|&nbsp;|Description
----|:--|:--
-|**` S `** |Stand| Stop dealing cards to the player and let the dealer play their hand
-|**` H `** |Hit| Deal 1 card to the player
-|**` D `** |Double down| Double your bet, deal 1 more card, and stand
-|**` N `** |New hand| Deal a new hand
 
 # 📱 [Mobile](https://ateadaze.github.io/blackjack/m/)
 ![mobile_screenshot](/blackjack/images/blackjack-mobile_screenshot.png)
@@ -31,18 +35,21 @@ Key|&nbsp;|Description
 ### Key:
 * [TEST] = Added, needs more testing
 * [WIP] = Work in progress
-* ~~Strikethrough~~ = Cancelled
+* ~~Strikethrough~~ = Fixed or Cancelled
 
 # BUGS
 
-* [ ] Tie at 21 doesn't evaluate until you stand
-* [ ] Mobile rendering is inconsistent (but playable)
+* [x] ~~Occasionally freezes when shuffling deck~~
+* [x] ~~Tie at 21 doesn't evaluate until you stand~~
 * [x] ~~Some sounds are muted in specific browsers~~
-  
+
 Each browser handles JavaScript sound differently. Some are stricter than others or only play sounds tied to user input
 * Firefox on Windows plays all SFX (with audio site permission)
 * Chromium-based browsers play all SFX except "card_shuffle.mp3" on page load
 * Firefox on Android plays all SFX except "card_flip.mp3" on `hit()`
+
+* [ ] Mobile rendering is inconsistent (but playable)
+ 
 
 # FIXES
 
@@ -60,6 +67,12 @@ if(nTotalCards > nCardOffset) {
   shuffleDeck(currentDeck);
 }
 ```
+
+* [x] [TEST] Ties did not evaluate until `stand()` was called
+ * **Cause:** condition was set before `checkFinalScore()` was called
+ * **Workaround:** added tie check on `checkForWinners()`
+
+This is a lazy workaround until I completely remake the winner checks and merge `checkFinalScore()` with `checkForWinners()`
 
 # TODO
 
@@ -86,12 +99,11 @@ if(nTotalCards > nCardOffset) {
   * [ ] Use priority order to optimize checks
 
 ## Score Calculation
-* [ ] [WIP] Optimize `getCardValue`
+* [ ] [WIP] Optimize `getCardValue()`
 * [ ] Calcuate ace values with a single function
 * [ ] [TEST] Check win condition for rare double bust
 * [x] [TEST] Properly handle rare double blackjack
 * [ ] [WIP] Handle ties better
-* [ ] [WIP] Push when both scores are 21 but not blackjack (currently evaluates on `stand()`)
 * [x] Handle Blackjack vs regular 21 (Blackjack wins over 21)
 
 ## Dealer
@@ -122,7 +134,7 @@ This doesn't seem significantly different than simply drawing to 17
 
 # POSSIBLE BUG
 
-**NOTE:** Blackjack typically used 2 to 5 decks shuffled together. This may not be a bug so increasing the pool to draw from all 104 cards may be a more accurate solution
+**NOTE:** Blackjack typically used 2 to 8 decks shuffled together
 
-* [ ] Rarely draws duplicate cards when deck changes or is shuffled (duplicates don't carry over)
-  * [ ] Possible fix: force a shuffle or deck swap on new hands if < X cards remain
+* [ ] Rarely draws duplicate cards when deck is shuffled (duplicates don't carry over)
+  * [ ] Possible fix: force a shuffle after current hand if < X cards remain
