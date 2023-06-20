@@ -2,7 +2,6 @@
 body {
   font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
   background-color: #154700; /*#0F3300;*/
-
   background-image: url("../images/casino_table.png");
   background-size: 10%;
   background-repeat: repeat;
@@ -56,61 +55,6 @@ a:hover {
   color: #dddddd;
 }
 
-/*table, tr, td {
-  border: 2px solid darkgreen;
-}
-div, span  {
-  border: 2px solid limegreen;
-}*/
-
-/* Larege BLACKJACK banner on top */
-.mainHeader {
-  font-size: 40pt;
-  letter-spacing: 15pt;
-  font-family: 'Book Antiqua', serif, 'Times New Roman';
-}
-/* Banner cards use a white background with black text */
-.cardDeckFontBlack {
-  font-size: 35pt;
-  color: black;
-  background-color: white;
-  border-radius: 2px;
-  font-weight: normal;
-/* Limits text for a faux card effect */
-  display: inline-block;
-  line-height: 100%;
-  height: 100%;
-  -webkit-text-stroke: 0px;
-/* Middle card is not rotated but set to 0 so it sits on top */
-  transform: rotate(0deg);
-  }
-/* Red text for hearts and diamonds, rotate card for style */
-.cardDeckFontRed {
-  font-size: 35pt;
-  color: red;
-  background-color: white;
-  border-radius: 2px;
-  font-weight: normal;
-  display: inline-block;
-  line-height: 100%;
-  height: 100%;
-  -webkit-text-stroke: 0px;
-  transform: rotate(-20deg);
-  }
-/* The 2nd red card is rotated more and in the opposite direction */
-.cardDeckFontRed2 {
-  font-size: 35pt;
-  color: red;
-  background-color: white;
-  border-radius: 2px;
-  font-weight: normal;
-  display: inline-block;
-  line-height: 100%;
-  height: 100%;
-  -webkit-text-stroke: 0px;
-  transform: rotate(30deg);
-}
-
 /* Set most elements to fixed 730px width */
 .fixedTable {
   width: 705px;
@@ -132,6 +76,7 @@ div, span  {
   height: 32px;
   border: 1px solid #555555;
   background-color: #000000;
+/*  border-radius: 0 0 25% 25%; */
   padding-top: 3px;
   padding-bottom: 3px;
   background: repeating-linear-gradient(
@@ -168,15 +113,6 @@ div, span  {
   100% { opacity: 1; }
 }
 
-/* @-o-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@-ms-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-} */
-
 #playerScoreTxt, #dealerScoreTxt {
   font-size: 22pt;
   font-weight: bold;
@@ -192,7 +128,7 @@ div, span  {
 
 #playerBetTxt {
   font-size: 22pt;
-  color: #afff60;
+  color: #9a9a9a;
   text-align: left;
   width: 16.5%;
 }
@@ -207,7 +143,6 @@ div, span  {
   font-family: "52_card_font"; 
   src: url("../fonts/numbers_deuce.ttf"); 
 }
-/* numbers_deuce calling_cards, calling_cards-bold card_characters */
 
 #gameBoardPlayer, #gameBoardDealer {
 /*  color: #333333; */
@@ -265,7 +200,7 @@ div, span  {
 }
 
 /* [DEAL NEW HAND] button */
-#btnNewGame {
+#btnDealNewHand {
   height: 60px;
   width: 250pt;
   letter-spacing: 2px;

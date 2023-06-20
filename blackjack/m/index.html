@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
   <meta name="description" content="A basic blackjack game written in JavaScript" />
   <meta name="keywords" content="blackjack, javascript, app, online, casino" />
-  <title>Blackjack 📱 Mobile</title>
+  <title>Blackjack</title>
   <link href="styles/blackjack-mobile.css" rel="stylesheet">
   <link href="../images/blackjack.ico" rel="shortcut icon" type="image/x-icon">
   <base target="_blank">
 </head>
 <!-- Deal new hand on page load -->
-<body onload="mainGameLoop();">
+<body onload="displayIntro();">
 <center>
 
-<!-- Display BLACKJACK banner with ornamental cards -->
-<span class="cardDeckFontRed">🃊</span><span class="cardDeckFontBlack">🂡</span>
-<span class="mainHeader">&nbsp;BLACKJACK&nbsp;</span>
-<span class="cardDeckFontBlack">🃑</span><span class="cardDeckFontRed2">🂺</span>
+<!--<img src="../images/card_banner-left.png" height="25">&nbsp;&nbsp;
+<img src="../images/card_banner-text.png" height="25">&nbsp;&nbsp;
+<img src="../images/card_banner-right.png" height="25">-->
+
+<img src="../images/card_banner-left.png" width="10%">&nbsp;&nbsp;
+<img src="../images/card_banner-text.png" width="70%">&nbsp;&nbsp;
+<img src="../images/card_banner-right.png" width="10%">
+
 <!-- Notification when 104 cards have been used -->
 <span id="toastMessage">All 6 Decks Used 🎲 Shuffling Cards</span>
 
@@ -34,10 +38,10 @@
 <!-- PLAYER SCORE -->
 <table class="fixedTable">
   <tr>
-    <td id="playerScoreTxt"></td>
+    <td id="playerScoreTxt">Player</td>
     <td class="betLead">Bet:</td>
-    <td id="playerBetTxt"></td>
-    <td id="playerScoreTotalTxt">$250</td>
+    <td id="playerBetTxt">$0</td>
+    <td id="playerScoreTotalTxt">$2,000</td>
   </tr>
 </table>
 <hr>
@@ -55,8 +59,8 @@
 <!-- DEALER SCORE -->
 <table class="fixedTable">
   <tr>
-    <td id="dealerScoreTxt"></td>
-      <td id="dealerScoreTotalTxt">$1000</td>
+    <td id="dealerScoreTxt">Dealer</td>
+      <td id="dealerScoreTotalTxt">$10,000</td>
   </tr>
 </table>
 <hr>
@@ -73,22 +77,26 @@
 
 <!-- All buttons go in their own separate table -->
 <table class="fixedTable">
- <tr>
+  <tr>
+    <!-- BET [$25], [$50], [$100], [$200], and [DOUBLE DOWN] buttons -->
     <td class="btnTable">
-      <input type="image" src="../images/25.png" class="btnBet" id="btnBet25" onclick="updateBetAmount(25);">
-      <input type="image" src="../images/50.png" class="btnBet" id="btnBet50" onclick="updateBetAmount(50);">
-      <input type="image" src="../images/100.png" class="btnBet" id="btnBet100" onclick="updateBetAmount(100);">
-      <input type="image" src="../images/200.png" class="btnBet" id="btnBet200" onclick="updateBetAmount(200);">  
-      <hr class="smallLine">
-      <button onclick="doubleDown();" id="btnDoubleDown" class="btnNewGameStyle">DOUBLE DOWN</button>
-      <hr class="hidden"><hr class="hidden">
-      <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle">DEAL NEW HAND</button>
-      <hr class="hidden"><hr class="hidden">
-      <button id="btnStand" onclick="stand();">STAND</button>&nbsp;
+      <input type="image" src="../images/25.png" class="btnBet" id="btnBet25" title="$25" onclick="updateBetAmount(25);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="image" src="../images/50.png" class="btnBet" id="btnBet50" title="$50" onclick="updateBetAmount(50);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="image" src="../images/100.png" class="btnBet" id="btnBet100" title="$100" onclick="updateBetAmount(100);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="image" src="../images/200.png" class="btnBet" id="btnBet200" title="$200" onclick="updateBetAmount(200);">
+      <hr class="hidden">
+      <button onclick="doubleDown();" id="btnDoubleDown">DOUBLE DOWN</button>&nbsp;&nbsp;
+
+      <!-- [DEAL NEW HAND], [STAND], and [HIT] buttons -->
+      <button onclick="restartGame();" id="btnDealNewHand" class="btnNewGameStyle">DEAL</button>
+      <hr class="hidden">
+      <button id="btnStand" onclick="stand();">STAND</button>&nbsp;&nbsp;
       <button onclick="drawPlayerCard();" id="btnHit">HIT</button>
+
     </td>
   </tr>
-</table><hr class="hidden">
+</table>
+<hr class="hidden">
 
 <!-- Footer -->
 <table class="fixedTable">
@@ -100,7 +108,7 @@
       </span>
   </td>
 
-  <td><span id="cardCounterTxt" onclick="hideRunningCount();"></td>
+  <td><span id="cardCounterTxt" onclick="hideTrueCount();"></td>
 
   <td class="evenRightCell">
   <!-- Help button: clicking toggles help window, div centers text -->
@@ -112,21 +120,23 @@
     <hr class="helpLine">
     Rules: the goal of Blackjack is to score higher than the dealer without going over 21
     <ul type="square">
-      <li>Cards 2 to 10 are scored as their base value</li>
-      <li>Face cards are worth 10 (Jacks, Queens, Kings)</li>
-      <li>Aces are worth 1 or 11 (whichever helps the player)</li>
+      <li>Cards 2 to 10 are scored as their base value (2=2, 3=3, 4=4... 10=10)</li>
+      <li>Face cards are worth 10 (Jacks, Queens, and Kings)</li>
+      <li>Aces are scored as 1 or 11 (whichever benefits the player)</li>
     </ul>
     <ol>
-      <li>Player with a score closest to 21 wins</li>
+      <li>Place a bet and deal a new hand to start</li>
+      <li>Player with the score closest to 21 wins</li>
+      <li>Dealer draws to 17 and stands</li>
       <li>Scores over 21 automatically lose (bust)</li>
-      <li>Blackjack beats a 21 scored with 3+ cards</li>
+      <li>Blackjack beats a 21 scored with 3 or more cards</li>
     </ol>
     <ul type="square">
       Glossary
       <li>Hit: draw 1 more card from the deck</li>
-      <li>Stand: stop drawing cards and end your hand</li>
-      <li>Double Down: double your bet, draw 1 card, and stand</li>
-      <li>Blackjack: a score of 21 with <i>only</i> 2 cards (Ace + 10)</li>
+      <li>Stand: stop drawing cards and let the dealer play their hand</li>
+      <li>Double Down: double your bet, draw 1 more card, and stand</li>
+      <li>Blackjack: score of 21 with <i>only</i> 2 cards</li>
     </ul>
     <hr class="helpLine">
     <a href="https://ateadaze.github.io/blackjack/index.html">Desktop Version</a><br>
@@ -161,8 +171,7 @@
  </center>
 
 <script src="../scripts/jquery-3.7.0.min.js"></script>
-<script src="scripts/main.js"></script>
+<script src="scripts/main-mobile.js"></script>
 
 </body>
 </html>
-

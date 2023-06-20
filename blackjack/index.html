@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
   <meta name="description" content="A basic blackjack game written in JavaScript" />
   <meta name="keywords" content="blackjack, javascript, app, online, casino" />
   <title>Blackjack</title>
@@ -11,13 +11,11 @@
   <base target="_blank">
 </head>
 <!-- Deal new hand on page load -->
-<body onload="mainGameLoop();">
+<body onload="displayIntro();">
 <center>
 
-<!-- Display BLACKJACK banner with ornamental cards -->
-<span class="cardDeckFontRed">🃊</span><span class="cardDeckFontBlack">🂡</span>&nbsp;&nbsp;&nbsp;
-<span class="mainHeader">BLACKJACK</span>
-<span class="cardDeckFontBlack">🃑</span><span class="cardDeckFontRed2">🂺</span>
+<img src="images/main_banner.png" width="650">
+
 <!-- Notification when 104 cards have been used -->
 <span id="toastMessage">All 6 Decks Used 🎲 Shuffling Cards</span>
 
@@ -34,10 +32,10 @@
 <!-- PLAYER SCORE -->
 <table class="fixedTable">
   <tr>
-    <td id="playerScoreTxt"></td>
+    <td id="playerScoreTxt">Player</td>
     <td class="betLead">Bet:</td>
-    <td id="playerBetTxt"></td>
-    <td id="playerScoreTotalTxt">$250</td>
+    <td id="playerBetTxt">$0</td>
+    <td id="playerScoreTotalTxt">$2,000</td>
   </tr>
 </table>
 <hr>
@@ -55,8 +53,8 @@
 <!-- DEALER SCORE -->
 <table class="fixedTable">
   <tr>
-    <td id="dealerScoreTxt"></td>
-      <td id="dealerScoreTotalTxt">$1000</td>
+    <td id="dealerScoreTxt">Dealer</td>
+      <td id="dealerScoreTotalTxt">$10,000</td>
   </tr>
 </table>
 <hr>
@@ -76,16 +74,16 @@
   <tr>
     <!-- BET [$25], [$50], [$100], [$200], and [DOUBLE DOWN] buttons -->
     <td class="btnTable">
-      <input type="image" src="images/25.png" class="btnBet" id="btnBet25" onclick="updateBetAmount(25);">
-      <input type="image" src="images/50.png" class="btnBet" id="btnBet50" onclick="updateBetAmount(50);">
-      <input type="image" src="images/100.png" class="btnBet" id="btnBet100" onclick="updateBetAmount(100);"> 
-      <input type="image" src="images/200.png" class="btnBet" id="btnBet200" onclick="updateBetAmount(200);">  
+      <input type="image" src="images/25.png" class="btnBet" id="btnBet25" title="$25" onclick="updateBetAmount(25);">&nbsp;
+      <input type="image" src="images/50.png" class="btnBet" id="btnBet50" title="$50" onclick="updateBetAmount(50);">&nbsp;
+      <input type="image" src="images/100.png" class="btnBet" id="btnBet100" title="$100" onclick="updateBetAmount(100);">&nbsp;
+      <input type="image" src="images/200.png" class="btnBet" id="btnBet200" title="$200" onclick="updateBetAmount(200);">&nbsp;
       <hr class="smallLine">
       <button onclick="doubleDown();" id="btnDoubleDown">DOUBLE DOWN</button>
     </td>
     <!-- [DEAL NEW HAND], [STAND], and [HIT] buttons -->
     <td class="btnTable">
-      <button onclick="restartGame();" id="btnNewGame" class="btnNewGameStyle">DEAL NEW HAND</button>
+      <button onclick="restartGame();" id="btnDealNewHand" class="btnNewGameStyle">DEAL NEW HAND</button>
       <hr class="smallLine"><hr class="smallLine">
       <button id="btnStand" onclick="stand();">STAND</button>&nbsp;
       <button onclick="drawPlayerCard();" id="btnHit">HIT</button>
@@ -120,7 +118,8 @@
       <li>Aces are worth 1 or 11 (whichever helps the player)</li>
     </ul>
     <ol>
-      <li>Player with a score closest to 21 wins</li>
+      <li>Place a bet and deal a new hand to start</li>
+      <li>Player with the score closest to 21 wins</li>
       <li>Scores over 21 automatically lose (bust)</li>
       <li>Blackjack beats a 21 scored with 3+ cards</li>
     </ol>

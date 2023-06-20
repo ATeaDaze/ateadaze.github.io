@@ -1,10 +1,10 @@
-// TODO: clean up winner checks (if-else hell), clean up with jQuery
+// TODO: clean up winner checks (if-else hell), clean up with jQuery, implement landscape/portrait mode swapping
 // 52 card deck = 4 suits (Spade, Heart, Club, Diamond) and 13 ranks (2:10, Jack, Queen, King, Ace)
 const cardSuitsRanks = [ ['♠','♥','♣','♦'],
                          ['2','3','4','5','6','7','8','9','10','J','Q','K','A'] ];
-const defaultGreeting = "BLACKJACK PAYS 3:2 🍀 DEALER STANDS ON 17";
-const btnDisableCSS = "background-color: #222222; cursor: not-allowed";
-const btnEnableCSS = "background-color: #111111; cursor: pointer";
+const defaultGreeting = "BLACKJACK 3:2 🍀 DEALER S17";
+const btnDisableCSS = "background-color: #222222;";
+const btnEnableCSS = "background-color: #111111;";
 const statusBarWinCSS = "color: chartreuse; animation: 1.5s anim-flipX ease 1;";
 const statusBarLoseCSS = "color: #ff6161";
 // All 6 decks are written to an array
@@ -49,11 +49,11 @@ let bDuplicateFound;
 // Display strings for cards
 let cardFaceSuit;
 let cardFaceRank;
-const audioCard = new Audio("audio/card_flip.mp3");
-const audioShuffle = new Audio("audio/card_shuffle.mp3");
-const audioWin = new Audio("audio/casino_chip.mp3");
-const audioLose = new Audio("audio/tick.mp3");
-const audioJackpot = new Audio("audio/jackpot.mp3");
+const audioCard = new Audio("../audio/card_flip.mp3");
+const audioShuffle = new Audio("../audio/card_shuffle.mp3");
+const audioWin = new Audio("../audio/casino_chip.mp3");
+const audioLose = new Audio("../audio/tick.mp3");
+const audioJackpot = new Audio("../audio/jackpot.mp3");
 
 // Generate a base deck of 52 cards
 deck[0] = generateBaseDeck();
@@ -61,7 +61,6 @@ deck[0] = generateBaseDeck();
 fullDeck = generateFullDeck(deck);
 shuffleDeck(fullDeck);
 audioShuffle.play();
-getKeyboardInput();
 
 function mainGameLoop() {
   statusBarTxt.innerHTML = defaultGreeting;
@@ -98,19 +97,17 @@ function restartGame() {
 
 // Print welcome message and decorative cards
 function displayIntro() {
-  statusBarTxt.innerHTML = "PLACE A BET 🍀 CLICK DEAL NEW HAND";
-  updateCards(gameBoardPlayer, "♠2");
-  updateCards(gameBoardPlayer, "♥4");
-  updateCards(gameBoardPlayer, "♣6");
-  updateCards(gameBoardPlayer, "♦8");
+  statusBarTxt.innerHTML = "PLACE A BET 🍀 DEAL NEW HAND";
   updateCards(gameBoardPlayer, "♠10");
-  updateCards(gameBoardPlayer, "♥Q");
-  updateCards(gameBoardDealer, "♦3");
-  updateCards(gameBoardDealer, "♣5");
-  updateCards(gameBoardDealer, "♥7");
-  updateCards(gameBoardDealer, "♠9");
-  updateCards(gameBoardDealer, "♦J");
-  updateCards(gameBoardDealer, "♣K");
+  updateCards(gameBoardPlayer, "♥J");
+  updateCards(gameBoardPlayer, "♣Q");
+  updateCards(gameBoardPlayer, "♦K");
+  updateCards(gameBoardPlayer, "♠A");
+  updateCards(gameBoardDealer, "♦10");
+  updateCards(gameBoardDealer, "♣J");
+  updateCards(gameBoardDealer, "♥Q");
+  updateCards(gameBoardDealer, "♠K");
+  updateCards(gameBoardDealer, "♦A");
   disableGameButtons();
 }
 
@@ -198,7 +195,6 @@ function getCardValue(score, bAceDrawn) {
   if((newCardValue > 1)&&(newCardValue < 7)) runningCount = runningCount + 1;
   if((isNaN(newCardTxt)) || (newCardValue > 9)) runningCount = runningCount - 1;
   decksLeft = (deckSize - nTotalCards) / 52;
-  // Round to nearest half-deck
   decksLeft = Math.floor(decksLeft);
   if(decksLeft < 1) decksLeft = 1;
   trueCount = runningCount / decksLeft;
@@ -311,7 +307,6 @@ function updateCards(gb, nc) {
     },
     duration: 250
   }, 'linear');
-
 }
 
 function updateTrueCount() {
@@ -424,13 +419,13 @@ function checkForWins() {
         bPlayerWon = false;
         endCurrentRound();
       } else if(playerScore == dealerScore) {
-      // Subtract $50 from dealer (otherwise a draw awards dealer $50 due to boolean winner flag)
-      dealerMoney = dealerMoney - betAmount;
-      playerMoney = playerMoney + betAmount;
-      statusBarTxt.style = "color: #dddddd";
-      statusBarTxt.innerHTML = "Push 🔷 $0";
-      bPlayerWon = false;
-      endCurrentRound();
+        // Subtract $50 from dealer (otherwise a draw awards dealer $50 due to boolean winner flag)
+        dealerMoney = dealerMoney - betAmount;
+        playerMoney = playerMoney + betAmount;
+        statusBarTxt.style = "color: #dddddd";
+        statusBarTxt.innerHTML = "Push 🔷 $0";
+        bPlayerWon = false;
+        endCurrentRound();
       }
     }
   }
@@ -536,25 +531,25 @@ function updateBetAmount(newBet) {
 }
 
 function updateBetButtons() {
-  btnBet25.src = "images/25.png";
-   btnBet50.src = "images/50.png";
-   btnBet100.src = "images/100.png";
-  btnBet200.src = "images/200.png";
+  btnBet25.src = "../images/25.png";
+   btnBet50.src = "../images/50.png";
+   btnBet100.src = "../images/100.png";
+  btnBet200.src = "../images/200.png";
   switch(betAmount) {
     case 25:
-      btnBet25.src = "images/25outline.png";
+      btnBet25.src = "../images/25outline.png";
       playerBetTxt.style = "color: #c0c0c0";
       break;
     case 50:
-      btnBet50.src = "images/50outline.png";
+      btnBet50.src = "../images/50outline.png";
       playerBetTxt.style = "color: #f25c5c";
       break;
     case 100:
-      btnBet100.src = "images/100outline.png";
+      btnBet100.src = "../images/100outline.png";
       playerBetTxt.style = "color: #7eabcc";
       break;
     case 200:
-      btnBet200.src = "images/200outline.png";
+      btnBet200.src = "../images/200outline.png";
       playerBetTxt.style = "color: #86e8a2";
       break;
     default:
@@ -564,18 +559,14 @@ function updateBetButtons() {
 }
 
 function disableBets() {
-  btnBet25.src = "images/25dark.png";
-  btnBet50.src = "images/50dark.png";
-  btnBet100.src = "images/100dark.png";
-  btnBet200.src = "images/200dark.png";
+  btnBet25.src = "../images/25dark.png";
+  btnBet50.src = "../images/50dark.png";
+  btnBet100.src = "../images/100dark.png";
+  btnBet200.src = "../images/200dark.png";
   $( "#btnBet25" ).prop( "disabled", true );
   $( "#btnBet50" ).prop( "disabled", true );
   $( "#btnBet100" ).prop( "disabled", true );
   $( "#btnBet200" ).prop( "disabled", true );
-  btnBet25.style = "cursor:not-allowed";
-  btnBet50.style = "cursor:not-allowed";
-  btnBet100.style = "cursor:not-allowed";
-  btnBet200.style = "cursor:not-allowed";
 }
 
 function enableBets() {
@@ -583,46 +574,6 @@ function enableBets() {
   $( "#btnBet50" ).prop( "disabled", false );
   $( "#btnBet100" ).prop( "disabled", false );
   $( "#btnBet200" ).prop( "disabled", false );
-  btnBet25.style = "cursor:pointer";
-  btnBet50.style = "cursor:pointer";
-  btnBet100.style = "cursor:pointer";
-  btnBet200.style = "cursor:pointer";
-}
-
-function getKeyboardInput() {
-  document.addEventListener('keypress', e => {
-    if(!bGameOver) {
-      switch(e.key) {
-        case 'h':
-          drawPlayerCard();
-          break;
-        case 's':
-          stand();
-          break;
-        case 'd':
-          if(nPlayerCards < 3) doubleDown();
-          break;
-      }
-    } else {
-      switch(e.key) {
-      case 'n':
-        restartGame();
-        break;
-      case '1':
-        updateBetAmount(25);
-        break;
-      case '2':
-        updateBetAmount(50);
-        break;
-      case '3':
-        updateBetAmount(100);
-        break;
-      case '4':
-        updateBetAmount(200);
-        break;
-      }
-    }
-  })
 }
 
 function showHelpMenu() {
