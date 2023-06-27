@@ -261,7 +261,7 @@ hr.helpLine {
 
 /* Toast message for deck shuffle */
 #toastMessage {
-  font-size: 18pt;
+  font-size: 14pt;
   font-weight: bold;
   visibility: hidden;
   min-width: 250px;
@@ -275,7 +275,7 @@ hr.helpLine {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 355px;
+  top: 225px;
 }
 #toastMessage.show {
   visibility: visible;
