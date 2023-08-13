@@ -6,18 +6,19 @@
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
 ## Features
-* **Play Blackjack** against a computer-controlled dealer
+* **Play blackjack** against a computer-controlled dealer
   * **Dealer stands on all 17's**
   * **Blackjack pays 3:2** odds (150%)
 * **Place bets:** $25, $50, $100, $200
 * **Double down** if you're feeling lucky
 * **Uses six 52-card decks**
   * All dealt cards are tracked to prevent duplicates
-  * Deck is shuffled when all 312 cards have been used
+  * Deck is shuffled before all 312 cards have been used
 * **True count** is displayed on the bottom for card counting
-  * Click on the true count if you'd prefer to hide it
+  * **Running count** is displayed when you hover over the true count
+  * Click the true count if you'd like to hide it
 
-## Keyboard Map (desktop only)
+## Keyboard Map (desktop)
 
 &nbsp;|Description|&nbsp;|Bet Amount
 ---|:--|---|:--
@@ -58,13 +59,13 @@ Each browser handles JavaScript sound differently. Some are stricter than others
   * **Fix:** created offset to limit range of the check
 
 ```javascript
-// nTotalCards: number of used cards
-// nCardsInPlay: number of cards on the table
+// nTotalCards: total cards used by both players (per deck)
+// nCardsInPlay: number of cards on the table (per hand)
 // deckSize: size of all decks combined (312)
-// decksLeft: number of remaining decks (rounded down to nearest integer)
-// fullDeck: array containing all six decks (cards 0:311)
-nCardOffset = (deckSize - nCardsInPlay) - 4;
+// decksLeft: number of remaining decks (1:6)
+// fullDeck: array containing all six decks (0:311)
 
+nCardOffset = (deckSize - nCardsInPlay) - 4;
 if(nTotalCards > nCardOffset) {
   nTotalCards = 0;
   decksLeft = 6;
@@ -119,6 +120,11 @@ This is a lazy workaround until I completely remake the winner checks and merge 
 
 This doesn't seem significantly different than simply drawing to 17
 
+## Settings / Save
+* [ ] Expand the settings menu (similar to help popup)
+* [ ] Save settings: sound, true count visibility, bet amount (use local storage)
+* [ ] Save game progress: cards, scores, money, true count, running count, flags
+
 ## User Interface
 * [ ] Update UI to properly render on a wider variety of devices
   * Refresh my knowledge of CSS: viewport, vh, absolute/relative, etc. 
@@ -141,5 +147,6 @@ This doesn't seem significantly different than simply drawing to 17
 
 **NOTE:** Blackjack typically used 2 to 8 decks shuffled together
 
-* [ ] Rarely draws duplicate cards when deck is shuffled (duplicates don't carry over)
+* [ ] (Rare) Duplicate cards are dealt when deck is shuffled (duplicates don't carry over)
   * [ ] Possible fix: force a shuffle after current hand if < X cards remain
+  * [ ] Decrease `nCardOffset` by more than `4`
