@@ -4,17 +4,16 @@ body {
   font-family: Calibri, sans-serif;
   font-size: 48px;
   /* Disable cursor selection  */
-/*  -webkit-user-select: none;
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; */
+  user-select: none;
 }
 
 table, tr, td {
   padding: 4px;
   text-align: center;
 }
-
 /*td {
   border: 1px solid #505050;
 }*/
@@ -49,6 +48,7 @@ table, tr, td {
 
 #btnDarkMode {
   filter: brightness(0.6);
+  vertical-align: middle;
 }
 #btnDarkMode:hover {
   filter: brightness(0.8);

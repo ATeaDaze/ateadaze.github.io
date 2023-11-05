@@ -1,5 +1,4 @@
-// TODO: refactor without reversing order of list, remove duplicates, specific ranges, 
-// add CSS for HTML formatting (deprecated)
+// TODO: optimize ranges, replace (deprecated) HTML formatting with CSS, remove duplicates
 let emojiCodeList = [ [128512, 128592], [129296, 129304], // Smileys 1+2
                       [129312, 129343], [128100, 128132], // Smileys 3 + People 1
                       [129304, 129311], [128064, 128100], // Gestures 1 + Gestures 2 / Fashion
@@ -13,9 +12,9 @@ let emojiCodeList = [ [128512, 128592], [129296, 129304], // Smileys 1+2
                       [128293, 128306], [128132, 128176], // Symbols 1+2
                       [9904,   10161 ], [128367, 128512] ]; // Symbols 3+4
 let fullEmojiList = [];
-let nEmojisGenerated = 0; // Track numbers of emojis printed (per section)
-let nEmojisDrawn = 0
-let cellCount = 0; // Total number of cells drawn
+let nEmojisGenerated = 0; // Track numbers of emojis generated from list
+let nEmojisDrawn = 0 // Track number of emojis drawn to table cells
+let cellCount = 0; // Total number of table cells drawn
 let bDarkModeEnabled = false;
 
 // Generate full list of Emoji character codes
@@ -34,7 +33,7 @@ printEmojiTableToConsole();
 // Print table of Emojis
   for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
     let row = $('<tr></tr>');
-    for (let y = 0; y < 10; y++) {
+    for (let nColumns = 0; nColumns < 10; nColumns++) {
       let cell = $('<td id = emoji-' + nEmojisDrawn + '></td>');
       $(cell).html(fullEmojiList[nEmojisDrawn]);
       $(cell).attr('title', 'Copy to clipboard (' + fullEmojiList[nEmojisDrawn] + ')');
@@ -42,12 +41,12 @@ printEmojiTableToConsole();
       $(cell).appendTo(row);
       if(nEmojisGenerated == fullEmojiList.length) {
         $(cell).html('<b><img src=images/menu.png width=50 id=btnDarkMode></b>');
-        $(cell).attr('title','🌜 Click to toggle between Dark and Light Mode 🌞');
+        $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
         $(cell).attr('id', 'mainButton');
       }
       nEmojisDrawn++
       cellCount++;
-      fullEmojiList[nEmojisGenerated] = "&#" + y + ";";
+      fullEmojiList[nEmojisGenerated] = "&#" + nColumns + ";";
     }
   $(row).appendTo('table');
   }

@@ -1,3 +1,5 @@
+# ♦ Emoji Table
+
 ```
 [x] Generate list of symbols
 [x] Create a table
