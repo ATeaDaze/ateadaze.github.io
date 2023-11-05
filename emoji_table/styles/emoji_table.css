@@ -11,9 +11,13 @@ body {
 }
 
 table, tr, td {
-  padding: 2px;
+  padding: 4px;
   text-align: center;
 }
+
+/*td {
+  border: 1px solid #505050;
+}*/
 
 .darkMode {
   background-color: #030303;
@@ -27,6 +31,10 @@ table, tr, td {
   width: 0px;
   height: 0px;
   padding: 0px;
+}
+
+.txtMainHeader {
+  font-weight: bold;
 }
 
 .emojiTableStyle {
@@ -47,4 +55,31 @@ table, tr, td {
 }
 #txtDisplayCounter {
   font-size: 22pt;
+}
+
+/* Toast message for deck shuffle */
+#toastMessage {
+  font-size: 18pt;
+  font-weight: bold;
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #2a2a2a;
+  color: #efefef;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 2px;
+  padding: 10px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 355px;
+}
+#toastMessage.show {
+  visibility: visible;
+  animation: fadeintoast 0.5s;
+}
+@keyframes fadeintoast {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
