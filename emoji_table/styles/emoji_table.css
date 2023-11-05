@@ -2,7 +2,7 @@ body {
   background-color: #e0e0e0;
   color: #030303;
   font-family: Calibri, sans-serif;
-  font-size: 48px;
+  font-size: 52px;
   /* Disable cursor selection  */
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21,8 +21,6 @@ table, tr, td {
 .darkMode {
   background-color: #030303;
   color: #e0e0e0;
-  font-family: Calibri, sans-serif;
-  font-size: 48px;
 }
 
 .hidden {
@@ -47,6 +45,7 @@ table, tr, td {
 }
 
 #btnDarkMode {
+  width: 60px;
   filter: brightness(0.6);
   vertical-align: middle;
 }
