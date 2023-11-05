@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Emoji Table</title>
+  <link href="styles/emoji_table.css" rel="stylesheet">
+  <link href="images/emoji_table.ico" rel="shortcut icon" type="image/x-icon">
+  <base target="_blank">
+</head>
+<body>
+
+<center>
+
+<table id="txtTableOutput" class="emojiFix">
+  <tbody>
+    <tr>
+  <font size="+4"><b>♦&nbsp;Emoji Table</b>&nbsp;</font><br>
+    </tr>
+    <!-- JQuery populates the TD/cells -->
+  </tbody>
+</table>
+
+<span id="txtDisplayCounter">
+  <i>n</i>&nbsp;&nbsp;=&nbsp;0
+</span>
+
+</center>
+
+<!-- Preload images to prevent load latency -->
+<img src="images/menu.png" class="hidden">
+<img src="images/menu-dark.png" class="hidden">
+<img src="images/emoji_tool.ico" class="hidden">
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/main.js"></script>
+</body>

@@ -1,0 +1,53 @@
+body {
+  background-color: #e0e0e0;
+  color: #030303;
+  font-family: Calibri, sans-serif;
+  font-size: 48px;
+  /* Disable cursor selection  */
+/*  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+}
+
+table, tr, td {
+  padding: 2px;
+  text-align: center;
+}
+td {
+  border: 1px solid #505050;
+}
+
+.darkMode {
+  background-color: #030303;
+  color: #e0e0e0;
+  font-family: Calibri, sans-serif;
+  font-size: 48px;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+}
+
+.emojiTableStyle {
+  cursor: pointer;
+}
+.emojiTableStyle:hover {
+  filter: drop-shadow(2px 2px 2px #606060);
+}
+.emojiTableStyle:active {
+  filter: brightness(0.55);
+}
+
+#btnDarkMode {
+  filter: brightness(0.6);
+}
+#btnDarkMode:hover {
+  filter: brightness(0.8);
+}
+#txtDisplayCounter {
+  font-size: 22pt;
+}
