@@ -28,7 +28,7 @@ let bDarkModeEnabled = false;
 
 // Display number of symbols drawn on bottom of page
 txtDisplayCounter.innerHTML = "<i>n</i> = " + nEmojisGenerated;
-printEmojiTableToConsole();
+//printEmojiTableToConsole();
 
 // Print table of Emojis
   for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
@@ -93,10 +93,10 @@ function displayCopyToast(txt) {
 }
 
 // Print Emoji array with Markdown table syntax to console
-function printEmojiTableToConsole() {
+/*function printEmojiTableToConsole() {
   console.log(`|index|value|`);
   console.log(`|-----|-----|`)
   for(index = 0; index < fullEmojiList.length; index++) {
     console.log(`| ${index} | ${fullEmojiList[index]} |`);
   }
-}
+}*/
