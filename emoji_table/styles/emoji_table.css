@@ -14,9 +14,6 @@ table, tr, td {
   padding: 2px;
   text-align: center;
 }
-td {
-  border: 1px solid #505050;
-}
 
 .darkMode {
   background-color: #030303;
