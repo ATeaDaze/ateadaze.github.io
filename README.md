@@ -10,7 +10,7 @@
 
 -----
 
-# 🐦 Emoji Table
+# 🔳 Emoji Table
 
 ### Prints emojis in a table  (WIP)
 
