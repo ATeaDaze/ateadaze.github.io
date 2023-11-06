@@ -124,9 +124,6 @@ function toggleDarkMode() {
     $("#txtMainHeader").html("🔳&nbsp;Emoji Table");
     bDarkModeEnabled = true;
   }
-  if(bDarkModeEnabled) {
-  } else {
-  }
 }
 
 function displayCopyToast(txt) {
