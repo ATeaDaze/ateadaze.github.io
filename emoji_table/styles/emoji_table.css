@@ -86,7 +86,7 @@ a:hover {
 
 /* Toast message for deck shuffle */
 #toastMessage {
-  font-size: 18pt;
+  font-size: 28pt;
   font-weight: bold;
   visibility: hidden;
   min-width: 250px;
