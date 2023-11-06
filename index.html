@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i) {
+    w[l]=w[l]||[];
+    w[l].push( {
+      'gtm.start': new Date().getTime(), event:'gtm.js'
+    });
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
+    dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  }) (window,document,'script','dataLayer','GTM-M9D9QBD');
+  </script>
+  <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="Rainbow Noise 🎲 Draw with random shapes or animate them" />
@@ -12,6 +25,11 @@
 </head>
 <!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names -->
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9D9QBD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <script src="scripts/main.js"></script>
 <div id="rainbowBanner" onclick="bDisablePhotoWarning=true;setBrushColor();updateButtons();updateBanner();"></div>
 <center>
@@ -77,11 +95,12 @@
     </td>
   </tr>
 </table><br>
-<center>
-  <a href="https://ateadaze.github.io/m/index.html">Mobile Version</a><br>
-  <a href="https://ateadaze.github.io/blackjack/index.html">Blackjack</a><br>
-  <a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
-</center>
+<center><b>
+  📱&nbsp;<a href="https://ateadaze.github.io/m/index.html">Mobile Version</a>&nbsp;|&nbsp;
+  🃏&nbsp;<a href="https://ateadaze.github.io/blackjack/">Blackjack</a>&nbsp;|&nbsp;
+  🐦&nbsp;<a href="https://ateadaze.github.io/emoji_table/">Emoji Table</a>&nbsp;|&nbsp;
+  🌐&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
+</b></center>
 <img src="images/brush_cursor-32-down.png" class="hidden">
 </body>
 </html>
