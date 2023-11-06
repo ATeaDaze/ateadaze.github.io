@@ -9,11 +9,9 @@
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
 
 # Features
-✔️ 1123 emojis in-range (WIP)
-
-✔️ 257 country flags
-
-✔️ 1-click copy-to-clipboard
+* [x] 1123 emojis in-range (WIP)
+* [x] 257 country flags
+* [x] 1-click copy-to-clipboard
 
 # TODO
 * [ ] Refactor and reduce repetition with functions
