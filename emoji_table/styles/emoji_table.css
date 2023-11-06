@@ -17,21 +17,29 @@ table, tr, td {
 /*td {
   border: 1px solid #505050;
 }*/
+/*3C3B6E*/
+a {
+  font-weight: bold;
+  color: #0066CC;
+  text-decoration: none;
+}
+a:hover {
+  color: #4775FF;
+  text-decoration: underline;
+}
+
+.helpTxt {
+  font-size: 22pt;
+}
+
+
+.txtMainHeader {
+  font-weight: bold;
+}
 
 .darkMode {
   background-color: #030303;
   color: #e0e0e0;
-}
-
-.hidden {
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
-  padding: 0px;
-}
-
-.txtMainHeader {
-  font-weight: bold;
 }
 
 .emojiTableStyle {
@@ -56,6 +64,12 @@ table, tr, td {
   background-color: #afff60;
 }
 
+.hidden {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+}
 
 #btnDarkMode {
   width: 60px;
