@@ -12,8 +12,8 @@
 * [x] 1123 emojis in-range (WIP)
 * [x] 257 country flags
 * [x] 1-click copy-to-clipboard
-* [x] Toggle dark and light mode
-  * [x] Auto-detect if user preference is set
+* [x] Dark and light mode
+  * [x] Auto-detect if user preference is set per OS/browser
 
 # TODO
 * [ ] Refactor and reduce repetition with functions
