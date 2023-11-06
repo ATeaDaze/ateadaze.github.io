@@ -1,6 +1,6 @@
 # 🔳 Emoji Table
 
-### Prints emojis in a table  (WIP)
+### [WIP] Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
 ## 💻 [Desktop](https://ateadaze.github.io/emoji_table/)
 
