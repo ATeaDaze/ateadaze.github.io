@@ -57,7 +57,7 @@ for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
     if(nEmojisGenerated == fullEmojiList.length) {
       $(cell).html('<b><img src=images/menu.png id=btnDarkMode></b>');
       $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
-      $(cell).attr('id', 'mainButton');
+      $(cell).attr('id', 'menuButtonCell');
     }
     nEmojisDrawn++
     cellCount++;

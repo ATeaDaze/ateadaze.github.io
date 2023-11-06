@@ -44,6 +44,7 @@ a:hover {
 
 
 .emojiTableStyle {
+    padding-bottom: 11px;
   cursor: pointer;
 }
 .emojiTableStyle:hover {
@@ -72,10 +73,14 @@ a:hover {
   padding: 0px;
 }
 
+#menuButtonCell {
+  padding-top: 0px;
+}
+
 #btnDarkMode {
-  width: 60px;
+  width: 50px;
   filter: brightness(0.6);
-  vertical-align: middle;
+  padding-top: 20px;
 }
 #btnDarkMode:hover {
   filter: brightness(0.8);
@@ -100,7 +105,7 @@ a:hover {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 97px;
+  top: 103px;
 }
 #toastMessage.show {
   visibility: visible;
