@@ -23,6 +23,6 @@
 * [ ] Add an option to filter/search table
   * [ ] Front-end adequate for searches?
 
-# [fullEmojiList[]](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis rendered with this app
+# [fullEmojiList[]](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis printed
 
-# [flagCodeList[]](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/flagCodeList.md): full list of flags rendered
+# [flagCodeList[]](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/flagCodeList.md): full list of flags
