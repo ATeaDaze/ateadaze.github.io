@@ -153,7 +153,7 @@ function displayCopyToast(txt) {
   x.className = "show";
   setTimeout(function() {
     x.className = x.className.replace("show", "");
-  }, 1000);
+  }, 1500);
 }
 
 // Print Emoji array with Markdown table syntax to console
