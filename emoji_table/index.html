@@ -11,28 +11,32 @@
 
 <center>
 
-<!-- Notification when 104 cards have been used -->
+<span class="txtMainHeader">Emoji Table</span>
+
+<!-- Copy-to-clipboard toast -->
 <span id="toastMessage"></span>
 
 <table id="txtTableOutput" class="emojiFix">
   <tbody>
-    <!--<tr>
-      <span class="txtMainHeader">Emoji Table</span>
-    </tr>-->
     <!-- JQuery populates the TD/cells -->
   </tbody>
 </table>
 
-<!--<span id="txtDisplayCounter">
-  <i>n</i>&nbsp;&nbsp;=&nbsp;0
-</span>-->
+<table id="txtTableOutputFlags" class="emojiFix">
+  <tbody>
+    <!-- JQuery populates the TD/cells -->
+  </tbody>
+</table>
+
+<!-- Display count (nEmojisGenerated) -->
+<span id="txtDisplayEmojiCount"></span>
+<span id="txtDisplayFlagCount"></span>
 
 </center>
 
-<!-- Preload images to prevent load latency -->
+<!-- Preload images to reduce load latency -->
 <img src="images/menu.png" class="hidden">
 <img src="images/menu-dark.png" class="hidden">
-<img src="images/emoji_table.ico" class="hidden">
 
 <script src="scripts/jquery-3.7.0.min.js"></script>
 <script src="scripts/main.js"></script>

@@ -1,7 +1,7 @@
 body {
   background-color: #e0e0e0;
   color: #030303;
-  font-family: Calibri, sans-serif;
+  font-family: Calibri, Helvetica, Arial, sans-serif;
   font-size: 52px;
   /* Disable cursor selection  */
   -webkit-user-select: none;
@@ -44,6 +44,19 @@ table, tr, td {
   filter: brightness(0.55);
 }
 
+.txtTestOutput {
+  font-size: 40px;
+  background-color: #e0e0e0;
+  color: #030303;
+}
+.txtTestVerified {
+  background-color: #c4ff89;
+}
+.txtTestVerified:hover {
+  background-color: #afff60;
+}
+
+
 #btnDarkMode {
   width: 60px;
   filter: brightness(0.6);
@@ -52,7 +65,7 @@ table, tr, td {
 #btnDarkMode:hover {
   filter: brightness(0.8);
 }
-#txtDisplayCounter {
+#txtDisplayEmojiCount, #txtDisplayFlagCount {
   font-size: 22pt;
 }
 
@@ -76,7 +89,7 @@ table, tr, td {
 }
 #toastMessage.show {
   visibility: visible;
-  animation: fadeintoast 0.5s;
+  animation: fadeintoast 0.25s;
 }
 @keyframes fadeintoast {
   from {opacity: 0;}
