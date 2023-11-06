@@ -1,4 +1,5 @@
 // TODO: optimize ranges, replace (deprecated) HTML formatting with CSS, remove duplicates
+// Put this data in a separate file
 let emojiCodeList = [ [128512, 128592], [129296, 129304], // Smileys 1+2
                       [129312, 129343], [128100, 128132], // Smileys 3 + People 1
                       [129304, 129311], [128064, 128100], // Gestures 1 + Gestures 2 / Fashion
@@ -13,8 +14,10 @@ let emojiCodeList = [ [128512, 128592], [129296, 129304], // Smileys 1+2
                       [9800,   9812  ], [127462, 127488], // Astrology Signs + Signage 1                  
                       [128281, 128293], [9904,   10162 ], // Symbols 3 + Signage 1
                       [128306, 128318], [127183, 127184], // Shapes / Bullet Points + Joker card
-                      [126980, 126981], [128336, 128360] ]; // Mahjong card + Clocks
-// Put this data in a separate file
+                      [126980, 126981], [127937, 127938], // Mahjong card + Clocks
+                      [128681, 128682], [127884, 127885], // Checker flag + Golf flag
+                      [127988, 127989], [127987, 127988], // Crossed flags + Black flag
+                      [128336, 128360] ]; // White flag
 const flagCodeList = new Array(
   "&#127462;&#127464;", "&#127462;&#127465;", "&#127462;&#127466;", "&#127462;&#127467;", "&#127462;&#127468;", "&#127462;&#127470;", "&#127462;&#127473;", "&#127462;&#127474;", "&#127462;&#127476;",
   "&#127462;&#127478;", "&#127462;&#127479;", "&#127462;&#127480;", "&#127462;&#127481;", "&#127462;&#127482;", "&#127462;&#127484;", "&#127462;&#127485;", "&#127462;&#127487;", "&#127463;&#127462;",
@@ -43,6 +46,9 @@ const flagCodeList = new Array(
   "&#127481;&#127484;", "&#127481;&#127487;", "&#127482;&#127462;", "&#127482;&#127468;", "&#127482;&#127474;", "&#127482;&#127480;", "&#127482;&#127486;", "&#127482;&#127487;", "&#127483;&#127462;", "&#127483;&#127464;", 
   "&#127483;&#127466;", "&#127483;&#127468;", "&#127483;&#127470;", "&#127483;&#127475;", "&#127483;&#127482;", "&#127484;&#127467;", "&#127484;&#127480;", "&#127485;&#127472;", "&#127486;&#127466;", "&#127486;&#127481;", 
   "&#127487;&#127462;", "&#127487;&#127474;", "&#127487;&#127484;" );
+// Need to create functions for table generation to parse strings
+const emojiflagList = new Array( "&#127987 &#65039 &#8205 &#127752",
+                                 "&#127988 &#8205 &#9760 &#65039" );
 let fullEmojiList = [];
 let nEmojisGenerated = 0; // Track numbers of emojis generated from list
 let nEmojisDrawn = 0 // Track number of emojis drawn to table cells
@@ -81,8 +87,7 @@ for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
     fullEmojiList[nEmojisGenerated] = "&#" + nColumns + ";";
   }
 $(row).appendTo('table');
-$("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + nEmojisDrawn + ", ");
-//  console.log(`nEmojisDrawn = ${nEmojisDrawn}`);
+$("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + nEmojisGenerated + ", ");
 }
 
 // Print the entire list of flags
@@ -99,7 +104,7 @@ nFlagsGenerated = flagCodeList.length;
       cellCount++;
     }
   $(row).appendTo('table');
-  }
+}
 $("#txtTableOutput").html("</table>");
 nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
 $("#txtDisplayFlagCount").html("<b>nFlags</b> = " + nFlagsGenerated);
