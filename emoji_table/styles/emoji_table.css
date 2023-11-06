@@ -32,16 +32,10 @@ a:hover {
   font-size: 22pt;
 }
 
-
-.txtMainHeader {
-  font-weight: bold;
-}
-
 .darkMode {
   background-color: #030303;
   color: #e0e0e0;
 }
-
 
 .emojiTableStyle {
     padding-bottom: 11px;
@@ -71,6 +65,10 @@ a:hover {
   width: 0px;
   height: 0px;
   padding: 0px;
+}
+
+#txtMainHeader {
+  font-weight: bold;
 }
 
 #menuButtonCell {

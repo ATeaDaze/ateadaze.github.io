@@ -122,6 +122,11 @@ function toggleDarkMode() {
     $(btnDarkMode).attr('title','🌙 Dark Mode');
     bDarkModeEnabled = true;
   }
+  if(bDarkModeEnabled) {
+    $("#txtMainHeader").html("🔳&nbsp;Emoji Table");
+  } else {
+    $("#txtMainHeader").html("🔲&nbsp;Emoji Table")    
+  }
 }
 
 function displayCopyToast(txt) {
