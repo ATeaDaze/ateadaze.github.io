@@ -81,7 +81,7 @@ for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
     fullEmojiList[nEmojisGenerated] = "&#" + nColumns + ";";
   }
 $(row).appendTo('table');
-$("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + nEmojisDrawn + ", ");
+//$("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + nEmojisDrawn + ", ");
 //  console.log(`nEmojisDrawn = ${nEmojisDrawn}`);
 }
 
@@ -101,9 +101,9 @@ nFlagsGenerated = flagCodeList.length;
   $(row).appendTo('table');
   }
 $("#txtTableOutput").html("</table>");
-nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
-$("#txtDisplayFlagCount").html("<b>nFlags</b> = " + nFlagsGenerated);
-$("#txtDisplayFlagCount").append(", <b>Total</b> = " + nTotalSymbols);
+//nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
+//$("#txtDisplayFlagCount").html("<b>nFlags</b> = " + nFlagsGenerated);
+//$("#txtDisplayFlagCount").append(", <b>Total</b> = " + nTotalSymbols);
 //printFlagTableToConsole();
 
 // Copy Emoji to clipboard when clicked
