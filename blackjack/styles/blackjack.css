@@ -19,6 +19,19 @@ body {
   user-select: none; /* Standard */
 }
 
+/* FOR UI TESTING */
+/*div {
+  border: 1px solid forestgreen;
+}
+
+span {
+  border: 1px solid limegreen;
+}
+
+table {
+  border: 1px solid green;
+}*/
+
 button {
   background-color: #111111;
   border-color: #777777;
@@ -169,8 +182,11 @@ a:hover {
   padding-bottom: 5px;
 }
 .gbSingleCard:hover {
-  background-color: #eeeeee;
+  background-color: #e0e0e0;
   border-color: #333333;
+}
+.gbSingleCard:active {
+  filter: brightness(0.8);
 }
 
 /* Gameplay buttons */
