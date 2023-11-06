@@ -46,9 +46,6 @@ const flagCodeList = new Array(
   "&#127481;&#127484;", "&#127481;&#127487;", "&#127482;&#127462;", "&#127482;&#127468;", "&#127482;&#127474;", "&#127482;&#127480;", "&#127482;&#127486;", "&#127482;&#127487;", "&#127483;&#127462;", "&#127483;&#127464;", 
   "&#127483;&#127466;", "&#127483;&#127468;", "&#127483;&#127470;", "&#127483;&#127475;", "&#127483;&#127482;", "&#127484;&#127467;", "&#127484;&#127480;", "&#127485;&#127472;", "&#127486;&#127466;", "&#127486;&#127481;", 
   "&#127487;&#127462;", "&#127487;&#127474;", "&#127487;&#127484;" );
-// Need to create functions for table generation to parse strings
-/*const emojiflagList = new Array( "&#127987 &#65039 &#8205 &#127752",
-                                 "&#127988 &#8205 &#9760 &#65039" );*/
 let fullEmojiList = [];
 let nEmojisGenerated = 0; // Track numbers of emojis generated from list
 let nEmojisDrawn = 0 // Track number of emojis drawn to table cells
@@ -66,7 +63,8 @@ for (let listRow = 0; listRow < emojiCodeList.length; listRow++) {
     nEmojisGenerated++;
   }
 }
-//printEmojiTableToConsole();
+//console.log('# ' + Object.keys({fullEmojiList})[0] + "[]");
+//printTableToConsole(fullEmojiList);
 
 // Print table of Emojis
 for (let nEmojisDrawn = 0; nEmojisDrawn < nEmojisGenerated;) {
@@ -109,8 +107,9 @@ $("#txtTableOutput").html("</table>");
 nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
 $("#txtDisplayFlagCount").html("<b>nFlags</b> = " + nFlagsGenerated);
 $("#txtDisplayFlagCount").append(", <b>Total</b> = " + nTotalSymbols);
-//printFlagTableToConsole();
-
+//console.log('# ' + Object.keys({flagCodeList})[0] + "[]");
+//printTableToConsole(flagCodeList);
+// Toggle dark mode on if user preference is set
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   toggleDarkMode();
 }
@@ -157,18 +156,10 @@ function displayCopyToast(txt) {
 }
 
 // Print Emoji array with Markdown table syntax to console
-/*function printEmojiTableToConsole() {
+/*function printTableToConsole(emojis) {
   console.log(`|index|value|`);
   console.log(`|-----|-----|`)
-  for(index = 0; index < fullEmojiList.length; index++) {
-    console.log(`| ${index} | ${fullEmojiList[index]} |`);
-  }
-}
-
-function printFlagTableToConsole() {
-  console.log(`|index|value|`);
-  console.log(`|-----|-----|`)
-  for(let index = 0; index < nFlagsGenerated; index++) {
-    console.log(`| ${index} | ${flagCodeList[index]} |`);
+  for(index = 0; index < emojis.length; index++) {
+    console.log(`| ${index} | ${emojis[index]} |`);
   }
 }*/
