@@ -100,7 +100,7 @@ a:hover {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 145px;
+  top: 97px;
 }
 #toastMessage.show {
   visibility: visible;
