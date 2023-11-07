@@ -30,12 +30,12 @@
  * [ ] Create sub-sections with titles
 
 # Structure
-*  Generate list of emojis
-*  Create a table
-  *  Create a new row after the 10th column
-  *  Draw each emoji in its own table cell
-  *  Draw each flag in its own cell
-  *  Draw a dark mode button if it's the 1st cell
+* [x] Generate list of emojis
+* [x] Create a table
+  * [x] Create a new row after the 10th column
+  * [x] Draw each emoji in its own table cell
+  * [x] Draw each flag in its own cell
+  * [x] Draw a dark mode button if it's the 1st cell
 
 # [**fullEmojiList[]**](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis printed
 
