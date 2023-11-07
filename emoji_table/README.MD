@@ -2,7 +2,7 @@
 
 ### [WIP] Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
-## 💻 [Desktop](https://ateadaze.github.io/emoji_table/ and 📱 [Mobile])
+## 💻 [Desktop and 📱 Mobile](https://ateadaze.github.io/emoji_table/)
 
 ![emoji_table-repo_banner](/images/emoji_table-header.png)
 
