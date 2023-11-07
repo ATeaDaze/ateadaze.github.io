@@ -45,11 +45,11 @@ function printTableData(fullList, nGenerated, bEnablePrintBtn) {
         $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
         $(cell).attr('id', 'menuButtonCell');
       } // Deactivate any cell without a valid emoji or flag
-/*      if( ((nCellsDrawn > 1122) && (nCellsDrawn < 1130)) || (nCellsDrawn > 1386) ) {
+      if( ((nCellsDrawn > 1272) && (nCellsDrawn < 1280)) || (nCellsDrawn > 1536) ) {
         $(cell).html('');
         $(cell).attr('id', 'null-cell-' + nCellsDrawn);
         $(cell).attr('title','');
-      }*/
+      }
       $(cell).appendTo(row);
       nDrawn++
       nCellsDrawn++;
