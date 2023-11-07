@@ -64,12 +64,10 @@ function toggleDarkMode() {
   styleElement.classList.toggle("darkMode");
   if(bDarkModeEnabled) {
     btnDarkMode.src = "images/menu.png";
-    $(btnDarkMode).attr('title','☀️ Light Mode');
     $("#txtMainHeader").html("🔲&nbsp;Emoji Table")    
     bDarkModeEnabled = false;
   } else {
     btnDarkMode.src = "images/menu-dark.png";  
-    $(btnDarkMode).attr('title','🌙 Dark Mode');
     $("#txtMainHeader").html("🔳&nbsp;Emoji Table");
     bDarkModeEnabled = true;
   }
