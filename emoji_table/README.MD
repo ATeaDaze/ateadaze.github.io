@@ -10,27 +10,32 @@
 
 # Features
 * [x] **1,123 emojis in-range (WIP):** need to optimize the ranges and add some missing emojis
-* [x] **257 country flags:** includes every flag (as of Emoji v3.0)
+  * [x] **257 country flags:** includes every flag (as of Emoji v3.0)
 * [x] **1-click copy-to-clipboard:** click any emoji to copy it to the clipboard
 * [x] **Themes:** basic light and dark modes
   * [x] Auto-detect (if user preference is set per OS/browser)
 
 # Changes / Issues / Fixes
+* [x] Refactor and reduce repetition with table functions
+  * [x] Combined into 1 new function: `printTableData();`
+* [x] Add country flags
+* [x] Add dark mode
+  * [x] Auto-detect if user preference is set
+* [x] Copy-to-clipboard when emoji is clicked
 * [ ] Move array data to separate files
-* [ ] Optimize ranges: definitely missing some Emojis
+* [ ] Optimize ranges: definitely missing some emojis
 * [ ] Modify toast timeout to fix overlapping and cut-off messages
 * [ ] Unable to render rainbow flag with code
 * [ ] Add keyword pairs for filter/search
  * [ ] Create sub-sections with titles
-* [x] Refactor and reduce repetition with table functions
 
 # Structure
-* [x] Generate list of emojis
-* [x] Create a table
-  * [x] Create a new row after the 10th column
-  * [x] Draw each emoji in its own table cell
-  * [x] Draw each flag in its own cell
-  * [x] Draw a dark mode button if it's the 1st cell
+*  Generate list of emojis
+*  Create a table
+  *  Create a new row after the 10th column
+  *  Draw each emoji in its own table cell
+  *  Draw each flag in its own cell
+  *  Draw a dark mode button if it's the 1st cell
 
 # [**fullEmojiList[]**](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis printed
 
