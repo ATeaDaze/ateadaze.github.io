@@ -27,7 +27,7 @@
 * [ ] Modify toast timeout to fix overlapping and cut-off messages
 * [ ] Unable to render rainbow flag with code
 * [ ] Add keyword pairs for filter/search
- * [ ] Create sub-sections with titles
+  * [ ] Create sub-sections with titles
 
 # Structure
 * [x] Generate list of emojis
