@@ -1,5 +1,5 @@
-# flagCodeList[]
-|index|value|
+# flagCodeList[];
+|flag|value|
 |-----|-----|
 | 0 | 🇦🇨 |
 | 1 | 🇦🇩 |

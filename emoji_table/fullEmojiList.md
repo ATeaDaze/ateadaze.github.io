@@ -1,5 +1,5 @@
-# fullEmojiList[]
-|index|value|
+# fullEmojiList[];
+|emoji|value|
 |-----|-----|
 | 0 | &#128512; |
 | 1 | &#128513; |
