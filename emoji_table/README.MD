@@ -15,19 +15,22 @@
 * [x] **Themes:** basic light and dark modes
   * [x] Auto-detect (if user preference is set per OS/browser)
 
-# TODO
-* [ ] Refactor and reduce repetition with functions
+# Changes / Issues / Fixes
+* [ ] Move array data to separate files
 * [ ] Optimize ranges: definitely missing some Emojis
 * [ ] Modify toast timeout to fix overlapping and cut-off messages
-* [ ] Create sub-sections with titles
-* [ ] Add an option to filter/search table
-  * [ ] Front-end adequate for searches?
+* [ ] Unable to render rainbow flag with code
+* [ ] Add keyword pairs for filter/search
+ * [ ] Create sub-sections with titles
+* [x] Refactor and reduce repetition with table functions
 
 # Structure
-* [x] Generate list of symbols
+* [x] Generate list of emojis
 * [x] Create a table
-  * [x] Draw each symbol in its own table cell
   * [x] Create a new row after the 10th column
+    * [x] Draw each emoji in its own table cell
+    * [x] Draw each flag in its own cell
+      * [x] Draw a dark mode button if it's the 1st cell
 
 # [**fullEmojiList[]**](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis printed
 
