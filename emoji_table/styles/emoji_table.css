@@ -3,11 +3,6 @@ body {
   color: #030303;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 52px;
-  /* Disable cursor selection  */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 table, tr, td {
@@ -16,6 +11,11 @@ table, tr, td {
 }
 td {
   border: 1px solid #505050;
+  /* Disable cursor selection in table  */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 a {
@@ -38,8 +38,9 @@ a:hover {
 }
 
 .emojiTableStyle {
-    padding-bottom: 11px;
+  padding-bottom: 5px;
   cursor: pointer;
+  font-weight: initial !important;
 }
 .emojiTableStyle:hover {
   filter: drop-shadow(2px 2px 2px #606060);
@@ -52,12 +53,6 @@ a:hover {
   font-size: 40px;
   background-color: #e0e0e0;
   color: #030303;
-}
-.txtTestVerified {
-  background-color: #c4ff89;
-}
-.txtTestVerified:hover {
-  background-color: #afff60;
 }
 
 .hidden {
@@ -83,8 +78,13 @@ a:hover {
 #btnDarkMode:hover {
   filter: brightness(0.8);
 }
-#txtDisplayEmojiCount, #txtDisplayFlagCount {
+#txtDisplayEmojiCount, #txtDisplayFlagCount, #txtDisplayTotalCount {
+  border: #1f1f1f 1px solid;
   font-size: 22pt;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* Toast message for deck shuffle */
@@ -93,7 +93,7 @@ a:hover {
   font-weight: bold;
   visibility: hidden;
   min-width: 250px;
-  margin-left: -150px;
+  margin-left: -215px;
   background-color: #2a2a2a;
   color: #efefef;
   font-weight: bold;
@@ -103,7 +103,7 @@ a:hover {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 103px;
+  top: 92px;
 }
 #toastMessage.show {
   visibility: visible;
