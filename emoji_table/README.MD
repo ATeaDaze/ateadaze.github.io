@@ -23,7 +23,7 @@
 * [x] Add dark mode
   * [x] Auto-detect if user preference is set
 * [x] Copy-to-clipboard when emoji is clicked
-* [ ] Move array data to separate files
+* [x] Move array data to separate files
 * [ ] Optimize ranges: definitely missing some emojis
 * [ ] Modify toast timeout to fix overlapping and cut-off messages
 * [ ] Unable to render rainbow flag with code
