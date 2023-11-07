@@ -1,4 +1,4 @@
-# flagCodeList[];
+# flagCodeList[]
 |flag|value|
 |-----|-----|
 | 0 | 🇦🇨 |

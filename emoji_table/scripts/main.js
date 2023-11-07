@@ -12,8 +12,6 @@ nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
 printTableData(fullEmojiList, nEmojisGenerated, true);
 printTableData(flagCodeList, nFlagsGenerated, false);
 printEmojiFlagCounts();
-//printTableToConsole(fullEmojiList, 'emoji');
-//printTableToConsole(flagCodeList, 'flag');
 
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   toggleDarkMode();
@@ -30,6 +28,9 @@ $(document).ready(function() {
   });
 });
 
+//printTableToConsole(fullEmojiList, 'emoji');
+//printTableToConsole(flagCodeList, 'flag');
+
 function printTableData(fullList, nGenerated, bEnablePrintBtn) {
   for (let nDrawn = 0; nDrawn < nGenerated;) {
     let row = $('<tr></tr>');
@@ -44,11 +45,11 @@ function printTableData(fullList, nGenerated, bEnablePrintBtn) {
         $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
         $(cell).attr('id', 'menuButtonCell');
       } // Deactivate any cell without a valid emoji or flag
-      if( ((nCellsDrawn > 1122) && (nCellsDrawn < 1130)) || (nCellsDrawn > 1386) ) {
+/*      if( ((nCellsDrawn > 1122) && (nCellsDrawn < 1130)) || (nCellsDrawn > 1386) ) {
         $(cell).html('');
         $(cell).attr('id', 'null-cell-' + nCellsDrawn);
         $(cell).attr('title','');
-      }
+      }*/
       $(cell).appendTo(row);
       nDrawn++
       nCellsDrawn++;
