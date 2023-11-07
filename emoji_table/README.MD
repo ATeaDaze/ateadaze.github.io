@@ -36,6 +36,7 @@
   * [x] Draw each emoji in its own table cell
   * [x] Draw each flag in its own cell
   * [x] Draw a dark mode button if it's the 1st cell
+* [x] Move large array data to a separate file
 
 # [**fullEmojiList[]**](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/fullEmojiList.md): full list of emojis printed
 
