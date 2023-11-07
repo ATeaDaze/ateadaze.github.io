@@ -14,7 +14,7 @@
 
 ### [WIP] Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
-## 💻 [Desktop](https://ateadaze.github.io/emoji_table/) / 📱 [Mobile](https://ateadaze.github.io/emoji_table/) (landscape mode _highly_ recommended for mobile)
+## 💻 [Desktop and Mobile](https://ateadaze.github.io/emoji_table/)  📱 (landscape mode _highly_ recommended for mobile)
 
 # Features
 * [x] **1,123 emojis in-range (WIP):** need to optimize the ranges and add some missing emojis
