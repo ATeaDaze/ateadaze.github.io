@@ -1,4 +1,4 @@
-# 🔳 [WIP] Emoji Table
+# 🔳 Emoji Table
 
 ### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
