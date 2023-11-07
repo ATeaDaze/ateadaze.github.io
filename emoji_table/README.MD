@@ -9,7 +9,7 @@
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
 
 # Features
-* [x] [WIP] **1,528 symbols**
+* [x] **1,528 symbols** (WIP)
   * [x] **1,271 emojis in-range:** need to optimize the ranges and add some missing emojis
   * [x] **257 country flags:** includes every flag (as of Emoji v3.0)
 * [x] **1-click copy-to-clipboard:** click any emoji to copy it to the clipboard
