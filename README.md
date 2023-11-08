@@ -12,18 +12,11 @@
 
 # 🔳 Emoji Table
 
-### [WIP] Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
+### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
 ## 💻 [Desktop / Mobile](https://ateadaze.github.io/emoji_table/)  📱 (landscape mode _highly_ recommended for mobile)
 
 ![emoji_table-repo_banner](/images/emoji_table-header.png)
-
-# Features
-* [x] **1,123 emojis in-range (WIP):** need to optimize the ranges and add some missing emojis
-* [x] **257 country flags:** includes every flag (as of Emoji v3.0)
-* [x] **1-click copy-to-clipboard:** click any emoji to copy it to the clipboard
-* [x] **Themes:** basic light and dark modes
-  * [x] Auto-detect (if user preference is set per OS/browser)
 
 * **[README](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/emoji_table/README.MD)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
