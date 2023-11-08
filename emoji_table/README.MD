@@ -51,4 +51,4 @@
 |Legacy  |11-1-23|
 |Current |11-8-23|
 
-![emoji_table_legacy_banner](/emoji_table/images/emoji_table-header.png)
+![emoji_table_legacy_banner](/emoji_table/images/emoji_legacy-header.png)
