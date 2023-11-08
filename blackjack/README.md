@@ -2,7 +2,7 @@
 
 ### A simple blackjack app written in (mostly) native JavaScript. Uses some jQuery for cleaner syntax. No additional libraries or anything fancy
 
-## [Desktop](https://ateadaze.github.io/blackjack) || [Mobile](https://ateadaze.github.io/blackjack/m)
+## 💻 [Desktop](https://ateadaze.github.io/blackjack) | 📱 [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
 ## Features
@@ -150,3 +150,13 @@ This doesn't seem significantly different than simply drawing to 17
 * [ ] (Rare) Duplicate cards are dealt when deck is shuffled (duplicates don't carry over)
   * [ ] Possible fix: force a shuffle after current hand if < X cards remain
   * [ ] Decrease `nCardOffset` by more than `4`
+
+# 📆 Legacy Version
+### The oldest _working_ copy of this app: 💻 [Desktop](https://ateadaze.github.io/blackjack/legacy/index.html)
+
+|Version |Date   |
+|--------|-------|
+|Legacy  |5-15-23|
+|Current |11-8-23|
+
+![blackjack_legacy_banner](/blackjack/images/blackjack_legacy-header.png)
