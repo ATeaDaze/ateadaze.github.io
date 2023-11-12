@@ -550,12 +550,12 @@ function toggleKeyMap() {
   let kStatus;
   kMenu.classList.toggle("nothing");
   if(bShowHelp) {
-    kStatus = "Enable";
+    kStatus = "Show";
     kButton.style = "color: #90ee90";
     bShowHelp = false;
     scrollToTop(0);
   } else {
-    kStatus = "Disable";
+    kStatus = "Hide";
     kButton.style = "color: #cd5c5c";
     bShowHelp = true;
     scrollToBottom(0);
