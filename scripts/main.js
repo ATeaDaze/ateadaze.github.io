@@ -17,6 +17,7 @@ let bScreenIsClear = true;
 let bDisablePhotoWarning = false;
 let bEnableRandomPalette = false;
 let bEnableDrawing = false;
+let bShowHelp = true;
 let xOrigin = 500;
 let yOrigin = 250;
 let xPos = 0;
@@ -422,7 +423,7 @@ function getKeyboardInput() {
     case 'g':
       activeColorPalette = 'grayscale';
       break;
-    case 'u':
+    case 'k':
       activeColorPalette = 'ukraine';
       break;
     case '*':
@@ -541,6 +542,33 @@ function drawHelpScreen() {
   ctx.fillText("💾  Right-click on the canvas to save it as an image (png)", helpTextOffset, textMidpoint+90);
   ctx.fillStyle = "black";
   bScreenIsClear = true;
+}
+
+function toggleKeyMap() {
+  let kMenu = document.getElementById("txtKeyMap");
+  let kButton = document.getElementById("btnKeyMap");
+  let kStatus;
+  kMenu.classList.toggle("nothing");
+  if(bShowHelp) {
+    kStatus = "Enable";
+    kButton.style = "color: #90ee90";
+    bShowHelp = false;
+    scrollToTop(0);
+  } else {
+    kStatus = "Disable";
+    kButton.style = "color: #cd5c5c";
+    bShowHelp = true;
+    scrollToBottom(0);
+  }
+  kButton.innerHTML = kStatus;
+}
+
+function scrollToBottom(msec) {
+  window.scrollTo(msec, document.body.scrollHeight);
+}
+
+function scrollToTop(msec) {
+  window.scrollTo({ top: msec, behavior: 'auto' });
 }
 
 function confirmCanvasOverwrite() {

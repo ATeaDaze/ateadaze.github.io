@@ -23,15 +23,19 @@
   <link href="images/rainbow_noise.ico" rel="shortcut icon" type="image/x-icon">
   <base target="_blank">
 </head>
-<!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names -->
+<!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names, clean up CSS (it works but it's a mess) -->
 <body>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript>
   <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9D9QBD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <script src="scripts/main.js"></script>
+
 <div id="rainbowBanner" onclick="bDisablePhotoWarning=true;setBrushColor();updateButtons();updateBanner();"></div>
+
+<!-- Main buttons -->
 <center>
 <table cellpadding="5" border="0">
   <tr>
@@ -57,6 +61,7 @@
       <button class="helpBtn" id="button8" onclick="setRandomPalette();setBrushColor();" title="Random palette [*]">🎲️</button>
     </td>
   </tr>
+<!-- Shape buttons -->
   <tr align="left">
     <td>
       <button class="shapeBtn" id="button4" onclick="shapeType='triangle';updateButtons();"
@@ -78,29 +83,128 @@
     </td>
   </tr>
 </table>
-<hr class="hidden" width="800">
 </center>
+<hr class="hidden">
+
+<!-- Draw 2D canvas element -->
 <script src="scripts/drawCanvas.js"></script>
-<hr class="hidden" width="800">
-<table width="800" align="center">
+
+<!-- Separate canvas and help text with line -->
+<center>
+<hr class="hidden">
+
+<!-- Links and resources -->
+<table>
+  <tr>
+    <td><b>
+        📱&nbsp;<a href="https://ateadaze.github.io/m/index.html">Mobile Version</a>&nbsp;|&nbsp;
+        🃏&nbsp;<a href="https://ateadaze.github.io/blackjack/">Blackjack</a>&nbsp;|&nbsp;
+        🔳&nbsp;<a href="https://ateadaze.github.io/emoji_table/">Emoji Table</a>&nbsp;|&nbsp;
+        🌐&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
+      </b></td>
+  </tr>
+</table>
+
+<!-- Keyboard Map header/button: clicking ON/OFF toggles visibility -->
+<table>
   <tr>
     <td>
-    <div id="keyMap"><u>Keyboard Map</u>:&nbsp;&nbsp;&nbsp;<b>[R]</b>un&nbsp;&nbsp;<b>[P]</b>ause&nbsp;&nbsp;<b>[C]</b>lear screen&nbsp;&nbsp;
-      <b>[Enter]</b> Toggle draw mode&nbsp;&nbsp;<b>[Spacebar]</b> Next palette<br>
-      Color palettes:&nbsp;Fa<b>[d]</b>ed&nbsp;R<b>[a]</b>inbow&nbsp;<b>[F]</b>ire&nbsp;<b>[I]</b>ce&nbsp;RG<b>[B]</b>&nbsp;
-      C<b>[M]Y</b>&nbsp;CGA-<b>[8]</b>&nbsp;Py<b>[x]</b>el Edit&nbsp;Gamebo<b>[y]</b>&nbsp;<b>[U]</b>SA&nbsp;<b>[G]</b>rayscale<br>
-      Animations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>[T]</b>riangle Web&nbsp;<b>[L]</b>ine Scatter&nbsp;<b>[S]</b>tarburst&nbsp;
-      CGA-1<b>[6]</b><br>
-      <b>[?]</b> Help&nbsp;&nbsp;<b>[O]</b>rigin reset (center)&nbsp;&nbsp;<b>[*]</b> Random palette</div>
+      <hr class="keyMapLine">
+      <table class="txtKeyMapHeader">
+        <tr>
+          <td id="txtKeyHeaderLabel">
+            Keyboard Map:
+          </td>
+          <td>
+            <span id="btnKeyMap" onclick="toggleKeyMap();" title="Click to show/hide keyboard map">
+              ON
+            </span>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
-</table><br>
-<center><b>
-  📱&nbsp;<a href="https://ateadaze.github.io/m/index.html">Mobile Version</a>&nbsp;|&nbsp;
-  🃏&nbsp;<a href="https://ateadaze.github.io/blackjack/">Blackjack</a>&nbsp;|&nbsp;
-  🔳&nbsp;<a href="https://ateadaze.github.io/emoji_table/">Emoji Table</a>&nbsp;|&nbsp;
-  🌐&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
-</b></center>
+</table>
+
+<!-- Keyboard Map Table -->
+<table id="txtKeyMap" class="empty">
+  <tr>
+    <td>
+      <hr class="keyMapLine">
+      <table id="txtKeyMap">
+      <tr>
+        <td><b>[R]</b>un</td>
+        <td><b>[P]</b>ause</td>
+        <td><b>[C]</b>lear screen</td>
+        <td><b>[Enter]</b>&nbsp;Toggle draw mode</td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><b>[Spacebar]</b>&nbsp;Next palette</td>
+        <td><b>[?]</b> Help</td>
+        <td><b>[O]</b>rigin reset (center)</td>
+        <td><b>[*]</b> Random palette</td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><hr class="keyMapLine"></td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><u>Animations</u>:</td>
+          <td><b>[T]</b>riangle Web</td>
+          <td><b>[L]</b>ine Scatter</td>
+          <td><b>[S]</b>tarburst</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><hr class="keyMapLine"></td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><u>Color palettes</u>:</td>
+          <td>Fa<b>[d]</b>ed</td>
+          <td>R<b>[a]</b>inbow</td>
+          <td><b>[F]</b>ire</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><b>[I]</b>ce</td>
+          <td>RG<b>[B]</b></td>
+          <td>C<b>[M]Y</b></td>
+          <td>CGA-<b>[8]</b></td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td>CGA-1<b>[6]</b></td>
+          <td>Py<b>[x]</b>el Edit</td>
+          <td>Gamebo<b>[y]</b></td>
+          <td><b>[U]</b>SA</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><b>[G]</b>rayscale</td>
+          <td>U<b>[k]</b>raine<br></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+    </tr>
+  </table>
+
+<script>toggleKeyMap();</script>
+
+<!-- Preload images to reduce load latency -->
 <img src="images/brush_cursor-32-down.png" class="hidden">
+
 </body>
 </html>
