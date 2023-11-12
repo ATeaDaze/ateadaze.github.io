@@ -34,14 +34,29 @@
 * **Draw abstract shapes** with your mouse or touch screen
   * **New patterns emerge** from random lines overlapping
 * **Run animations automatically** (or combine them with drawing)
-* **12 color palettes**
+* **13 color palettes**
 * **Keyboard support** (desktop version)
 
-## Screenshots
+## Color Palettes
+* 🌈 **Faded:** rainbow with desaturated colors
+* 🌈 **Rainbow:** classic rainbow (red, orange, yellow, green, blue, indigo, violet)
+* 🔥 **Fire:** warm and inviting
+* 🧊 **Ice:** cool and refreshing
+* 📊 **RGB:** red, green, blue
+* ✨ **CMY:** cyan, magenta, yellow
+* 🦜 **CGA-8:** an old PC/DOS video mode (8-color)
+* 🦜 **CGA-16:** full 16-color CGA palette (minus pure black)
+* 🎨 **Pyxel:** default color palette for [Pyxel Edit](https://pyxeledit.com/)
+* 🟩 **Gameboy:** as green and hideous as it was in the 90s
+* 🧨 **Patriot:**  a greater union (red, white, and blue)
+* 🏁 **Grayscale:** everything from dim gray to off-white
+* 🔱 **Ukraine:** the sky and fields of a beautiful nation
 
-🖌️|**Hand drawn**
----|---|
-🎲|**Randomly generated**
+## Screenshots
+|&nbsp;|Type of Screenshot|
+|---|---|
+|🖌️|**Hand drawn**|
+|🎲|**Randomly generated**|
 
 #### ⧎ Triangle Web 🖌️ Faded
 ![triangles-faded](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
@@ -68,36 +83,59 @@
 #### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
 ![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
 
-## Color Palettes
-* **Faded:** rainbow with desaturated colors
-* **Rainbow:** classic primary colors
-* **Fire:** warm (but not necessarily inviting)
-* **Ice:** cool and refreshing
-* **RGB:** red, green, blue
-* **CMY:** cyan, magenta, yellow
-* **CGA-8:** an old PC/DOS video mode (8-color)
-* **CGA-16:** full 16-color CGA palette (minus pure black)
-* **Pyxel:** default color palette for [Pyxel Edit](https://pyxeledit.com/)
-* **Gameboy:** as green as it was in the 90s
-* **Patriot:** red, white, and blue
-* **Grayscale:** everything from dim gray to off-white
-
 # 💻 [Desktop](https://ateadaze.github.io/)
 ![screenshot-faded](/images/screenshots/rn_screen-desktop.png)
-## Controls
-```
-Keyboard Map    [R]un  [P]ause  [C]lear screen   [Enter] Toggle draw mode  [Spacebar] Next palette
-Color palettes: Fa[d]ed R[a]inbow [F]ire [I]ce RG[B]  C[M]Y CGA-[8] Py[x]el Edit Gamebo[y] [U]SA
-Animations:     [T]riangle Web [L]ine Scatter [S]tarburst   CGA-1[6]  [G]rayscale
-[?] Help  [O]rigin reset (center)  [*] Random palette
-```
-Button|Key|&nbsp;
----|---|---|
-![Spacebar](/images/buttons/palette_button.png)|**`Space`**|Select the next palette
-![Random](/images/buttons/random_palette_button.png)|**`*`**|Select a random palette
-![E](/images/buttons/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode
-![?](/images/buttons/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)
-![O](/images/buttons/origin_reset_button.png)|**`o`**|Reset origin to center
+
+## Keyboard Shortcuts
+
+### <u>General</u>
+
+|Key|&nbsp;|
+|------|------|
+| **`R`** | Run animation |
+|**`P`** | Pause animation |
+| **`C`** | Clear screen |
+|**`Enter`** |Toggle free draw mode |
+| **`Spacebar`** | Next palette |
+|**`?`** | Help |
+|**`O`** | Origin reset (center) |
+|**`*`** | Random palette |
+
+### <u>Animation Select</u>
+
+|Key|&nbsp;|
+|------|------|
+| **`T`** | Triangle web |
+|**`L`** | Line scatter |
+|**`S`** | Starburst |
+
+### <u>Palettes</u>
+
+|Key|&nbsp;|
+|------|------|
+| **`D`** | Faded |
+|**`A`** | Rainbow (classic) |
+|**`F`** | Fire |
+|**`I`** | Ice |
+| **`R`** | RGB |
+|**`M`** | CMY |
+|**`8`** | CGA-8 |
+|**`6`** | CGA-16 |
+| **`X`** | Pyxel Edit |
+|**`Y`** | Gameboy |
+|**`U`** | USA |
+|**`G`** | Grayscale |
+|**`K`** | Ukraine |
+
+## On-screen controls
+
+|Button|Key|&nbsp;|
+|---|---|---|
+|![Spacebar](/images/buttons/palette_button.png)|**`Space`**|Select the next palette|
+|![Random](/images/buttons/random_palette_button.png)|**`*`**|Select a random palette|
+|![E](/images/buttons/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode|
+|![?](/images/buttons/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)|
+|![O](/images/buttons/origin_reset_button.png)|**`o`**|Reset origin to center|
 
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
@@ -132,6 +170,7 @@ Button|Key|&nbsp;
 * [X] Change origin setpoint to `mousedown`  (instead of `mouseup`)
 * [X] Added custom mouse cursors
 * [X] Set indentation style to `2` tabs
+* [X] Add toggle function to hide/show keyboard map
 * [ ] Add more variety: shapes, colors, brush width, etc. (experiment)
 * [ ] Replace all HTML legacy tags with CSS
 
