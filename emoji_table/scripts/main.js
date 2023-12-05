@@ -1,5 +1,3 @@
-// 4 variables defined in external source file (generateNewList.js)
-// emojiCodeList = [[range1,range2],[range3],[range4]]..., flagCodeList = ["🇦🇨","🇦🇩",..., fullEmojiList = [], nEmojisGenerated = 0
 let nEmojisDrawn = 0;
 let nFlagsGenerated = 0;
 let nFlagsDrawn = 0;
@@ -28,9 +26,6 @@ $(document).ready(function() {
   });
 });
 
-//printTableToConsole(fullEmojiList, 'emoji');
-//printTableToConsole(flagCodeList, 'flag');
-
 function printTableData(fullList, nGenerated, bEnablePrintBtn) {
   for (let nDrawn = 0; nDrawn < nGenerated;) {
     let row = $('<tr></tr>');
@@ -44,8 +39,8 @@ function printTableData(fullList, nGenerated, bEnablePrintBtn) {
         $(cell).html('<b><img src=images/menu.png id=btnDarkMode></b>');
         $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
         $(cell).attr('id', 'menuButtonCell');
-      } // Deactivate any cell without a valid emoji or flag
-      if( ((nCellsDrawn > 1270) && (nCellsDrawn < 1279)) || (nCellsDrawn > 1536) ) {
+      } // Deactivate any trailing blank cells
+      if( ((nCellsDrawn > 1270) && (nCellsDrawn < 1280)) || (nCellsDrawn > 1536) ) {
         $(cell).html('');
         $(cell).attr('id', 'null-cell-' + nCellsDrawn);
         $(cell).attr('title','');
@@ -88,10 +83,3 @@ function printEmojiFlagCounts() {
   $("#txtDisplayTotalCount").html("<b>Total</b> = " + nTotalSymbols);
 }
 
-/*function printTableToConsole(emojisFlags, iVal) {
-  console.log(`|${iVal}|value|`);
-  console.log(`|-----|-----|`)
-  for(index = 0; index < (emojisFlags.length-1); index++) {
-    console.log(`| ${index} | ${emojisFlags[index]} |`);
-  }
-}*/
