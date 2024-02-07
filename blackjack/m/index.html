@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width" />
   <meta name="description" content="A basic blackjack game written in JavaScript" />
   <meta name="keywords" content="blackjack, javascript, app, online, casino" />
-  <title>Blackjack</title>
+  <title>Blackjack 📱 Mobile</title>
   <link href="styles/blackjack-mobile.css" rel="stylesheet">
   <link href="../images/blackjack.ico" rel="shortcut icon" type="image/x-icon">
   <base target="_blank">
@@ -13,10 +13,6 @@
 <!-- Deal new hand on page load -->
 <body onload="displayIntro();">
 <center>
-
-<!--<img src="../images/card_banner-left.png" height="25">&nbsp;&nbsp;
-<img src="../images/card_banner-text.png" height="25">&nbsp;&nbsp;
-<img src="../images/card_banner-right.png" height="25">-->
 
 <img src="../images/card_banner-left.png" width="10%">&nbsp;&nbsp;
 <img src="../images/card_banner-text.png" width="70%">&nbsp;&nbsp;
@@ -149,11 +145,12 @@
 </table>
 
 <!-- Preload game SFX -->
-<audio src="../audio/card_flip.mp3"></audio>
-<audio src="../audio/card_shuffle.mp3"></audio>
-<audio src="../audio/casino_chip.mp3"></audio>
-<audio src="../audio/tick.mp3"></audio>
-<audio src="../audio/jackpot.mp3"></audio>
+<audio src="../audio/card_flip.mp3" class="hidden"></audio>
+<audio src="../audio/card_shuffle.mp3" class="hidden"></audio>
+<audio src="../audio/casino_chip.mp3" class="hidden"></audio>
+<audio src="../audio/tick.mp3" class="hidden"></audio>
+<audio src="../audio/draw.mp3" class="hidden"></audio>
+<audio src="../audio/jackpot.mp3" class="hidden"></audio>
 
 <!-- Preload images to prevent load latency -->
 <img src="../images/25.png" class="hidden">

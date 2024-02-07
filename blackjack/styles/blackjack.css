@@ -5,18 +5,17 @@ body {
   background-image: url("../images/casino_table.png");
   background-size: 10%;
   background-repeat: repeat;
-
   font-size: 20pt;
   font-weight: bold;
   color: #ffffff;
   /* Add black outline to text for contrast */
   -webkit-text-stroke: 1.3px black;
   cursor: default;
-  /* Disable cursor selection  */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+  /* Disable cursor selection (can interfere with gameplay)  */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* FOR UI TESTING */
@@ -309,7 +308,7 @@ a:hover {
   position: fixed;
   z-index: 1;
   left: 30%;
-  top: 8%;
+  top: 1%;
 }
 #helpMenuTxt.show {
   visibility: visible;

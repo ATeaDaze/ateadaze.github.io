@@ -43,6 +43,7 @@ let bAceSwappedPlayer = false;
 let bAceSwappedDealer = false;
 let bGameOver = true;
 let bPlayerWon = false;
+let bPushRound = false;
 let bEnableSound = true;
 let bShowHelp = false;
 let bDuplicateFound;
@@ -53,6 +54,7 @@ const audioCard = new Audio("../audio/card_flip.mp3");
 const audioShuffle = new Audio("../audio/card_shuffle.mp3");
 const audioWin = new Audio("../audio/casino_chip.mp3");
 const audioLose = new Audio("../audio/tick.mp3");
+const audioDraw = new Audio("../audio/draw.mp3");
 const audioJackpot = new Audio("../audio/jackpot.mp3");
 
 // Generate a base deck of 52 cards
@@ -425,6 +427,7 @@ function checkForWins() {
         statusBarTxt.style = "color: #dddddd";
         statusBarTxt.innerHTML = "Push 🔷 $0";
         bPlayerWon = false;
+        bPushRound = true;
         endCurrentRound();
       }
     }
@@ -454,21 +457,28 @@ function checkFinalScore() {
       statusBarTxt.style = "color: #dddddd";
       statusBarTxt.innerHTML = "Push 🔷 $0";
       bPlayerWon = false;
+      bPushRound = true;
       endCurrentRound();
     } 
   }
 }
 
 function endCurrentRound() {
+  // If player wins then add money and play SFX
   if(bPlayerWon) {
     playerMoney = playerMoney + betAmount;
     dealerMoney = dealerMoney - betAmount;
     if(bEnableSound) audioWin.play();
+  } else if(bPushRound) {
+    // Play neutral SFX for push
+    if(bEnableSound) audioDraw.play();
   } else {
+    // Play "thud" sound and subtract money if player lost
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
     if(bEnableSound) audioLose.play();
   }
+
   // Draw dealer card if only 1 is showing
   if(nDealerCards == 1) {
     drawDealerCard();
@@ -479,6 +489,9 @@ function endCurrentRound() {
   updateScore();
   bGameOver = true;
   bPlayerWon = false;
+  bPushRound = false;
+  currentPlayerHand = [];
+
   // Special message if player breaks the house
   if(dealerMoney < 0) {
     statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";

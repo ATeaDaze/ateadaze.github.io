@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-B1GSELVZ3W');
 </script>
 <!-- Keywords and metadata -->
@@ -110,7 +109,7 @@
   <tr>
     <td class="evenWidthCell">
       <!-- Toggle SFX button -->
-      <span class="btnAudioStatus">
+      <span class="btnAudioStatus" title="🔈 Disable sound">
       <span id="btnAudioStatusLead" onclick="toggleAudio();">Sound:&nbsp;</span><span id="btnAudioStatusValue" onclick="toggleAudio();">ON</span>
       </span>
   </td>
@@ -120,7 +119,7 @@
   <td class="evenRightCell">
   <!-- Help button: clicking toggles help window, div centers text -->
   <div>
-  <span id="btnHelp" onclick="showHelpMenu();" class="btnHelpStyle">Help</span>
+  <span id="btnHelp" onclick="showHelpMenu();" class="btnHelpStyle" title="ℹ️ Show help window (click this text or inside the help box to hide it)">Help</span>
   <!-- HELP MENU conents (hidden by default) -->
   <span id="helpMenuTxt" onclick="showHelpMenu();">
     <center>♠️ ♥️ HOW TO PLAY BLACKJACK ♣️ ♦️</center>
@@ -165,11 +164,12 @@
 </table>
 
 <!-- Preload game SFX -->
-<audio src="audio/card_flip.mp3"></audio>
-<audio src="audio/card_shuffle.mp3"></audio>
-<audio src="audio/casino_chip.mp3"></audio>
-<audio src="audio/tick.mp3"></audio>
-<audio src="audio/jackpot.mp3"></audio>
+<audio src="audio/card_flip.mp3" class="hidden"></audio>
+<audio src="audio/card_shuffle.mp3" class="hidden"></audio>
+<audio src="audio/casino_chip.mp3" class="hidden"></audio>
+<audio src="audio/tick.mp3" class="hidden"></audio>
+<audio src="audio/draw.mp3" class="hidden"></audio>
+<audio src="audio/jackpot.mp3" class="hidden"></audio>
 
 <!-- Preload images to prevent load latency -->
 <img src="images/25.png" class="hidden">
