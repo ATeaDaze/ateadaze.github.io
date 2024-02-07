@@ -1,4 +1,3 @@
-/* Main DOM elements */
 body {
   font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
   background-color: #154700; /*#0F3300;*/
@@ -8,11 +7,11 @@ body {
   font-size: 14pt;
   font-weight: bold;
   color: #ffffff;
-  /* Disable cursor selection  */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+  /* Disable cursor selection (refresh, gestures, etc.  */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 button {
@@ -24,7 +23,6 @@ button {
   padding: 2pt;
 }
 
-/* Horizontal rule is large white line with black outline (casino style) */
 hr {
   background-color: white;
   border: 1px solid black;
@@ -39,13 +37,11 @@ a, a:visited {
   color: #c0c0c0;
 }
 
-/* Set most elements to fixed 730px width */
 .fixedTable {
   width: 100%;
   text-align: left;
 }
 
-/* A smaller, invisible <hr> for smaller gaps */
 .smallLine {
   visibility: hidden;
   height: 5px;
@@ -54,13 +50,11 @@ a, a:visited {
   margin-bottom: 0pt;
 }
 
-/* Gradient gives status bar a "scoreboard" */
 .statusOutline {
   width: 342px;
   height: 22px;
   border: 1px solid #555555;
   background-color: #000000;
-/*  border-radius: 0 0 25% 25%; */
   padding-top: 1px;
   padding-bottom: 1px;
   background: repeating-linear-gradient(
@@ -72,7 +66,6 @@ a, a:visited {
   );
 }
 
-/* Add fade animation to scoreboard */
 #statusBarTxt {
   font-size: 12pt;
   letter-spacing: 2pt;
@@ -101,7 +94,6 @@ a, a:visited {
   font-weight: bold;
   text-align: left;
   width: 33%;
-  /* Add black outline to text for contrast */
 }
 
 .betLead {
@@ -136,7 +128,6 @@ a, a:visited {
   width: 100%;
 }
 
-/* Mimics the style of a 52-deck card (hidden by default) */
 .gbSingleCard {
   display: none;
   background-color: white;
@@ -151,7 +142,6 @@ a, a:visited {
   padding-bottom: 1px;
 }
 
-/* Gameplay buttons */
 #btnHit {
   height: 45px;
   width: 45%;
@@ -160,7 +150,6 @@ a, a:visited {
   letter-spacing: 5px;
 }
 
-/* [STAND] button */
 #btnStand {
   height: 45px;
   width: 45%;
@@ -169,7 +158,6 @@ a, a:visited {
   letter-spacing: 5px;
 }
 
-/* [DEAL NEW HAND] button */
 #btnDealNewHand {
   height: 45px;
   width: 45%;
@@ -183,19 +171,16 @@ a, a:visited {
   font-size: 12pt;
 }
 
-/* Bet buttons */
 .btnBet {
   width: 55px;
 }
 
-/* Buttons are aligned to the bottom center */
 .btnTable {
   text-align: center;
   vertical-align: bottom;
   padding: 2.5px;
 }
 
-/* Help button and popup menu */
 .btnHelpStyle {
   color: #d0d0d0;
   font-size: 14pt;
@@ -259,7 +244,6 @@ hr.helpLine {
   width: 100%;
 }
 
-/* Toast message for deck shuffle */
 #toastMessage {
   font-size: 14pt;
   font-weight: bold;
@@ -305,7 +289,6 @@ hr.helpLine {
     transform: rotateX(720deg);
   }
   100% {
-    /* animate nothing to pause animation at the end */
     opacity: 1;
     transform: rotateX(720deg);
   }
