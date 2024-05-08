@@ -1,24 +1,17 @@
-let currentWaveform = "square";
+let currentWaveform = "triangle";
 let currentTrack = "ffPrelude";
 let bIsLoggingEnabled = false;
+let bIsAudioPlaying = false;
 
-// Create new audio API instance
 let ctx = new(window.AudioContext || window.webkitAudioContext)();
-// Create volume node to reduce gain and connect to audio
 let volume = ctx.createGain();
 volume.connect(ctx.destination);
-// Set volume to 10% (100% default is way too loud)
 volume.gain.value = 0.1;
 
-// Plays each note in the song track
 function playNote(frequency, duration) {
-  let x = document.getElementById("txtFrequencyValue");
-  x.innerHTML = note[0] + " Hz";
-  // Create an oscillator and connect it to audio nodes
+  $("#txtFrequencyValue").html(note[0] + " Hz");
   osc = ctx.createOscillator();
-  // Set oscillator wave (options: sawtooth, sine, square, triangle)
   osc.type = currentWaveform;
-  // Set frequency for oscillator in Hz
   osc.frequency.value = frequency;
   osc.connect(volume);
   osc.start();
@@ -30,42 +23,26 @@ function playNote(frequency, duration) {
 }
 
 function playMelody() {
-  let x = document.getElementById("btnPlayAudioTrack");
-  // Continue playing until the end of the note list
   if (notes.length > 0) {
-    // Remove each note from array as it's played
     note = notes.pop();
-    // Each note is played with an array of values (frequency, duration)
     playNote(note[0], 1000 * 256 / (note[1] * bpm));
     $("#btnPlayAudioTrack").html("PLAYING");
-    x.style = "color: #FF7F50; border-color: #FF7F50; letter-spacing: 10px";
-    // Print each note in Hz and its duration to console
+    $("#btnPlayAudioTrack").addClass("playStyleRunning");
     if(bIsLoggingEnabled) {
       console.log(`[${note[0]} Hz, 1/${note[1]} note]`);
-      // Print tempo to console if the track has ended
       if(notes.length == 0) console.log(`Tempo: ${bpm} BPM`);
     }
   } else {
     $("#btnPlayAudioTrack").html("PLAY TRACK");
-    x.style = "color: #dddddd";
+    $("#btnPlayAudioTrack").removeClass("playStyleRunning");
+    $("#btnPlayAudioTrack").addClass("playStyle");
+    enableTrackButtons();
   }
 }
 
-// Set audio track when a button is clicked
 $(document).ready(function() {
-  $("#btnPlayTrackFinalFantasy").click(function() {
-    currentTrack = "ffPrelude";
-    setCurrentWaveform("square");
-  });
-  $("#btnPlayTrackStrangerThings").click(function() {
-    currentTrack = "stIntro";
-    setCurrentWaveform("sawtooth");
-  });
-  $("#btnPlayTrackStarWars").click(function() {
-    currentTrack = "swIntro";
-    setCurrentWaveform("triangle");
-  });
-  // Set note list, BPM, and default waveform for each track
+  updateTrackTitle();
+  updateWaveformTitle();
   $("#btnPlayAudioTrack").click(function() {
     if(currentTrack == "ffPrelude") {
       notes = trackNotesFFPrelude;
@@ -77,16 +54,72 @@ $(document).ready(function() {
       notes = trackNotesImperialMarch;
       bpm = 103;
     }
-    // Reverse list of notes and play the track
+    disableTrackButtons();
     notes.reverse();
     playMelody();
   });
 });
 
-// Update and display the active waveform when it's changed
-function setCurrentWaveform(newWave) {
+function updateCurrentWaveform(newWave) {
   currentWaveform = newWave;
-  let x = document.getElementById("txtWaveformValue");
-  x.innerHTML = newWave.toUpperCase();
+  $("#txtWaveformValue").html(newWave.toUpperCase());
   return(newWave);
 }
+
+function updateTrackTitle() {
+  $("#btnPlayTrackFinalFantasy").click(function() {
+    currentTrack = "ffPrelude";
+    updateCurrentWaveform("triangle");
+    $("#txtActiveTrackValue").html("Prelude (Final Fantasy)");
+  });
+  $("#btnPlayTrackStrangerThings").click(function() {
+    currentTrack = "stIntro";
+    updateCurrentWaveform("square");
+    $("#txtActiveTrackValue").html("Stranger Things (Main Theme)");
+  });
+  $("#btnPlayTrackStarWars").click(function() {
+    currentTrack = "swIntro";
+    updateCurrentWaveform("sawtooth");
+    $("#txtActiveTrackValue").html("Imperial March (Star Wars)");
+  });
+}
+
+function updateWaveformTitle() {
+  $("#btnWaveSine").click(function() {
+    updateCurrentWaveform("sine");
+  });
+  $("#btnWaveSquare").click(function() {
+    updateCurrentWaveform("square");
+  });
+  $("#btnWaveSawtooth").click(function() {
+    updateCurrentWaveform("sawtooth");
+  });
+  $("#btnWaveTriangle").click(function() {
+    updateCurrentWaveform("triangle");
+  });
+}
+
+function disableTrackButtons() {
+  $("[id^=btnPlayTrack]").removeClass("playStyle");
+  $("[id^=btnPlayTrack]").addClass("disabledButton");
+  $("[id^=btnPlayTrack]").prop( "disabled", true );
+}
+
+function enableTrackButtons() {
+  $("[id^=btnPlayTrack]").removeClass("disabledButton");
+  $("[id^=btnPlayTrack]").addClass("trackStyle");
+  $("[id^=btnPlayTrack]").prop("disabled", false);
+}
+
+// TODO: maybe track if a song has been played an disable it
+// This would go at the end of playMelody()
+/*    if(currentTrack == "ffPrelude") {
+      $("#btnPlayTrackFinalFantasy").prop( "disabled", true );
+      $("#btnPlayTrackFinalFantasy").addClass("disabledButton");
+    } else if(currentTrack == "stIntro") {
+      $("#btnPlayTrackStrangerThings").prop( "disabled", true );
+      $("#btnPlayTrackStrangerThings").addClass("disabledButton");
+    } else {
+      $("#btnPlayTrackStarWars").prop( "disabled", true );
+      $("#btnPlayTrackStarWars").addClass("disabledButton");
+    } */

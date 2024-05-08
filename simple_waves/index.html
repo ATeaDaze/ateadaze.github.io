@@ -1,5 +1,3 @@
-<!-- use jQuery instead of 'onclick' for wave buttons, add descriptions for the 4 waveforms, add another
-  table row beneath the buttons), ADSR, etc. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +11,9 @@
 <center>
 
 <h1>
-  <img src="images/simple_waves.png" class="headerGraphic">&nbsp;&nbsp;Simple Waves: a primitive synth and terrible sequencer&nbsp;&nbsp;
+  <img src="images/simple_waves.png" class="headerGraphic">&nbsp;&nbsp;Simple Waves: a basic JavaScript sequencer&nbsp;&nbsp;
   <img src="images/simple_waves.png" id="headerFlipRight" class="headerGraphic">
-</h1>
-<hr>
+</h1><hr>
 
 <table class="frequencyHeader">
   <tr>
@@ -25,22 +22,36 @@
     <td id="txtWaveformLead">Waveform:</td>
     <td id="txtWaveformValue">TRIANGLE</td>    
   </tr>
-</table><br><br>
+</table><hr class="smallLine">
 
-<button id="btnPlayTrackFinalFantasy" class="waveStyle">Final Fantasy - Prelude</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="btnPlayTrackStrangerThings" class="waveStyle">Stranger Things Theme</button><br><br>
-<button id="btnPlayTrackStarWars" class="waveStyle">Star Wars - Imperial March</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="btnPlayAudioTrack" class="waveStyle" title="Click here to play a song">PLAY TRACK</button>
-<br><br><br>
+<table class="trackHeader">
+  <tr>
+    <td id="txtActiveTrackLead">Track:</td>
+    <td id="txtActiveTrackValue">Prelude (Final Fantasy)</td>    
+  </tr>
+</table><br>
+
+<button id="btnPlayTrackFinalFantasy" class="trackStyle">Final Fantasy - Prelude</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button id="btnPlayTrackStrangerThings" class="trackStyle">Stranger Things Theme</button><br><br>
+<button id="btnPlayTrackStarWars" class="trackStyle">Star Wars - Imperial March</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button id="btnPlayAudioTrack" class="playStyle" title="Click here to play a song">PLAY TRACK</button><br><br>
+<hr class="smallLine">
 
 <table>
   <tr>
-    <td class="waveformMenu"><button id="waveSine" class="waveStyle" onclick="setCurrentWaveform('sine')">Sine</button></td>
-    <td class="waveformMenu"><button id="waveSquare" class="waveStyle" onclick="setCurrentWaveform('square')">Square</button></td>
-    <td class="waveformMenu"><button id="waveSawtooth" class="waveStyle" onclick="setCurrentWaveform('sawtooth')">Sawtooth</button></td>
-    <td class="waveformMenu"><button id="waveTriangle" class="waveStyle" onclick="setCurrentWaveform('triangle')">Triangle</button></td>
+    <td class="waveformMenu"><button id="btnWaveSine" class="waveStyle">Sine</button></td>
+    <td class="waveformMenu"><button id="btnWaveSquare" class="waveStyle">Square</button></td>
+    <td class="waveformMenu"><button id="btnWaveSawtooth" class="waveStyle">Sawtooth</button></td>
+    <td class="waveformMenu"><button id="btnWaveTriangle" class="waveStyle">Triangle</button></td>
+  </tr>
+</table>
+
+<table class="waveDescriptions">
+  <tr>
+    <td class="waveInfoCell">A pure and smooth tone. Sounds similar to a whistle on the high-end</button></td>
+    <td class="waveInfoCell">A bright and sharp tone. Sounds similar to an NES instrument</td>
+    <td class="waveInfoCell">A rough and harmonically rich tone. Sounds like crude synth brass</td>
+    <td class="waveInfoCell">A fairly pure tone similar to a sine wave but with more overtones</td>
   </tr>
 </table>
 

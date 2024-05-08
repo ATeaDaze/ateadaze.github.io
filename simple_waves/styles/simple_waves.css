@@ -19,27 +19,23 @@ td {
   border: 1px solid chartreuse;
 }*/
 
+h1 {
+  color: #c0c0c0;
+}
+
 table.frequencyHeader {
   width: 65vw;
   font-size: 18pt;
 }
 
-table.pianoKeyMap {
-  padding: 3px;
+table.waveDescriptions {
+  width: 920px;
 }
 
-h1 {
-  color: #c0c0c0;
-}
-
-button {
-  height: 45px;
-  width: 215px;
-  font-size: 18pt;
-  font-weight: bold;
-  background-color: #ffffff;
-  color: #000000;
-  cursor: pointer;
+.waveInfoCell {
+  font-size: 10pt;
+  color: #eeeeee;
+  width: 25%;
 }
 
 #txtFrequencyLead, #txtWaveformLead {
@@ -56,28 +52,45 @@ button {
   padding-left: 3px;
 }
 
-#btnPlayAudioTrack {
-  letter-spacing: 5px;
-  width: 350px;
-  color: #dddddd;
-  border-color: #c0c0c0;
-}
-#btnPlayAudioTrack:hover {
-  color: #ffffff;
+table.trackHeader {
+  width: 90vw;
+  font-size: 18pt;
+  font-weight: bold;
 }
 
-#btnPlayTrackStrangerThings, #btnPlayTrackStarWars, #btnPlayTrackFinalFantasy {
-  width: 350px;
-  color: mediumorchid;
-  border-color: mediumorchid;
+#txtActiveTrackLead {
+  width: 43%;
+  color: #ffffff;
+  text-align: right;
+  padding-right: 5px;
 }
-#btnPlayTrackStrangerThings:hover, #btnPlayTrackStarWars:hover, #btnPlayTrackFinalFantasy:hover {
-  color: orchid;
+
+#txtActiveTrackValue {
+  width: 57%;
+  color: khaki;
+  text-align: left;
+  padding-left: 5px;
+}
+
+button {
+  height: 45px;
+/*  width: 215px; */
+  font-size: 18pt;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #000000;
+  cursor: pointer;
+  outline-style: outset;
+}
+button:hover {
+  outline-style: inset;
+}
+button:active {
+  filter: brightness(0.5);
 }
 
 .waveStyle {
-  outline-style: outset;
-  background-color: #000000;
+  width: 215px;
   color: limegreen;
   border: 1px solid limegreen;
 }
@@ -85,9 +98,46 @@ button {
   color: chartreuse;
   border: 1px solid chartreuse;
 }
-.waveStyle:active {
-  outline-style: inset;
-  filter: brightness(0.5);
+
+.trackStyle {
+  width: 350px;
+  color: mediumorchid;
+  border: 1px solid mediumorchid;
+}
+.trackStyle:hover {
+  color: orchid;
+  border: 1px solid orchid;
+}
+
+.playStyle {
+  width: 350px;
+  color: #dddddd;
+  border: 1px solid #c0c0c0;
+  letter-spacing: 5px;
+}
+.playStyle:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.playStyleRunning {
+  color: #FF7F50;
+  border: 1px solid #ff7f50;
+  letter-spacing: 10px;
+}
+.playStyleRunning:hover {
+  color: #ff946d;
+  border: 1px solid #ff946D;
+}
+
+.disabledButton {
+  cursor: not-allowed;
+  color:#555555;
+  border: 1px solid #555555;
+}
+.disabledButton:hover {
+  color:#3a3a3a;
+  border: 1px solid #3a3a3a;
 }
 
 .waveformMenu {
@@ -106,5 +156,12 @@ hr {
   width: 50vw;
   background-color: dodgerblue;
   color: dodgerblue;
-  height: 2px;
+  height: 3px;
+}
+
+hr.smallLine {
+  width: 50vw;
+  background-color: #333333;
+  color: #333333;
+  height: 1px;
 }
