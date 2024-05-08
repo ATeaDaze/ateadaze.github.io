@@ -110,16 +110,3 @@ function enableTrackButtons() {
   $("[id^=btnPlayTrack]").addClass("trackStyle");
   $("[id^=btnPlayTrack]").prop("disabled", false);
 }
-
-// TODO: maybe track if a song has been played an disable it
-// This would go at the end of playMelody()
-/*    if(currentTrack == "ffPrelude") {
-      $("#btnPlayTrackFinalFantasy").prop( "disabled", true );
-      $("#btnPlayTrackFinalFantasy").addClass("disabledButton");
-    } else if(currentTrack == "stIntro") {
-      $("#btnPlayTrackStrangerThings").prop( "disabled", true );
-      $("#btnPlayTrackStrangerThings").addClass("disabledButton");
-    } else {
-      $("#btnPlayTrackStarWars").prop( "disabled", true );
-      $("#btnPlayTrackStarWars").addClass("disabledButton");
-    } */
