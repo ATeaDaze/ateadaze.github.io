@@ -1,6 +1,6 @@
 let currentWaveform = "square";
 let currentTrack = "ffPrelude";
-let bIsLoggingEnabled = true;
+let bIsLoggingEnabled = false;
 
 // Create new audio API instance
 let ctx = new(window.AudioContext || window.webkitAudioContext)();
