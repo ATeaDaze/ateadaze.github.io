@@ -16,7 +16,7 @@ function playNote(frequency, duration) {
   x.innerHTML = note[0] + " Hz";
   // Create an oscillator and connect it to audio nodes
   osc = ctx.createOscillator();
-  // Set oscillator wave (options: sawtooth, sine, square, sine, triangle)
+  // Set oscillator wave (options: sawtooth, sine, square, triangle)
   osc.type = currentWaveform;
   // Set frequency for oscillator in Hz
   osc.frequency.value = frequency;
@@ -59,11 +59,11 @@ $(document).ready(function() {
   });
   $("#btnPlayTrackStrangerThings").click(function() {
     currentTrack = "stIntro";
-    setCurrentWaveform("triangle");
+    setCurrentWaveform("sawtooth");
   });
   $("#btnPlayTrackStarWars").click(function() {
     currentTrack = "swIntro";
-    setCurrentWaveform("sawtooth");
+    setCurrentWaveform("triangle");
   });
   // Set note list, BPM, and default waveform for each track
   $("#btnPlayAudioTrack").click(function() {
