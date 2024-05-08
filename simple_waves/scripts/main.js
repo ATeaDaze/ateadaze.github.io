@@ -1,4 +1,4 @@
-let currentWaveform = "triangle";
+let currentWaveform = "square";
 let currentTrack = "ffPrelude";
 let bIsLoggingEnabled = true;
 
@@ -55,27 +55,27 @@ function playMelody() {
 $(document).ready(function() {
   $("#btnPlayTrackFinalFantasy").click(function() {
     currentTrack = "ffPrelude";
-  });
-  $("#btnPlayTrackStarWars").click(function() {
-    currentTrack = "swIntro";
+    setCurrentWaveform("square");
   });
   $("#btnPlayTrackStrangerThings").click(function() {
     currentTrack = "stIntro";
+    setCurrentWaveform("triangle");
+  });
+  $("#btnPlayTrackStarWars").click(function() {
+    currentTrack = "swIntro";
+    setCurrentWaveform("sawtooth");
   });
   // Set note list, BPM, and default waveform for each track
   $("#btnPlayAudioTrack").click(function() {
     if(currentTrack == "ffPrelude") {
       notes = trackNotesFFPrelude;
       bpm = 160;
-      currentWaveform = "triangle";
     } else if(currentTrack == "stIntro") {
       notes = trackNotesStrangerThings;
       bpm = 184;
-      currentWaveform = "square";
     } else {
       notes = trackNotesImperialMarch;
       bpm = 103;
-      currentWaveform = "sawtooth";
     }
     // Reverse list of notes and play the track
     notes.reverse();
@@ -88,4 +88,5 @@ function setCurrentWaveform(newWave) {
   currentWaveform = newWave;
   let x = document.getElementById("txtWaveformValue");
   x.innerHTML = newWave.toUpperCase();
+  return(newWave);
 }
