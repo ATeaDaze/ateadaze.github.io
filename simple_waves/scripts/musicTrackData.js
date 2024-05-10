@@ -65,16 +65,16 @@ const trackNotesFFPrelude = [ [pianoKeyC[2], 8],
 
 // Stranger Things theme
 const trackNotesStrangerThings = [
-  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
-  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
+  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
+  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
+  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
+  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
   // Repeat
-  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
-  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
-  [pianoKeyC[1], 8], [0, 16] ];
+  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
+  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
+  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
+  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],  
+  [pianoKeyC[0], 8], [0, 16] ];
 
 // Imperial March (source: StackOverflow)
 const trackNotesImperialMarch = [

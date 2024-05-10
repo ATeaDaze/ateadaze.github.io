@@ -1,6 +1,6 @@
 /* TODO: see which variables can be switched to constants, read more about the sound API to add ADSR,
   add functionality to track playback state, history, and stop the audio */
-let currentWaveform = "square";
+let currentWaveform = "triangle";
 let currentTrack = "ffPrelude";
 let bIsLoggingEnabled = false;
 let bIsAudioPlaying = false;
@@ -72,17 +72,17 @@ function updateCurrentWaveform(newWave) {
 function updateTrackTitle() {
   $("#btnPlayTrackFinalFantasy").click(function() {
     currentTrack = "ffPrelude";
-    updateCurrentWaveform("square");
+    updateCurrentWaveform("triangle");
     $("#txtActiveTrackValue").html("Prelude (Final Fantasy)");
   });
   $("#btnPlayTrackStrangerThings").click(function() {
     currentTrack = "stIntro";
-    updateCurrentWaveform("sawtooth");
+    updateCurrentWaveform("square");
     $("#txtActiveTrackValue").html("Stranger Things (Main Theme)");
   });
   $("#btnPlayTrackStarWars").click(function() {
     currentTrack = "swIntro";
-    updateCurrentWaveform("triangle");
+    updateCurrentWaveform("sawtooth");
     $("#txtActiveTrackValue").html("Imperial March (Star Wars)");
   });
 }
