@@ -1,3 +1,4 @@
+/* TODO: rename these variables (ambiguous mess), remove redundant properties */
 body {
   font-family: sans-serif;
   background-color: #000000;
@@ -9,7 +10,8 @@ table {
   padding: 0px;
 }
 
-/*table {
+/*
+table {
   border: 1px solid darkgreen;
 }
 tr {
@@ -17,19 +19,22 @@ tr {
 }
 td {
   border: 1px solid chartreuse;
-}*/
+}
+*/
 
-h1 {
+.mainHeader {
+  font-size: 24pt;
+  font-weight: bold;
   color: #c0c0c0;
 }
 
-table.frequencyHeader {
-  width: 65vw;
+.frequencyHeader {
+  width: 50svw;
   font-size: 18pt;
 }
 
-table.waveDescriptions {
-  width: 920px;
+.waveDescriptions {
+  width: 50svw;
 }
 
 .waveInfoCell {
@@ -40,42 +45,52 @@ table.waveDescriptions {
 
 #txtFrequencyLead, #txtWaveformLead {
   font-weight: bold;
-  width: 10vw;
   text-align: right;
   padding-right: 3px;
 }
 
 #txtFrequencyValue, #txtWaveformValue {
   color: cyan;
-  width: 10vw;
   text-align: left;
   padding-left: 3px;
 }
 
-table.trackHeader {
-  width: 90vw;
+#txtFrequencyLead {
+  width: 15%;
+}
+#txtFrequencyValue {
+  width: 35%;
+}
+#txtWaveformLead {
+  width: 33%;
+}
+#txtWaveformValue {
+  width: 17%;
+}
+
+.trackHeader {
+  width: 50svw;
   font-size: 18pt;
   font-weight: bold;
 }
 
 #txtActiveTrackLead {
-  width: 43%;
+  width: 35%;
   color: #ffffff;
   text-align: right;
   padding-right: 5px;
 }
 
 #txtActiveTrackValue {
-  width: 57%;
+  width: 65%;
   color: khaki;
   text-align: left;
   padding-left: 5px;
 }
 
 button {
-  height: 45px;
-/*  width: 215px; */
-  font-size: 18pt;
+  height: 2em;
+  font-size: 16pt;
   font-weight: bold;
   color: #ffffff;
   background-color: #000000;
@@ -90,7 +105,7 @@ button:active {
 }
 
 .waveStyle {
-  width: 215px;
+  width: 100%;
   color: limegreen;
   border: 1px solid limegreen;
 }
@@ -99,8 +114,13 @@ button:active {
   border: 1px solid chartreuse;
 }
 
+.trackMenu {
+  width: 50%;
+  padding: 7px;
+}
+
 .trackStyle {
-  width: 350px;
+  width: 100%;
   color: mediumorchid;
   border: 1px solid mediumorchid;
 }
@@ -110,10 +130,10 @@ button:active {
 }
 
 .playStyle {
-  width: 350px;
+  width: 100%;
   color: #dddddd;
   border: 1px solid #c0c0c0;
-  letter-spacing: 5px;
+/*  letter-spacing: 5px; */
 }
 .playStyle:hover {
   color: #ffffff;
@@ -121,9 +141,10 @@ button:active {
 }
 
 .playStyleRunning {
+  width: 100%;
   color: #FF7F50;
   border: 1px solid #ff7f50;
-  letter-spacing: 10px;
+/*  letter-spacing: 5px; */
 }
 .playStyleRunning:hover {
   color: #ff946d;
@@ -142,6 +163,7 @@ button:active {
 
 .waveformMenu {
   padding: 5px;
+  width: 25%;
 }
 
 .headerGraphic {
@@ -153,15 +175,215 @@ button:active {
 }
 
 hr {
-  width: 50vw;
+  width: 50svw;
   background-color: dodgerblue;
   color: dodgerblue;
   height: 3px;
+  margin: 5px 5px;
 }
 
 hr.smallLine {
-  width: 50vw;
+  width: 50svw;
   background-color: #333333;
   color: #333333;
   height: 1px;
+  margin: 5px 5px;
+}
+
+.warningMessage {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #cd5c5c;
+  visibility: hidden;
+  display: none;
+  animation: flashText 1s linear infinite;
+}
+
+@keyframes flashText {
+  75% {
+    opacity: 0;
+  }
+}
+
+#trailingRuler {
+  visibility: hidden;
+  display: none;
+}
+
+/* Alternate dimensions for smaller landscape displays */
+
+@media (max-width: 1300px) {
+
+  button {
+    font-size: 14pt;
+    width: 100%;
+  }
+
+  #txtFrequencyLead {
+    width: 17%;
+  }
+  #txtFrequencyValue {
+    width: 33%;
+  }
+
+  #txtWaveformLead {
+    width: 32%;
+  }
+  #txtWaveformValue {
+    width: 18%;
+  }
+
+  #txtActiveTrackLead {
+    width: 20%;
+  }
+  #txtActiveTrackValue {
+    width: 30%;
+  }
+
+
+  .frequencyHeader {
+    width: 90svw;
+    font-size: 14pt;
+  }
+
+  .waveDescriptions {
+    width: 90svw;
+  }
+
+  .waveInfoCell {
+    font-size: 9pt;
+  }
+
+  .trackHeader {
+    width: 90svw;
+    font-size: 14pt;
+    padding-bottom: 5px;
+  }
+
+  .mainHeader {
+    font-size: 18pt;
+  } 
+
+  .trackMenu {
+    width: 90svw;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .trackStyle {
+    width: 100%;
+  }
+
+  .headerGraphic {
+    height: 25px;
+  }
+
+  hr {
+    width: 90svw;
+  }
+
+  hr.smallLine {
+    width: 90svw;
+  }
+
+}
+
+
+/* Alternate dimension for small screens using portrait mode */
+
+@media (orientation: portrait), (max-width: 500px) {
+
+  button {
+    height: 3.5em;
+    font-size: 12pt;
+    width: 100%;
+  }
+
+  .frequencyHeader {
+    width: 90svw;
+    font-size: 10pt;
+  }
+
+  .waveDescriptions {
+    width: 90svw;
+  }
+
+  .trackHeader {
+    width: 90svw;
+    font-size: 12pt;
+    padding-bottom: 5px;
+  }
+
+#txtFrequencyLead {
+  width: 25%;
+}
+#txtFrequencyValue {
+  width: 25%;
+}
+#txtWaveformLead {
+  width: 25%;
+}
+#txtWaveformValue {
+  width: 25%;
+}
+
+  #txtActiveTrackLead {
+    width: 23%;
+    padding-right: 5px;
+  }
+
+  #txtActiveTrackValue {
+    width: 77%;
+    padding-left: 5px;
+  }
+
+  .mainHeader {
+    font-size: 14pt;
+  } 
+
+  .trackMenu {
+    width: 90svw;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .playStyle {
+    width: 100%;
+  }
+
+  .trackStyle {
+    width: 100%;
+  }
+
+  .waveformMenu {
+    width: 25%;
+  }
+
+  .waveInfoCell {
+    font-size: 8pt;
+  }
+
+  .headerGraphic {
+    visibility: hidden;
+    display: none;
+  }
+
+  hr {
+    width: 90svw;
+  }
+
+  hr.smallLine {
+    width: 90svw;
+  }
+
+  #trailingRuler {
+    visibility: visible;
+    display: revert;
+  }
+
+  .warningMessage {
+    visibility: visible;
+    display: initial;
+  }
+  
 }

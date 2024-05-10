@@ -1,4 +1,6 @@
-let currentWaveform = "triangle";
+/* TODO: see which variables can be switched to constants, read more about the sound API to add ADSR,
+  add functionality to track playback state, history, and stop the audio */
+let currentWaveform = "square";
 let currentTrack = "ffPrelude";
 let bIsLoggingEnabled = false;
 let bIsAudioPlaying = false;
@@ -27,6 +29,7 @@ function playMelody() {
     note = notes.pop();
     playNote(note[0], 1000 * 256 / (note[1] * bpm));
     $("#btnPlayAudioTrack").html("PLAYING");
+    $("#btnPlayAudioTrack").removeClass("playStyle");
     $("#btnPlayAudioTrack").addClass("playStyleRunning");
     if(bIsLoggingEnabled) {
       console.log(`[${note[0]} Hz, 1/${note[1]} note]`);
@@ -69,17 +72,17 @@ function updateCurrentWaveform(newWave) {
 function updateTrackTitle() {
   $("#btnPlayTrackFinalFantasy").click(function() {
     currentTrack = "ffPrelude";
-    updateCurrentWaveform("triangle");
+    updateCurrentWaveform("square");
     $("#txtActiveTrackValue").html("Prelude (Final Fantasy)");
   });
   $("#btnPlayTrackStrangerThings").click(function() {
     currentTrack = "stIntro";
-    updateCurrentWaveform("square");
+    updateCurrentWaveform("sawtooth");
     $("#txtActiveTrackValue").html("Stranger Things (Main Theme)");
   });
   $("#btnPlayTrackStarWars").click(function() {
     currentTrack = "swIntro";
-    updateCurrentWaveform("sawtooth");
+    updateCurrentWaveform("triangle");
     $("#txtActiveTrackValue").html("Imperial March (Star Wars)");
   });
 }

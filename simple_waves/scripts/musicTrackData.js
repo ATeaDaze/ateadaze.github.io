@@ -1,6 +1,7 @@
 // TODO: add keyboard support, organize notes in a more readable format (Hz are not intuitive),
 // maybe add an offset to the array so that pianoKeyC[4] would be equal to C4 (offset = +2)
-// Piano notes:   [Frequencies in Hz]                  Piano key reference chart
+
+// Piano notes:   [Frequencies in Hz]                     Piano key reference chart
 const pianoKeyC = [ 65,  130, 261, 523, 1046, 2093  ]; // [C2, C3, C4, C5, C6, C7]
 const pianoKeyD = [ 73,  146, 293, 587, 1174, 2349  ]; // [D2, D3, D4, D5, D6, D7]
 const pianoKeyE = [ 82,  164, 329, 659, 1318, 2637  ]; // [E2, E3, E4, E5, E6, E7]
@@ -64,16 +65,16 @@ const trackNotesFFPrelude = [ [pianoKeyC[2], 8],
 
 // Stranger Things theme
 const trackNotesStrangerThings = [
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
+  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
+  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
+  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
+  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
   // Repeat
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],  
-  [pianoKeyC[0], 8], [0, 16] ];
+  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
+  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
+  [pianoKeyC[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8], [pianoKeyB[1], 8],
+  [pianoKeyC[2], 8], [pianoKeyB[1], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8],
+  [pianoKeyC[1], 8], [0, 16] ];
 
 // Imperial March (source: StackOverflow)
 const trackNotesImperialMarch = [

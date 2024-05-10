@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Waves</title>
   <link href="styles/simple_waves.css" rel="stylesheet">
   <link href="images/simple_waves.ico" rel="shortcut icon" type="image/x-icon">
   <script src="scripts/jquery-3.7.0.min.js"></script>
+  <script src="scripts/musicTrackData.js"></script>
+  <script src="scripts/main.js"></script>
 </head>
 <body>
 <center>
 
-<h1>
-  <img src="images/simple_waves.png" class="headerGraphic">&nbsp;&nbsp;Simple Waves: a basic JavaScript sequencer&nbsp;&nbsp;
-  <img src="images/simple_waves.png" id="headerFlipRight" class="headerGraphic">
-</h1><hr>
+<span class="mainHeader">
+  <img src="images/simple_waves.png" class="headerGraphic" title="piano logo">&nbsp;&nbsp;Simple Waves: a basic sequencer&nbsp;&nbsp;
+  <img src="images/simple_waves.png" id="headerFlipRight" class="headerGraphic" alt="piano logo 2">
+</span><hr>
 
 <table class="frequencyHeader">
   <tr>
     <td id="txtFrequencyLead">Frequency:</td>
     <td id="txtFrequencyValue">0 Hz</td>
     <td id="txtWaveformLead">Waveform:</td>
-    <td id="txtWaveformValue">TRIANGLE</td>    
+    <td id="txtWaveformValue">SQUARE</td>    
   </tr>
 </table><hr class="smallLine">
 
@@ -30,15 +32,23 @@
     <td id="txtActiveTrackLead">Track:</td>
     <td id="txtActiveTrackValue">Prelude (Final Fantasy)</td>    
   </tr>
-</table><br>
+</table>
 
-<button id="btnPlayTrackFinalFantasy" class="trackStyle">Final Fantasy - Prelude</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="btnPlayTrackStrangerThings" class="trackStyle">Stranger Things Theme</button><br><br>
-<button id="btnPlayTrackStarWars" class="trackStyle">Star Wars - Imperial March</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="btnPlayAudioTrack" class="playStyle" title="Click here to play a song">PLAY TRACK</button><br><br>
+<table class="waveDescriptions">
+  <tr>
+    <td class="trackMenu"><button id="btnPlayTrackFinalFantasy" class="trackStyle">Final Fantasy - Prelude</button></td>
+    <td class="trackMenu"><button id="btnPlayTrackStrangerThings" class="trackStyle">Stranger Things Theme</button></td>
+  </tr>
+  <tr>
+      <td class="trackMenu"><button id="btnPlayTrackStarWars" class="trackStyle">Star Wars - Imperial March</button></td>
+      <td class="trackMenu"><button id="btnPlayAudioTrack" class="playStyle" title="Click here to play a song">PLAY TRACK</button></td>
+    </td>
+  </tr>
+</table>
+
 <hr class="smallLine">
 
-<table>
+<table class="waveDescriptions">
   <tr>
     <td class="waveformMenu"><button id="btnWaveSine" class="waveStyle">Sine</button></td>
     <td class="waveformMenu"><button id="btnWaveSquare" class="waveStyle">Square</button></td>
@@ -55,11 +65,11 @@
     <td class="waveInfoCell">A fairly pure tone similar to a sine wave but with more overtones</td>
   </tr>
 </table>
+<hr class="smallLine" id="trailingRuler">
+
+<span class="warningMessage">⚠️ Warning: this website will not look optimal in portrait mode ⚠️</span>
 
 </center>
-
-<script src="scripts/musicTrackData.js"></script>
-<script src="scripts/main.js"></script>
 
 </body>
 </html>
