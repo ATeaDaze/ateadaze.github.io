@@ -1,5 +1,6 @@
 // TODO: set user score when section row is clicked, add checks for valid dice combos, add hold/unhold all dice
-// optimize the checks for full house and straights, x-of-a kind preview sometimes off
+// optimize the checks for full house and straights, x-of-a kind preview sometimes off, disable row selection when
+// it's not needed to avoid mis-clicks/taps
 let currentDice =  [5,     5,     5,     5,     5     ];
 let selectedDice = [false, false, false, false, false ];
 let previewScoreAces = 0;
@@ -41,21 +42,39 @@ let nRollsLeft = 3;
 let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
+let defaultStatusMsg = "Roll the dice to begin";
+let bonusHint;
+let bonusDifference;
 var activeSetName;
 var activeSetValue;
 
 $(document).ready(function() {
   updateTurns();
   getKeyboardInput();
+
+  $("#txtStatusHeader").html(defaultStatusMsg);
+
   $("#btnRoll").click(function() {
     rollDice();
+    bonusDifference = 63 - userScoreUpperSubtotal;
+    if(bonusDifference > 0) {
+      bonusHint = "63-" + userScoreUpperSubtotal + " = " + (bonusDifference);
+      $("#txtBonusGoal").html(bonusHint); 
+    }
+    if(nRollsLeft == 2) {
+      defaultStatusMsg = "Roll again or select a score";
+    }
     if(nRollsLeft < 1) {
       disableRollButton();
       disableDiceButtons();
       bIsKeyboardEnabled = false;
+      defaultStatusMsg = "Select a score from the table";
     }
+    $("#txtStatusHeader").html(defaultStatusMsg);
+
    });
-  // Hold or de-delect dice when clicked
+
+  // Hold or release dice when clicked
   $("[id^=currentDiceImg-]").click(function() {
     let activeDie = $(this).closest('td').index();
     if(selectedDice[activeDie]) {
@@ -68,8 +87,9 @@ $(document).ready(function() {
       $(this).addClass("diceButtonSelected");
     }
   });
+
   // Select a score based on the row clicked
-  $("[id^=row]").on("click", function() {
+  $("[id^=row]").on("click keypress", function() {
     let activeRow = $(this).closest('tr').children('td:last');
     let activeRowID = this.id;
     let previewRowTxt = $(activeRow).text();
@@ -136,6 +156,7 @@ $(document).ready(function() {
     if(bNewScoreAdded) {
       $(activeRow).addClass("usedRow");
       $(activeRow).prop("disabled", true);
+      $("#btnRoll").trigger("focus");
     }
     nTurnsTaken++;
     startNewTurn();
@@ -143,7 +164,6 @@ $(document).ready(function() {
 });
 
 function rollDice() {
-//  bIsKeyboardEnabled = true;
 // Animate dice roll for each slot (plays for 0.25s), BUG: timeout prevents selecting dice on 3rd roll
 /*  for(let i = 0; i < 6; i++) {
     if(!selectedDice[i-1]) {
@@ -154,7 +174,6 @@ function rollDice() {
 //  $("[id^=currentDiceImg-]").hide();
 //  $("[id^=currentDiceImg-]").addClass("diceRotation");
 
-//  setTimeout(() => {
   for(let i = 0; i < 5; i++) {
     let j = i + 1;
     if(!(selectedDice[i])) {
@@ -162,7 +181,6 @@ function rollDice() {
       $("#currentDiceImg-" + j).attr("src","images/dice-" + currentDice[i] + ".png");
     }
   }
-//  }, 250);
 
   if(userScoreThreeOfAKind == null) $("#txtScoreThreeOfAKind").html(0);
   if(userScoreFourOfAKind == null) $("#txtScoreFourOfAKind").html(0);
@@ -317,9 +335,9 @@ function updateTotalScores() {
   $("#txtScoreYahtzeeBonus").html(userScoreYahtzeeBonus);
   // Grand totals
   userScoreGrandTotal = userScoreLowerTotal + userScoreUpperTotal;
-  $("#txtScoreGrandTotalUpper").html(userScoreUpperTotal);
-  $("#txtScoreGrandTotalLower").html(userScoreLowerTotal);
-  $("#txtScoreGrandTotalFinal").html(userScoreGrandTotal);
+  $("#txtGrandTotalUpper").html(userScoreUpperTotal);
+  $("#txtGrandTotalLower").html(userScoreLowerTotal);
+  $("#txtGrandTotalFinal").html(userScoreGrandTotal);
 }
 
 function updateTurns() {
@@ -351,6 +369,14 @@ function enableDiceButtons() {
   $("[id^=currentDiceImg-]").addClass("diceButton");
   $("[id^=currentDiceImg-]").prop("disabled", false);
 }
+// TODO: disable rows when selection is not needed
+/*function disableRowSelection() {
+  $("[id^=row]").prop("disabled", true);
+}
+// Re-enable when needed
+function enableRowSelection() {
+  $("[id^=row]").prop("disabled", false);
+}*/
 
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
@@ -366,7 +392,7 @@ function getKeyboardInput() {
         $("#currentDiceImg-" + keyName).removeClass("diceButton");
         $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
       }
-      if(keyName == "Enter") rollDice();
+      if(keyName == "r") rollDice();
       if(nRollsLeft < 1) {
         disableRollButton();
         disableDiceButtons();

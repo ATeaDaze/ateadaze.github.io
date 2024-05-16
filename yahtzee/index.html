@@ -22,43 +22,43 @@
         <tr>
           <th colspan="2"><center>UPPER SECTION</center></th>
         </tr>
-        <tr id="rowAces">
-          <td class="leadRow">Aces:</td>
+        <tr id="rowAces" tabindex="1">
+          <td class="leadRow">Aces</td>
           <td id="txtScoreAces"></td>
         </tr>
-        <tr id="rowTwos">
-          <td class="leadRow">Twos:</td>
+        <tr id="rowTwos" tabindex="2">
+          <td class="leadRow">Twos</td>
           <td id="txtScoreTwos"></td>
         </tr>
-        <tr id="rowThrees">
-          <td class="leadRow">Threes:</td>
+        <tr id="rowThrees" tabindex="3">
+          <td class="leadRow">Threes</td>
           <td id="txtScoreThrees"></td>
         </tr>
-        <tr id="rowFours">
-          <td class="leadRow">Fours:</td>
+        <tr id="rowFours" tabindex="4">
+          <td class="leadRow">Fours</td>
           <td id="txtScoreFours"></td>
         </tr>
-        <tr id="rowFives">
-          <td class="leadRow">Fives:</td>
+        <tr id="rowFives" tabindex="5">
+          <td class="leadRow">Fives</td>
           <td id="txtScoreFives"></td>
         </tr>
-        <tr id="rowSixes">
-          <td class="leadRow">Sixes:</td>
+        <tr id="rowSixes" tabindex="6">
+          <td class="leadRow">Sixes</td>
           <td id="txtScoreSixes"></td>
         </tr>
         <tr id="rowUpperSubtotal">
-          <td class="leadRow">Total:</td>
+          <td class="leadRow">Total</td>
           <td id="txtScoreUpperSubtotal"></td>
         </tr>
-      </table><br>
+      </table><hr class="hidden">
       <!-- Upper total and bonus -->
       <table class="sectionTable">      
           <tr id="rowUpperBonus" title="+35 points if total > 62">
-          <td class="leadRow">Bonus:</td>
+          <td class="leadRow">Bonus</td>
           <td id="txtScoreUpperBonus"></td>
         </tr>
           <tr id="rowUpperTotal">
-          <td class="leadRow">Upper Total:</td>
+          <td class="leadRow">Upper Total</td>
           <td id="txtScoreUpperTotal"></td>
         </tr>
       </table>
@@ -71,59 +71,51 @@
     <tr>
       <th colspan="2"><center>LOWER SECTION</center></th>
     </tr>
-    <tr id="rowThreeOfAKind">
-      <td class="leadRow">Three of a Kind:</td>
+    <tr id="rowThreeOfAKind" tabindex="7">
+      <td class="leadRow">Three of a Kind</td>
       <td id="txtScoreThreeOfAKind"></td>
     </tr>
-    <tr id="rowFourOfAKind">
-      <td class="leadRow">Four of a Kind:</td>
+    <tr id="rowFourOfAKind" tabindex="8">
+      <td class="leadRow">Four of a Kind</td>
       <td id="txtScoreFourOfAKind"></td>
     </tr>
-    <tr id="rowFullHouse">
-      <td class="leadRow">Full House:</td>
+    <tr id="rowFullHouse" tabindex="9">
+      <td class="leadRow">Full House</td>
       <td id="txtScoreFullHouse"></td>
     </tr>
-    <tr id="rowSmallStraight">
-      <td class="leadRow">Small Straight:</td>
+    <tr id="rowSmallStraight" tabindex="10">
+      <td class="leadRow">Small Straight</td>
       <td id="txtScoreSmallStraight"></td>
     </tr>
-    <tr id="rowLargeStraight">
-      <td class="leadRow">Large Straight:</td>
+    <tr id="rowLargeStraight" tabindex="11">
+      <td class="leadRow">Large Straight</td>
       <td id="txtScoreLargeStraight"></td>
     </tr>
-    <tr id="rowYhatzee">
-      <td class="leadRow">Yahtzee:</td>
+    <tr id="rowYhatzee" tabindex="12">
+      <td class="leadRow">Yahtzee</td>
       <td id="txtScoreYahtzee"></td>
     </tr>
-    <tr id="rowChance">
-      <td class="leadRow">Chance:</td>
+    <tr id="rowChance" tabindex="13">
+      <td class="leadRow">Chance</td>
       <td id="txtScoreChance"></td>
     </tr>
         
-  </table><br>
+  </table><hr class="hidden">
   <!-- Lower Bonuses -->
   <table class="sectionTable">
       <tr id="rowYahtzeeBonus" title="+100 for each Yahtzee">
-      <td class="leadRow">Yahtzee Bonus:</td>
+      <td class="leadRow">Yahtzee Bonus</td>
       <td id="txtScoreYahtzeeBonus"></td>
     </tr>
       <tr id="rowLowerTotal">
-      <td class="leadRow">Lower Total:</td>
+      <td class="leadRow">Lower Total</td>
       <td id="txtScoreLowerTotal"></td>
     </tr>
   </table>
-
     </td>
   </tr>
-</table><br>
-
-<!--
-<table class="mainContainer">
-  <tr>
-    <td><hr></td>
-  </tr>
 </table>
--->
+<hr class="hidden">
 
 <!-- Grand Totals -->
 <table class="grandTotalTable">
@@ -132,17 +124,17 @@
   </tr>
   <tr id="rowUpperGrandTotal">
     <td>Upper Section</td>
-    <td id="txtScoreGrandTotalUpper" width="50%"></td>
+    <td id="txtGrandTotalUpper"></td>
   </tr>
   <tr id="rowLowerGrandTotal">
     <td>Lower Section</td>
-    <td id="txtScoreGrandTotalLower"></td>
+    <td id="txtGrandTotalLower"></td>
   </tr>
   <tr id="rowFinalGrandTotal">
     <td>Grand Total</td>
-    <td id="txtScoreGrandTotalFinal"></td>
+    <td id="txtGrandTotalFinal"></td>
   </tr>
-</table><br>
+</table><hr class="hidden">
 
 <table>
   <tr>
@@ -159,13 +151,22 @@
     </td>
 
   </tr>
-</table><br>
+</table><hr class="hidden">
 
-<button id="btnRoll" class="enabledButton"></button>
-<hr class="hidden">
+<button id="btnRoll" class="enabledButton" tabindex="0"></button><br><br>
+
+
+<table class="statusTable">
+    <th colspan="2" id="txtStatusHeader"></th>
+  <tr>
+    <td id="txtBonusGoalLead">Points needed for upper bonus</td>
+    <td id="txtBonusGoal">63-0 = 63</td>
+  </tr>
+</table>
 
 <!-- DEBUG TABLE -->
 <!--
+
 <table id="debugTable" width="30%">
   <tr>
     <th class="debugCell" colspan="2">

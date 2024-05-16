@@ -45,13 +45,44 @@ td[id^="txtScore"] {
   text-align: center;
 }
 
-/*
-td[id^="txtScoreGrand"] {
+td[id^="txtGrand"] {
   font-family: monospace;
-  width: 53%;
+  width: 13.25%;
   text-align: center;
 }
-*/
+
+.statusTable {
+  font-size: 18pt;
+  background-color: #1c1c1c;
+  width: 30svw;
+}
+
+#txtStatusHeader {
+  font-weight: bold;
+  color: dodgerblue;
+  animation: flashText 1.5s linear infinite;
+}
+@keyframes flashText {
+  75% {
+    opacity: 0.75;
+  }
+}
+
+#txtBonusGoalLead {
+  font-family: monospace;
+  font-size: 16pt;
+  text-align: left;
+  color: #ffffff;
+  background-color: #111111;
+}
+#txtBonusGoal {
+  font-family: monospace;
+  font-size: 16pt;
+  text-align: center;
+  color: #ffffff;
+  background-color: #111111;
+  width: 33%;
+}
 
 tr.scoredRow {
   color: limegreen;
@@ -69,6 +100,7 @@ tr.scoredRow:hover {
   font-family: sans-serif;
   font-size: 32pt;
   font-weight: bold;
+  color: #c0c0c0;
   height: 1.2em;
   display: inline-block;
   align-content: center;
@@ -93,7 +125,7 @@ td.mainHeader {
 
 .grandTotalTable {
   background-color: #1c1c1c;
-  width: 29.5svw;
+  width: 29.45svw;
 }
 
 .diceCell {
@@ -105,8 +137,8 @@ button {
   font-size: 20pt;
   font-weight: bold;
   background-color: #333333;
-  color: orchid;
-  border: 3px solid mediumorchid;
+
+
   cursor: pointer;
   height: 2em;
   letter-spacing: 5px;
@@ -115,26 +147,17 @@ button {
 .enabledButton {
   font-weight: bold;
   background-color: #222222;
-  color: #ffffff;
-  border: 3px solid #aaaaaa;
+  color: mediumorchid;
+  border: 3px solid mediumorchid;
   cursor: pointer;
-  width: 30svw;
+  width: 29.45svw;
   height: 2em;
   letter-spacing: 5px;
   vertical-align: middle;
-/*  animation: flashText 1.5s linear infinite; */
 }
-
-/*
-@keyframes flashText {
-  75% {
-    opacity: 0.75;
-  }
-}
-*/
 
 .enabledButton:hover {
-  border: 3px solid mediumorchid;
+  border: 3px solid orchid;
   color: orchid;
 }
 
@@ -157,7 +180,7 @@ button {
 }
 
 .diceButton:hover {
-  border: 3px solid limegreen;
+  border: 3px solid turquoise;
 }
 
 .diceButtonSelected {
@@ -169,7 +192,7 @@ button {
 }
 
 .diceButtonSelected:hover {
-  border: 3px solid limegreen;
+  border: 3px solid turquoise;
 }
 
 .diceButtonDisabled {
@@ -203,6 +226,8 @@ hr {
   color: #555555;
   background-color: #555555;
   height: 1px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 
 .hidden {
@@ -221,7 +246,11 @@ hr {
 
 
 /* Alternate dimensions for smaller landscape displays */
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
+
+  .mainHeader {
+    font-size: 28pt;
+  }
 
   .mainContainer {
     width: 50svw;
@@ -236,8 +265,56 @@ hr {
     width: 49.5svw;
   }
 
+  .diceCell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .statusTable {
+    font-size: 16pt;
+    background-color: #1c1c1c;
+    width: 50svw;
+  }
+  #txtBonusGoalLead {
+    font-family: monospace;
+    font-size: 14pt;
+    text-align: left;
+    color: #ffffff;
+    background-color: #111111;
+  }
+  #txtBonusGoal {
+    font-family: monospace;
+    font-size: 14pt;
+    text-align: center;
+    color: #ffffff;
+    background-color: #111111;
+    width: 35%;
+  }
+
   .disabledButton {
     width: 49.5svw;
+  }
+
+  .diceButton {
+    width: 5svw;
+    height: 5svw;
+  }
+
+  .diceButton:active {
+    border: 3px solid limegreen;
+  }
+
+  .diceButtonSelected {
+    width: 5svw;
+    height: 5svw;
+    border: 3px solid #c0c0c0;
+    filter: brightness(0.25);
+  }
+
+  .diceButtonDisabled {
+    width: 5svw;
+    height: 5svw;
+    border: 3px solid #aaaaaa;
   }
 
 }
@@ -278,6 +355,27 @@ hr {
     width: 92svw;
   }
 
+  .statusTable {
+    font-size: 14pt;
+    background-color: #1c1c1c;
+    width: 95svw;
+  }
+  #txtBonusGoalLead {
+    font-family: monospace;
+    font-size: 12pt;
+    text-align: left;
+    color: #ffffff;
+    background-color: #111111;
+  }
+  #txtBonusGoal {
+    font-family: monospace;
+    font-size: 12pt;
+    text-align: center;
+    color: #ffffff;
+    background-color: #111111;
+    width: 35%;
+  }
+
   .enabledButton {
     width: 92svw;
     letter-spacing: 3px;
@@ -308,9 +406,9 @@ hr {
     height: 12svw;
   }
 
-.diceButton:active {
-  border: 3px solid limegreen;
-}
+  .diceButton:active {
+    border: 3px solid limegreen;
+  }
 
   .diceButtonSelected {
     width: 12svw;
