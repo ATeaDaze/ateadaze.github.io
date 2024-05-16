@@ -164,8 +164,8 @@ button {
 .disabledButton {
   cursor: not-allowed;
   color:#c0c0c0;
-  border: 1px solid #c0c0c0;
-  width: 30svw;
+  border: 3px solid #c0c0c0;
+  width: 29.45svw;
 }
 .disabledButton:hover {
   color:#a0a0a0;
