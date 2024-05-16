@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yahtzee</title>
+  <link href="styles/yahtzee.css" rel="stylesheet">
+  <link href="images/yahtzee-icon-3d.png" rel="shortcut icon" type="image/x-icon">
+  <script src="scripts/jquery-3.7.0.min.js"></script>
+  <script src="scripts/main.js"></script>
+</head>
+<body>
+<center>
+
+<span class="mainHeader"><img src="images/yahtzee-icon-3d.png" class="headerLogo"> Y a h t z e e</span>
+
+<table class="mainContainer">
+  <tr>
+    <td>
+      <!-- Upper Section -->
+      <table class="sectionTable">
+        <tr>
+          <th colspan="2"><center>UPPER SECTION</center></th>
+        </tr>
+        <tr id="rowAces">
+          <td class="leadRow">Aces:</td>
+          <td id="txtScoreAces"></td>
+        </tr>
+        <tr id="rowTwos">
+          <td class="leadRow">Twos:</td>
+          <td id="txtScoreTwos"></td>
+        </tr>
+        <tr id="rowThrees">
+          <td class="leadRow">Threes:</td>
+          <td id="txtScoreThrees"></td>
+        </tr>
+        <tr id="rowFours">
+          <td class="leadRow">Fours:</td>
+          <td id="txtScoreFours"></td>
+        </tr>
+        <tr id="rowFives">
+          <td class="leadRow">Fives:</td>
+          <td id="txtScoreFives"></td>
+        </tr>
+        <tr id="rowSixes">
+          <td class="leadRow">Sixes:</td>
+          <td id="txtScoreSixes"></td>
+        </tr>
+        <tr id="rowUpperSubtotal">
+          <td class="leadRow">Total:</td>
+          <td id="txtScoreUpperSubtotal"></td>
+        </tr>
+      </table><br>
+      <!-- Upper total and bonus -->
+      <table class="sectionTable">      
+          <tr id="rowUpperBonus" title="+35 points if total > 62">
+          <td class="leadRow">Bonus:</td>
+          <td id="txtScoreUpperBonus"></td>
+        </tr>
+          <tr id="rowUpperTotal">
+          <td class="leadRow">Upper Total:</td>
+          <td id="txtScoreUpperTotal"></td>
+        </tr>
+      </table>
+
+    </td>
+    <td>
+
+  <!-- Lower Section -->
+  <table class="sectionTable">
+    <tr>
+      <th colspan="2"><center>LOWER SECTION</center></th>
+    </tr>
+    <tr id="rowThreeOfAKind">
+      <td class="leadRow">Three of a Kind:</td>
+      <td id="txtScoreThreeOfAKind"></td>
+    </tr>
+    <tr id="rowFourOfAKind">
+      <td class="leadRow">Four of a Kind:</td>
+      <td id="txtScoreFourOfAKind"></td>
+    </tr>
+    <tr id="rowFullHouse">
+      <td class="leadRow">Full House:</td>
+      <td id="txtScoreFullHouse"></td>
+    </tr>
+    <tr id="rowSmallStraight">
+      <td class="leadRow">Small Straight:</td>
+      <td id="txtScoreSmallStraight"></td>
+    </tr>
+    <tr id="rowLargeStraight">
+      <td class="leadRow">Large Straight:</td>
+      <td id="txtScoreLargeStraight"></td>
+    </tr>
+    <tr id="rowYhatzee">
+      <td class="leadRow">Yahtzee:</td>
+      <td id="txtScoreYahtzee"></td>
+    </tr>
+    <tr id="rowChance">
+      <td class="leadRow">Chance:</td>
+      <td id="txtScoreChance"></td>
+    </tr>
+        
+  </table><br>
+  <!-- Lower Bonuses -->
+  <table class="sectionTable">
+      <tr id="rowYahtzeeBonus" title="+100 for each Yahtzee">
+      <td class="leadRow">Yahtzee Bonus:</td>
+      <td id="txtScoreYahtzeeBonus"></td>
+    </tr>
+      <tr id="rowLowerTotal">
+      <td class="leadRow">Lower Total:</td>
+      <td id="txtScoreLowerTotal"></td>
+    </tr>
+  </table>
+
+    </td>
+  </tr>
+</table><br>
+
+<!--
+<table class="mainContainer">
+  <tr>
+    <td><hr></td>
+  </tr>
+</table>
+-->
+
+<!-- Grand Totals -->
+<table class="grandTotalTable">
+  <tr>
+    <th colspan="2">OVERALL SCORE</th>
+  </tr>
+  <tr id="rowUpperGrandTotal">
+    <td>Upper Section</td>
+    <td id="txtScoreGrandTotalUpper" width="50%"></td>
+  </tr>
+  <tr id="rowLowerGrandTotal">
+    <td>Lower Section</td>
+    <td id="txtScoreGrandTotalLower"></td>
+  </tr>
+  <tr id="rowFinalGrandTotal">
+    <td>Grand Total</td>
+    <td id="txtScoreGrandTotalFinal"></td>
+  </tr>
+</table><br>
+
+<table>
+  <tr>
+    <td>
+      <table id="playerDice">
+        <tr>
+          <td class="diceCell"><img src="images/dice-5.png" id="currentDiceImg-1" class="diceButton"></td>
+          <td class="diceCell"><img src="images/dice-5.png" id="currentDiceImg-2" class="diceButton"></td>
+          <td class="diceCell"><img src="images/dice-5.png" id="currentDiceImg-3" class="diceButton"></td>
+          <td class="diceCell"><img src="images/dice-5.png" id="currentDiceImg-4" class="diceButton"></td>
+          <td class="diceCell"><img src="images/dice-5.png" id="currentDiceImg-5" class="diceButton"></td>
+        </tr>
+      </table>
+    </td>
+
+  </tr>
+</table><br>
+
+<button id="btnRoll" class="enabledButton"></button>
+<hr class="hidden">
+
+<!-- DEBUG TABLE -->
+<!--
+<table id="debugTable" width="30%">
+  <tr>
+    <th class="debugCell" colspan="2">
+      <b>Debug Information</b><hr>
+      <span id="txtDebugInfo"></span>
+    </th>
+  </tr>
+  <tr class="debugCell">
+    <td width="50%">activeRowID:</td>
+    <td id="debugActiveRowID">undefined</td>
+  </tr>
+  <tr class="debugCell">
+    <td>activeRowName:</td>
+    <td id="debugActiveSetName">undefined</td>
+  </tr>
+  <tr class="debugCell">
+    <td>activeSetValue:</td>
+    <td id="debugActiveSetValue">undefined</td>
+  </tr>
+</table>
+-->
+
+<!-- Preload dice images -->
+<img src="images/dice-1.png" class="invisible">
+<img src="images/dice-2.png" class="invisible">
+<img src="images/dice-3.png" class="invisible">
+<img src="images/dice-4.png" class="invisible">
+<img src="images/dice-5.png" class="invisible">
+<img src="images/dice-6.png" class="invisible">
+<img src="images/dice-roll-1.gif" class="invisible">
+<img src="images/dice-roll-2.gif" class="invisible">
+<img src="images/dice-roll-3.gif" class="invisible">
+<img src="images/dice-roll-4.gif" class="invisible">
+<img src="images/dice-roll-5.gif" class="invisible">
+
+</center>
+</body>
+</html>

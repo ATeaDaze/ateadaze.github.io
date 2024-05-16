@@ -1,0 +1,328 @@
+/* TODO: use viewport-relative dimensions for the main layout, add smaller viewport stylesheets */
+body {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: sans-serif;
+  font-size: 14pt;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+table {
+/*  margin: auto; */
+  border: none;
+}
+
+td {
+  text-align: left;
+  border: 2px solid #000000;
+}
+
+tr[id^="row"] {
+  cursor: pointer;
+}
+tr[id^="row"]:hover {
+  color: #ffffff;
+  background-color: #111111;
+}
+tr[id^="row"]:active {
+  color: #dddddd;
+  background-color: #000000;
+}
+
+.usedRow {
+  background-color: #101010;
+  color: chartreuse;
+  font-weight: bold;
+}
+
+td[id^="txtScore"] {
+  font-family: monospace;
+  width: 25%;
+  text-align: center;
+}
+
+/*
+td[id^="txtScoreGrand"] {
+  font-family: monospace;
+  width: 53%;
+  text-align: center;
+}
+*/
+
+tr.scoredRow {
+  color: limegreen;
+}
+
+tr.scoredRow:hover {
+  color: chartreuse;
+}
+
+.leadRow {
+  text-align: left;
+}
+
+.mainHeader {
+  font-family: sans-serif;
+  font-size: 32pt;
+  font-weight: bold;
+  height: 1.2em;
+  display: inline-block;
+  align-content: center;
+}
+
+td.mainHeader {
+  vertical-align: middle;
+}
+
+.headerLogo {
+  height: 1.0em;
+}
+
+.mainContainer {
+  width: 30svw;
+}
+
+.sectionTable {
+  background-color: #1c1c1c;
+  width: 100%;
+}
+
+.grandTotalTable {
+  background-color: #1c1c1c;
+  width: 29.5svw;
+}
+
+.diceCell {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  font-size: 20pt;
+  font-weight: bold;
+  background-color: #333333;
+  color: orchid;
+  border: 3px solid mediumorchid;
+  cursor: pointer;
+  height: 2em;
+  letter-spacing: 5px;
+}
+
+.enabledButton {
+  font-weight: bold;
+  background-color: #222222;
+  color: #ffffff;
+  border: 3px solid #aaaaaa;
+  cursor: pointer;
+  width: 30svw;
+  height: 2em;
+  letter-spacing: 5px;
+  vertical-align: middle;
+/*  animation: flashText 1.5s linear infinite; */
+}
+
+/*
+@keyframes flashText {
+  75% {
+    opacity: 0.75;
+  }
+}
+*/
+
+.enabledButton:hover {
+  border: 3px solid mediumorchid;
+  color: orchid;
+}
+
+.disabledButton {
+  cursor: not-allowed;
+  color:#c0c0c0;
+  border: 1px solid #c0c0c0;
+  width: 30svw;
+}
+.disabledButton:hover {
+  color:#a0a0a0;
+  border: 1px solid #a0a0a0;
+}
+
+.diceButton {
+  width: 75px;
+  height: 75px;
+  border: 3px solid #aaaaaa;
+  cursor: pointer;
+}
+
+.diceButton:hover {
+  border: 3px solid limegreen;
+}
+
+.diceButtonSelected {
+  width: 75px;
+  height: 75px;
+  border: 3px solid #c0c0c0;
+  filter: brightness(0.25);
+  cursor: pointer;
+}
+
+.diceButtonSelected:hover {
+  border: 3px solid limegreen;
+}
+
+.diceButtonDisabled {
+  width: 75px;
+  height: 75px;
+  border: 3px solid #aaaaaa;
+  cursor: not-allowed;
+}
+
+
+.diceRotation {
+  animation-name: rotate;
+  animation-duration: 0.25s;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.debugCell {
+  font-family: monospace;
+  font-size: 12pt;
+  text-align: left;
+}
+
+hr {
+  color: #555555;
+  background-color: #555555;
+  height: 1px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.invisible {
+  visibility: hidden;
+  display: none;
+}
+
+.visible {
+  visibility: visible;
+  display: initial;
+}
+
+
+/* Alternate dimensions for smaller landscape displays */
+@media (max-width: 1300px) {
+
+  .mainContainer {
+    width: 50svw;
+  }
+
+  .grandTotalTable {
+    background-color: #1c1c1c;
+    width: 49.5svw;
+  }
+
+  .enabledButton {
+    width: 49.5svw;
+  }
+
+  .disabledButton {
+    width: 49.5svw;
+  }
+
+}
+
+/* Alternate dimension for small screens or portrait mode */
+@media (orientation: portrait), (max-width: 800px) {
+
+  body {
+    font-size: 11pt;
+  }
+
+  .mainHeader {
+    font-size: 22pt;
+    font-weight: bold;
+    height: 1.3em;
+  }
+
+  .mainContainer {
+    width: 95svw;
+  }
+
+  td[id^="txtScore"] {
+    height: 1.2em;
+  }
+
+  .usedRow {
+    background-color: #101010;
+    color: chartreuse;
+    font-weight: bold;
+  }
+
+  tr.scoredRow {
+    color: limegreen;
+  }
+
+  .grandTotalTable {
+    background-color: #1c1c1c;
+    width: 92svw;
+  }
+
+  .enabledButton {
+    width: 92svw;
+    letter-spacing: 3px;
+  }
+  .enabledButton:active {
+    border: 3px solid mediumorchid;
+    color: orchid;
+  }
+  .disabledButton {
+    letter-spacing: 3px;
+    width: 92svw;
+  }
+
+  .diceCell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  button {
+    font-size: 15pt;
+    font-weight: bold;
+    border: 3px solid mediumorchid;
+    letter-spacing: 3px;
+  }
+
+  .diceButton {
+    width: 12svw;
+    height: 12svw;
+  }
+
+.diceButton:active {
+  border: 3px solid limegreen;
+}
+
+  .diceButtonSelected {
+    width: 12svw;
+    height: 12svw;
+    border: 3px solid #c0c0c0;
+    filter: brightness(0.25);
+  }
+
+  .diceButtonDisabled {
+    width: 12svw;
+    height: 12svw;
+    border: 3px solid #aaaaaa;
+  }
+
+}
