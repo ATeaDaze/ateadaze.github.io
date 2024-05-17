@@ -6,8 +6,6 @@
   <title>Yahtzee</title>
   <link href="styles/yahtzee.css" rel="stylesheet">
   <link href="images/yahtzee-icon-3d.png" rel="shortcut icon" type="image/x-icon">
-  <script src="scripts/jquery-3.7.0.min.js"></script>
-  <script src="scripts/main.js"></script>
 </head>
 <body>
 <center>
@@ -201,7 +199,18 @@
 <img src="images/dice-roll-3.gif" class="invisible">
 <img src="images/dice-roll-4.gif" class="invisible">
 <img src="images/dice-roll-5.gif" class="invisible">
+<!-- Preload audio files -->
+<audio src="audio/dice_hold.ogg" class="invisible"></audio>
+<audio src="audio/dice_unhold.ogg" class="invisible"></audio>
+<audio src="audio/throw_5_dice.ogg" class="invisible"></audio>
+<audio src="audio/fill_score.ogg" class="invisible"></audio>
+<audio src="audio/yahtzee.ogg" class="invisible"></audio>
+<audio src="audio/bonus_upper.ogg" class="invisible"></audio>
 
 </center>
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/main.js"></script>
+
 </body>
 </html>

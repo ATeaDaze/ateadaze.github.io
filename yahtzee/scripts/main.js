@@ -47,14 +47,23 @@ let bonusHint;
 let bonusDifference;
 var activeSetName;
 var activeSetValue;
+const audioHold = new Audio("audio/dice_hold.ogg");
+const audioUnhold = new Audio("audio/dice_unhold.ogg");
+const audioThrow5Dice = new Audio("audio/throw_5_dice.ogg");
+const audioFillScore = new Audio("audio/fill_score.ogg");
+const audioYahtzee = new Audio("audio/yahtzee.ogg");
+const audioBonus = new Audio("audio/bonus_upper.ogg");
 
 $(document).ready(function() {
+
   updateTurns();
   getKeyboardInput();
+  disableScoreSetRows();
 
   $("#txtStatusHeader").html(defaultStatusMsg);
 
   $("#btnRoll").click(function() {
+    enableScoreSetRows();
     rollDice();
     bonusDifference = 63 - userScoreUpperSubtotal;
     if(bonusDifference > 0) {
@@ -71,17 +80,18 @@ $(document).ready(function() {
       defaultStatusMsg = "Select a score from the table";
     }
     $("#txtStatusHeader").html(defaultStatusMsg);
-
-   });
+  });
 
   // Hold or release dice when clicked
   $("[id^=currentDiceImg-]").click(function() {
     let activeDie = $(this).closest('td').index();
     if(selectedDice[activeDie]) {
+      audioHold.play();
       selectedDice[activeDie] = false;
       $(this).removeClass("diceButtonSelected");
       $(this).addClass("diceButton");
     } else {
+      audioUnhold.play();
       selectedDice[activeDie] = true;
       $(this).removeClass("diceButton");
       $(this).addClass("diceButtonSelected");
@@ -90,12 +100,13 @@ $(document).ready(function() {
 
   // Select a score based on the row clicked
   $("[id^=row]").on("click keypress", function() {
-    let activeRow = $(this).closest('tr').children('td:last');
+    enableCalculationRows();
+    let activeRow = $(this).closest('tr');
+    let activeCell = $(this).closest('tr').children('td:last');
     let activeRowID = this.id;
-    let previewRowTxt = $(activeRow).text();
+    let previewRowTxt = $(activeCell).text();
     previewRowTxt = parseInt(previewRowTxt);
     activeSetName = activeRowID.replace("row", "userScore");
-    // Add check: verify score has not been used (set flags)
     switch(activeSetName) {
       case "userScoreAces":
         userScoreAces = previewRowTxt;
@@ -154,16 +165,21 @@ $(document).ready(function() {
         break;
     }
     if(bNewScoreAdded) {
+      //console.log(`activeCell = ${activeCell}, activeRowID = ${activeRowID}`);
+      audioFillScore.play();
       $(activeRow).addClass("usedRow");
-      $(activeRow).prop("disabled", true);
-      $("#btnRoll").trigger("focus");
+      $(activeRow).css('pointer-events', 'none');
+      //$("#btnRoll").trigger("focus");
+      disableCalculationRows();
     }
     nTurnsTaken++;
     startNewTurn();
   });
+disableCalculationRows();
 });
 
 function rollDice() {
+  audioThrow5Dice.play();
 // Animate dice roll for each slot (plays for 0.25s), BUG: timeout prevents selecting dice on 3rd roll
 /*  for(let i = 0; i < 6; i++) {
     if(!selectedDice[i-1]) {
@@ -206,9 +222,11 @@ function startNewTurn() {
   enableRollButton();
   updateTotalScores();
   updateTurns();
+  // Show game over screen, TODO: set up new game conditions (classes and formatting
   if(nTurnsTaken == 13) {
-    // Start a new game, TODO: implement cohesive game loop
+    if(userScoreUpperBonus == 35) audioBonus.play();
     alert(`Game Over!\n\nScore: ${userScoreGrandTotal}\n\nRefresh the page to start a new game`);
+//    enableScoreSetRows();
   }
 }
 
@@ -263,6 +281,7 @@ function updateScorePreviews() {
   // Yahtzee
   const allDiceAreEqual = arr => arr.every( v => v === arr[0] );
   if( (allDiceAreEqual(currentDice)) && (userScoreYahtzee == null)) {
+    audioYahtzee.play();
     $("#txtScoreYahtzee").html(50);
     nYahtzeeBonuses++;
   }
@@ -322,7 +341,9 @@ function updateTotalScores() {
                          + userScoreFours + userScoreFives + userScoreSixes;
   $("#txtScoreUpperSubtotal").html(userScoreUpperSubtotal);
   // Upper bonus
-  if(userScoreUpperSubtotal > 62) userScoreUpperBonus = 35;
+  if(userScoreUpperSubtotal > 62) {
+    userScoreUpperBonus = 35;
+  }
   userScoreUpperTotal = userScoreUpperSubtotal + userScoreUpperBonus;
   $("#txtScoreUpperTotal").html(userScoreUpperTotal);
   $("#txtScoreUpperBonus").html(userScoreUpperBonus);
@@ -392,7 +413,8 @@ function getKeyboardInput() {
         $("#currentDiceImg-" + keyName).removeClass("diceButton");
         $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
       }
-      if(keyName == "r") rollDice();
+        // Submits a score (for some reason)
+//      if(keyName == "r") rollDice();
       if(nRollsLeft < 1) {
         disableRollButton();
         disableDiceButtons();
@@ -400,4 +422,62 @@ function getKeyboardInput() {
       }
     }
   });
+}
+
+// Enable only when scoring
+function disableCalculationRows() {
+  $(rowUpperSubtotal).css('pointer-events', 'none');
+  $(rowUpperBonus).css('pointer-events', 'none');
+  $(rowUpperTotal).css('pointer-events', 'none');
+  $(rowYahtzeeBonus).css('pointer-events', 'none');
+  $(rowLowerTotal).css('pointer-events', 'none');
+  $(rowUpperGrandTotal).css('pointer-events', 'none');
+  $(rowLowerGrandTotal).css('pointer-events', 'none');
+  $(rowFinalGrandTotal).css('pointer-events', 'none');
+}
+
+function enableCalculationRows() {
+  $(rowUpperSubtotal).css('pointer-events', 'auto');
+  $(rowUpperBonus).css('pointer-events', 'auto');
+  $(rowUpperTotal).css('pointer-events', 'auto');
+  $(rowYahtzeeBonus).css('pointer-events', 'auto');
+  $(rowLowerTotal).css('pointer-events', 'auto');
+  $(rowUpperGrandTotal).css('pointer-events', 'auto');
+  $(rowLowerGrandTotal).css('pointer-events', 'auto');
+  $(rowFinalGrandTotal).css('pointer-events', 'auto');
+}
+
+
+// Disable on start
+function disableScoreSetRows() {
+  $(rowAces).css('pointer-events', 'none');
+  $(rowTwos).css('pointer-events', 'none');
+  $(rowThrees).css('pointer-events', 'none');
+  $(rowFours).css('pointer-events', 'none');
+  $(rowFives).css('pointer-events', 'none');
+  $(rowSixes).css('pointer-events', 'none');
+  $(rowThreeOfAKind).css('pointer-events', 'none');
+  $(rowFourOfAKind).css('pointer-events', 'none');
+  $(rowFullHouse).css('pointer-events', 'none');
+  $(rowSmallStraight).css('pointer-events', 'none');
+  $(rowLargeStraight).css('pointer-events', 'none');
+  $(rowYhatzee).css('pointer-events', 'none');
+  $(rowChance).css('pointer-events', 'none');
+}
+
+// Enable after 1st roll
+function enableScoreSetRows() {
+  $(rowAces).css('pointer-events', 'auto');
+  $(rowTwos).css('pointer-events', 'auto');
+  $(rowThrees).css('pointer-events', 'auto');
+  $(rowFours).css('pointer-events', 'auto');
+  $(rowFives).css('pointer-events', 'auto');
+  $(rowSixes).css('pointer-events', 'auto');
+  $(rowThreeOfAKind).css('pointer-events', 'auto');
+  $(rowFourOfAKind).css('pointer-events', 'auto');
+  $(rowFullHouse).css('pointer-events', 'auto');
+  $(rowSmallStraight).css('pointer-events', 'auto');
+  $(rowLargeStraight).css('pointer-events', 'auto');
+  $(rowYhatzee).css('pointer-events', 'auto');
+  $(rowChance).css('pointer-events', 'auto');
 }

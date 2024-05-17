@@ -33,10 +33,15 @@ tr[id^="row"]:active {
   background-color: #000000;
 }
 
+/*
+.disabledRow {
+  pointer-events: none;
+}
+*/
+
 .usedRow {
   background-color: #101010;
   color: chartreuse;
-  font-weight: bold;
 }
 
 td[id^="txtScore"] {
