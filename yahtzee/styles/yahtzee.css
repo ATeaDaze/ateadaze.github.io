@@ -1,4 +1,7 @@
-/* TODO: use viewport-relative dimensions for the main layout, add smaller viewport stylesheets */
+/* TODO: test and improve dimensions for alternate viewport stylesheets
+ - Set style for status bar based on game state
+ - Set color of roll button based on number of turns left (pink=3, purple=2, red=1, black=0) */
+
 body {
   background-color: #000000;
   color: #f0f0f0;
@@ -33,15 +36,10 @@ tr[id^="row"]:active {
   background-color: #000000;
 }
 
-/*
-.disabledRow {
-  pointer-events: none;
-}
-*/
-
 .usedRow {
   background-color: #101010;
   color: chartreuse;
+  pointer-events: none;
 }
 
 td[id^="txtScore"] {
@@ -86,7 +84,7 @@ td[id^="txtGrand"] {
   text-align: center;
   color: #ffffff;
   background-color: #111111;
-  width: 33%;
+  width: 15%;
 }
 
 tr.scoredRow {
@@ -101,6 +99,11 @@ tr.scoredRow:hover {
   text-align: left;
 }
 
+.mainHeader {
+  height: 45px;
+}
+
+/*
 .mainHeader {
   font-family: sans-serif;
   font-size: 32pt;
@@ -118,6 +121,7 @@ td.mainHeader {
 .headerLogo {
   height: 1.0em;
 }
+*/
 
 .mainContainer {
   width: 30svw;

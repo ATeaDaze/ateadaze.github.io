@@ -1,8 +1,24 @@
-// TODO: set user score when section row is clicked, add checks for valid dice combos, add hold/unhold all dice
-// optimize the checks for full house and straights, x-of-a kind preview sometimes off, disable row selection when
-// it's not needed to avoid mis-clicks/taps
+/* TODO: go through and improve the naming scheme of repeated variables
+  - Implement a newGame() function which resets the entire game state
+  - Implement row interaction with 1 function: setRowInteraction(rowList[], 'none|auto');
+  - Make disabledScoreRow[] a dynamic list
+    - List contains every row on page load for no interaction
+    - Start new game, clear list, and add new rows to array during gameplay
+    NOTE: row interaction is often required at the same times
+  - Add hold/unhold all dice button or keybind
+  - Optimize checks for full house and straights
+  BUGS: button roll keybind conflicts with event handler for row selection ("click keydown"),
+  using the keybind for rollButton() skips a call to re-enable score table rows, 
+  x-of-a kind preview sometimes off (?) */
 let currentDice =  [5,     5,     5,     5,     5     ];
 let selectedDice = [false, false, false, false, false ];
+
+let disabledScoreRows = [ rowAces, rowTwos, rowThrees, rowFours, rowFives, rowSixes,
+                          rowThreeOfAKind, rowFourOfAKind, rowFullHouse, rowSmallStraight,
+                          rowLargeStraight, rowYhatzee, rowChance ];
+// Static list of non-selectable rows (they are only used for calculations)
+const disabledCalcRows = [ rowUpperSubtotal, rowUpperBonus, rowUpperTotal, rowYahtzeeBonus,
+                           rowLowerTotal, rowUpperGrandTotal, rowLowerGrandTotal, rowFinalGrandTotal ];
 let previewScoreAces = 0;
 let previewScoreTwos = 0;
 let previewScoreThrees = 0;
@@ -42,42 +58,43 @@ let nRollsLeft = 3;
 let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
-let defaultStatusMsg = "Roll the dice to begin";
+let defaultStatusMsg = "Roll the Dice to Start Playing";
 let bonusHint;
 let bonusDifference;
 var activeSetName;
 var activeSetValue;
 const audioHold = new Audio("audio/dice_hold.ogg");
 const audioUnhold = new Audio("audio/dice_unhold.ogg");
-const audioThrow5Dice = new Audio("audio/throw_5_dice.ogg");
+const audioThrowDice = new Audio("audio/throw_5_dice.ogg");
 const audioFillScore = new Audio("audio/fill_score.ogg");
 const audioYahtzee = new Audio("audio/yahtzee.ogg");
 const audioBonus = new Audio("audio/bonus_upper.ogg");
 
 $(document).ready(function() {
-
   updateTurns();
   getKeyboardInput();
+  // Disable all scoring rows until game starts
   disableScoreSetRows();
-
   $("#txtStatusHeader").html(defaultStatusMsg);
 
   $("#btnRoll").click(function() {
     enableScoreSetRows();
+    // Clear list of disabled score rows (will need to modify order and list)
+//    disabledScoreRows = [];
     rollDice();
     bonusDifference = 63 - userScoreUpperSubtotal;
     if(bonusDifference > 0) {
-      bonusHint = "63-" + userScoreUpperSubtotal + " = " + (bonusDifference);
+      bonusHint = bonusDifference;
       $("#txtBonusGoal").html(bonusHint); 
     }
     if(nRollsLeft == 2) {
-      defaultStatusMsg = "Roll again or select a score";
+      defaultStatusMsg = "Roll Again or Select a Score";
     }
     if(nRollsLeft < 1) {
       disableRollButton();
       disableDiceButtons();
       bIsKeyboardEnabled = false;
-      defaultStatusMsg = "Select a score from the table";
+      defaultStatusMsg = "Select a Score from the Table";
     }
     $("#txtStatusHeader").html(defaultStatusMsg);
   });
@@ -99,8 +116,10 @@ $(document).ready(function() {
   });
 
   // Select a score based on the row clicked
-  $("[id^=row]").on("click keypress", function() {
+  $("[id^=row]").on("click", function() {
+    // Enable total rows to allow calculations
     enableCalculationRows();
+    // TODO: there is definitely a better to do this
     let activeRow = $(this).closest('tr');
     let activeCell = $(this).closest('tr').children('td:last');
     let activeRowID = this.id;
@@ -165,22 +184,27 @@ $(document).ready(function() {
         break;
     }
     if(bNewScoreAdded) {
-      //console.log(`activeCell = ${activeCell}, activeRowID = ${activeRowID}`);
       audioFillScore.play();
       $(activeRow).addClass("usedRow");
-      $(activeRow).css('pointer-events', 'none');
+//      $(activeRow).css('pointer-events', 'none');
       //$("#btnRoll").trigger("focus");
+      // Disable row selection after adding new score
       disableCalculationRows();
+      disableScoreSetRows();
+      defaultStatusMsg = "Roll the Dice to Start New Turn";
+      $("#txtStatusHeader").html(defaultStatusMsg);
     }
     nTurnsTaken++;
     startNewTurn();
   });
+// Disable row selection after calculation
 disableCalculationRows();
 });
 
 function rollDice() {
-  audioThrow5Dice.play();
-// Animate dice roll for each slot (plays for 0.25s), BUG: timeout prevents selecting dice on 3rd roll
+  audioThrowDice.play();
+/* Animate dice roll for each slot (plays for 0.25s)
+   BUG: timeout prevents selecting dice on 3rd roll */
 /*  for(let i = 0; i < 6; i++) {
     if(!selectedDice[i-1]) {
       $("#currentDiceImg-" + i).attr("src", "images/dice-roll-" + i + ".gif");
@@ -189,7 +213,6 @@ function rollDice() {
 // CSS transition does NOT work on the 1st cell (for some god-forsaken reason)
 //  $("[id^=currentDiceImg-]").hide();
 //  $("[id^=currentDiceImg-]").addClass("diceRotation");
-
   for(let i = 0; i < 5; i++) {
     let j = i + 1;
     if(!(selectedDice[i])) {
@@ -222,11 +245,11 @@ function startNewTurn() {
   enableRollButton();
   updateTotalScores();
   updateTurns();
-  // Show game over screen, TODO: set up new game conditions (classes and formatting
+  defaultStatusMsg = "Game Over";
+  // END: show game over screen, TODO: set up new game conditions
   if(nTurnsTaken == 13) {
     if(userScoreUpperBonus == 35) audioBonus.play();
     alert(`Game Over!\n\nScore: ${userScoreGrandTotal}\n\nRefresh the page to start a new game`);
-//    enableScoreSetRows();
   }
 }
 
@@ -279,6 +302,7 @@ function updateScorePreviews() {
   findSmallStraight(diceSorted, userScoreSmallStraight);
   findLargeStraight(diceSorted, userScoreLargeStraight);
   // Yahtzee
+  // BUG: getting yahtzee on the 1st turn does not seem to allow score submission (weird)
   const allDiceAreEqual = arr => arr.every( v => v === arr[0] );
   if( (allDiceAreEqual(currentDice)) && (userScoreYahtzee == null)) {
     audioYahtzee.play();
@@ -365,6 +389,31 @@ function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
+function getKeyboardInput() {
+  document.addEventListener('keypress', e => {
+    if((bIsKeyboardEnabled) && (nRollsLeft > 0)) {
+      let keyName = e.key;
+      let keyIndex = e.key - 1;
+      if(selectedDice[keyIndex]) {
+        selectedDice[keyIndex] = false;
+        $("#currentDiceImg-" + keyName).removeClass("diceButtonSelected");
+        $("#currentDiceImg-" + keyName).addClass("diceButton");
+      } else {
+        selectedDice[keyIndex] = true;
+        $("#currentDiceImg-" + keyName).removeClass("diceButton");
+        $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
+      }
+      // BUG: skips a call to change row selection state
+//      if(keyName == "r") rollDice();
+      if(nRollsLeft < 1) {
+        disableRollButton();
+        disableDiceButtons();
+        bIsKeyboardEnabled = false;
+      }
+    }
+  });
+}
+
 function disableRollButton() {
   $("#btnRoll").removeClass("enabledButton");
   $("#btnRoll").addClass("disabledButton");
@@ -390,94 +439,29 @@ function enableDiceButtons() {
   $("[id^=currentDiceImg-]").addClass("diceButton");
   $("[id^=currentDiceImg-]").prop("disabled", false);
 }
-// TODO: disable rows when selection is not needed
-/*function disableRowSelection() {
-  $("[id^=row]").prop("disabled", true);
-}
-// Re-enable when needed
-function enableRowSelection() {
-  $("[id^=row]").prop("disabled", false);
-}*/
 
-function getKeyboardInput() {
-  document.addEventListener('keypress', e => {
-    if((bIsKeyboardEnabled) && (nRollsLeft > 0)) {
-      let keyName = e.key;
-      let keyIndex = e.key - 1;
-      if(selectedDice[keyIndex]) {
-        selectedDice[keyIndex] = false;
-        $("#currentDiceImg-" + keyName).removeClass("diceButtonSelected");
-        $("#currentDiceImg-" + keyName).addClass("diceButton");
-      } else {
-        selectedDice[keyIndex] = true;
-        $("#currentDiceImg-" + keyName).removeClass("diceButton");
-        $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
-      }
-        // Submits a score (for some reason)
-//      if(keyName == "r") rollDice();
-      if(nRollsLeft < 1) {
-        disableRollButton();
-        disableDiceButtons();
-        bIsKeyboardEnabled = false;
-      }
-    }
+/* TODO: combine these into a single function
+toggleRowSelectState(arrayName, 'none'|'auto"); */
+function disableCalculationRows() {
+  disabledCalcRows.forEach((setID) => {
+    $(setID).css('pointer-events', 'none');
   });
 }
 
-// Enable only when scoring
-function disableCalculationRows() {
-  $(rowUpperSubtotal).css('pointer-events', 'none');
-  $(rowUpperBonus).css('pointer-events', 'none');
-  $(rowUpperTotal).css('pointer-events', 'none');
-  $(rowYahtzeeBonus).css('pointer-events', 'none');
-  $(rowLowerTotal).css('pointer-events', 'none');
-  $(rowUpperGrandTotal).css('pointer-events', 'none');
-  $(rowLowerGrandTotal).css('pointer-events', 'none');
-  $(rowFinalGrandTotal).css('pointer-events', 'none');
-}
-
 function enableCalculationRows() {
-  $(rowUpperSubtotal).css('pointer-events', 'auto');
-  $(rowUpperBonus).css('pointer-events', 'auto');
-  $(rowUpperTotal).css('pointer-events', 'auto');
-  $(rowYahtzeeBonus).css('pointer-events', 'auto');
-  $(rowLowerTotal).css('pointer-events', 'auto');
-  $(rowUpperGrandTotal).css('pointer-events', 'auto');
-  $(rowLowerGrandTotal).css('pointer-events', 'auto');
-  $(rowFinalGrandTotal).css('pointer-events', 'auto');
+  disabledCalcRows.forEach((setID) => {
+    $(setID).css('pointer-events', 'auto');
+  });
 }
 
-
-// Disable on start
 function disableScoreSetRows() {
-  $(rowAces).css('pointer-events', 'none');
-  $(rowTwos).css('pointer-events', 'none');
-  $(rowThrees).css('pointer-events', 'none');
-  $(rowFours).css('pointer-events', 'none');
-  $(rowFives).css('pointer-events', 'none');
-  $(rowSixes).css('pointer-events', 'none');
-  $(rowThreeOfAKind).css('pointer-events', 'none');
-  $(rowFourOfAKind).css('pointer-events', 'none');
-  $(rowFullHouse).css('pointer-events', 'none');
-  $(rowSmallStraight).css('pointer-events', 'none');
-  $(rowLargeStraight).css('pointer-events', 'none');
-  $(rowYhatzee).css('pointer-events', 'none');
-  $(rowChance).css('pointer-events', 'none');
+  disabledScoreRows.forEach((setID) => {
+    $(setID).css('pointer-events', 'none');
+  });
 }
 
-// Enable after 1st roll
 function enableScoreSetRows() {
-  $(rowAces).css('pointer-events', 'auto');
-  $(rowTwos).css('pointer-events', 'auto');
-  $(rowThrees).css('pointer-events', 'auto');
-  $(rowFours).css('pointer-events', 'auto');
-  $(rowFives).css('pointer-events', 'auto');
-  $(rowSixes).css('pointer-events', 'auto');
-  $(rowThreeOfAKind).css('pointer-events', 'auto');
-  $(rowFourOfAKind).css('pointer-events', 'auto');
-  $(rowFullHouse).css('pointer-events', 'auto');
-  $(rowSmallStraight).css('pointer-events', 'auto');
-  $(rowLargeStraight).css('pointer-events', 'auto');
-  $(rowYhatzee).css('pointer-events', 'auto');
-  $(rowChance).css('pointer-events', 'auto');
+  disabledScoreRows.forEach((setID) => {
+    $(setID).css('pointer-events', 'auto');
+  });
 }
