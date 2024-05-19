@@ -1,5 +1,6 @@
-// TODO: add new game button and track states, save high score in local storage (ask for name 1st time)
-let currentDice =  [5,     5,     5,     5,     5     ];
+/* TODO: add new game button and track states, save high score in local storage (ask for name 1st time)
+  - Add outline or something to make valid score rows stand out (outline/css filter) */
+let currentDice =  [5, 5, 5, 5, 5 ];
 let selectedDice = [false, false, false, false, false ];
 // Rows used only to calculate scores
 const rowListCalculation = [  rowUpperSubtotal, rowUpperBonus, rowUpperTotal, rowYahtzeeBonus,
@@ -52,7 +53,7 @@ let nRollsLeft = 3;
 let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
-let defaultStatusMsg = "Roll the Dice to Start Playing";
+let defaultStatusMsg = "Roll the dice to start playing";
 let bonusDifference;
 var activeSetName;
 var activeSetValue;
@@ -64,9 +65,10 @@ const audioYahtzee = new Audio("audio/yahtzee.ogg");
 const audioBonus = new Audio("audio/bonus_upper.ogg");
 
 $(document).ready(function() {
-
   updateTurns();
-  getKeyboardInput();
+  // Temporarily disabled: requires more checks to avoid circumventing disabled selectors
+//  getKeyboardInput();
+  disableDiceButtons();
   // Disable all score and calculation rows
   setRowSelectionState(rowListScoreSetAll, 'none');
   setRowSelectionState(rowListCalculation, 'none');
@@ -74,6 +76,8 @@ $(document).ready(function() {
 
   // START: roll dice and update status message
   $("#btnRoll").click(function() {
+    // Enable dice buttons
+    enableDiceButtons();
     // Enable all score rows
     setRowSelectionState(rowListScoreSetAll, 'auto');
     // Disable any used score rows
@@ -83,19 +87,18 @@ $(document).ready(function() {
       $("#txtStatusHeader").html(defaultStatusMsg);
     }
     rollDice();
-
-
     updateBonusGoalValue();
-
     // Update instructions for each roll
     if(nRollsLeft == 2) {
-      defaultStatusMsg = "Roll Again or Select a Score";
+      defaultStatusMsg = "Roll again or select a score";
     }
     if(nRollsLeft < 1) {
       disableRollButton();
       disableDiceButtons();
+      // Remove selected style on last turn
+      $("[id^=currentDiceImg-").removeClass("diceButtonSelected");
       bIsKeyboardEnabled = false;
-      defaultStatusMsg = "Select a Score from the Table";
+      defaultStatusMsg = "Select a score from the table";
     }
     $("#txtStatusHeader").html(defaultStatusMsg);
   });
@@ -116,7 +119,23 @@ $(document).ready(function() {
     }
   });
 
+  /* TODO: use classes instead of css, make it work in mobile and desktop
+    Do not color rows that have already been scored */
+
+  // Highlight row on single click
+/*  $("[id^=row]").on("click", function() {
+    $("[id^=row]").css( {
+      'color' : '#eeeeee',
+      'background-color' : '#1c1c1c' }
+      );
+    $(this).css( {
+       'color' : 'turquoise',
+       'background-color' : '#111111' }
+     );
+  }); */
+
   // Select a score based on the row clicked
+  // Double-click event = dblclick (test both ways)
   $("[id^=row]").on("click", function() {
     // Enable calculation rows
     setRowSelectionState(rowListCalculation, 'auto');
@@ -193,8 +212,12 @@ $(document).ready(function() {
       setRowSelectionState(rowListCalculation, 'none');
       // Disable score rows
       setRowSelectionState(rowListScoreSetAll, 'none');
-      defaultStatusMsg = "Roll the Dice to Start New Turn";
+      defaultStatusMsg = "Roll again to start a new turn";
       $("#txtStatusHeader").html(defaultStatusMsg);
+      disableDiceButtons();
+      // Unselect all dice
+      selectedDice = [false, false, false, false, false];
+      $("[id^=currentDiceImg-").removeClass("diceButtonSelected");
     }
     nTurnsTaken++;
     startNewTurn();
@@ -230,8 +253,9 @@ function startNewTurn() {
   bIsKeyboardEnabled = true;
   for(i = 0; i < 5; i++) {
     selectedDice[i] = false;
+    $("#currentDiceImg-" + i).removeClass("diceButtonSelected");
   }
-  enableDiceButtons();
+  //enableDiceButtons();
   enableRollButton();
   updateTotalScores();
   updateTurns();
@@ -398,7 +422,7 @@ function updateBonusGoalValue() {
   } else {
     bonusDifference = 0;
     $("#txtBonusGoal").css({
-      'color' : '#7fff00',
+      'color' : 'greenyellow',
       'animation' : 'flashText 1.5s linear 3'
     }).html(bonusDifference);
   } 
@@ -408,6 +432,7 @@ function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
+/*
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
     if((bIsKeyboardEnabled) && (nRollsLeft > 0)) {
@@ -432,6 +457,7 @@ function getKeyboardInput() {
     }
   });
 }
+*/
 
 function disableRollButton() {
   $("#btnRoll").removeClass("enabledButton");
@@ -446,17 +472,17 @@ function enableRollButton() {
 }
 
 function disableDiceButtons() {
-  selectedDice = [true, true, true, true, true ];
-  $("[id^=currentDiceImg-]").removeClass("diceButton diceButtonSelected");
-  $("[id^=currentDiceImg-]").addClass("diceButtonDisabled");
-  $("[id^=currentDiceImg-]").prop("disabled", true);
+//  selectedDice = [true, true, true, true, true ];
+//  $("[id^=currentDiceImg-]").removeClass("diceButton diceButtonSelected");
+  $("[id^=currentDiceImg-]").removeClass("diceButton").addClass("diceButtonDisabled");
+  //.prop("disabled", true);
 }
 
 function enableDiceButtons() {
-  selectedDice = [false, false, false, false, false ];
-  $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled diceButtonSelected");
-  $("[id^=currentDiceImg-]").addClass("diceButton");
-  $("[id^=currentDiceImg-]").prop("disabled", false);
+//  selectedDice = [false, false, false, false, false ];
+//  $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled diceButtonSelected");
+  $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled").addClass("diceButton");
+  //.prop("disabled", false);
 }
 
 function setRowSelectionState(rowList, rowState) {

@@ -42,6 +42,7 @@ td {
   width: 100%;
 }
 
+/* Issue: nth-child overwrites CSS below */
 /*.sectionTable tr:nth-child(even) {
   background-color: #232323;
 }*/
@@ -49,10 +50,12 @@ td {
 tr[id^="row"] {
   cursor: pointer;
 }
+
 tr[id^="row"]:hover {
   color: turquoise;
   background-color: #111111;
 }
+
 tr[id^="row"]:active {
   color: #dddddd;
   background-color: #000000;
@@ -132,6 +135,7 @@ td {
   height: 2em;
   letter-spacing: 5px;
   vertical-align: middle;
+  animation: flashText 1.5s linear infinite;
 }
 
 .enabledButton:hover {
@@ -155,6 +159,7 @@ td {
   height: 75%;
   border: 3px solid #aaaaaa;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .diceButton:hover {
@@ -167,6 +172,7 @@ td {
   border: 3px solid #c0c0c0;
   filter: brightness(0.25);
   cursor: pointer;
+
 }
 
 .diceButtonSelected:hover {
@@ -178,9 +184,11 @@ td {
   height: 75%;
   border: 3px solid #aaaaaa;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* TODO: fix animation timing (does not play on the 1st die) */
+/*
 .diceRotation {
   animation-name: rotate;
   animation-duration: 0.25s;
@@ -193,6 +201,7 @@ td {
     transform: rotate(360deg);
   }
 }
+*/
 
 .statusTable {
   font-size: 18pt;
@@ -203,7 +212,7 @@ td {
 #txtStatusHeader {
   font-weight: bold;
   color: dodgerblue;
-  animation: flashText 1.5s linear infinite;
+/*  animation: flashText 1.5s linear infinite; */
 }
 @keyframes flashText {
   75% {
@@ -215,6 +224,7 @@ td {
   font-family: monospace;
   font-size: 16pt;
   text-align: left;
+  padding-left: 10px;
   color: #ffffff;
   background-color: #111111;
 }
@@ -222,7 +232,7 @@ td {
   font-family: monospace;
   font-size: 16pt;
   text-align: center;
-  color: #ffffff;
+  color: #c0c0c0;
   background-color: #111111;
   width: 15%;
 }
@@ -367,18 +377,19 @@ hr {
   }
   #txtBonusGoalLead {
     font-family: monospace;
-    font-size: 12pt;
+    font-size: 10pt;
     text-align: left;
     color: #ffffff;
     background-color: #111111;
+    padding-left: 5px;
   }
   #txtBonusGoal {
     font-family: monospace;
-    font-size: 12pt;
+    font-size: 10pt;
     text-align: center;
     color: #ffffff;
     background-color: #111111;
-    width: 35%;
+    width: 10%;
   }
 
   .enabledButton {
