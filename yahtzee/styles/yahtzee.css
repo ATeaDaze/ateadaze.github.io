@@ -21,6 +21,7 @@ table {
 }
 
 th {
+  background-color: #2a2a2a;
   text-align: center;
 }
 
@@ -69,6 +70,7 @@ tr[id^="row"]:active {
 
 .leadRow {
   text-align: left;
+  padding-left: 5px;
 }
 
 /*tr.usedRow:hover {
@@ -110,7 +112,7 @@ td.diceCell {
 }
 
 button {
-  background-color: #333333;
+  background-color: #222222;
   height: 2em;
   font-size: 20pt;
   font-weight: bold;
@@ -127,7 +129,7 @@ td {
 
 .enabledButton {
   font-weight: bold;
-  background-color: #222222;
+  background-color: #1a1a1a;
   color: mediumorchid;
   border: 3px solid mediumorchid;
   cursor: pointer;
@@ -145,14 +147,17 @@ td {
 
 .disabledButton {
   cursor: not-allowed;
-  color:#c0c0c0;
-  border: 3px solid #c0c0c0;
-  width: 100%;
-}
-.disabledButton:hover {
   color:#a0a0a0;
   border: 3px solid #a0a0a0;
+  width: 100%;
+  animation: none;
+  filter: brightness(0.5);
 }
+
+/*.disabledButton:hover {
+  color:#c3c3c3;
+  border: 3px solid #a0a0a0;
+} */
 
 .diceButton {
   width: 75%;
@@ -212,6 +217,7 @@ td {
 #txtStatusHeader {
   font-weight: bold;
   color: dodgerblue;
+  background-color: #1a1a1a;
 /*  animation: flashText 1.5s linear infinite; */
 }
 @keyframes flashText {
@@ -225,14 +231,14 @@ td {
   font-size: 16pt;
   text-align: left;
   padding-left: 10px;
-  color: #ffffff;
+  color: #dddddd;
   background-color: #111111;
 }
 #txtBonusGoal {
   font-family: monospace;
   font-size: 16pt;
   text-align: center;
-  color: #c0c0c0;
+  color: #ffffff;
   background-color: #111111;
   width: 15%;
 }
@@ -338,7 +344,7 @@ hr {
 @media (orientation: portrait), (max-width: 800px) {
 
   body {
-    font-size: 11pt;
+    font-size: 12pt;
   }
 
   .mainHeader {
@@ -358,11 +364,6 @@ hr {
   .usedRow {
     background-color: #101010;
     color: chartreuse;
-    font-weight: bold;
-  }
-
-  tr.scoredRow {
-    color: limegreen;
   }
 
   .grandTotalTable {
