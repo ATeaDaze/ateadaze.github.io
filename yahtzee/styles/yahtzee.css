@@ -1,6 +1,7 @@
 /* TODO: test and improve dimensions for alternate viewport stylesheets
  - Set style for status bar based on game state
- - Set color of roll button based on number of turns left (pink=3, purple=2, red=1, black=0) */
+ - Set color of roll button based on number of turns left (pink=3, purple=2, red=1, black=0)
+ - Check for any redundant properties or ineffecient orders or matching statements */
 
 body {
   background-color: #000000;
@@ -8,6 +9,7 @@ body {
   font-family: sans-serif;
   font-size: 14pt;
   text-align: center;
+/* Disable cursor selection */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -15,8 +17,11 @@ body {
 }
 
 table {
-/*  margin: auto; */
   border: none;
+}
+
+th {
+  text-align: center;
 }
 
 td {
@@ -24,11 +29,28 @@ td {
   border: 2px solid #000000;
 }
 
+.mainHeader {
+  height: 45px;
+}
+
+.mainContainer {
+  width: 30svw;
+}
+
+.sectionTable, .subTotalTable, .grandTotalTable {
+  background-color: #1c1c1c;
+  width: 100%;
+}
+
+/*.sectionTable tr:nth-child(even) {
+  background-color: #232323;
+}*/
+
 tr[id^="row"] {
   cursor: pointer;
 }
 tr[id^="row"]:hover {
-  color: #ffffff;
+  color: turquoise;
   background-color: #111111;
 }
 tr[id^="row"]:active {
@@ -42,6 +64,14 @@ tr[id^="row"]:active {
   pointer-events: none;
 }
 
+.leadRow {
+  text-align: left;
+}
+
+/*tr.usedRow:hover {
+  color: indianred;
+}*/
+
 td[id^="txtScore"] {
   font-family: monospace;
   width: 25%;
@@ -52,6 +82,116 @@ td[id^="txtGrand"] {
   font-family: monospace;
   width: 13.25%;
   text-align: center;
+}
+
+/*
+.subTotalTable {
+  background-color: #171717;
+  width: 100%;
+}
+.grandTotalTable {
+  background-color: #151515;
+  width: 100%;
+}
+*/
+
+#playerDice {
+  width: 100%;
+}
+
+td.diceCell {
+  width: 20%;
+  text-align: center;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+button {
+  background-color: #333333;
+  height: 2em;
+  font-size: 20pt;
+  font-weight: bold;
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+/*table {
+  border: 1px solid darkgreen;
+}
+td {
+  border: 1px solid limegreen;
+}*/
+
+.enabledButton {
+  font-weight: bold;
+  background-color: #222222;
+  color: mediumorchid;
+  border: 3px solid mediumorchid;
+  cursor: pointer;
+  width: 100%;
+  height: 2em;
+  letter-spacing: 5px;
+  vertical-align: middle;
+}
+
+.enabledButton:hover {
+  border: 3px solid orchid;
+  color: orchid;
+}
+
+.disabledButton {
+  cursor: not-allowed;
+  color:#c0c0c0;
+  border: 3px solid #c0c0c0;
+  width: 100%;
+}
+.disabledButton:hover {
+  color:#a0a0a0;
+  border: 3px solid #a0a0a0;
+}
+
+.diceButton {
+  width: 75%;
+  height: 75%;
+  border: 3px solid #aaaaaa;
+  cursor: pointer;
+}
+
+.diceButton:hover {
+  border: 3px solid turquoise;
+}
+
+.diceButtonSelected {
+  width: 75%;
+  height: 75%;
+  border: 3px solid #c0c0c0;
+  filter: brightness(0.25);
+  cursor: pointer;
+}
+
+.diceButtonSelected:hover {
+  border: 3px solid turquoise;
+}
+
+.diceButtonDisabled {
+  width: 75%;
+  height: 75%;
+  border: 3px solid #aaaaaa;
+  cursor: not-allowed;
+}
+
+/* TODO: fix animation timing (does not play on the 1st die) */
+.diceRotation {
+  animation-name: rotate;
+  animation-duration: 0.25s;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .statusTable {
@@ -87,150 +227,6 @@ td[id^="txtGrand"] {
   width: 15%;
 }
 
-tr.scoredRow {
-  color: limegreen;
-}
-
-tr.scoredRow:hover {
-  color: chartreuse;
-}
-
-.leadRow {
-  text-align: left;
-}
-
-.mainHeader {
-  height: 45px;
-}
-
-/*
-.mainHeader {
-  font-family: sans-serif;
-  font-size: 32pt;
-  font-weight: bold;
-  color: #c0c0c0;
-  height: 1.2em;
-  display: inline-block;
-  align-content: center;
-}
-
-td.mainHeader {
-  vertical-align: middle;
-}
-
-.headerLogo {
-  height: 1.0em;
-}
-*/
-
-.mainContainer {
-  width: 30svw;
-}
-
-.sectionTable {
-  background-color: #1c1c1c;
-  width: 100%;
-}
-
-.grandTotalTable {
-  background-color: #1c1c1c;
-  width: 29.45svw;
-}
-
-.diceCell {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-button {
-  font-size: 20pt;
-  font-weight: bold;
-  background-color: #333333;
-
-
-  cursor: pointer;
-  height: 2em;
-  letter-spacing: 5px;
-}
-
-.enabledButton {
-  font-weight: bold;
-  background-color: #222222;
-  color: mediumorchid;
-  border: 3px solid mediumorchid;
-  cursor: pointer;
-  width: 29.45svw;
-  height: 2em;
-  letter-spacing: 5px;
-  vertical-align: middle;
-}
-
-.enabledButton:hover {
-  border: 3px solid orchid;
-  color: orchid;
-}
-
-.disabledButton {
-  cursor: not-allowed;
-  color:#c0c0c0;
-  border: 3px solid #c0c0c0;
-  width: 29.45svw;
-}
-.disabledButton:hover {
-  color:#a0a0a0;
-  border: 1px solid #a0a0a0;
-}
-
-.diceButton {
-  width: 75px;
-  height: 75px;
-  border: 3px solid #aaaaaa;
-  cursor: pointer;
-}
-
-.diceButton:hover {
-  border: 3px solid turquoise;
-}
-
-.diceButtonSelected {
-  width: 75px;
-  height: 75px;
-  border: 3px solid #c0c0c0;
-  filter: brightness(0.25);
-  cursor: pointer;
-}
-
-.diceButtonSelected:hover {
-  border: 3px solid turquoise;
-}
-
-.diceButtonDisabled {
-  width: 75px;
-  height: 75px;
-  border: 3px solid #aaaaaa;
-  cursor: not-allowed;
-}
-
-
-.diceRotation {
-  animation-name: rotate;
-  animation-duration: 0.25s;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.debugCell {
-  font-family: monospace;
-  font-size: 12pt;
-  text-align: left;
-}
-
 hr {
   color: #555555;
   background-color: #555555;
@@ -254,7 +250,7 @@ hr {
 }
 
 
-/* Alternate dimensions for smaller landscape displays */
+/* ===== Alternate dimensions for smaller landscape displays ===== */
 @media (max-width: 1500px) {
 
   .mainHeader {
