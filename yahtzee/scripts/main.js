@@ -62,49 +62,27 @@ const audioUnhold = new Audio("audio/dice_unhold.ogg");
 const audioThrowDice = new Audio("audio/throw_5_dice.ogg");
 const audioFillScore = new Audio("audio/fill_score.ogg");
 const audioYahtzee = new Audio("audio/yahtzee.ogg");
-const audioBonus = new Audio("audio/bonus_upper.ogg");
+const audioYahtzeeBonus = new Audio("audio/yahtzee_applause.ogg");
+const audioUpperBonus = new Audio("audio/bonus_upper.ogg");
 
 $(document).ready(function() {
   updateTurns();
-  // Temporarily disabled: requires more checks to avoid circumventing disabled selectors
-//  getKeyboardInput();
-  disableDiceButtons();
-  // Disable all score and calculation rows
+//  getScoreRecord();
+  getKeyboardInput();
+  // Disable all rows and roll button
   setRowSelectionState(rowListScoreSetAll, 'none');
   setRowSelectionState(rowListCalculation, 'none');
+  disableDiceButtons();
   $("#txtStatusHeader").html(defaultStatusMsg);
 
-  // START: roll dice and update status message
+  // START: main gameplay loop
   $("#btnRoll").click(function() {
-    // Enable dice buttons
-    enableDiceButtons();
-    // Enable all score rows
-    setRowSelectionState(rowListScoreSetAll, 'auto');
-    // Disable any used score rows
-    setRowSelectionState(rowListScoreSetDisabled, 'none');
-    // Enable all score rows on 1st turn
-    if(nTurnsTaken == 0) {
-      $("#txtStatusHeader").html(defaultStatusMsg);
-    }
-    rollDice();
-    updateBonusGoalValue();
-    // Update instructions for each roll
-    if(nRollsLeft == 2) {
-      defaultStatusMsg = "Roll again or select a score";
-    }
-    if(nRollsLeft < 1) {
-      disableRollButton();
-      disableDiceButtons();
-      // Remove selected style on last turn
-      $("[id^=currentDiceImg-").removeClass("diceButtonSelected");
-      bIsKeyboardEnabled = false;
-      defaultStatusMsg = "Select a score from the table";
-    }
-    $("#txtStatusHeader").html(defaultStatusMsg);
+    updateGameState();
   });
 
   // Hold or release dice when clicked
   $("[id^=currentDiceImg-]").click(function() {
+
     let activeDie = $(this).closest('td').index();
     if(selectedDice[activeDie]) {
       audioHold.play();
@@ -119,23 +97,7 @@ $(document).ready(function() {
     }
   });
 
-  /* TODO: use classes instead of css, make it work in mobile and desktop
-    Do not color rows that have already been scored */
-
-  // Highlight row on single click
-/*  $("[id^=row]").on("click", function() {
-    $("[id^=row]").css( {
-      'color' : '#eeeeee',
-      'background-color' : '#1c1c1c' }
-      );
-    $(this).css( {
-       'color' : 'turquoise',
-       'background-color' : '#111111' }
-     );
-  }); */
-
   // Select a score based on the row clicked
-  // Double-click event = dblclick (test both ways)
   $("[id^=row]").on("click", function() {
     // Enable calculation rows
     setRowSelectionState(rowListCalculation, 'auto');
@@ -214,6 +176,7 @@ $(document).ready(function() {
       setRowSelectionState(rowListScoreSetAll, 'none');
       defaultStatusMsg = "Roll again to start a new turn";
       $("#txtStatusHeader").html(defaultStatusMsg);
+      bIsKeyboardEnabled = false;
       disableDiceButtons();
       // Unselect all dice
       selectedDice = [false, false, false, false, false];
@@ -222,9 +185,39 @@ $(document).ready(function() {
     nTurnsTaken++;
     startNewTurn();
   });
-// Disable calculation rows
-//setRowSelectionState(rowListCalculation, 'none');
 });
+
+function updateGameState() {
+  bIsKeyboardEnabled = true;
+  enableDiceButtons();
+  // Enable all score rows and disable used rows
+  setRowSelectionState(rowListScoreSetAll, 'auto');
+  setRowSelectionState(rowListScoreSetDisabled, 'none');
+
+  if(nTurnsTaken == 0) {
+    $("#txtStatusHeader").html(defaultStatusMsg);
+  }
+
+  rollDice();
+  updateBonusGoalValue();
+
+  // Update instructions for each roll
+  if(nRollsLeft == 2) {
+    defaultStatusMsg = "Roll again or select a score";
+  }
+
+  if(nRollsLeft < 1) {
+    bIsKeyboardEnabled = false;
+    disableRollButton();
+    disableDiceButtons();
+    // Remove selected style on last turn
+    $("[id^=currentDiceImg-").removeClass("diceButtonSelected");
+    bIsKeyboardEnabled = false;
+    defaultStatusMsg = "Select a score from the table";
+  }
+
+  $("#txtStatusHeader").html(defaultStatusMsg);
+}
 
 function rollDice() {
   audioThrowDice.play();
@@ -255,17 +248,18 @@ function startNewTurn() {
     selectedDice[i] = false;
     $("#currentDiceImg-" + i).removeClass("diceButtonSelected");
   }
-  //enableDiceButtons();
   enableRollButton();
   updateTotalScores();
   updateTurns();
-  defaultStatusMsg = "Game Over";
   // END: show game over screen // TODO: add new game function and state
   if(nTurnsTaken == 13) {
-    if(userScoreUpperBonus == 35) audioBonus.play();
-    alert(`Game Over!\n\nScore: ${userScoreGrandTotal}\n\nRefresh the page to start a new game`);
+    if(userScoreUpperBonus == 35) audioUpperBonus.play();
+    disableRollButton();
+    $("#txtStatusHeader").html("GAME OVER");
+    setScoreRecord();
   }
 }
+
 // TODO: check when I'm not sleep-deprived (muiltplying lower scores by 3?)
 function updateScorePreviews() {
   let diceSorted = [...currentDice].sort();
@@ -293,6 +287,7 @@ function updateScorePreviews() {
     if( (nYahtzeeScores < 2) && (userScoreYahtzee == null) ) {
       $("#txtScoreYahtzee").html(50);
     } else {
+      audioYahtzeeBonus.play();
       // Joker if more than 1 yahtzee was scored (sum of all dice scored in 1 of 10 rows)
       findAllUpperScores();
       findSumOfAllDice(previewScoreThreeOfAKind, userScoreThreeOfAKind, txtScoreThreeOfAKind);
@@ -303,11 +298,11 @@ function updateScorePreviews() {
       $("#txtScoreLargeStraight").html(40);
     }
   } else {
-      // Check for a full house if not Yahtzee (mutually exclusive)
-      findFullHouse(diceSorted, userScoreFullHouse);
-    }
-    findSumOfAllDice(previewScoreChance, userScoreChance, txtScoreChance);
+    // Check for a full house if not Yahtzee (mutually exclusive)
+    findFullHouse(diceSorted, userScoreFullHouse);
   }
+  findSumOfAllDice(previewScoreChance, userScoreChance, txtScoreChance);
+}
 
 function findAllUpperScores() {
   findSumOfEqualValueDice(previewScoreAces, userScoreAces, 1, txtScoreAces);
@@ -405,17 +400,20 @@ function updateTotalScores() {
                       + userScoreSmallStraight + userScoreLargeStraight + userScoreYahtzee + userScoreChance;
   $("#txtScoreLowerTotal").html(userScoreLowerTotal);
   // Lower Bonus
-  if((nYahtzeeScores > 1) && (userScoreYahtzee > 0)) userScoreYahtzeeBonus = (nYahtzeeScores - 1) * 100;
+  if((nYahtzeeScores > 1) && (userScoreYahtzee > 0)) {
+    userScoreYahtzeeBonus = (nYahtzeeScores - 1) * 100;
+  }
   $("#txtScoreYahtzeeBonus").html(userScoreYahtzeeBonus);
   // GRAND TOTALS
   userScoreGrandTotal = userScoreLowerTotal + userScoreUpperTotal;
   $("#txtGrandTotalUpper").html(userScoreUpperTotal);
   $("#txtGrandTotalLower").html(userScoreLowerTotal);
   $("#txtGrandTotalFinal").html(userScoreGrandTotal);
+  updateBonusGoalValue();
 }
 
+// Update points needed for upper bonus
 function updateBonusGoalValue() {
-    // Update points needed for upper bonus
   if(userScoreUpperSubtotal < 63) {
     bonusDifference = (userScoreUpperSubtotal - 63) * -1 ;
     $("#txtBonusGoal").html(bonusDifference);
@@ -432,12 +430,13 @@ function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
-/*
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
-    if((bIsKeyboardEnabled) && (nRollsLeft > 0)) {
+    // Set key name  and index (index is offset by -1 as it's an array)
+    if(bIsKeyboardEnabled) {
       let keyName = e.key;
       let keyIndex = e.key - 1;
+      // Toggle held dice when keys [1] to [5] are pressed
       if(selectedDice[keyIndex]) {
         selectedDice[keyIndex] = false;
         $("#currentDiceImg-" + keyName).removeClass("diceButtonSelected");
@@ -447,8 +446,9 @@ function getKeyboardInput() {
         $("#currentDiceImg-" + keyName).removeClass("diceButton");
         $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
       }
-      // BUG: skips a call to change row selection state
-//      if(keyName == "r") rollDice();
+      // Roll dice when [R] is pressed (needs more testing)
+      if(keyName == "r") updateGameState();
+      // Disable keybinds if player has rolled 3 times
       if(nRollsLeft < 1) {
         disableRollButton();
         disableDiceButtons();
@@ -457,7 +457,6 @@ function getKeyboardInput() {
     }
   });
 }
-*/
 
 function disableRollButton() {
   $("#btnRoll").removeClass("enabledButton");
@@ -472,17 +471,11 @@ function enableRollButton() {
 }
 
 function disableDiceButtons() {
-//  selectedDice = [true, true, true, true, true ];
-//  $("[id^=currentDiceImg-]").removeClass("diceButton diceButtonSelected");
   $("[id^=currentDiceImg-]").removeClass("diceButton").addClass("diceButtonDisabled");
-  //.prop("disabled", true);
 }
 
 function enableDiceButtons() {
-//  selectedDice = [false, false, false, false, false ];
-//  $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled diceButtonSelected");
   $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled").addClass("diceButton");
-  //.prop("disabled", false);
 }
 
 function setRowSelectionState(rowList, rowState) {
@@ -491,27 +484,20 @@ function setRowSelectionState(rowList, rowState) {
   });
 }
 
-/*
-
-Local storage uses key-value pairs
-Delete key: localStorage.removeItem(key);
-Clear all keys: localStorage.clear();
-if(key): check if storage key exists
-
-*/
-
-// If the new score is higher than the stored record or it does not exist then set
+// If user score is higher than the stored record or it does not exist then set it
+// TODO: use a proper CSS-formatted toast message instead of alert
 function setScoreRecord() {
-  if((userScoreGrandTotal > currentHighScore)||(!currentHighScore)) {
+  let currentHighScore = localStorage.getItem("lsHighScore");
+  let gameOverMsg = `Game Over\n\nGrand Total: ${userScoreGrandTotal}`;
+  if(!localStorage.lsHighScore) {
     localStorage.setItem("lsHighScore", userScoreGrandTotal);
-  }  
-}
-
-// If a high score exists then get it and assign to a local variable
-function getScoreRecords() {
-
-  if(localStorage.lsHighScore) {
-    let currentHighScore = localStorage.getItem("lsHighScore");
+    alert(gameOverMsg);
+  } else {
+    if(userScoreGrandTotal > currentHighScore) {
+      localStorage.setItem("lsHighScore", userScoreGrandTotal);
+      alert(`New High Score!\n\nGrand Total: ${userScoreGrandTotal}`);
+    } else {
+      alert(gameOverMsg);
+    }
   }
-
 }
