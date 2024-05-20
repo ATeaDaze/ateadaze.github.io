@@ -73,10 +73,6 @@ tr[id^="row"]:active {
   padding-left: 5px;
 }
 
-/*tr.usedRow:hover {
-  color: indianred;
-}*/
-
 td[id^="txtScore"] {
   font-family: monospace;
   width: 25%;
@@ -88,17 +84,6 @@ td[id^="txtGrand"] {
   width: 13.25%;
   text-align: center;
 }
-
-/*
-.subTotalTable {
-  background-color: #171717;
-  width: 100%;
-}
-.grandTotalTable {
-  background-color: #151515;
-  width: 100%;
-}
-*/
 
 #playerDice {
   width: 100%;
@@ -139,6 +124,9 @@ td {
   vertical-align: middle;
   animation: flashText 1.5s linear infinite;
 }
+@keyframes flashText {
+  75% { opacity: 0.75; }
+}
 
 .enabledButton:hover {
   border: 3px solid orchid;
@@ -153,11 +141,6 @@ td {
   animation: none;
   filter: brightness(0.5);
 }
-
-/*.disabledButton:hover {
-  color:#c3c3c3;
-  border: 3px solid #a0a0a0;
-} */
 
 .diceButton {
   width: 75%;
@@ -193,8 +176,7 @@ td {
 }
 
 /* TODO: fix animation timing (does not play on the 1st die) */
-/*
-.diceRotation {
+/*.diceRotation {
   animation-name: rotate;
   animation-duration: 0.25s;
 }
@@ -205,8 +187,7 @@ td {
   100% {
     transform: rotate(360deg);
   }
-}
-*/
+}*/
 
 .statusTable {
   font-size: 18pt;
@@ -218,15 +199,9 @@ td {
   font-weight: bold;
   color: dodgerblue;
   background-color: #1a1a1a;
-/*  animation: flashText 1.5s linear infinite; */
-}
-@keyframes flashText {
-  75% {
-    opacity: 0.75;
-  }
 }
 
-#txtBonusGoalLead {
+#txtBonusGoalLead, #txtHighScoreLead {
   font-family: monospace;
   font-size: 16pt;
   text-align: left;
@@ -234,7 +209,7 @@ td {
   color: #dddddd;
   background-color: #111111;
 }
-#txtBonusGoal {
+#txtBonusGoal, #txtHighScore {
   font-family: monospace;
   font-size: 16pt;
   text-align: center;
@@ -296,14 +271,14 @@ hr {
     background-color: #1c1c1c;
     width: 50svw;
   }
-  #txtBonusGoalLead {
+  #txtBonusGoalLead, #txtHighScoreLead {
     font-family: monospace;
     font-size: 14pt;
     text-align: left;
     color: #ffffff;
     background-color: #111111;
   }
-  #txtBonusGoal {
+  #txtBonusGoal, #txtHighScore {
     font-family: monospace;
     font-size: 14pt;
     text-align: center;
@@ -376,7 +351,7 @@ hr {
     background-color: #1c1c1c;
     width: 95svw;
   }
-  #txtBonusGoalLead {
+  #txtBonusGoalLead, #txtHighScoreLead {
     font-family: monospace;
     font-size: 10pt;
     text-align: left;
@@ -384,7 +359,7 @@ hr {
     background-color: #111111;
     padding-left: 5px;
   }
-  #txtBonusGoal {
+  #txtBonusGoal, #txtHighScore {
     font-family: monospace;
     font-size: 10pt;
     text-align: center;

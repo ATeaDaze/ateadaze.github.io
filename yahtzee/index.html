@@ -1,11 +1,4 @@
-<!-- TODO: Improve the naming scheme of repeated variables
-  - Implement a newGame() function which resets the entire game state
-    - Start new game, clear list, and add new rows to array during gameplay
-  - Add hold/unhold all dice button or keybind
-  - Optimize checks for full house and straights
-  BUGS: button roll keybind conflicts with event handler for row selection ("click keydown"),
-  using the keybind for rollButton() skips a call to re-enable score table rows, 
-  x-of-a kind preview sometimes off (?) -->
+<!-- TODO: improve the naming scheme of repeated variables -->
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -173,8 +166,14 @@
     <th colspan="2" id="txtStatusHeader"></th>
   </tr>
   <tr>
-    <td id="txtBonusGoal">63</td>
     <td id="txtBonusGoalLead">Points needed for upper bonus (+35)</td>
+    <td id="txtBonusGoal">63</td>
+
+  </tr>
+  <tr>
+    <td id="txtHighScoreLead">High Score</td>
+    <td id="txtHighScore">0</td>
+
   </tr>
 </table>
 
@@ -185,11 +184,6 @@
 <img src="images/dice-4.png" class="invisible">
 <img src="images/dice-5.png" class="invisible">
 <img src="images/dice-6.png" class="invisible">
-<img src="images/dice-roll-1.gif" class="invisible">
-<img src="images/dice-roll-2.gif" class="invisible">
-<img src="images/dice-roll-3.gif" class="invisible">
-<img src="images/dice-roll-4.gif" class="invisible">
-<img src="images/dice-roll-5.gif" class="invisible">
 
 <!-- Preload audio files -->
 <audio src="audio/dice_hold.ogg" class="invisible"></audio>

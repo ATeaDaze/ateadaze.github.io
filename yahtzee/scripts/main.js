@@ -1,7 +1,8 @@
-/* TODO: add new game button and track states, save high score in local storage (ask for name 1st time)
-  - Add outline or something to make valid score rows stand out (outline/css filter) */
-let currentDice =  [5, 5, 5, 5, 5 ];
-let selectedDice = [false, false, false, false, false ];
+/* TODO: add new game button and track states, display high score from local storage (add name prompt?)
+  - Add outline or something to make valid score rows stand out (outline/css filter)
+  - Add hold/unhold all dice keybind */
+let currentDice =  [ 5, 5, 5, 5, 5 ];
+let selectedDice = [ false, false, false, false, false ];
 // Rows used only to calculate scores
 const rowListCalculation = [  rowUpperSubtotal, rowUpperBonus, rowUpperTotal, rowYahtzeeBonus,
   rowLowerTotal, rowUpperGrandTotal, rowLowerGrandTotal, rowFinalGrandTotal ];
@@ -53,7 +54,7 @@ let nRollsLeft = 3;
 let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
-let defaultStatusMsg = "Roll the dice to start playing";
+let statusBarMessage = "Roll the dice to start playing";
 let bonusDifference;
 var activeSetName;
 var activeSetValue;
@@ -67,13 +68,15 @@ const audioUpperBonus = new Audio("audio/bonus_upper.ogg");
 
 $(document).ready(function() {
   updateTurns();
-//  getScoreRecord();
   getKeyboardInput();
   // Disable all rows and roll button
   setRowSelectionState(rowListScoreSetAll, 'none');
   setRowSelectionState(rowListCalculation, 'none');
   disableDiceButtons();
-  $("#txtStatusHeader").html(defaultStatusMsg);
+  $("#txtStatusHeader").html(statusBarMessage);
+  if(localStorage.lsHighScore) {
+    $("#txtHighScore").html(localStorage.lsHighScore);
+  }
 
   // START: main gameplay loop
   $("#btnRoll").click(function() {
@@ -82,7 +85,6 @@ $(document).ready(function() {
 
   // Hold or release dice when clicked
   $("[id^=currentDiceImg-]").click(function() {
-
     let activeDie = $(this).closest('td').index();
     if(selectedDice[activeDie]) {
       audioHold.play();
@@ -98,10 +100,11 @@ $(document).ready(function() {
   });
 
   // Select a score based on the row clicked
+  // TODO: there is definitely a better to do this, add a confirm box or use 'dblclick'
   $("[id^=row]").on("click", function() {
     // Enable calculation rows
     setRowSelectionState(rowListCalculation, 'auto');
-    // TODO: there is definitely a better to do this
+    // Get IDs of row and cell clicked by player
     let activeRow = $(this).closest('tr');
     let activeCell = $(this).closest('tr').children('td:last');
     let activeRowID = this.id;
@@ -162,20 +165,19 @@ $(document).ready(function() {
         bNewScoreAdded = true;
         break;
       default:
-        // How did you end up here?
+        // How did I end up here?
         break;
     }
     // Update table if a score is submitted
     if(bNewScoreAdded) {
       audioFillScore.play();
       $(activeRow).addClass("usedRow");
+      // Add row to running list so it can't be clicked on subsequent turns
       rowListScoreSetDisabled.push(activeRow);
-      // Disable calculation rows
+      // Disable calculation and score rows
       setRowSelectionState(rowListCalculation, 'none');
-      // Disable score rows
       setRowSelectionState(rowListScoreSetAll, 'none');
-      defaultStatusMsg = "Roll again to start a new turn";
-      $("#txtStatusHeader").html(defaultStatusMsg);
+      $("#txtStatusHeader").html("Roll again to start a new turn");
       bIsKeyboardEnabled = false;
       disableDiceButtons();
       // Unselect all dice
@@ -193,19 +195,12 @@ function updateGameState() {
   // Enable all score rows and disable used rows
   setRowSelectionState(rowListScoreSetAll, 'auto');
   setRowSelectionState(rowListScoreSetDisabled, 'none');
-
-  if(nTurnsTaken == 0) {
-    $("#txtStatusHeader").html(defaultStatusMsg);
-  }
-
   rollDice();
   updateBonusGoalValue();
-
   // Update instructions for each roll
   if(nRollsLeft == 2) {
-    defaultStatusMsg = "Roll again or select a score";
+    statusBarMessage = "Roll again or select a score";
   }
-
   if(nRollsLeft < 1) {
     bIsKeyboardEnabled = false;
     disableRollButton();
@@ -213,10 +208,9 @@ function updateGameState() {
     // Remove selected style on last turn
     $("[id^=currentDiceImg-").removeClass("diceButtonSelected");
     bIsKeyboardEnabled = false;
-    defaultStatusMsg = "Select a score from the table";
+    statusBarMessage = "Select a score from the table";
   }
-
-  $("#txtStatusHeader").html(defaultStatusMsg);
+  $("#txtStatusHeader").html(statusBarMessage);
 }
 
 function rollDice() {
@@ -228,6 +222,7 @@ function rollDice() {
       $("#currentDiceImg-" + j).attr("src","images/dice-" + currentDice[i] + ".png");
     }
   }
+  // TODO: find a cleaner way to check these values
   // Set lower score values to 0 for consistency with upper scores
   if(userScoreThreeOfAKind == null) $("#txtScoreThreeOfAKind").html(0);
   if(userScoreFourOfAKind == null) $("#txtScoreFourOfAKind").html(0);
@@ -251,7 +246,7 @@ function startNewTurn() {
   enableRollButton();
   updateTotalScores();
   updateTurns();
-  // END: show game over screen // TODO: add new game function and state
+  // END: show game over screen
   if(nTurnsTaken == 13) {
     if(userScoreUpperBonus == 35) audioUpperBonus.play();
     disableRollButton();
@@ -260,7 +255,6 @@ function startNewTurn() {
   }
 }
 
-// TODO: check when I'm not sleep-deprived (muiltplying lower scores by 3?)
 function updateScorePreviews() {
   let diceSorted = [...currentDice].sort();
   // UPPER SECTION
@@ -292,7 +286,7 @@ function updateScorePreviews() {
       findAllUpperScores();
       findSumOfAllDice(previewScoreThreeOfAKind, userScoreThreeOfAKind, txtScoreThreeOfAKind);
       findSumOfAllDice(previewScoreFourOfAKind, userScoreFourOfAKind, txtScoreFourOfAKind);
-      // Full house, small straight, and large straight scored with set values
+      // Full house, small straight, and large straight are scored with fixed values
       $("#txtScoreFullHouse").html(25);
       $("#txtScoreSmallStraight").html(30);
       $("#txtScoreLargeStraight").html(40);
@@ -317,9 +311,7 @@ function findSumOfEqualValueDice(pScore, uScore, bValue, txtLbl) {
   if(uScore == null) {
     txtLbl = txtLbl.id;
     currentDice.forEach((dValue) => {
-      if(dValue == bValue) {
-        pScore = pScore + bValue;
-      }
+      if(dValue == bValue) pScore = pScore + bValue;
     });
     $('#' + txtLbl).html(pScore);
   }
@@ -350,14 +342,17 @@ function findXOfAKind(x) {
       last = diceSorted[i];
     }
   }
-  if(nMatches == x) return(true);
+  if(nMatches == x) {
+    return(true);
+  }
 }
 
+// There is definitely a better way to check these (tried loops but it counted duplicate matches)
 function findFullHouse(dS, uS) {
 if(uS == null) {
     if( ((dS[0] == dS[1]) && (dS[2] == dS[3]) && (dS[3] == dS[4])) ||
-      (  (dS[0] == dS[1]) && (dS[1] == dS[2]) && (dS[3] == dS[4])) ) {        
-    $("#txtScoreFullHouse").html(25);
+        ((dS[0] == dS[1]) && (dS[1] == dS[2]) && (dS[3] == dS[4])) ) {        
+        $("#txtScoreFullHouse").html(25);
     }
   }
 }
@@ -367,7 +362,7 @@ function findSmallStraight(dS, uS) {
     if( ((dS.includes(1)) && (dS.includes(2)) && (dS.includes(3)) && (dS.includes(4))) ||
         ((dS.includes(2)) && (dS.includes(3)) && (dS.includes(4)) && (dS.includes(5))) ||
         ((dS.includes(3)) && (dS.includes(4)) && (dS.includes(5)) && (dS.includes(6))) ) {
-      $("#txtScoreSmallStraight").html(30);
+        $("#txtScoreSmallStraight").html(30);
     }
   }
 }
@@ -420,7 +415,7 @@ function updateBonusGoalValue() {
   } else {
     bonusDifference = 0;
     $("#txtBonusGoal").css({
-      'color' : 'greenyellow',
+      'color' : 'cyan',
       'animation' : 'flashText 1.5s linear 3'
     }).html(bonusDifference);
   } 
@@ -430,21 +425,25 @@ function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
+// BUG: dice can be selected before rolling on 1st turn
+// It can be disabled but that also disables the roll keybind
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
-    // Set key name  and index (index is offset by -1 as it's an array)
+    // Set key name and index (index is offset by -1 as it's an array)
     if(bIsKeyboardEnabled) {
       let keyName = e.key;
       let keyIndex = e.key - 1;
       // Toggle held dice when keys [1] to [5] are pressed
       if(selectedDice[keyIndex]) {
         selectedDice[keyIndex] = false;
-        $("#currentDiceImg-" + keyName).removeClass("diceButtonSelected");
-        $("#currentDiceImg-" + keyName).addClass("diceButton");
+        $("#currentDiceImg-" + keyName)
+          .removeClass("diceButtonSelected")
+          .addClass("diceButton");
       } else {
         selectedDice[keyIndex] = true;
-        $("#currentDiceImg-" + keyName).removeClass("diceButton");
-        $("#currentDiceImg-" + keyName).addClass("diceButtonSelected");
+        $("#currentDiceImg-" + keyName)
+          .removeClass("diceButton")
+          .addClass("diceButtonSelected");
       }
       // Roll dice when [R] is pressed (needs more testing)
       if(keyName == "r") updateGameState();
@@ -459,23 +458,29 @@ function getKeyboardInput() {
 }
 
 function disableRollButton() {
-  $("#btnRoll").removeClass("enabledButton");
-  $("#btnRoll").addClass("disabledButton");
-  $("#btnRoll").prop("disabled", true);
+  $("#btnRoll")
+    .removeClass("enabledButton")
+    .addClass("disabledButton")
+    .prop("disabled", true);
 }
 
 function enableRollButton() {
-  $("#btnRoll").removeClass("disabledButton");
-  $("#btnRoll").addClass("enabledButton");
-  $("#btnRoll").prop("disabled", false);
+  $("#btnRoll")
+    .removeClass("disabledButton")
+    .addClass("enabledButton")
+    .prop("disabled", false);
 }
 
 function disableDiceButtons() {
-  $("[id^=currentDiceImg-]").removeClass("diceButton").addClass("diceButtonDisabled");
+  $("[id^=currentDiceImg-]")
+    .removeClass("diceButton")
+    .addClass("diceButtonDisabled");
 }
 
 function enableDiceButtons() {
-  $("[id^=currentDiceImg-]").removeClass("diceButtonDisabled").addClass("diceButton");
+  $("[id^=currentDiceImg-]")
+    .removeClass("diceButtonDisabled")
+    .addClass("diceButton");
 }
 
 function setRowSelectionState(rowList, rowState) {
@@ -484,20 +489,22 @@ function setRowSelectionState(rowList, rowState) {
   });
 }
 
-// If user score is higher than the stored record or it does not exist then set it
 // TODO: use a proper CSS-formatted toast message instead of alert
 function setScoreRecord() {
   let currentHighScore = localStorage.getItem("lsHighScore");
-  let gameOverMsg = `Game Over\n\nGrand Total: ${userScoreGrandTotal}`;
+  // Set local storage score if it does not exist
   if(!localStorage.lsHighScore) {
     localStorage.setItem("lsHighScore", userScoreGrandTotal);
-    alert(gameOverMsg);
+    $("#txtHighScore").html(userScoreGrandTotal);
   } else {
+    // Update high score and flash cell if new high score is reached
     if(userScoreGrandTotal > currentHighScore) {
       localStorage.setItem("lsHighScore", userScoreGrandTotal);
-      alert(`New High Score!\n\nGrand Total: ${userScoreGrandTotal}`);
-    } else {
-      alert(gameOverMsg);
+        $("#txtHighScore").css({
+          'color' : 'cyan',
+          'animation' : 'flashText 1.5s linear infinite'
+        }).html(userScoreGrandTotal);
+      $("#txtStatusHeader").html("NEW HIGH SCORE");
     }
   }
 }
