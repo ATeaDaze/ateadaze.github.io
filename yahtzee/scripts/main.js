@@ -85,18 +85,21 @@ $(document).ready(function() {
 
   // Hold or release dice when clicked
   $("[id^=currentDiceImg-]").click(function() {
+
     let activeDie = $(this).closest('td').index();
+
     if(selectedDice[activeDie]) {
       audioHold.play();
       selectedDice[activeDie] = false;
-      $(this).removeClass("diceButtonSelected");
-      $(this).addClass("diceButton");
+      $(this).removeClass("diceButtonSelected")
+        .addClass("diceButton");
     } else {
       audioUnhold.play();
       selectedDice[activeDie] = true;
-      $(this).removeClass("diceButton");
-      $(this).addClass("diceButtonSelected");
+      $(this).removeClass("diceButton")
+        .addClass("diceButtonSelected");
     }
+
   });
 
   // Select a score based on the row clicked
@@ -196,7 +199,7 @@ function updateGameState() {
   setRowSelectionState(rowListScoreSetAll, 'auto');
   setRowSelectionState(rowListScoreSetDisabled, 'none');
   rollDice();
-  updateBonusGoalValue();
+//  updateBonusGoalValue();
   // Update instructions for each roll
   if(nRollsLeft == 2) {
     statusBarMessage = "Roll again or select a score";
@@ -404,11 +407,11 @@ function updateTotalScores() {
   $("#txtGrandTotalUpper").html(userScoreUpperTotal);
   $("#txtGrandTotalLower").html(userScoreLowerTotal);
   $("#txtGrandTotalFinal").html(userScoreGrandTotal);
-  updateBonusGoalValue();
+//  updateBonusGoalValue();
 }
 
 // Update points needed for upper bonus
-function updateBonusGoalValue() {
+/*function updateBonusGoalValue() {
   if(userScoreUpperSubtotal < 63) {
     bonusDifference = (userScoreUpperSubtotal - 63) * -1 ;
     $("#txtBonusGoal").html(bonusDifference);
@@ -419,29 +422,33 @@ function updateBonusGoalValue() {
       'animation' : 'flashText 1.5s linear 3'
     }).html(bonusDifference);
   } 
-}
+}*/
 
 function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
 // BUG: dice can be selected before rolling on 1st turn
-// It can be disabled but that also disables the roll keybind
+// Audio disabled as this statement it still triggers if(r)
+// TODO: combine this with the JQuery selector: functio toggleDice()
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
     // Set key name and index (index is offset by -1 as it's an array)
     if(bIsKeyboardEnabled) {
       let keyName = e.key;
       let keyIndex = e.key - 1;
+      let cellID = "#currentDiceImg-" + keyName;
       // Toggle held dice when keys [1] to [5] are pressed
       if(selectedDice[keyIndex]) {
+//        audioHold.play();
         selectedDice[keyIndex] = false;
-        $("#currentDiceImg-" + keyName)
+        $(cellID)
           .removeClass("diceButtonSelected")
           .addClass("diceButton");
       } else {
+//        audioUnhold.play();
         selectedDice[keyIndex] = true;
-        $("#currentDiceImg-" + keyName)
+        $(cellID)
           .removeClass("diceButton")
           .addClass("diceButtonSelected");
       }
