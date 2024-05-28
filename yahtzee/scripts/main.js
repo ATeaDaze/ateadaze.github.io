@@ -1,17 +1,19 @@
-/* TODO: add new game button and track states, display high score from local storage (add name prompt?)
+/* TODO: add new game button and track states, add name prompt and cell for high score
+  - Clean up the score selection function (ugly case statement / activeRow and activeSet redundancies)
   - Add outline or something to make valid score rows stand out (outline/css filter)
-  - Add hold/unhold all dice keybind */
+  - Add a confirm button or some other means to scratch scores without mis-clicks
+  - Add hold/unhold all dice button and keybind */
 let currentDice =  [ 5, 5, 5, 5, 5 ];
 let selectedDice = [ false, false, false, false, false ];
-// Rows used only to calculate scores
-const rowListCalculation = [  rowUpperSubtotal, rowUpperBonus, rowUpperTotal, rowYahtzeeBonus,
+// Rows used *only* for score calculations (never selectable by user)
+const rowListCalculation = [ rowUpperSubtotal, rowUpperBonus, rowUpperTotal, rowYahtzeeBonus,
   rowLowerTotal, rowUpperGrandTotal, rowLowerGrandTotal, rowFinalGrandTotal ];
-// List of all rows to disable on start
+// List of all score rows (disabled on page load)
 const rowListScoreSetAll = [ rowAces, rowTwos, rowThrees, rowFours, rowFives, rowSixes,
   rowThreeOfAKind, rowFourOfAKind, rowFullHouse, rowSmallStraight, rowLargeStraight, rowYhatzee, rowChance ];
-// Running list of used rows to disable selection
+// Running list of used rows to disable user selection (empty by default)
 let rowListScoreSetDisabled = [];
-// Temporary scores to display
+// Display score previews shown after each roll
 let previewScoreAces = 0;
 let previewScoreTwos = 0;
 let previewScoreThrees = 0;
@@ -28,7 +30,7 @@ let previewScoreYahtzee = 0;
 let previewScoreChance = 0;
 let previewScoreYahtzeeBonus = 0;
 let previewScoreLowerTotal = 0;
-// Scores entered by player
+// Final scores entered by player when they select a row
 let userScoreAces = null;
 let userScoreTwos = null;
 let userScoreThrees = null;
@@ -54,10 +56,12 @@ let nRollsLeft = 3;
 let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
+// Status bar text to display instructions depending on game state
 let statusBarMessage = "Roll the dice to start playing";
 let bonusDifference;
+// Active set info used on row selection: has global scope (need to test this with limited scope)
 var activeSetName;
-var activeSetValue;
+// Audio objects for SFX
 const audioHold = new Audio("audio/dice_hold.ogg");
 const audioUnhold = new Audio("audio/dice_unhold.ogg");
 const audioThrowDice = new Audio("audio/throw_5_dice.ogg");
@@ -66,6 +70,7 @@ const audioYahtzee = new Audio("audio/yahtzee.ogg");
 const audioYahtzeeBonus = new Audio("audio/yahtzee_applause.ogg");
 const audioUpperBonus = new Audio("audio/bonus_upper.ogg");
 
+// Wait for document to load, update number of turns left, and check for keyboard input
 $(document).ready(function() {
   updateTurns();
   getKeyboardInput();
@@ -74,38 +79,38 @@ $(document).ready(function() {
   setRowSelectionState(rowListCalculation, 'none');
   disableDiceButtons();
   $("#txtStatusHeader").html(statusBarMessage);
+
+  // Display the all-time high score if it exists in local storage
   if(localStorage.lsHighScore) {
     $("#txtHighScore").html(localStorage.lsHighScore);
   }
 
-  // START: main gameplay loop
+  // START: main gameplay loop triggered by [Roll Dice] button
   $("#btnRoll").click(function() {
     updateGameState();
   });
 
-  // Hold or release dice when clicked
+  // Hold or release dice when clicked and update style
   $("[id^=currentDiceImg-]").click(function() {
-
     let activeDie = $(this).closest('td').index();
-
     if(selectedDice[activeDie]) {
       audioHold.play();
       selectedDice[activeDie] = false;
-      $(this).removeClass("diceButtonSelected")
+      $(this)
+        .removeClass("diceButtonSelected")
         .addClass("diceButton");
     } else {
       audioUnhold.play();
       selectedDice[activeDie] = true;
-      $(this).removeClass("diceButton")
+      $(this)
+        .removeClass("diceButton")
         .addClass("diceButtonSelected");
     }
-
   });
 
-  // Select a score based on the row clicked
-  // TODO: there is definitely a better to do this, add a confirm box or use 'dblclick'
-  $("[id^=row]").on("click", function() {
-    // Enable calculation rows
+  // Select a score based on the row clicked by the player
+  $("[id^=row]").on("dblclick doubletap", function() {
+    // Enable calculation rows so they can be updated
     setRowSelectionState(rowListCalculation, 'auto');
     // Get IDs of row and cell clicked by player
     let activeRow = $(this).closest('tr');
@@ -114,6 +119,7 @@ $(document).ready(function() {
     let previewRowTxt = $(activeCell).text();
     previewRowTxt = parseInt(previewRowTxt);
     activeSetName = activeRowID.replace("row", "userScore");
+    // There is definitely a more elegant solution to... this
     switch(activeSetName) {
       case "userScoreAces":
         userScoreAces = previewRowTxt;
@@ -169,6 +175,7 @@ $(document).ready(function() {
         break;
       default:
         // How did I end up here?
+        console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
         break;
     }
     // Update table if a score is submitted
@@ -177,10 +184,11 @@ $(document).ready(function() {
       $(activeRow).addClass("usedRow");
       // Add row to running list so it can't be clicked on subsequent turns
       rowListScoreSetDisabled.push(activeRow);
-      // Disable calculation and score rows
+      // Disable calculation and score rows after updating them
       setRowSelectionState(rowListCalculation, 'none');
       setRowSelectionState(rowListScoreSetAll, 'none');
       $("#txtStatusHeader").html("Roll again to start a new turn");
+      // Disable roll button and all dice after turn
       bIsKeyboardEnabled = false;
       disableDiceButtons();
       // Unselect all dice
@@ -190,16 +198,16 @@ $(document).ready(function() {
     nTurnsTaken++;
     startNewTurn();
   });
+
 });
 
 function updateGameState() {
   bIsKeyboardEnabled = true;
   enableDiceButtons();
-  // Enable all score rows and disable used rows
+  // Enable all score rows and disable *only* used rows
   setRowSelectionState(rowListScoreSetAll, 'auto');
   setRowSelectionState(rowListScoreSetDisabled, 'none');
   rollDice();
-//  updateBonusGoalValue();
   // Update instructions for each roll
   if(nRollsLeft == 2) {
     statusBarMessage = "Roll again or select a score";
@@ -225,8 +233,7 @@ function rollDice() {
       $("#currentDiceImg-" + j).attr("src","images/dice-" + currentDice[i] + ".png");
     }
   }
-  // TODO: find a cleaner way to check these values
-  // Set lower score values to 0 for consistency with upper scores
+  // Set lower score values to 0 for consistency with upper scores, TODO: find a cleaner way to check these values
   if(userScoreThreeOfAKind == null) $("#txtScoreThreeOfAKind").html(0);
   if(userScoreFourOfAKind == null) $("#txtScoreFourOfAKind").html(0);
   if(userScoreFullHouse == null) $("#txtScoreFullHouse").html(0);
@@ -259,10 +266,16 @@ function startNewTurn() {
 }
 
 function updateScorePreviews() {
+  // Sort dice numerically for simpler comparisons
   let diceSorted = [...currentDice].sort();
   // UPPER SECTION
-  findAllUpperScores();
-  // LOWER SECTION
+  findSumOfEqualValueDice(previewScoreAces, userScoreAces, 1, txtScoreAces);
+  findSumOfEqualValueDice(previewScoreTwos, userScoreTwos, 2, txtScoreTwos);
+  findSumOfEqualValueDice(previewScoreThrees, userScoreThrees, 3, txtScoreThrees);
+  findSumOfEqualValueDice(previewScoreFours, userScoreFours, 4, txtScoreFours);
+  findSumOfEqualValueDice(previewScoreFives, userScoreFives, 5, txtScoreFives);
+  findSumOfEqualValueDice(previewScoreSixes, userScoreSixes, 6, txtScoreSixes);
+  // LOWER SECTION, TODO: combine findXOfAkind(x) and userScoreX == null
   if(findXOfAKind(3)) {
     if(userScoreThreeOfAKind == null) {
       findSumOfAllDice(previewScoreThreeOfAKind, userScoreThreeOfAKind, txtScoreThreeOfAKind);
@@ -299,15 +312,6 @@ function updateScorePreviews() {
     findFullHouse(diceSorted, userScoreFullHouse);
   }
   findSumOfAllDice(previewScoreChance, userScoreChance, txtScoreChance);
-}
-
-function findAllUpperScores() {
-  findSumOfEqualValueDice(previewScoreAces, userScoreAces, 1, txtScoreAces);
-  findSumOfEqualValueDice(previewScoreTwos, userScoreTwos, 2, txtScoreTwos);
-  findSumOfEqualValueDice(previewScoreThrees, userScoreThrees, 3, txtScoreThrees);
-  findSumOfEqualValueDice(previewScoreFours, userScoreFours, 4, txtScoreFours);
-  findSumOfEqualValueDice(previewScoreFives, userScoreFives, 5, txtScoreFives);
-  findSumOfEqualValueDice(previewScoreSixes, userScoreSixes, 6, txtScoreSixes);
 }
 
 function findSumOfEqualValueDice(pScore, uScore, bValue, txtLbl) {
@@ -397,7 +401,7 @@ function updateTotalScores() {
   userScoreLowerTotal = userScoreThreeOfAKind + userScoreFourOfAKind + userScoreFullHouse
                       + userScoreSmallStraight + userScoreLargeStraight + userScoreYahtzee + userScoreChance;
   $("#txtScoreLowerTotal").html(userScoreLowerTotal);
-  // Lower Bonus
+  // Yahtzee bonus(es)
   if((nYahtzeeScores > 1) && (userScoreYahtzee > 0)) {
     userScoreYahtzeeBonus = (nYahtzeeScores - 1) * 100;
   }
@@ -407,30 +411,13 @@ function updateTotalScores() {
   $("#txtGrandTotalUpper").html(userScoreUpperTotal);
   $("#txtGrandTotalLower").html(userScoreLowerTotal);
   $("#txtGrandTotalFinal").html(userScoreGrandTotal);
-//  updateBonusGoalValue();
 }
-
-// Update points needed for upper bonus
-/*function updateBonusGoalValue() {
-  if(userScoreUpperSubtotal < 63) {
-    bonusDifference = (userScoreUpperSubtotal - 63) * -1 ;
-    $("#txtBonusGoal").html(bonusDifference);
-  } else {
-    bonusDifference = 0;
-    $("#txtBonusGoal").css({
-      'color' : 'cyan',
-      'animation' : 'flashText 1.5s linear 3'
-    }).html(bonusDifference);
-  } 
-}*/
 
 function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
 }
 
-// BUG: dice can be selected before rolling on 1st turn
-// Audio disabled as this statement it still triggers if(r)
-// TODO: combine this with the JQuery selector: functio toggleDice()
+// BUG: dice can be selected before rolling on 1st turn, TODO: combine this with the JQuery selector
 function getKeyboardInput() {
   document.addEventListener('keypress', e => {
     // Set key name and index (index is offset by -1 as it's an array)
@@ -440,13 +427,11 @@ function getKeyboardInput() {
       let cellID = "#currentDiceImg-" + keyName;
       // Toggle held dice when keys [1] to [5] are pressed
       if(selectedDice[keyIndex]) {
-//        audioHold.play();
         selectedDice[keyIndex] = false;
         $(cellID)
           .removeClass("diceButtonSelected")
           .addClass("diceButton");
       } else {
-//        audioUnhold.play();
         selectedDice[keyIndex] = true;
         $(cellID)
           .removeClass("diceButton")
@@ -496,7 +481,7 @@ function setRowSelectionState(rowList, rowState) {
   });
 }
 
-// TODO: use a proper CSS-formatted toast message instead of alert
+// TODO: add player name prompt, use a proper CSS-formatted toast message instead of alert
 function setScoreRecord() {
   let currentHighScore = localStorage.getItem("lsHighScore");
   // Set local storage score if it does not exist
