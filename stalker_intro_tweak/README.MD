@@ -1,4 +1,4 @@
-# S.T.A.L.K.E.R. Shadow of Chernobyl - Intro Tweak
+# S.T.A.L.K.E.R. Shadow of Chernobyl Intro Tweak
 
 ## This file replaces the company logo intro movies with the opening cutscene
 
