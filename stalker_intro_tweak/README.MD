@@ -35,7 +35,7 @@
 
 `gamedata\config\ui\ui_movies.xml` and `gamedata\textures\intro\blank_screen.dds`
 
-(Copying the `gamedata` folder directly from the ZIP file to your STALKER folder ensures the folder structure is correct)
+Copying the `gamedata` folder directly from the ZIP file to your STALKER folder ensures the folder structure is correct
 
 **Note:** check the names of the files if you get overwrite confirmation requests
 - If you get a message asking you to **merge folders** select `[Yes]`
