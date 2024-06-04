@@ -1,12 +1,14 @@
-# S.T.A.L.K.E.R. Shadow of Chernobyl Intro Tweak
+# S.T.A.L.K.E.R. Shadow of Chernobyl - Remove Intro Videos
 
-## This file replaces the company logo intro movies with the opening cutscene
+## This file removes the intro videos but allows the cutscenes to play
 
-The rest of the game's cutscenes will play normally as I did not edit anything below the intro
+* **Company intro videos are skipped:** THQ, GSC, and ASUS (NVIDIA video is already disabled by default)
+* **Intro video plays normally:** the famous intro with the death truck and Savior bringing you to Cordon
+* **Remaining cutscenes play:** I did not edit anything below the intro section
 
 # Instructions
 
-## Download: [stalker_intro_tweak-release.zip](https://github.com/ATeaDaze/ateadaze.github.io/raw/main/stalker_intro_tweak/stalker_intro_tweak-release.zip)
+## [Download the mod](https://github.com/ATeaDaze/ateadaze.github.io/raw/main/stalker_intro_tweak/stalker_no_intro_movies.zip) (ZIP archive)
 
 ## Verify you have mod support enabled (gamedata)
 
@@ -14,7 +16,7 @@ The rest of the game's cutscenes will play normally as I did not edit anything b
 
 - Open the root directory of your STALKER installation. Example: `D:\Games\Steam\steamapps\common\STALKER Shadow of Chernobyl`
 
-**Optional:** make a backup copy of `fsgame.ltx` and the `gamedata` folder so you can easily revert the changes, if needed
+(**Optional**) make a backup copy of `fsgame.ltx` and the `gamedata` folder so you can easily revert the changes, if needed
 
 1. Open `fsgame.ltx` in a text editor (Notepad or any plaintext editor)
 2. Find the `$game_data$` entry (it was line 2 on my computer)
@@ -22,23 +24,30 @@ The rest of the game's cutscenes will play normally as I did not edit anything b
 4. Then simply replace `false` with `true` and save the file
 5. It should look like this after you update it: `$game_data$      = true| true| $fs_root$|    gamedata\`
 
-> **Note:** you don't need to edit anything if it's already set up like step 5
+> **Note:** you don't need to edit anything if it's already set up like I've shown in step 5
 
 
 ## Installation
 
 ### 1. Extract the `gamedata` folder from the archive and copy it to your STALKER directory
 
-- It has to be copied with the folder structure from the archive: `gamedata\config\ui\ui_movies.xml`
+- It has to be copied with the folder structure from the archive:
 
-**Warning:** If you see a confirmation message like "Are you sure you want to overwrite ui_movies.xml?" then another mod has already edited your movie configuration
+`gamedata\config\ui\ui_movies.xml` and `gamedata\textures\intro\blank_screen.dds`
 
-- I do NOT recommend overwriting the file as the existing mod edits are almost certainly more important than this minor tweak
-- However, if it *only asks you to overwrite the folders* (`gamedata`, `config`, and `ui`) but **not** `ui_movies.xml` then you can safely confirm the overwrite
+(Copying the `gamedata` folder directly from the ZIP file to your STALKER folder ensures the folder structure is correct)
+
+**Note:** check the names of the files if you get overwrite confirmation requests
+- If you get a message asking you to **merge folders** select `[Yes]`
+- Use caution if it asks you to overwrite `ui_movies.xml`
+
+If `ui_movies.xml` exists then it's possible you have another mod that edits it. You can overwrite the file but it could break mods that modify cutscenes or videos
+
+- If it *only asks you to merge the folders* but **not** `ui_movies.xml` then you can safely confirm the overwrite (`gamedata`, `config`,  `ui`, `textures`, and `intro`)
 
 ### 2. Run the game to verify it's working properly
 
-If it doesn't work then copy the backup files to their original location. Feel free to report any issues or ask questions
+If it doesn't work then copy the backup files to their original location
 
 -----
 
@@ -46,26 +55,19 @@ If it doesn't work then copy the backup files to their original location. Feel f
 
 It may not look identical but the `$game_data$` line should be the same
 
-### If you want to edit ui_movies.xml manually then you can [view the raw file here](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/stalker_intro_tweak/raw_files/ui_movies.xml)
+### If you want to edit the XML file manually then you can [view the raw file here](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/stalker_intro_tweak/raw_files/ui_movies.xml)
 
 -----
 
 ## Additional Information
 
-**Question:** Can't you just use `-nointro` as a launch parameter?
-
+**Question:** Can't you just use `-nointro` as a launch parameter?<br>
 **Answer:** Yes, but that also disables the intro cutscene. I like the "death truck" video that plays before you meet Sidorovich as it sets the tone for the game
 
-**Closing Thoughts:**
-- This is a quick and dirty edit I made out of frustration
-- There were no solutions available online (surprisingly)
-- I am looking into replacing the intro movie with a blank (or very short) video file
-- I tried to simply remove all the intro video references but it crashes without *at least 1* valid entry
-- This is *slightly* redundant as the cutscene will play one more time on a new save file (it's not elegant but it works)
+Let me know if you have any issues, questions, or suggestsions
 
-> Generally, it's much easier to skip intro movies in games by replacing files or editing an INI file
+## Alternate version: this one replaces the logos with the "death truck" intro
 
-> STALKER seems to handle intro movies differently than a lot of games I've modified
+### [Download ZIP](https://github.com/ATeaDaze/ateadaze.github.io/raw/main/stalker_intro_tweak/stalker_intro_tweak-release.zip): the installation instructions are identical but it only has 1 `gamedata` folder and 1 file
 
-> For example, you can simply replace the videos with empty files of the same name in Grand Theft Auto 3D-era games and most Bethesda games
-
+> This mod is a quick and dirty tweak. I simply commented-out all of the introduction videos. Then, I added a new entry to display a blank/black texture for 0 seconds
