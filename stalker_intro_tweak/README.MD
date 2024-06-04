@@ -40,7 +40,7 @@ If it doesn't work then copy the backup files to their original location. Feel f
 
 -----
 
-### You can [view my fsgame.ltx file](https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/main/stalker_intro_tweak/raw_files/fsgame.ltx) as a reference
+### You can [view my fsgame.ltx file](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/stalker_intro_tweak/raw_files/fsgame.ltx) as a reference
 
 It may not look identical but the `$game_data$` line should be the same
 
