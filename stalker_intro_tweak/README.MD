@@ -10,7 +10,7 @@ The rest of the game's cutscenes will play normally as I did not edit anything b
 
 ## Verify you have mod support enabled (gamedata)
 
-> *You can skip to the Installation section if you're **100% certain** you've already done this*
+> *You can skip to the [Installation section](#installation) if you're **100% certain** you've already done this*
 
 - Open the root directory of your STALKER installation. Example: `D:\Games\Steam\steamapps\common\STALKER Shadow of Chernobyl`
 
