@@ -4,7 +4,7 @@
 
 The rest of the game's cutscenes will play normally as I did not edit anything below the intro
 
-## [Click here to download the archive](https://raw.github.com/ATeaDaze/ateadaze.github.io/blob/main/stalker_intro_tweak/stalker_intro_tweak-release.zip)
+## [Click here to download the archive](https://github.com/ATeaDaze/ateadaze.github.io/raw/main/stalker_intro_tweak/stalker_intro_tweak-release.zip)
 
 ## Verify you have mod support enabled (gamedata)
 
