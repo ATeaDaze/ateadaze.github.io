@@ -7,13 +7,16 @@
 		</global_wnd>
 		<play_each_item>1</play_each_item>
 
-		<!-- Play intro cutscene instead of showing logos -->
-		<item type="video">
-			<sound>characters_voice\scenario\video\intro_stalker</sound>
+<!-- "Display" a black texture for 0s -->
+		<item type="image">
+			<length_sec>0</length_sec>
 			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\intro_stalker</texture>
-			</video_wnd>
+			<main_wnd>
+				<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+					<window_name>w1</window_name>
+					<texture>intro\blank_screen</texture>
+				</auto_static>
+			</main_wnd>
 		</item>
 
 <!-- Disable THQ Logo
@@ -70,7 +73,7 @@
 
 	</intro_logo>
 
-	<!-- Intro cutscene still plays on new game -->
+	<!-- Intro cutscene plays on new game -->
 	<intro_game>
 		<play_each_item>1</play_each_item>
 		<global_wnd x="0" y="0" width="1024" height="768">
@@ -80,7 +83,6 @@
 			</auto_static>
 		</global_wnd>
 
-		<!-- Everything else is unchanged from default values -->
 		<item type="video">
 			<sound>characters_voice\scenario\video\intro_stalker</sound>
 			<pause_state>on</pause_state>
