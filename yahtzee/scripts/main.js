@@ -109,7 +109,7 @@ $(document).ready(function() {
   });
 
   // Select a score based on the row clicked by the player
-  $("[id^=row]").on("dblclick doubletap", function() {
+  $("[id^=row]").on("click", function() {
     // Enable calculation rows so they can be updated
     setRowSelectionState(rowListCalculation, 'auto');
     // Get IDs of row and cell clicked by player
