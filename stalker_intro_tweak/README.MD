@@ -1,6 +1,6 @@
 # S.T.A.L.K.E.R. Shadow of Chernobyl - Remove Intro Videos
 
-## This file removes the intro videos but allows the intro to play (even on new save files)
+## This file removes the intro videos but keeps the opening cutscene (even on new saves)
 
 * **Company intro videos are skipped:** THQ, GSC, ASUS, and NVIDIA videos
 * **Intro video plays normally:** the famous intro with the death truck and Savior bringing you to Cordon
