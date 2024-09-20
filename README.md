@@ -1,3 +1,15 @@
+# 🎲 Yahtzee
+
+### The classic dice game written in JavaScript and jQuery
+
+## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
+![yahtzee_banner](/yahtzee/images/yahtzee-screenshot.png)
+
+* **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/README.md)**
+* **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/scripts/main.js)**
+
+-----
+
 # 🃏 Basic Blackjack
 
 ### A simple blackjack app written in (mostly) native JavaScript. Uses some jQuery for cleaner syntax. No additional libraries or anything fancy
@@ -23,7 +35,7 @@
 
 -----
 
-# 🎲 Rainbow Noise
+# 🌈 Rainbow Noise
 
 ### A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 
