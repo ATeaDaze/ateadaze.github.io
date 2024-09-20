@@ -13,12 +13,14 @@
 
 ## Keyboard Map (desktop)
 
-&nbsp;|Description|&nbsp;|Bet Amount
----|:--|---|:--
-|**` S `** |**Stand:** stop drawing cards and let the dealer play|**` 1 `** |$25
-|**` H `** |**Hit:** draw 1 more card|**` 2 `** |$50
-|**` D `** |**Double down:** double bet, draw 1 card, and stand|**` 3 `** |$100
-|**` N `** |**New hand:** deal a new hand|**` 4 `** |$200
+&nbsp;|Description
+---|:--
+|**` R `** |**Roll:** roll dice
+|**` 1 `** |Hold die 1
+|**` 2 `** |...
+|**` 3 `** |...
+|**` 4 `** |...
+|**` 5 `** |Hold die 5
 
 ### Key:
 * [TEST] = Added, needs more testing
