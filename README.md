@@ -1,8 +1,8 @@
-# 🎲 Yahtzee: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/yahtzee)
+# 🎲 Yahtzee
 
 ### The classic dice game written in JavaScript and jQuery
 
-## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
+# 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
 <picture>
 <img src="/yahtzee/images/yahtzee-screenshot-cropped.png" title="yahtzee screenshot">
 </picture>
@@ -12,11 +12,11 @@
 
 -----
 
-# 🃏 Basic Blackjack: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/basic_blackjack)
+# 🃏 Basic Blackjack
 
 ### A simple blackjack app written in (mostly) native JavaScript. Uses some jQuery for cleaner syntax. No additional libraries or anything fancy
 
-## 💻 [Desktop](https://ateadaze.github.io/blackjack) | 📱 [Mobile](https://ateadaze.github.io/blackjack/m)
+# 💻 [Desktop](https://ateadaze.github.io/blackjack) | 📱 [Mobile](https://ateadaze.github.io/blackjack/m)
 ![blackjack_banner](/blackjack/images/blackjack_banner.png)
 
 * **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
@@ -24,11 +24,11 @@
 
 -----
 
-# 🔳 Emoji Table: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/emoji_table)
+# 🔳 Emoji Table
 
 ### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
-## 💻 [Desktop / Mobile](https://ateadaze.github.io/emoji_table/)  📱 (landscape mode _highly_ recommended for mobile)
+## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/emoji_table/)  (landscape mode _highly_ recommended for mobile)
 
 ![emoji_table-repo_banner](/images/emoji_table-header.png)
 
