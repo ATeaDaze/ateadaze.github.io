@@ -1,4 +1,4 @@
-# 🎲 Yahtzee
+# 🎲 Yahtzee: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/yahtzee)
 
 ### The classic dice game written in JavaScript and jQuery
 
@@ -12,7 +12,7 @@
 
 -----
 
-# 🃏 Basic Blackjack
+# 🃏 Basic Blackjack: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/basic_blackjack)
 
 ### A simple blackjack app written in (mostly) native JavaScript. Uses some jQuery for cleaner syntax. No additional libraries or anything fancy
 
@@ -24,7 +24,7 @@
 
 -----
 
-# 🔳 Emoji Table
+# 🔳 Emoji Table: [GitHub Page](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/emoji_table)
 
 ### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
 
