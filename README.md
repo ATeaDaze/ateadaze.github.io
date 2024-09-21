@@ -3,7 +3,9 @@
 ### The classic dice game written in JavaScript and jQuery
 
 ## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
-![yahtzee_banner](/yahtzee/images/yahtzee-screenshot.png)
+<picture>
+<img src="/yahtzee/images/yahtzee-screenshot-cropped.png" title="yahtzee screenshot">
+</picture>
 
 * **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/README.md)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/scripts/main.js)**
