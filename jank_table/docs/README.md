@@ -112,7 +112,7 @@ let displayCoordsArray = "[" + nCols + "][" + nRows + "]" // [0][0]:[9][9]
 * [ ] Test with a static variable 1st (maybe use an object to store properties)
 * [ ] Clean up variable names
   * [ ] **JavaScript:** [main.js](../scripts/main.js)
-  * [ ] **StyleSheet:** [table_template.css](../styles/table_template.css)
+  * [ ] **StyleSheet:** [jank_table.css](../styles/jank_table.css)
   * [ ] **HTML:** [index.html](../index.html)
 
 Example Format and Range:
