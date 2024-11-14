@@ -1,6 +1,6 @@
 # JaNK&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io/blob/main/jank_table/README.md"><img src="images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
 ## Visualize a 2-dimensional array with a table
-# 🖥️[Desktop](https://ateadaze.github.io/blob/main/jank_table/README.md)
+# 🖥️[Desktop](https://ateadaze.github.io/jank_table)
 
 ## `main.js`
 
