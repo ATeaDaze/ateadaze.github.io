@@ -1,4 +1,4 @@
-# JaNK&nbsp;<a href="https://ateadaze.github.io/jank_table/"><img src="../images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
+# JaNK&nbsp;<a href="https://ateadaze.github.io/jank_table/"><img src="images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
 ## Visualize a 2-dimensional array with a table
 
 ## `main.js`
