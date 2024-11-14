@@ -61,9 +61,9 @@ let displayCoordsArray = "[" + nCols + "][" + nRows + "]" // [0][0]:[9][9]
 
 ## `main.js`&nbsp;&gt;&nbsp;`drawTable(maxLen)`&nbsp;&gt;&nbsp;Longer Strings
 
-|Name|Value / Format|Description|Type|
-|--:|---|---|---|
-|`displayCoordsArray`| `"[" + nCols + "][" + nRows + "]"`|Current display coordinates (ex: `[i][j]`)|String|
+|Name|Value / Format|Type|
+|--:|---|---|
+|`displayCoordsArray`| `"[" + nCols + "][" + nRows + "]"` (ex: `[i][j]`)|String|
 
 ## HTML&nbsp;&gt;&nbsp;Elements and IDs
 
