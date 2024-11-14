@@ -1,0 +1,121 @@
+body {
+  background-color: #000000;
+  color: #dddddd;
+  font-size: 12pt;
+  font-family: sans-serif;
+}
+
+tr {
+  border: 1px solid #c0c0c0;
+}
+
+th {
+  font-size: 16pt;
+  font-family: monospace;
+}
+
+#mainTable td {
+  color: #aaaaaa;
+  border: 1px solid #333333;
+  background-color: #222222;
+  text-align: center;
+  padding: 3px;
+  cursor: pointer;
+  width: 5svw;
+}
+
+#mainTable td:hover {
+  font-weight: bold;
+  border-color: cyan;
+}
+
+#mainTable tr:hover {
+  color: #ffffff;
+  filter: brightness(1.2);
+}
+
+#footnote {
+  font-family: monospace;
+  font-size: 14pt;
+/*  cursor: help; */
+}
+
+input {
+  border: 1px solid #c0c0c0;
+}
+
+hr {
+  color: #222222;
+}
+
+.mainHeader {
+  font-size: 3em;
+  font-weight: bold;
+  color: #c0c0c0;
+}
+
+.mainLogo {
+  width: 48px;
+  cursor: help;
+}
+
+.mtStyle {
+  font-size: 14pt;
+  font-family: monospace;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50svh;
+}
+
+.debugStyle, #debugTable {
+  font-size: 14pt;
+  font-family: monospace;
+  width: 35svw;
+  color: dodgerblue;
+  padding: 7px;
+  text-align: center;
+/*  cursor: help; */
+}
+
+.debugCellLead {
+  width: 50%;
+  text-align: right;
+  padding-right: 10px;
+  background-color: #121212;
+  color: #aaaaaa;
+  font-weight: bold;
+}
+
+.debugCellValue {
+  text-align: left;
+  padding-left: 10px;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+#colorKeyHeader {
+  background-color: #333333;
+  color: orchid;
+  font-weight: bold;
+}
+
+#colorKeyDiagonal {
+  background-color: #121212;
+  color: chartreuse;
+  font-weight: bold;
+}
+
+#colorKeyDefault {
+  background-color: #222222;
+  color: #aaaaaa;
+}
+
+#colorKeyHeader, #colorKeyDiagonal, #colorKeyDefault {
+  width: 33%;
+  height: 1.5em;
+}

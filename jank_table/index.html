@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JaNK TaBLe</title>
+  <link href="styles/table_template.css" rel="stylesheet">
+  <link href="images/logo-512.png" rel="shortcut icon" type="image/x-icon">
+  <script src="scripts/jquery-3.7.0.min.js"></script>
+  <script src="scripts/main.js"></script>
+</head>
+<body>
+<center>
+
+<!-- Main Title and Logo -->
+<span class="mainHeader">JaNK&nbsp;<a href="docs/readme.html"><img src="images/logo-512.png" class="mainLogo" title="Help"></a>&nbsp;TaBLe</span>
+
+<!-- Debug Table (hidden) -->
+<!--<span class="hidden">-->
+<table id="debugTable">
+  <tr>
+    <th colspan="4">Technical Details</th>
+  </tr>
+  <tr>
+    <td class="debugCellLead">Cell ID</td>
+    <td class="debugCellValue" id="debugCellID"><i>undefined</i></td>
+  </tr>
+  <tr>
+    <td class="debugCellLead">Array Index</td>
+    <td class="debugCellValue" id="debugIJ"><i>undefined</i></td>
+  </tr>
+  <tr>
+    <td class="debugCellLead">Table Size (nCells)</td>
+    <td class="debugCellValue" id="debugLength"></td>
+  </tr>
+  <tr>
+    <td class="debugCellLead">Range[i][j]</td>
+    <td class="debugCellValue" id="debugRange"></td>
+  </tr>
+</table>
+<!--</span>-->
+
+<!-- Color Key / Legend -->
+<table class="debugStyle" width="70svw">
+  <tr>
+    <th colspan="3">Color Key</th>
+  </tr>
+  <tr>
+    <td id="colorKeyHeader">i or j == 0</td>
+    <td id="colorKeyDiagonal">i == j</td>
+    <td id="colorKeyDefault">default</td>
+  </tr>
+</table><br>
+
+<!-- Main Table Header (placed in a table to reduce excess vertical spacing)
+     TODO: fix that vertical spacing with CSS, genius -->
+<table>
+  <tr>
+    <th>Array Layout: [i][j]</th>
+  </tr>
+</table>
+
+<!-- Main Table (empty by default) -->
+<table id="mainTable" class="mtStyle">
+  <tbody>
+    <!-- Table populated by jQuery functions
+         TODO: store table cell information in new variable(s) -->
+  </tbody>
+</table><br>
+
+<span class="footnote" id="debugFootnote">
+  Hover over a table cell to view <i>undefined</i> values
+</span>
+
+</center>
+</body>
+</html>

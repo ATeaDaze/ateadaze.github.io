@@ -46,18 +46,18 @@
           <td id="txtScoreSixes"></td>
         </tr>
         <tr id="rowUpperSubtotal">
-          <td class="leadRow">Total</td>
+          <td class="leadRow">SCORE</td>
           <td id="txtScoreUpperSubtotal"></td>
         </tr>
       </table><hr class="hidden">
       <!-- Upper total and bonus -->
       <table class="subTotalTable">      
           <tr id="rowUpperBonus" title="+35 points if total > 62">
-          <td class="leadRow">Bonus</td>
+          <td class="leadRow">Upper Bonus</td>
           <td id="txtScoreUpperBonus"></td>
         </tr>
           <tr id="rowUpperTotal">
-          <td class="leadRow">Upper Total</td>
+          <td class="leadRow">TOTAL</td>
           <td id="txtScoreUpperTotal"></td>
         </tr>
       </table>
@@ -104,7 +104,7 @@
           <td id="txtScoreYahtzeeBonus"></td>
         </tr>
           <tr id="rowLowerTotal">
-          <td class="leadRow">Lower Total</td>
+          <td class="leadRow">TOTAL</td>
           <td id="txtScoreLowerTotal"></td>
         </tr>
       </table>
@@ -121,15 +121,15 @@
           <th colspan="2">OVERALL SCORE</th>
         </tr>
         <tr id="rowUpperGrandTotal">
-          <td>Upper Section</td>
+          <td class="leadRow">UPPER SECTION</td>
           <td id="txtGrandTotalUpper"></td>
         </tr>
         <tr id="rowLowerGrandTotal">
-          <td>Lower Section</td>
+          <td class="leadRow">LOWER SECTION</td>
           <td id="txtGrandTotalLower"></td>
         </tr>
         <tr id="rowFinalGrandTotal">
-          <td>Grand Total</td>
+          <td class="leadRow">GRAND TOTAL</td>
           <td id="txtGrandTotalFinal"></td>
         </tr>
       </table>
@@ -165,13 +165,9 @@
   <tr>
     <th colspan="2" id="txtStatusHeader"></th>
   </tr>
-<!--  <tr>
-    <td id="txtBonusGoalLead">Points needed for upper bonus (+35)</td>
-    <td id="txtBonusGoal">63</td>
-  </tr> -->
   <tr>
     <td id="txtHighScoreLead">High Score</td>
-    <td id="txtHighScore">0</td>
+    <td id="txtHighScore" title="Click to reset high score">0</td>
   </tr>
 </table>
 
@@ -191,6 +187,7 @@
 <audio src="audio/yahtzee.ogg" class="invisible"></audio>
 <audio src="audio/yahtzee_applause.ogg" class="invisible"></audio>
 <audio src="audio/bonus_upper.ogg" class="invisible"></audio>
+<audio src="audio/new_highscore.ogg" class="invisible"></audio>
 
 </center>
 
