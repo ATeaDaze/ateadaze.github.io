@@ -1,3 +1,5 @@
+# TODO: add a landing page for `ateadaze.github.io/*`
+
 # 🎲 Yahtzee
 
 ### The classic dice game written in JavaScript and jQuery
