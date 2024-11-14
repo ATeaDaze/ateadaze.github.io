@@ -17,7 +17,7 @@ $(document).ready(function() {
   $("#debugLength").html(msgDebugLength);
   $("#debugRange").html(msgDebugRange);
   // Draw table with given length
-  drawWordTable(maxLengthTable);
+  drawTable(maxLengthTable);
     // Parse cell IDs on mouseover
     $("[id^=cell-]").on("mousemove", function() {
       let activeRowID = this.id;
@@ -37,7 +37,7 @@ $(document).ready(function() {
 });
 
 // Draw table (size = maxLen*maxLen)
-function drawWordTable(maxLen) {
+function drawTable(maxLen) {
   let nRows = 0;
   while(nRows < maxLen) {
     let row = $("<tr></tr>");

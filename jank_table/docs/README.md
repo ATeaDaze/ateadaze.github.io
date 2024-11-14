@@ -20,7 +20,7 @@ let activeRowID = this.id;
 let displayCoordsComma = "i=" + activeI + ", j=" + activeJ;
 
 // ...
-// LINE 40: function drawWordTable(maxLen) {
+// LINE 40: function drawTable(maxLen) {
 let nRows = 0; // Number of rows in table
 // ...
 let nCols = nRows;
@@ -48,7 +48,7 @@ let displayCoordsArray = "[" + nCols + "][" + nRows + "]" // [0][0]:[9][9]
 |`msgDebugLength`|`maxLengthTable + "x" + maxLengthTable + " (" + nTotalCells + ")";`|Debug length format|
 |`displayCoordsComma`|`"i=" + activeI + ", j=" + activeJ;` (ex: `i=0, j=0`)|Mouse Coordinates|
 
-## `main.js`&nbsp;&gt;&nbsp;`drawWordTable(maxLen)`
+## `main.js`&nbsp;&gt;&nbsp;`drawTable(maxLen)`
 
 |Name|Value|Description|Type|
 |--:|---|---|---|
@@ -59,7 +59,7 @@ let displayCoordsArray = "[" + nCols + "][" + nRows + "]" // [0][0]:[9][9]
 |`row`|<i>undefined</i>|Create a new row|`<tr>`
 |`cell`|ID=`cell-i_j`|Create a new cell|`<td>`|
 
-## `main.js`&nbsp;&gt;&nbsp;`drawWordTable(maxLen)`&nbsp;&gt;&nbsp;Longer Strings
+## `main.js`&nbsp;&gt;&nbsp;`drawTable(maxLen)`&nbsp;&gt;&nbsp;Longer Strings
 
 |Name|Value / Format|Description|Type|
 |--:|---|---|---|
