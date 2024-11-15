@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧮 Dynamic Table</title>
+  <link href="styles/table_template.css" rel="stylesheet">
+<!--  <link href="images/yahtzee.ico" rel="shortcut icon" type="image/x-icon"> -->
+  <script src="scripts/jquery-3.7.0.min.js"></script>
+  <script src="scripts/main.js"></script>
+</head>
+<body>
+<!-- main title -->
+<center>
+<h2>Dynamic Table</h2>
+
+<table id="debugTable">
+  <tr>
+    <th colspan="4">Debug Information</th>
+  </tr>
+  <tr colspan="4">
+    <td class="debugCellLead"><b>i:</b></td>
+    <td class="debugCellValue" id="debugI" width="20%"></td>
+    <td class="debugCellLead"><b>j:</b></td>
+    <td class="debugCellValue" id="debugJ" width="20%"></td>
+  </tr>
+  <tr>
+    <td class="debugCellLead" colspan="2"><b>Range</b></td>
+    <td class="debugCellValue" colspan="2" width="20%" id="debugRange"></td>
+  </tr>
+  <tr>
+    <td class="debugCellLead" colspan="2"><b>cell[i][j]</b></td>
+    <td class="debugCellValue" colspan="2" width="20%" id="debugCoords"></td>
+  </tr>
+</table><br>
+
+<table>
+  <tbody>
+    <tr>
+      <th class="fixedText">Array Layout</th>
+    </tr>
+  </tbody>
+</table>
+
+<!-- main word search board -->
+<table id="mainGameBoard" class="gbStyle">
+  <tbody>
+    <!-- table populated by jQuery function -->
+  </tbody>
+</table>
+
+
+</center>
+</body>
+</html>

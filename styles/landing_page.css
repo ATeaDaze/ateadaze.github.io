@@ -6,7 +6,10 @@ body {
 }
 
 table {
-  width: 45svw;
+  width: 15svw;
+}
+td {
+  padding: 2px;
 }
 
 /* Layout debugging */
@@ -68,6 +71,7 @@ ul {
 
 .mainSubheader {
   font-size: 1.25em;
+  font-weight: bold;
 }
 
 .mainLogo {

@@ -1,0 +1,77 @@
+#title {
+  padding: 0;
+  margin: auto;
+  display: block;
+	background-image: linear-gradient(to right, red , orange, yellow, green, blue, indigo, violet);
+	color: white;
+	font-size:  35px;
+	text-align: center;
+	text-shadow: 2px 2px 4px #000000;
+	width: 800px;
+	height: 42px;
+}
+
+#divCoords {
+	font-family: Ubuntu Mono, Consolas, monospace;
+	font-size: 18pt;
+	text-align: center;
+	color: black;
+}
+
+body {
+	font-size: 20pt;
+	font-family: Helvetica, Calibri, sans-serif;
+	font-weight: bold;
+	background-color: #bbbbbb;
+}
+
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  border: 1px solid #aaaaaa;
+	cursor: crosshair;
+}
+
+button {
+	font-size: 18pt;
+	font-family: Helvetica, Calibri, sans-serif;
+	font-weight: bold;
+	background-image: linear-gradient(to right, #dddddd, #ffffff);
+	border:  3px outset black;
+	color: black;
+	cursor: pointer;
+}
+
+button:hover {
+	border: 3px outset;
+/*	border-color: blue;*/
+}
+
+button.startBtn {
+	border-color: green;
+}
+
+button.pauseBtn {
+	border-color: indianred;
+}
+
+button.clearBtn {
+	border-color: mediumblue;
+}
+
+button.startBtn:hover {
+	border-color: limegreen;
+}
+
+button.pauseBtn:hover {
+	border-color: red;
+}
+
+button.clearBtn:hover {
+	border-color: blue;
+}
+
+button.shapeBtn:hover {
+	border-color: mediumorchid;
+}

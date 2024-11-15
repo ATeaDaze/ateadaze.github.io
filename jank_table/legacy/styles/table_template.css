@@ -1,0 +1,64 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 20pt;
+}
+
+.gbStyle {
+  font-family: monospace;
+/*  border: 1px solid #a0a0a0; */
+  margin-left: auto;
+  margin-right: auto;
+/*  width: 25svw; */
+  height: 50svh;
+}
+
+tr {
+  border: 1px solid #c0c0c0;
+}
+
+td {
+  color: #aaaaaa;
+  border: 1px solid #333333;
+  background-color: #222222;
+  font-size: 14pt;
+  text-align: center;
+  padding: 3px;
+  cursor: pointer;
+  width: 5svw;
+}
+
+td:hover {
+  font-weight: bold;
+  color: #ffffff;
+  border-color: cyan;
+}
+
+input {
+  border: 1px solid #c0c0c0;
+}
+
+
+#debugTable {
+  font-size: 0.9em;
+  font-family: monospace;
+  width: 25svw;
+}
+
+.debugCellLead {
+  width: 25%;
+  text-align: right;
+  background-color: #121212;
+  font-weight: bold;
+}
+
+.debugCellValue {
+  text-align: center;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.fixedText {
+  font-family: monospace;
+}
