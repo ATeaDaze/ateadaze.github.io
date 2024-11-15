@@ -6,8 +6,21 @@ body {
 }
 
 table {
-  width: 35svw;
+  width: 60svw;
 }
+
+/* Layout debugging */
+/*
+table {
+  border: 1px solid forestgreen;
+}
+tr {
+  border: 1px solid green;
+}
+td {
+  border: 1px solid limegreen;
+}
+*/
 
 hr {
   height: 3px;
@@ -27,10 +40,16 @@ a:hover {
 }
 
 ul {
-  list-style-type: square;
+  list-style-type: '◽';
+/* ⬛◼️◾▪️⬜◽▫️ */
 /*
   list-style-image: url('../images/bullet_point.png');
 */
+}
+
+.tableTOC {
+  vertical-align: top;
+  position: fixed;
 }
 
 .toc {
