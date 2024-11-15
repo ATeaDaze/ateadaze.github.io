@@ -6,7 +6,7 @@ body {
 }
 
 table {
-  width: 60svw;
+  width: 45svw;
 }
 
 /* Layout debugging */
@@ -40,7 +40,7 @@ a:hover {
 }
 
 ul {
-  list-style-type: '◽';
+  list-style-type: square;
 /* ⬛◼️◾▪️⬜◽▫️ */
 /*
   list-style-image: url('../images/bullet_point.png');
