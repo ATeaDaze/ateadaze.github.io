@@ -1,28 +1,3 @@
-# 🃏 Basic Blackjack
-
-### A simple blackjack app written in (mostly) native JavaScript. Uses some jQuery for cleaner syntax. No additional libraries or anything fancy
-
-## 💻 [Desktop](https://ateadaze.github.io/blackjack) | 📱 [Mobile](https://ateadaze.github.io/blackjack/m)
-![blackjack_banner](/blackjack/images/blackjack_banner.png)
-
-* **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/README.md)**
-* **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/blackjack/scripts/main.js)**
-
------
-
-# 🔳 Emoji Table
-
-### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
-
-## 💻 [Desktop / Mobile](https://ateadaze.github.io/emoji_table/)  📱 (landscape mode _highly_ recommended for mobile)
-
-![emoji_table-repo_banner](/images/emoji_table-header.png)
-
-* **[README](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/emoji_table/README.MD)**
-* **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
-
------
-
 # 🎲 Rainbow Noise
 
 ### A time-waster app: draw with random shapes and patterns on a JavaScript canvas
