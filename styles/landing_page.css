@@ -18,10 +18,12 @@ hr {
 
 a {
   color: dodgerblue;
+  text-decoration: none;
 }
 
 a:hover {
   color: deepskyblue;
+  text-decoration: underline;
 }
 
 ul {
