@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Rainbow Noise</title>
+  <link href="../styles/rainbow_noise.css" rel="stylesheet">
+  <link href="../images/rainbow_noise.ico" rel="shortcut icon" type="image/x-icon">
+  <base target="_blank">
+</head>
+<!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names -->
+<body>
+<script src="scripts/mobileMain.js"></script>
+<div id="rainbowBanner" onclick="bDisablePhotoWarning=true;setBrushColor();updateBanner();updateButtons();"></div>
+<center>
+<table cellpadding="5" border="0">
+  <tr>
+    <td align="center" valign="bottom"><div id="divSpeed">Speed: 0</div></td>
+    <td align="center" valign="bottom"><div id="divCoordsX">X: 0</div></td>
+    <td align="center" valign="bottom"><div id="divCoordsY">Y: 0</div></td>
+    <td align="center" valign="bottom" width="100" colspan="2"><div id="divColorMode">Grayscale</div></td>
+  </tr>
+  <tr align="left">
+    <td align="left">
+      <button class="runBtn" id="button1" onclick="newAnimationInstance();" title="Run (R)">▶ RUN</button>
+    </td>
+    <td align="center">
+      <button class="pauseBtn" id="button2" onclick="pauseAnimation();" title="Pause (P)">❚❚ PAUSE</button>
+    </td>
+    <td align="right">
+      <button class="clearBtn" id="button3" onclick="clearScreen();" title="Clear Screen (C)">◪ CLEAR</button>
+    </td>
+    <td align="right" width="10%">
+      <button class="helpBtn" id="button10" onclick="swapColorMode();" title="Next palette (Spacebar)"></button>
+    </td>
+    <td align="left" width="10%">
+      <button class="helpBtn" id="button8" onclick="setRandomPalette();setBrushColor();" title="Random palette [*]">🎲️</button>
+    </td>
+  </tr>
+  <tr align="left">
+    <td>
+      <button class="shapeBtn" id="button4" onclick="shapeType='triangle';setBrushColor();updateBanner();updateButtons();"
+      title="Triangles rapidly drawn in a random color and location: rand((x1,y1), (x2,y2)), rand((x1+randomOffset,y1+randomLength))">⧎ Triangle Web</button>
+    </td>
+    <td align="center">
+      <button class="shapeBtn" id="button5" onclick="shapeType='line';setBrushColor();updateBanner();updateButtons();"
+      title="Lines with random coordinates: rand((x1,y1), (x2,y2))">▧ Line Scatter</button>
+    </td>
+    <td align="right">
+      <button class="shapeBtn" id="button6" onclick="shapeType='starburst';setBrushColor();updateBanner();updateButtons();"
+      title="Lines from a fixed-origin to a random point: (xOrigin,yOrigin), rand((x1,y1))">✺ Starburst</button>
+    </td>
+    <td align="right" width="10%">
+      <button class="helpBtn" id="button9" onclick="xOrigin = 390;yOrigin = 240;setBrushColor();" title="Reset origin to center (O)">🏠</button>
+    </td>
+    <td align="left" width="10%">
+      <button class="helpBtn" id="button7" onclick="confirmCanvasOverwrite();" title="Help (H)">❔</button>
+    </td>
+  </tr>
+</table>
+</center>
+
+<script src="scripts/mobileDrawCanvas.js"></script>
+<hr class="hidden" width="800">
+<hr class="hidden" width="800">
+
+<table width="800" align="center">
+  <tr>
+    <td>
+    <div>
+      <center><b>
+        💻&nbsp;<a href="https://ateadaze.github.io/">Desktop Version</a>&nbsp;|&nbsp;
+        🃏&nbsp;<a href="https://ateadaze.github.io/blackjack/m/">Blackjack</a>&nbsp;|&nbsp;
+        🔳&nbsp;<a href="https://ateadaze.github.io/emoji_table/">Emoji Table</a>&nbsp;|&nbsp;
+        🌐&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
+      </b></center>
+    </div>
+    </td>
+  </tr>
+</table>
+
+<img src="../images/brush_cursor-32-down.png" class="hidden">
+</body>
+</html>

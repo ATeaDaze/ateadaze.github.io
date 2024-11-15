@@ -1,0 +1,58 @@
+body {
+  background-color: #000000;
+  color: #dddddd;
+  font-size: 12pt;
+  font-family: sans-serif;
+}
+
+table {
+  width: 35svw;
+}
+
+hr {
+  height: 3px;
+  background-color: #333333;
+  border: 1.5px solid #202020;
+  padding: 0px;
+}
+
+a {
+  color: dodgerblue;
+}
+
+a:hover {
+  color: deepskyblue;
+}
+
+ul {
+  list-style-type: square;
+/*
+  list-style-image: url('../images/bullet_point.png');
+*/
+}
+
+.toc {
+  width: 28px;
+  padding: 2px;
+}
+
+.gitHubLogo {
+  width: 64px;
+}
+
+.mainTitle {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.mainSubheader {
+  font-size: 1.25em;
+}
+
+.mainLogo {
+  width: 32px;
+}
+
+.bannerLogo {
+  width: 40svw;
+}

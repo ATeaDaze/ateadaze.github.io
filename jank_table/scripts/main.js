@@ -3,7 +3,7 @@
     test with a static variable 1st (maybe use an object to store properties) */
 
 // Maximum table size = nRows x nColumns (usable range 2:20, ideal range: 4:12)
-const maxLengthTable = 10;
+const maxLengthTable = 12;
 // Total number of cells = maxTableLength^2
 const nTotalCells = maxLengthTable * maxLengthTable;
 // Display strings: long and commonly-used (keep the main code clean)

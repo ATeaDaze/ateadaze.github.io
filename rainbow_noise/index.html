@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i) {
+    w[l]=w[l]||[];
+    w[l].push( {
+      'gtm.start': new Date().getTime(), event:'gtm.js'
+    });
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
+    dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  }) (window,document,'script','dataLayer','GTM-M9D9QBD');
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Rainbow Noise 🎲 Draw with random shapes or animate them">
+  <meta name="keywords" content="rainbow, noise, javascript, random, 2d, graphics, app, canvas, psychedelic, geometric, colorful, shapes, css, html">
+  <title>Rainbow Noise</title>
+  <link href="styles/rainbow_noise.css" rel="stylesheet">
+  <link href="images/rainbow_noise.ico" rel="shortcut icon" type="image/x-icon">
+  <base target="_blank">
+</head>
+<!-- TODO: use CSS for all formatting, reduce repeated function calls from index.html, give the buttons proper names, clean up CSS (it works but it's a mess) -->
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9D9QBD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script src="scripts/main.js"></script>
+
+<div id="rainbowBanner" onclick="bDisablePhotoWarning=true;setBrushColor();updateButtons();updateBanner();"></div>
+
+<!-- Main buttons -->
+<center>
+<table cellpadding="5" border="0">
+  <tr>
+    <td align="center" valign="bottom"><div id="divSpeed">Speed: 0</div></td>
+    <td align="center" valign="bottom"><div id="divCoordsX">X: 0</div></td>
+    <td align="center" valign="bottom"><div id="divCoordsY">Y: 0</div></td>
+    <td align="center" valign="bottom" width="100" colspan="2"><div id="divColorMode">Grayscale</div></td>
+  </tr>
+  <tr align="left">
+    <td align="left">
+      <button class="runBtn" id="button1" onclick="newAnimationInstance();" title="Run [r]">▶ RUN</button>
+    </td>
+    <td align="center">
+      <button class="pauseBtn" id="button2" onclick="pauseAnimation();" title="Pause [p]">❚❚ PAUSE</button>
+    </td>
+    <td align="right">
+      <button class="clearBtn" id="button3" onclick="clearScreen();" title="Clear Screen [c]">◪ CLEAR</button>
+    </td>
+    <td align="right" width="10%">
+      <button class="helpBtn" id="button10" onclick="swapColorMode();" title="Next palette [Spacebar]"></button>
+    </td>
+    <td align="left" width="10%">
+      <button class="helpBtn" id="button8" onclick="setRandomPalette();setBrushColor();" title="Random palette [*]">🎲️</button>
+    </td>
+  </tr>
+<!-- Shape buttons -->
+  <tr align="left">
+    <td>
+      <button class="shapeBtn" id="button4" onclick="shapeType='triangle';updateButtons();"
+      title="Triangles rapidly drawn in a random color and location: rand((x1,y1), (x2,y2)), rand((x1+randomOffset,y1+randomLength)) [t]">⧎ Triangle Web</button>
+    </td>
+    <td align="center">
+      <button class="shapeBtn" id="button5" onclick="shapeType='line';updateButtons();"
+      title="Lines with random coordinates: rand((x1,y1), (x2,y2)) [l]">▧ Line Scatter</button>
+    </td>
+    <td align="right">
+      <button class="shapeBtn" id="button6" onclick="shapeType='starburst';updateButtons();"
+      title="Lines from a fixed-origin to a random point: (xOrigin,yOrigin), rand((x1,y1)) [s]">✺ Starburst</button>
+    </td>
+    <td align="right" width="10%">
+      <button class="helpBtn" id="button9" onclick="togglePaintMode();updateButtons();" title="Enable draw mode [Enter]" style="filter:saturate(25%);">️✏️</button>
+    </td>
+    <td align="left" width="10%">
+      <button class="helpBtn" id="button7" onclick="confirmCanvasOverwrite();" title="Help [?]">❔</button>
+    </td>
+  </tr>
+</table>
+</center>
+<hr class="hidden">
+
+<!-- Draw 2D canvas element -->
+<script src="scripts/drawCanvas.js"></script>
+
+<!-- Separate canvas and help text with line -->
+<center>
+<hr class="hidden">
+
+<!-- Links and resources -->
+<table>
+  <tr>
+    <td><b>
+        📱&nbsp;<a href="https://ateadaze.github.io/m/index.html">Mobile Version</a>&nbsp;|&nbsp;
+        🃏&nbsp;<a href="https://ateadaze.github.io/blackjack/">Blackjack</a>&nbsp;|&nbsp;
+        🎲&nbsp;<a href="https://ateadaze.github.io/yahtzee/">Yahtzee</a>&nbsp;|&nbsp;
+        🔳&nbsp;<a href="https://ateadaze.github.io/emoji_table/">Emoji Table</a>&nbsp;|&nbsp;
+        🌐&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io">GitHub</a>
+      </b></td>
+  </tr>
+</table>
+
+<!-- Keyboard Map header/button: clicking ON/OFF toggles visibility -->
+<table>
+  <tr>
+    <td>
+      <hr class="keyMapLine">
+      <table class="txtKeyMapHeader">
+        <tr>
+          <td id="txtKeyHeaderLabel">
+            Keyboard Map:
+          </td>
+          <td>
+            <span id="btnKeyMap" onclick="toggleKeyMap();" title="Click to show/hide keyboard map">
+              Show
+            </span>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- Keyboard Map Table -->
+<table id="txtKeyMap" class="empty" onclick="toggleKeyMap();">
+  <tr>
+    <td>
+      <hr class="keyMapLine">
+      <table id="txtKeyMap">
+      <tr>
+        <td><b>[R]</b>un</td>
+        <td><b>[P]</b>ause</td>
+        <td><b>[C]</b>lear screen</td>
+        <td><b>[Enter]</b>&nbsp;Toggle draw mode</td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><b>[Spacebar]</b>&nbsp;Next palette</td>
+        <td><b>[?]</b> Help</td>
+        <td><b>[O]</b>rigin reset (center)</td>
+        <td><b>[*]</b> Random palette</td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><hr class="keyMapLine"></td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><u>Animations</u>:</td>
+          <td><b>[T]</b>riangle Web</td>
+          <td><b>[L]</b>ine Scatter</td>
+          <td><b>[S]</b>tarburst</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+      <tr>
+        <td><hr class="keyMapLine"></td>
+      </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><u>Color palettes</u>:</td>
+          <td>Fa<b>[d]</b>ed</td>
+          <td>R<b>[a]</b>inbow</td>
+          <td><b>[F]</b>ire</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><b>[I]</b>ce</td>
+          <td>RG<b>[B]</b></td>
+          <td>C<b>[M]Y</b></td>
+          <td>CGA-<b>[8]</b></td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td>CGA-1<b>[6]</b></td>
+          <td>Py<b>[x]</b>el Edit</td>
+          <td>Gamebo<b>[y]</b></td>
+          <td><b>[U]</b>SA</td>
+        </tr>
+      </table>
+      <table id="txtKeyMap">
+        <tr>
+          <td><b>[G]</b>rayscale</td>
+          <td>U<b>[k]</b>raine<br></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+    </tr>
+  </table>
+
+<script>toggleKeyMap();</script>
+
+<!-- Preload images to reduce load latency -->
+<img src="images/brush_cursor-32-down.png" class="hidden">
+
+</body>
+</html>
