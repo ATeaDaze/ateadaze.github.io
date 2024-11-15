@@ -1,9 +1,3 @@
-### TODO: General GitHub Repo Tasks
-* [ ] Move "Rainbow Noise" out of the root folder
-* [ ] Move "Yahtzee" or "Blackjack" to root
-* [ ] Add a proper landing page for GitHub URL: `https://ateadaze.github.io/index.html`
-  * [x] Add "Jank Table" to list of websites
-
 # JaNK&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io/blob/main/jank_table/README.md"><img src="/jank_table/images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
 ## Visualize a 2-dimensional array with a table
 # 🖥️[Desktop](https://ateadaze.github.io/jank_table)
