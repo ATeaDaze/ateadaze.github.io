@@ -1,10 +1,3 @@
-# JaNK&nbsp;<a href="https://ateadaze.github.io/jank_table/index.html" target="_blank"><img src="/jank_table/images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
-## Visualize a 2-dimensional array with a table
-
-![banner](/jank_table/images/jank_table-banner.png)
-
------
-
 # 🎲 Yahtzee
 
 ### The classic dice game written in native JavaScript
@@ -31,6 +24,13 @@
 
 -----
 
+# JaNK&nbsp;<a href="https://ateadaze.github.io/jank_table/index.html" target="_blank"><img src="/jank_table/images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
+## Visualize a 2-dimensional array with a table
+
+![banner](/jank_table/images/jank_table-banner.png)
+
+-----
+
 # 🔳 Emoji Table
 
 ### Prints emojis in a table with 10 columns. Clicking an emoji copies it to the clipboard
@@ -41,16 +41,6 @@
 
 * **[README](https://github.com/ATeaDaze/ateadaze.github.io/tree/main/emoji_table/README.MD)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
-
------
-
-# JaNK&nbsp;<a href="https://github.com/ATeaDaze/ateadaze.github.io/blob/main/jank_table/README.md"><img src="/jank_table/images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
-## Visualize a 2-dimensional array with a table
-# 🖥️[Desktop](https://ateadaze.github.io/jank_table)
-
-<picture>
- <img src="/jank_table/images/jank_table-banner.png">
-</picture>
 
 -----
 
