@@ -1,3 +1,5 @@
+// TODO: clean up winner checks (if-else hell), clean up with jQuery
+// Regex to remove comments: (^\/\/.*)|(\s+\/\/.*)
 const cardSuitsRanks = [ ['♠','♥','♣','♦'],
                          ['2','3','4','5','6','7','8','9','10','J','Q','K','A'] ];
 const defaultGreeting = "BLACKJACK PAYS 3:2 🍀 DEALER STANDS ON 17";
@@ -28,12 +30,12 @@ let trueCount = 0;
 let currentPlayer = "Player";
 let nAcesPlayer = 0;
 let nAcesDealer = 0;
-let bFullAcePlayer = false;
-let bFullAceDealer = false;
-let bAceSwappedPlayer = false;
-let bAceSwappedDealer = false;
+let bPlayerHasAce = false;
+let bDealerHasAce = false;
+let bAceSwapPlayer = false;
+let bAceSwapDealer = false;
 let bGameOver = true;
-let bPlayerWon = false;
+let bPlayerWin = false;
 let bPushRound = false;
 let bEnableSound = true;
 let bShowHelp = false;
@@ -47,8 +49,9 @@ const audioLose = new Audio("audio/tick.mp3");
 const audioDraw = new Audio("audio/draw.mp3");
 const audioJackpot = new Audio("audio/jackpot.mp3");
 
+// Generate a base deck of 52 cards
 deck[0] = generateBaseDeck();
-
+// Generate 5 more decks and combine them
 fullDeck = generateFullDeck(deck);
 shuffleDeck(fullDeck);
 audioShuffle.play();
@@ -63,7 +66,7 @@ function mainGameLoop() {
   drawPlayerCard();
   drawDealerCard();
   checkForWins();
-
+  // If the entire deck has been used then shuffle it
   if(nTotalCards > nCardOffset) {
     nTotalCards = 0;
     decksLeft = 6;
@@ -85,6 +88,7 @@ function restartGame() {
   mainGameLoop();
 }
 
+// Generate 52 card deck
 function generateBaseDeck() {
   let cardsGenerated = 0;
   let baseDeck = [];
@@ -97,6 +101,7 @@ function generateBaseDeck() {
   return(baseDeck);
 }
 
+// Copy 1st deck into 5 more decks
 function generateFullDeck(newDeck) {
   for(let i = 1; i < 6; i++) {
     let j = i - 1;
@@ -115,13 +120,13 @@ function shuffleDeck(newRandDeck) {
 
 function findUniqueCard() {
   bDuplicateFound = true;
-
+  // Look for a new card and skip duplicates
   while(bDuplicateFound) {
     randomCardIndex = Math.floor(Math.random() * deckSize);
-
+    // Select card if it's not in-use
     if(fullDeck[randomCardIndex] != usedCards[randomCardIndex]) {
       newCard = fullDeck[randomCardIndex];
-
+      // Add drawn card to the list of used cards
       usedCards[randomCardIndex] = newCard;
       bDuplicateFound = false;
       nTotalCards++;
@@ -135,49 +140,49 @@ function getCardValue(score, bAceDrawn) {
   }
   if((isNaN(newCardTxt)) || (newCardValue > 9)) runningCount = runningCount - 1;
   decksLeft = (deckSize - nTotalCards) / 52;
-
+  // Round remaining decks down to nearest integer
   decksLeft = Math.floor(decksLeft);
   if(decksLeft < 1) decksLeft = 1;
   trueCount = runningCount / decksLeft;
-
+  // Round true count down to nearest integer
   trueCount = Math.floor(trueCount);
   updateTrueCount();
-
+  // Use base card value if it's 2:10
   if( (newCardValue > 1)&&(newCardValue < 11) ) {
     score = score + newCardValue;
-
+    // Use 10 if it's a face card (Joker, Queen, King)
   } else if((newCardTxt == 'J')||(newCardTxt == 'Q')||(newCardTxt == 'K')) {
       score = score + 10;
-
-  } else if((newCardTxt == 'A')&&(!bFullAcePlayer)&&(currentPlayer == "Player")) {
+  // Player Ace: use 11, if that would exceed 21 then use 1
+  } else if((newCardTxt == 'A')&&(!bPlayerHasAce)&&(currentPlayer == "Player")) {
     if((score + 11) < 22) {
       score = score + 11;
-
-      bFullAcePlayer = true;
+      // Set flag that Ace is in-play as an 11
+      bPlayerHasAce = true;
     } else {
       score = score + 1;
     }
-
-
-  } else if ((newCardTxt == 'A')&&(!bFullAceDealer)&&(currentPlayer == "Dealer")) {
+  // ACES // TODO: make this a single function
+  // Dealer Ace: use 11, if that would exceed 21 then use 1
+  } else if ((newCardTxt == 'A')&&(!bDealerHasAce)&&(currentPlayer == "Dealer")) {
     if((score + 11) < 22) {
       score = score + 11;
-      bFullAceDealer = true;
+      bDealerHasAce = true;
     } else {
       score = score + 1;
     }
   } else {
     score = score + 1;
   }
-
-  if((currentPlayer == "Player")&&(bFullAcePlayer)&&(!bAceSwappedPlayer)&&(score > 21)) {
+  // If an Ace is on the table and player busts then turn Ace into a 1 (-10)
+  if((currentPlayer == "Player")&&(bPlayerHasAce)&&(!bAceSwapPlayer)&&(score > 21)) {
     score = score - 10;
-
-    bAceSwappedPlayer = true;
+    // Set swap flag to prevent further score reduction
+    bAceSwapPlayer = true;
   }
-  if((currentPlayer == "Dealer")&&(bFullAceDealer)&&(!bAceSwappedDealer)&&(score > 21)) {
+  if((currentPlayer == "Dealer")&&(bDealerHasAce)&&(!bAceSwapDealer)&&(score > 21)) {
     score = score - 10;
-    bAceSwappedDealer = true;
+    bAceSwapDealer = true;
   }
   return(score);
 }
@@ -233,12 +238,14 @@ function updateScore() {
   playerBetTxt.innerHTML = "$" + betAmount;
 }
 
+// Format score display string with commas
 function displayPositiveMoney(strCash, intCash, txtCash) {
   strCash = intCash.toLocaleString("en-US");
   txtCash.style = "color: #ffffff";
   txtCash.innerHTML = "$" + strCash;
 }
 
+// Convert score to number, make it negative, and display string
 function displayNegativeMoney(strCash, intCash, txtCash) {
   strCash = Number(strCash);
   strCash = intCash * -1;
@@ -250,25 +257,25 @@ function displayNegativeMoney(strCash, intCash, txtCash) {
 function updateCards(gb, nc) {
   nCardsInPlay = nPlayerCards + nDealerCards;
   nCardOffset = (deckSize - nCardsInPlay) - 4;
-
+  // Separate newCard's suit and rank
   cardFaceSuit = nc.slice(0,1);
   cardFaceRank = nc.slice(1,3);
-
+  // Create new table data and line break
   let newTD = document.createElement('td');
   let cardLineBreak = document.createElement('br');
-
+  // Add new card inside table
   newTD.append(cardFaceRank);
   newTD.append(cardLineBreak);
   newTD.append(cardFaceSuit);
   $(newTD).addClass("gbSingleCard");
-
+  // Display with red text for diamonds and hearts
   if((cardFaceSuit == '♦')||(cardFaceSuit == '♥')) {
     newTD.style = "color: #FF5555";
-
+  // Use dim black text for spades and clubs
   } else {
     newTD.style = "color: #444444";
   }
-
+  // Show new element with flip animation
   $(newTD).appendTo(gb).show();
   $(newTD).animate({ transformValue: +360 }, {
     step: function(now, fx) {
@@ -298,6 +305,7 @@ function doubleDown() {
   stand();
 }
 
+// Dealer draws to 17 and stands
 function stand() {
   while(dealerScore < 17) {
     drawDealerCard();
@@ -318,21 +326,22 @@ function checkScoreDifference() {
   dealerDiff = 21 - dealerScore;
 }
 
+// Check for win conditions // TODO: optimize, combine with checkFinalScore()
 function checkForWins() {
-
+  // Dealer draws 1 card if they only have 1 showing and player hits blackjack
   if((nDealerCards == 1)&&(playerScore == 21)&&(dealerScore < 17)) {
     drawDealerCard();
   }
-
+  // Check for win conditions if game over flag is not set
   if(!bGameOver) {
-
+    // Check which player is closer to 21
     checkScoreDifference()
     if((playerScore == 21)&&(nPlayerCards == 2)&&(dealerScore != 21)) {
       statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount * 1.5;
       statusBarTxt.style = "color: #CF9FFF; animation: 3s anim-flipX ease 3;";
-      bPlayerWon = true;
+      bPlayerWin = true;
       if(bEnableSound) audioJackpot.play();
-
+      // 150% payout for blackjack (100% base bet + 50% bonus)
       playerMoney = playerMoney + betAmountWithOdds;
       dealerMoney = dealerMoney - betAmountWithOdds;
       endCurrentRound();
@@ -341,7 +350,7 @@ function checkForWins() {
       dealerMoney = dealerMoney + betAmountWithOdds;
       statusBarTxt.innerHTML = "Dealer Blackjack ❌ -$" + betAmount * 1.5;
       statusBarTxt.style = statusBarLoseCSS
-      bPlayerWon = false;
+      bPlayerWin = false;
       endCurrentRound();
     } else if ((playerScore == 21)&&(nPlayerCards > 2)&&(dealerScore != 21)) {
         if(dealerScore < 17) {
@@ -349,31 +358,31 @@ function checkForWins() {
         } else {
           statusBarTxt.style = statusBarWinCSS
           statusBarTxt.innerHTML = "Winner ✔️ $"+ betAmount;
-          bPlayerWon = true;
+          bPlayerWin = true;
           endCurrentRound();
         }
     } else if ((dealerScore == 21)&&(playerScore != 21)&&(nDealerCards > 2)) {
       statusBarTxt.style = statusBarLoseCSS
       statusBarTxt.innerHTML = "Dealer Wins ❌ -$" + betAmount;
-      bPlayerWon = false;
+      bPlayerWin = false;
       endCurrentRound();
     } else if(playerScore > 21) {
       statusBarTxt.style = statusBarLoseCSS
       playerScoreTxt.style = statusBarLoseCSS
       statusBarTxt.innerHTML = "Bust ❌ -$" + betAmount;
-      bPlayerWon = false;
+      bPlayerWin = false;
       endCurrentRound();
      } else if(dealerScore > 21) {
       statusBarTxt.style = statusBarWinCSS
       dealerScoreTxt.style = "color: indianred";
       statusBarTxt.innerHTML = "Dealer Bust ✔️ $" + betAmount;
-      bPlayerWon = true;
+      bPlayerWin = true;
       endCurrentRound();
     } else if((playerScore == 21)&&(dealerScore == 21)) {
       if((nPlayerCards < nDealerCards)&&(nPlayerCards == 2)) {
         statusBarTxt.innerHTML = "Blackjack! 🃏 $" + betAmount * 1.5;
         statusBarTxt.style = "color: #CF9FFF; animation: 3s anim-flipX ease 3;";
-        bPlayerWon = true;
+        bPlayerWin = true;
         if(bEnableSound) audioJackpot.play();
         playerMoney = playerMoney + betAmountWithOdds;
         dealerMoney = dealerMoney - betAmountWithOdds;
@@ -383,15 +392,15 @@ function checkForWins() {
         dealerMoney = dealerMoney + betAmountWithOdds;
         statusBarTxt.innerHTML = "Dealer Blackjack ❌ -$" + betAmount * 1.5;
         statusBarTxt.style = statusBarLoseCSS
-        bPlayerWon = false;
+        bPlayerWin = false;
         endCurrentRound();
       } else if(playerScore == dealerScore) {
-
+        // Subtract $50 from dealer (otherwise a draw awards dealer $50 due to boolean winner flag)
         dealerMoney = dealerMoney - betAmount;
         playerMoney = playerMoney + betAmount;
         statusBarTxt.style = "color: #dddddd";
         statusBarTxt.innerHTML = "Push 🔷 $0";
-        bPlayerWon = false;
+        bPlayerWin = false;
         endCurrentRound();
       }
     }
@@ -400,27 +409,27 @@ function checkForWins() {
 
 function checkFinalScore() {
   if(!bGameOver) {
-
+    // Check which player is closer to 21
     checkScoreDifference()
-
+    // Check for flat wins
     if((playerDiff < dealerDiff)&&(playerScore < 22)) {
       statusBarTxt.style = statusBarWinCSS
       statusBarTxt.innerHTML = "Winner ✔️ $" + betAmount;
-      bPlayerWon = true;
+      bPlayerWin = true;
       endCurrentRound();
     } else if((playerDiff > dealerDiff)&&(dealerScore < 22)) {
       statusBarTxt.style = statusBarLoseCSS
       statusBarTxt.innerHTML = "Dealer Wins ❌ -$" + betAmount;
-      bPlayerWon = false;
+      bPlayerWin = false;
       endCurrentRound();
-
+      // Players are done drawing cards and scores are equal
     } else if(playerScore == dealerScore) {
-
+      // Subtract $50 from dealer (otherwise a draw awards dealer $50 due to boolean winner flag)
       dealerMoney = dealerMoney - betAmount;
       playerMoney = playerMoney + betAmount;
       statusBarTxt.style = "color: #dddddd";
       statusBarTxt.innerHTML = "Push 🔷 $0";
-      bPlayerWon = false;
+      bPlayerWin = false;
       bPushRound = true;
       endCurrentRound();
     } 
@@ -428,21 +437,22 @@ function checkFinalScore() {
 }
 
 function endCurrentRound() {
-
-  if(bPlayerWon) {
+  // If player wins then add money and play SFX
+  if(bPlayerWin) {
     playerMoney = playerMoney + betAmount;
     dealerMoney = dealerMoney - betAmount;
     if(bEnableSound) audioWin.play();
   } else if(bPushRound) {
-
+    // Play neutral SFX for push
     if(bEnableSound) audioDraw.play();
   } else {
-
+    // Play "thud" sound and subtract money if player lost
     dealerMoney = dealerMoney + betAmount;
     playerMoney = playerMoney - betAmount;
     if(bEnableSound) audioLose.play();
   }
 
+  // Draw dealer card if only 1 is showing
   if(nDealerCards == 1) {
     drawDealerCard();
     checkFinalScore();
@@ -451,10 +461,11 @@ function endCurrentRound() {
   updateBetButtons();
   updateScore();
   bGameOver = true;
-  bPlayerWon = false;
+  bPlayerWin = false;
   bPushRound = false;
   currentPlayerHand = [];
 
+  // Special message if player breaks the house
   if(dealerMoney < 0) {
     statusBarTxt.style = "color: #CF9FFF; animation: 5s anim-flipX ease 3;";
     statusBarTxt.innerHTML = "💵 YOU BROKE THE BANK 💵";
@@ -473,10 +484,10 @@ function resetGameValues() {
   nAcesDealer = 0;
   nAcesPlayerOld = 0;
   nAcesDealerOld = 0;
-  bFullAcePlayer = false;
-  bFullAceDealer = false;
-  bAceSwappedPlayer = false;
-  bAceSwappedDealer = false;
+  bPlayerHasAce = false;
+  bDealerHasAce = false;
+  bAceSwapPlayer = false;
+  bAceSwapDealer = false;
   bGameOver = false;
 }
 
@@ -595,6 +606,7 @@ function getKeyboardInput() {
   })
 }
 
+// Print welcome message and decorative cards
 function displayIntro() {
   statusBarTxt.innerHTML = "PLACE A BET 🍀 CLICK DEAL NEW HAND";
   updateCards(gameBoardPlayer, "♠2");
@@ -648,7 +660,7 @@ function toggleAudio() {
 }
 
 function displayShuffleToast() {
-
+  // Display notification
   let x = document.getElementById("toastMessage");
   x.className = "show";
   setTimeout(function() {
