@@ -22,25 +22,28 @@ td {
 }
 */
 
-.mainHeader {
-  font-size: 24pt;
+button {
+  height: 2em;
+  font-size: 16pt;
   font-weight: bold;
-  color: #c0c0c0;
+  color: #ffffff;
+  background-color: #000000;
+  cursor: pointer;
+  outline-style: outset;
+}
+button:hover {
+  outline-style: inset;
+}
+button:active {
+  filter: brightness(0.5);
 }
 
-.frequencyHeader {
+hr {
   width: 50svw;
-  font-size: 18pt;
-}
-
-.waveDescriptions {
-  width: 50svw;
-}
-
-.waveInfoCell {
-  font-size: 10pt;
-  color: #eeeeee;
-  width: 25%;
+  background-color: dodgerblue;
+  color: dodgerblue;
+  height: 3px;
+  margin: 5px 5px;
 }
 
 #txtFrequencyLead, #txtWaveformLead {
@@ -50,6 +53,7 @@ td {
 }
 
 #txtFrequencyValue, #txtWaveformValue {
+  font-family: monospace;
   color: cyan;
   text-align: left;
   padding-left: 3px;
@@ -68,19 +72,12 @@ td {
   width: 17%;
 }
 
-.trackHeader {
-  width: 50svw;
-  font-size: 18pt;
-  font-weight: bold;
-}
-
 #txtActiveTrackLead {
   width: 35%;
   color: #ffffff;
   text-align: right;
   padding-right: 5px;
 }
-
 #txtActiveTrackValue {
   width: 65%;
   color: khaki;
@@ -88,54 +85,67 @@ td {
   padding-left: 5px;
 }
 
-button {
+/*#txtCurrentBPM {
+  font-size: 14pt;
+  color: #c0c0c0;
+  background-color: #111111;
+  border: 1px solid #333333;
+  text-align: center;
   height: 2em;
-  font-size: 16pt;
+  width: 5%;
+  border-radius: 0.5em;
+} */
+
+.mainHeader {
+  font-size: 24pt;
   font-weight: bold;
-  color: #ffffff;
-  background-color: #000000;
-  cursor: pointer;
-  outline-style: outset;
-}
-button:hover {
-  outline-style: inset;
-}
-button:active {
-  filter: brightness(0.5);
+  color: #c0c0c0;
 }
 
-.waveStyle {
-  width: 100%;
-  color: limegreen;
-  border: 1px solid limegreen;
-}
-.waveStyle:hover {
-  color: chartreuse;
-  border: 1px solid chartreuse;
+.headerGraphic {
+  height: 30px;
 }
 
-.trackMenu {
+#headerFlipRight {
+  transform: scaleX(-1);
+}
+
+.tableStyleFrequencyWave {
+  width: 50svw;
+  font-size: 18pt;
+}
+
+.tableStyleTrack {
+  width: 50svw;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.cellStyleTrack {
   width: 50%;
   padding: 7px;
 }
 
-.trackStyle {
+.tableStyleButtons {
+  width: 50svw;
+}
+
+.styleTrackButtons {
   width: 100%;
   color: mediumorchid;
   border: 1px solid mediumorchid;
 }
-.trackStyle:hover {
+.styleTrackButtons:hover {
   color: orchid;
   border: 1px solid orchid;
 }
 
-.playStyle {
+.stylePlayButton {
   width: 100%;
   color: #dddddd;
   border: 1px solid #c0c0c0;
-/*  letter-spacing: 5px; */
 }
-.playStyle:hover {
+.stylePlayButton:hover {
   color: #ffffff;
   border: 1px solid #ffffff;
 }
@@ -144,7 +154,6 @@ button:active {
   width: 100%;
   color: #FF7F50;
   border: 1px solid #ff7f50;
-/*  letter-spacing: 5px; */
 }
 .playStyleRunning:hover {
   color: #ff946d;
@@ -161,28 +170,28 @@ button:active {
   border: 1px solid #3a3a3a;
 }
 
-.waveformMenu {
+.styleWaveButtons {
+  width: 100%;
+  color: limegreen;
+  border: 1px solid limegreen;
+}
+.styleWaveButtons:hover {
+  color: chartreuse;
+  border: 1px solid chartreuse;
+}
+
+.cellStyleWaveInfo {
+  font-size: 10pt;
+  color: #eeeeee;
+  width: 25%;
+}
+
+.cellStyleWaveform {
   padding: 5px;
   width: 25%;
 }
 
-.headerGraphic {
-  height: 30px;
-}
-
-#headerFlipRight {
-  transform: scaleX(-1);
-}
-
-hr {
-  width: 50svw;
-  background-color: dodgerblue;
-  color: dodgerblue;
-  height: 3px;
-  margin: 5px 5px;
-}
-
-hr.smallLine {
+.smallGrayLine {
   width: 50svw;
   background-color: #333333;
   color: #333333;
@@ -211,12 +220,19 @@ hr.smallLine {
 }
 
 /* Alternate dimensions for smaller landscape displays */
-
 @media (max-width: 1300px) {
 
   button {
     font-size: 14pt;
     width: 100%;
+  }
+
+  hr {
+    width: 90svw;
+  }
+
+  .smallGrayLine {
+    width: 90svw;
   }
 
   #txtFrequencyLead {
@@ -225,14 +241,12 @@ hr.smallLine {
   #txtFrequencyValue {
     width: 33%;
   }
-
   #txtWaveformLead {
     width: 32%;
   }
   #txtWaveformValue {
     width: 18%;
   }
-
   #txtActiveTrackLead {
     width: 20%;
   }
@@ -240,58 +254,48 @@ hr.smallLine {
     width: 30%;
   }
 
-
-  .frequencyHeader {
-    width: 90svw;
-    font-size: 14pt;
-  }
-
-  .waveDescriptions {
-    width: 90svw;
-  }
-
-  .waveInfoCell {
-    font-size: 9pt;
-  }
-
-  .trackHeader {
-    width: 90svw;
-    font-size: 14pt;
-    padding-bottom: 5px;
-  }
-
   .mainHeader {
     font-size: 18pt;
   } 
-
-  .trackMenu {
-    width: 90svw;
-    padding-bottom: 5px;
-    padding-top: 5px;
-  }
-
-  .trackStyle {
-    width: 100%;
-  }
 
   .headerGraphic {
     height: 25px;
   }
 
-  hr {
+  .tableStyleFrequencyWave {
+    width: 90svw;
+    font-size: 14pt;
+  }
+
+  .tableStyleButtons {
     width: 90svw;
   }
 
-  hr.smallLine {
+  .tableStyleTrack {
     width: 90svw;
+    font-size: 14pt;
+    padding-bottom: 5px;
+  }
+
+  .cellStyleTrack {
+    width: 90svw;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .styleTrackButtons {
+    width: 100%;
+  }
+
+  .cellStyleWaveInfo {
+    font-size: 9pt;
   }
 
 }
 
 
 /* Alternate dimension for small screens using portrait mode */
-
-@media (orientation: portrait), (max-width: 500px) {
+@media (orientation: portrait), (max-width: 660px) {
 
   button {
     height: 3.5em;
@@ -299,39 +303,31 @@ hr.smallLine {
     width: 100%;
   }
 
-  .frequencyHeader {
-    width: 90svw;
-    font-size: 10pt;
-  }
-
-  .waveDescriptions {
+  hr {
     width: 90svw;
   }
 
-  .trackHeader {
-    width: 90svw;
-    font-size: 12pt;
-    padding-bottom: 5px;
+  #trailingRuler {
+    visibility: visible;
+    display: revert;
   }
 
-#txtFrequencyLead {
-  width: 25%;
-}
-#txtFrequencyValue {
-  width: 25%;
-}
-#txtWaveformLead {
-  width: 25%;
-}
-#txtWaveformValue {
-  width: 25%;
-}
-
+  #txtFrequencyLead {
+    width: 25%;
+  }
+  #txtFrequencyValue {
+    width: 25%;
+  }
+  #txtWaveformLead {
+    width: 25%;
+  }
+  #txtWaveformValue {
+    width: 25%;
+  }
   #txtActiveTrackLead {
     width: 23%;
     padding-right: 5px;
   }
-
   #txtActiveTrackValue {
     width: 77%;
     padding-left: 5px;
@@ -341,44 +337,50 @@ hr.smallLine {
     font-size: 14pt;
   } 
 
-  .trackMenu {
-    width: 90svw;
-    padding-bottom: 5px;
-    padding-top: 5px;
-  }
-
-  .playStyle {
-    width: 100%;
-  }
-
-  .trackStyle {
-    width: 100%;
-  }
-
-  .waveformMenu {
-    width: 25%;
-  }
-
-  .waveInfoCell {
-    font-size: 8pt;
-  }
-
   .headerGraphic {
     visibility: hidden;
     display: none;
   }
 
-  hr {
+  .tableStyleFrequencyWave {
+    width: 90svw;
+    font-size: 10pt;
+  }
+
+  .cellStyleWaveform {
+    width: 25%;
+  }
+
+  .tableStyleTrack {
+    width: 90svw;
+    font-size: 12pt;
+    padding-bottom: 5px;
+  }
+
+  .cellStyleTrack {
+    width: 90svw;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .tableStyleButtons {
     width: 90svw;
   }
 
-  hr.smallLine {
-    width: 90svw;
+  .styleTrackButtons {
+    width: 100%;
   }
 
-  #trailingRuler {
-    visibility: visible;
-    display: revert;
+  .stylePlayButton {
+    width: 100%;
+  }
+
+  .cellStyleWaveInfo {
+    font-size: 8pt;
+  }
+
+  .smallGrayLine {
+    width: 90svw;
   }
 
   .warningMessage {

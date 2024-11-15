@@ -1,17 +1,20 @@
 /* TODO: see which variables can be switched to constants, read more about the sound API to add ADSR,
   add functionality to track playback state, history, and stop the audio */
-let currentWaveform = "triangle";
+let currentWaveform = "square";
 let currentTrack = "ffPrelude";
 let bIsLoggingEnabled = false;
 let bIsAudioPlaying = false;
+let currentGain = 0.1;
+let bpm = 160;
 
 let ctx = new(window.AudioContext || window.webkitAudioContext)();
 let volume = ctx.createGain();
-volume.connect(ctx.destination);
-volume.gain.value = 0.1;
 
-function playNote(frequency, duration) {
-  $("#txtFrequencyValue").html(note[0] + " Hz");
+volume.connect(ctx.destination);
+volume.gain.value = currentGain;
+
+function playNote(frequency, duration, name) {
+  $("#txtFrequencyValue").html(note[2]);
   osc = ctx.createOscillator();
   osc.type = currentWaveform;
   osc.frequency.value = frequency;
@@ -26,14 +29,15 @@ function playNote(frequency, duration) {
 
 function playMelody() {
   if (notes.length > 0) {
+    // 
     note = notes.pop();
-    playNote(note[0], 1000 * 256 / (note[1] * bpm));
+    playNote(note[0], (1000 * 256 / (note[1] * bpm)), note[2]);
     $("#btnPlayAudioTrack").html("PLAYING");
     $("#btnPlayAudioTrack").removeClass("playStyle");
     $("#btnPlayAudioTrack").addClass("playStyleRunning");
     if(bIsLoggingEnabled) {
-      console.log(`[${note[0]} Hz, 1/${note[1]} note]`);
-      if(notes.length == 0) console.log(`Tempo: ${bpm} BPM`);
+      console.log(`%c [${note[0]} Hz, 1/${note[1]} note]`, 'font-weight: bold');
+      if(notes.length == 0) console.log(`%c Tempo: ${bpm} BPM`, 'color: orchid');
     }
   } else {
     $("#btnPlayAudioTrack").html("PLAY TRACK");
@@ -44,23 +48,26 @@ function playMelody() {
 }
 
 $(document).ready(function() {
-  updateTrackTitle();
-  updateWaveformTitle();
+
+  updateTxtTrackTitle();
+  updateTxtWaveform();
+  updateCurrentWaveform(currentWaveform)
+
   $("#btnPlayAudioTrack").click(function() {
     if(currentTrack == "ffPrelude") {
       notes = trackNotesFFPrelude;
-      bpm = 160;
     } else if(currentTrack == "stIntro") {
       notes = trackNotesStrangerThings;
-      bpm = 184;
     } else {
       notes = trackNotesImperialMarch;
-      bpm = 103;
     }
     disableTrackButtons();
     notes.reverse();
     playMelody();
   });
+
+  if(bIsLoggingEnabled) logTablesToConsole();
+
 });
 
 function updateCurrentWaveform(newWave) {
@@ -69,25 +76,28 @@ function updateCurrentWaveform(newWave) {
   return(newWave);
 }
 
-function updateTrackTitle() {
+function updateTxtTrackTitle() {
   $("#btnPlayTrackFinalFantasy").click(function() {
     currentTrack = "ffPrelude";
-    updateCurrentWaveform("triangle");
+    updateCurrentWaveform("square");
     $("#txtActiveTrackValue").html("Prelude (Final Fantasy)");
+    bpm = 160;
   });
   $("#btnPlayTrackStrangerThings").click(function() {
     currentTrack = "stIntro";
-    updateCurrentWaveform("square");
+    updateCurrentWaveform("triangle");
     $("#txtActiveTrackValue").html("Stranger Things (Main Theme)");
+      bpm = 184;
   });
   $("#btnPlayTrackStarWars").click(function() {
     currentTrack = "swIntro";
     updateCurrentWaveform("sawtooth");
     $("#txtActiveTrackValue").html("Imperial March (Star Wars)");
+      bpm = 103;
   });
 }
 
-function updateWaveformTitle() {
+function updateTxtWaveform() {
   $("#btnWaveSine").click(function() {
     updateCurrentWaveform("sine");
   });
@@ -112,4 +122,14 @@ function enableTrackButtons() {
   $("[id^=btnPlayTrack]").removeClass("disabledButton");
   $("[id^=btnPlayTrack]").addClass("trackStyle");
   $("[id^=btnPlayTrack]").prop("disabled", false);
+}
+
+function logTablesToConsole() {
+  console.table(C);
+  console.table(D);
+  console.table(E);
+  console.table(F);
+  console.table(G);
+  console.table(A);
+  console.table(B);  
 }

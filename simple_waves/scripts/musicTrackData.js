@@ -1,104 +1,120 @@
 // TODO: add keyboard support, organize notes in a more readable format (Hz are not intuitive),
-// maybe add an offset to the array so that pianoKeyC[4] would be equal to C4 (offset = +2)
+// maybe add an offset to the array so that C[4] would be equal to C4 (offset = +2)
 
 // Piano notes:   [Frequencies in Hz]                     Piano key reference chart
-const pianoKeyC = [ 65,  130, 261, 523, 1046, 2093  ]; // [C2, C3, C4, C5, C6, C7]
-const pianoKeyD = [ 73,  146, 293, 587, 1174, 2349  ]; // [D2, D3, D4, D5, D6, D7]
-const pianoKeyE = [ 82,  164, 329, 659, 1318, 2637  ]; // [E2, E3, E4, E5, E6, E7]
-const pianoKeyF = [ 87,  174, 349, 698, 1396, 2793  ]; // [F2, F3, F4, F5, F6, F7]
-const pianoKeyG = [ 98,  196, 391, 783, 1568, 3136  ]; // [G2, G3, G4, G5, G6, G7]
-const pianoKeyA = [ 110, 220, 440, 880, 1760, 3520  ]; // [A2, A3, A4, A5, A6, A7]
-const pianoKeyB = [ 123, 246, 493, 987, 1975, 3951  ]; // [B2, B3, B4, B5, B6, B7]
+const C = [ [ 65,  130, 261, 523, 1046, 2093  ], [ "C2", "C3", "C4", "C5", "C6", "C7" ] ];
+const D = [ [ 73,  146, 293, 587, 1174, 2349  ], [ "D2", "D3", "D4", "D5", "D6", "D7" ] ];
+const E = [ [ 82,  164, 329, 659, 1318, 2637  ], [ "E2", "E3", "E4", "E5", "E6", "E7" ] ];
+const F = [ [ 87,  174, 349, 698, 1396, 2793  ], [ "F2", "F3", "F4", "F5", "F6", "F7" ] ];
+const G = [ [ 98,  196, 391, 783, 1568, 3136  ], [ "G2", "G3", "G4", "G5", "G6", "G7" ] ];
+const A = [ [ 110, 220, 440, 880, 1760, 3520  ], [ "A2", "A3", "A4", "A5", "A6", "A7" ] ];
+const B = [ [ 123, 246, 493, 987, 1975, 3951  ], [ "B2", "B3", "B4", "B5", "B6", "B7" ] ];
+const restSymbol = "---", pauseSymbol = "PAUSED";
 
 // Final Fantasy Prelude: C Major (add9)
-const trackNotesFFPrelude = [ [pianoKeyC[2], 8],
-  [pianoKeyC[1], 8], [pianoKeyD[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyD[2], 8], [pianoKeyE[2], 8], [pianoKeyG[2], 8],
-  [pianoKeyC[3], 8], [pianoKeyD[3], 8], [pianoKeyE[3], 8], [pianoKeyG[3], 8],
-  [pianoKeyC[4], 8], [pianoKeyD[4], 8], [pianoKeyE[4], 8], [pianoKeyG[4], 8],
+const trackNotesFFPrelude = [ [C[0][2], 8, C[1][2] ],
+  [C[0][1], 8, C[1][1]], [D[0][1], 8, D[1][1]], [E[0][1], 8, E[1][1]], [G[0][1], 8, G[1][1]],
+  [C[0][2], 8, C[1][2]], [D[0][2], 8, D[1][2]], [E[0][2], 8, E[1][2]], [G[0][2], 8, G[1][2]],
+  [C[0][3], 8, C[1][3]], [D[0][3], 8, D[1][3]], [E[0][3], 8, E[1][3]], [G[0][3], 8, G[1][3]],
+  [C[0][4], 8, C[1][4]], [D[0][4], 8, D[1][4]], [E[0][4], 8, E[1][4]], [G[0][4], 8, G[1][4]],
   // C(add9) Down
-  [pianoKeyC[5], 8], [pianoKeyG[4], 8], [pianoKeyE[4], 8], [pianoKeyD[4], 8],
-  [pianoKeyC[4], 8], [pianoKeyG[3], 8], [pianoKeyE[3], 8], [pianoKeyD[3], 8],
-  [pianoKeyC[3], 8], [pianoKeyG[2], 8], [pianoKeyE[2], 8], [pianoKeyD[2], 8],
-  [pianoKeyC[2], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8], [pianoKeyD[1], 8],
-  [pianoKeyC[1], 8],
+  [C[0][5], 8, C[1][5]], [G[0][4], 8, G[1][4]], [E[0][4], 8, E[1][4]], [D[0][4], 8, D[1][4]],
+  [C[0][4], 8, C[1][4]], [G[0][3], 8, G[1][3]], [E[0][3], 8, E[1][3]], [D[0][3], 8, D[1][3]],
+  [C[0][3], 8, C[1][3]], [G[0][2], 8, G[1][2]], [E[0][2], 8, E[1][2]], [D[0][2], 8, D[1][2]],
+  [C[0][2], 8, C[1][2]], [G[0][1], 8, G[1][1]], [E[0][1], 8, E[1][1]], [D[0][1], 8, D[1][1]],
+  [C[0][1], 8, C[1][1]],
   // Am(add9) Up
-  [pianoKeyA[1], 8], [pianoKeyB[1], 8], [pianoKeyC[2], 8], [pianoKeyE[2], 8],
-  [pianoKeyA[2], 8], [pianoKeyB[2], 8], [pianoKeyC[3], 8], [pianoKeyE[3], 8],
-  [pianoKeyA[3], 8], [pianoKeyB[3], 8], [pianoKeyC[4], 8], [pianoKeyE[4], 8],
-  [pianoKeyA[4], 8], [pianoKeyB[4], 8], [pianoKeyC[5], 8], [pianoKeyE[5], 8],
+  [A[0][1], 8, A[1][1]], [B[0][1], 8, B[1][1]], [C[0][2], 8, C[1][2]], [E[0][2], 8, E[1][2]],
+  [A[0][2], 8, A[1][2]], [B[0][2], 8, B[1][2]], [C[0][3], 8, C[1][3]], [E[0][3], 8, E[1][3]],
+  [A[0][3], 8, A[1][3]], [B[0][3], 8, B[1][3]], [C[0][4], 8, C[1][4]], [E[0][4], 8, E[1][4]],
+  [A[0][4], 8, A[1][4]], [B[0][4], 8, B[1][4]], [C[0][5], 8, C[1][5]], [E[0][5], 8, E[1][5]],
   // Am(add9) Down
-  [pianoKeyA[5], 8], [pianoKeyE[5], 8], [pianoKeyC[5], 8], [pianoKeyB[4], 8],
-  [pianoKeyA[4], 8], [pianoKeyE[4], 8], [pianoKeyC[4], 8], [pianoKeyB[3], 8],
-  [pianoKeyA[3], 8], [pianoKeyE[3], 8], [pianoKeyC[3], 8], [pianoKeyB[2], 8],
-  [pianoKeyA[2], 8], [pianoKeyE[2], 8], [pianoKeyC[2], 8], [pianoKeyB[1], 8],
+  [A[0][5], 8, A[1][5]], [E[0][5], 8, E[1][5]], [C[0][5], 8, C[1][5]], [B[0][4], 8, B[1][4]],
+  [A[0][4], 8, A[1][4]], [E[0][4], 8, E[1][4]], [C[0][4], 8, C[1][4]], [B[0][3], 8, B[1][3]],
+  [A[0][3], 8, A[1][3]], [E[0][3], 8, E[1][3]], [C[0][3], 8, C[1][3]], [B[0][2], 8, B[1][2]],
+  [A[0][2], 8, A[1][2]], [E[0][2], 8, E[1][2]], [C[0][2], 8, C[1][2]], [B[0][1], 8, B[1][1]],
   // C(add9) Up (repeat)
-  [pianoKeyC[1], 8], [pianoKeyD[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyD[2], 8], [pianoKeyE[2], 8], [pianoKeyG[2], 8],
-  [pianoKeyC[3], 8], [pianoKeyD[3], 8], [pianoKeyE[3], 8], [pianoKeyG[3], 8],
-  [pianoKeyC[4], 8], [pianoKeyD[4], 8], [pianoKeyE[4], 8], [pianoKeyG[4], 8],
+  [C[0][1], 8, C[1][1]], [D[0][1], 8, D[1][1]], [E[0][1], 8, E[1][1]], [G[0][1], 8, G[1][1]],
+  [C[0][2], 8, C[1][2]], [D[0][2], 8, D[1][2]], [E[0][2], 8, E[1][2]], [G[0][2], 8, G[1][2]],
+  [C[0][3], 8, C[1][3]], [D[0][3], 8, D[1][3]], [E[0][3], 8, E[1][3]], [G[0][3], 8, G[1][3]],
+  [C[0][4], 8, C[1][4]], [D[0][4], 8, D[1][4]], [E[0][4], 8, E[1][4]], [G[0][4], 8, G[1][4]],
   // C(add9) Down
-  [pianoKeyC[5], 8], [pianoKeyG[4], 8], [pianoKeyE[4], 8], [pianoKeyD[4], 8],
-  [pianoKeyC[4], 8], [pianoKeyG[3], 8], [pianoKeyE[3], 8], [pianoKeyD[3], 8],
-  [pianoKeyC[3], 8], [pianoKeyG[2], 8], [pianoKeyE[2], 8], [pianoKeyD[2], 8],
-  [pianoKeyC[2], 8], [pianoKeyG[1], 8], [pianoKeyE[1], 8], [pianoKeyD[1], 8],
-  [pianoKeyC[1], 8],
+  [C[0][5], 8, C[1][5]], [G[0][4], 8, G[1][4]], [E[0][4], 8, E[1][4]], [D[0][4], 8, D[1][4]],
+  [C[0][4], 8, C[1][4]], [G[0][3], 8, G[1][3]], [E[0][3], 8, E[1][3]], [D[0][3], 8, D[1][3]],
+  [C[0][3], 8, C[1][3]], [G[0][2], 8, G[1][2]], [E[0][2], 8, E[1][2]], [D[0][2], 8, D[1][2]],
+  [C[0][2], 8, C[1][2]], [G[0][1], 8, G[1][1]], [E[0][1], 8, E[1][1]], [D[0][1], 8, D[1][1]],
+  [C[0][1], 8, C[1][1]],
   // Am(add9) Up (repeat)
-  [pianoKeyA[1], 8], [pianoKeyB[1], 8], [pianoKeyC[2], 8], [pianoKeyE[2], 8],
-  [pianoKeyA[2], 8], [pianoKeyB[2], 8], [pianoKeyC[3], 8], [pianoKeyE[3], 8],
-  [pianoKeyA[3], 8], [pianoKeyB[3], 8], [pianoKeyC[4], 8], [pianoKeyE[4], 8],
-  [pianoKeyA[4], 8], [pianoKeyB[4], 8], [pianoKeyC[5], 8], [pianoKeyE[5], 8],
+  [A[0][1], 8, A[1][1]], [B[0][1], 8, B[1][1]], [C[0][2], 8, C[1][2]], [E[0][2], 8, E[1][2]],
+  [A[0][2], 8, A[1][2]], [B[0][2], 8, B[1][2]], [C[0][3], 8, C[1][3]], [E[0][3], 8, E[1][3]],
+  [A[0][3], 8, A[1][3]], [B[0][3], 8, B[1][3]], [C[0][4], 8, C[1][4]], [E[0][4], 8, E[1][4]],
+  [A[0][4], 8, A[1][4]], [B[0][4], 8, B[1][4]], [C[0][5], 8, C[1][5]], [E[0][5], 8, E[1][5]],
   // Am(add9) Down
-  [pianoKeyA[5], 8], [pianoKeyE[5], 8], [pianoKeyC[5], 8], [pianoKeyB[4], 8],
-  [pianoKeyA[4], 8], [pianoKeyE[4], 8], [pianoKeyC[4], 8], [pianoKeyB[3], 8],
-  [pianoKeyA[3], 8], [pianoKeyE[3], 8], [pianoKeyC[3], 8], [pianoKeyB[2], 8],
-  [pianoKeyA[2], 8], [pianoKeyE[2], 8], [pianoKeyC[2], 8], [pianoKeyB[1], 8],
+  [A[0][5], 8, A[1][5]], [E[0][5], 8, E[1][5]], [C[0][5], 8, C[1][5]], [B[0][4], 8, B[1][4]],
+  [A[0][4], 8, A[1][4]], [E[0][4], 8, E[1][4]], [C[0][4], 8, C[1][4]], [B[0][3], 8, B[1][3]],
+  [A[0][3], 8, A[1][3]], [E[0][3], 8, E[1][3]], [C[0][3], 8, C[1][3]], [B[0][2], 8, B[1][2]],
+  [A[0][2], 8, A[1][2]], [E[0][2], 8, E[1][2]], [C[0][2], 8, C[1][2]], [B[0][1], 8, B[1][1]],
   // Fm(add9) - G(add9)
-  [pianoKeyF[1], 8], [pianoKeyG[1], 8], [pianoKeyA[1], 8], [pianoKeyC[2], 8],
-  [pianoKeyF[2], 8], [pianoKeyG[2], 8], [pianoKeyA[2], 8], [pianoKeyC[3], 8],
-  [pianoKeyG[1], 8], [pianoKeyA[1], 8], [pianoKeyB[1], 8], [pianoKeyD[2], 8],
-  [pianoKeyG[2], 8], [pianoKeyA[2], 8], [pianoKeyB[2], 8], [pianoKeyD[3], 8],
+  [F[0][1], 8, F[1][1]], [G[0][1], 8, G[1][1]], [A[0][1], 8, A[1][1]], [C[0][2], 8, C[1][2]],
+  [F[0][2], 8, F[1][2]], [G[0][2], 8, G[1][2]], [A[0][2], 8, A[1][2]], [C[0][3], 8, C[1][3]],
+  [G[0][1], 8, G[1][1]], [A[0][1], 8, A[1][1]], [B[0][1], 8, B[1][1]], [D[0][2], 8, D[1][2]],
+  [G[0][2], 8, G[1][2]], [A[0][2], 8, A[1][2]], [B[0][2], 8, B[1][2]], [D[0][3], 8, D[1][3]],
   // Coda: C(add9) - 8va
-  [pianoKeyC[1], 8], [pianoKeyD[1], 8], [pianoKeyE[1], 8], [pianoKeyG[1], 8],
-  [pianoKeyC[2], 8], [pianoKeyD[2], 8], [pianoKeyE[2], 8], [pianoKeyG[2], 8],
-  [pianoKeyC[3], 2], [0, 16] ];
+  [C[0][1], 8, C[1][1]], [D[0][1], 8, D[1][1]], [E[0][1], 8, E[1][1]], [G[0][1], 8, G[1][1]],
+  [C[0][2], 8, C[1][2]], [D[0][2], 8, D[1][2]], [E[0][2], 8, E[1][2]], [G[0][2], 8, G[1][2]],
+  [C[0][3], 2, C[1][3]], [0,   4, pauseSymbol] ];
 
 // Stranger Things theme
 const trackNotesStrangerThings = [
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
-  // Repeat
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],
-  [pianoKeyC[0], 8], [pianoKeyE[0], 8], [pianoKeyG[0], 8], [pianoKeyB[0], 8],
-  [pianoKeyC[1], 8], [pianoKeyB[0], 8], [pianoKeyG[0], 8], [pianoKeyE[0], 8],  
-  [pianoKeyC[0], 8], [0, 16] ];
+  [C[0][0], 8, C[1][0]], [E[0][0], 8, E[1][0]], [G[0][0], 8,  G[1][0]], [B[0][0], 8, B[1][0]],
+  [C[0][1], 8, C[1][1]], [B[0][0], 8, B[1][0]], [G[0][0], 8,  G[1][0]], [E[0][0], 8, E[1][0]],
+  [C[0][0], 8, C[1][0]], [E[0][0], 8, E[1][0]], [G[0][0], 8,  G[1][0]], [B[0][0], 8, B[1][0]],
+  [C[0][1], 8, C[1][1]], [B[0][0], 8, B[1][0]], [G[0][0], 8,  G[1][0]], [E[0][0], 8, E[1][0]],
+  [C[0][0], 8, C[1][0]], [E[0][0], 8, E[1][0]], [G[0][0], 8,  G[1][0]], [B[0][0], 8, B[1][0]],
+  [C[0][1], 8, C[1][1]], [B[0][0], 8, B[1][0]], [G[0][0], 8,  G[1][0]], [E[0][0], 8, E[1][0]],
+  [C[0][0], 8, C[1][0]], [E[0][0], 8, E[1][0]], [G[0][0], 8,  G[1][0]], [B[0][0], 8, B[1][0]],
+  [C[0][1], 8, C[1][1]], [B[0][0], 8, B[1][0]], [G[0][0], 8,  G[1][0]], [E[0][0], 8, E[1][0]],  
+  [C[0][0], 8, C[1][0]], [0,   4, pauseSymbol] ];
 
 // Imperial March (source: StackOverflow)
 const trackNotesImperialMarch = [
-  [pianoKeyE[2], 4],
-  [pianoKeyE[2], 4],
-  [pianoKeyE[2], 4],
-  [pianoKeyC[2], 8],
-  [0, 16],
-  [pianoKeyG[2],16],
-  [pianoKeyE[2], 4],
-  [pianoKeyC[2], 8],
-  [0,   16],
-  [pianoKeyG[2],16],
-  [pianoKeyE[2], 4],
-  [0,    4],
-  [pianoKeyB[2], 4],
-  [pianoKeyB[2], 4],
-  [pianoKeyB[2], 4],
-  [pianoKeyC[3], 8],
-  [0,   16],
-  [pianoKeyG[2], 16],
-  [310,  4],  // Eb4
-  [pianoKeyC[2],  8],
-  [0,   16],
-  [pianoKeyG[2], 16],
-  [pianoKeyE[2],  4],
-  [0, 16] ];
+  [E[0][2], 4, E[1][2]],
+  [E[0][2], 4, E[1][2]],
+  [E[0][2], 4, E[1][2]],
+  [C[0][2], 8, C[1][2]],
+  [0,      16, restSymbol],
+  [G[0][2],16, G[1][2]],
+  [E[0][2], 4, E[1][2]],
+  [C[0][2], 8, C[1][2]],
+  [0,      16, restSymbol],
+  [G[0][2],16, G[1][2]],
+  [E[0][2], 4, E[1][2]],
+  [0,       4, restSymbol],
+  [B[0][2], 4, B[1][2]],
+  [B[0][2], 4, B[1][2]],
+  [B[0][2], 4, B[1][2]],
+  [C[0][3], 8, C[1][3]],
+  [0,      16, restSymbol],
+  [G[0][2],16, G[1][2]],
+  [310,     4, "Eb4"],  // Eb4
+  [C[0][2], 8, C[1][2]],
+  [0,      16, restSymbol],
+  [G[0][2],16, G[1][2]],
+  [E[0][2], 4, E[1][2]],
+  [0,       4, pauseSymbol] ];
+
+/*          Rest  Note
+-----------------------
+Whole:      𝄻     𝅝
+Half:       𝄼     𝅗𝅥
+Quarter:    𝄽     𝅘𝅥
+Eighth:     𝄾     𝅘𝅥𝅮
+Sixteenth:  𝄿     𝅘𝅥𝅯
+
+            Keys
+-----------------------
+Sharp:      𝄰 
+Natural:    𝄮
+Flat:       𝄬
+
+*/

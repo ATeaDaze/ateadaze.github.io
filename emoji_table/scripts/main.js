@@ -1,9 +1,12 @@
+// Regex to remove comments: (^\/\/.*)|(\s+\/\/.*)
 let nEmojisDrawn = 0;
-let nFlagsGenerated = 0;
 let nFlagsDrawn = 0;
+let nFlagsGenerated = 0;
 let nTotalSymbols = 0;
 let nCellsDrawn = 0;
-let bDarkModeEnabled = false;
+let nBrowserLogLines = 0;
+let bEnableDarkMode = false;
+let bEnableLogging = false;
 
 nFlagsGenerated = (flagCodeList.length);
 nTotalSymbols = nFlagsGenerated + nEmojisGenerated;
@@ -11,6 +14,9 @@ printTableData(fullEmojiList, nEmojisGenerated, true);
 printTableData(flagCodeList, nFlagsGenerated, false);
 printEmojiFlagCounts();
 
+if(bEnableLogging) printLogInfo();
+
+// Enable dark mode if it's detected by the browser
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   toggleDarkMode();
 }
@@ -40,11 +46,11 @@ function printTableData(fullList, nGenerated, bEnablePrintBtn) {
         $(cell).attr('title','🌜 Click to toggle between dark and light mode 🌞');
         $(cell).attr('id', 'menuButtonCell');
       } // Deactivate any trailing blank cells
-      if( ((nCellsDrawn > 1270) && (nCellsDrawn < 1280)) || (nCellsDrawn > 1536) ) {
+/*      if( ((nCellsDrawn > (nEmojisGenerated-1)) && (nCellsDrawn < (nEmojisGenerated+3))) || (nCellsDrawn > (nTotalSymbols+2)) ) {
         $(cell).html('');
         $(cell).attr('id', 'null-cell-' + nCellsDrawn);
         $(cell).attr('title','');
-      }
+      } */
       $(cell).appendTo(row);
       nDrawn++
       nCellsDrawn++;
@@ -54,18 +60,25 @@ function printTableData(fullList, nGenerated, bEnablePrintBtn) {
   }  
 }
 
+function swapBooleanValues(value1) {
+  if(value1) {
+    return(false);
+  }
+  return(true);
+}
+
 function toggleDarkMode() {
   let styleElement = document.body;
   styleElement.classList.toggle("darkMode");
-  if(bDarkModeEnabled) {
+  if(bEnableDarkMode) {
     btnDarkMode.src = "images/menu.png";
     $("#txtMainHeader").html("🔲&nbsp;Emoji Table")    
-    bDarkModeEnabled = false;
   } else {
     btnDarkMode.src = "images/menu-dark.png";  
     $("#txtMainHeader").html("🔳&nbsp;Emoji Table");
-    bDarkModeEnabled = true;
   }
+  bEnableDarkMode = swapBooleanValues(bEnableDarkMode);
+  if(bEnableLogging) console.log(`bEnableDarkMode = ${bEnableDarkMode}`);
 }
 
 function displayCopyToast(txt) {
@@ -78,8 +91,27 @@ function displayCopyToast(txt) {
 }
 
 function printEmojiFlagCounts() {
-  $("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + nEmojisGenerated);
+  $("#txtDisplayEmojiCount").html("<b>nEmojis</b> = " + (nEmojisGenerated-1));
   $("#txtDisplayFlagCount").html("<b>nFlags</b> = " + nFlagsGenerated);
   $("#txtDisplayTotalCount").html("<b>Total</b> = " + nTotalSymbols);
 }
 
+function printLogInfo() {
+  printTableLogHeader("emoji");
+  fullEmojiList.forEach(item => printNewLogLine(item, nBrowserLogLines));
+  printTableLogHeader("flag");
+  flagCodeList.forEach(item => printNewLogLine(item, nBrowserLogLines));
+}
+
+function printTableLogHeader(txtHeaderCell) {
+  console.log("| index | " + txtHeaderCell + " | ");
+  console.log("|---|---|");
+}
+
+function printNewLogLine(line, nLines) {
+  if((nLines < nTotalSymbols+1)&&(nLines > 0)&&(nLines != nEmojisGenerated)) {
+    console.log(`| ${nLines} | ${line} |`);
+  }
+  nBrowserLogLines++;
+  if(nLines == nEmojisGenerated) console.log("\n");
+}

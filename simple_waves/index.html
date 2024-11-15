@@ -14,59 +14,61 @@
 <center>
 
 <span class="mainHeader">
-  <img src="images/simple_waves.png" class="headerGraphic" title="piano logo">&nbsp;&nbsp;Simple Waves: a basic sequencer&nbsp;&nbsp;
-  <img src="images/simple_waves.png" id="headerFlipRight" class="headerGraphic" alt="piano logo 2">
+  <img src="images/simple_waves.png" class="headerGraphic" title="Simple Waves Logo">&nbsp;&nbsp;Simple Waves: a basic sequencer&nbsp;&nbsp;
+  <img src="images/simple_waves.png" id="headerFlipRight" class="headerGraphic" title="Simple Waves Logo">
 </span><hr>
 
-<table class="frequencyHeader">
+<table class="tableStyleFrequencyWave">
   <tr>
-    <td id="txtFrequencyLead">Frequency:</td>
-    <td id="txtFrequencyValue">0 Hz</td>
+    <td id="txtFrequencyLead">Note Name:</td>
+    <td id="txtFrequencyValue">PAUSED</td>
     <td id="txtWaveformLead">Waveform:</td>
-    <td id="txtWaveformValue">TRIANGLE</td>    
+    <td id="txtWaveformValue"></td>    
   </tr>
-</table><hr class="smallLine">
+</table><hr class="smallGrayLine">
 
-<table class="trackHeader">
+<table class="tableStyleTrack">
   <tr>
     <td id="txtActiveTrackLead">Track:</td>
     <td id="txtActiveTrackValue">Prelude (Final Fantasy)</td>    
   </tr>
 </table>
 
-<table class="waveDescriptions">
+<table class="tableStyleButtons">
   <tr>
-    <td class="trackMenu"><button id="btnPlayTrackFinalFantasy" class="trackStyle">Final Fantasy - Prelude</button></td>
-    <td class="trackMenu"><button id="btnPlayTrackStrangerThings" class="trackStyle">Stranger Things Theme</button></td>
+    <td class="cellStyleTrack"><button id="btnPlayTrackFinalFantasy" class="styleTrackButtons">Final Fantasy - Prelude</button></td>
+    <td class="cellStyleTrack"><button id="btnPlayTrackStrangerThings" class="styleTrackButtons">Stranger Things Theme</button></td>
   </tr>
   <tr>
-      <td class="trackMenu"><button id="btnPlayTrackStarWars" class="trackStyle">Star Wars - Imperial March</button></td>
-      <td class="trackMenu"><button id="btnPlayAudioTrack" class="playStyle" title="Click here to play a song">PLAY TRACK</button></td>
+      <td class="cellStyleTrack"><button id="btnPlayTrackStarWars" class="styleTrackButtons">Star Wars - Imperial March</button></td>
+      <td class="cellStyleTrack"><button id="btnPlayAudioTrack" class="stylePlayButton" title="Click here to play a song">PLAY TRACK</button></td>
     </td>
   </tr>
 </table>
 
-<hr class="smallLine">
+<hr class="smallGrayLine">
 
-<table class="waveDescriptions">
+<table class="tableStyleButtons">
   <tr>
-    <td class="waveformMenu"><button id="btnWaveSine" class="waveStyle">Sine</button></td>
-    <td class="waveformMenu"><button id="btnWaveSquare" class="waveStyle">Square</button></td>
-    <td class="waveformMenu"><button id="btnWaveSawtooth" class="waveStyle">Sawtooth</button></td>
-    <td class="waveformMenu"><button id="btnWaveTriangle" class="waveStyle">Triangle</button></td>
+    <td class="cellStyleWaveform"><button id="btnWaveSine" class="styleWaveButtons">Sine</button></td>
+    <td class="cellStyleWaveform"><button id="btnWaveSquare" class="styleWaveButtons">Square</button></td>
+    <td class="cellStyleWaveform"><button id="btnWaveSawtooth" class="styleWaveButtons">Sawtooth</button></td>
+    <td class="cellStyleWaveform"><button id="btnWaveTriangle" class="styleWaveButtons">Triangle</button></td>
   </tr>
 </table>
 
-<table class="waveDescriptions">
+<table class="tableStyleButtons">
   <tr>
-    <td class="waveInfoCell">A pure and smooth tone. Sounds similar to a whistle on the high-end</button></td>
-    <td class="waveInfoCell">A bright and sharp tone. Sounds similar to an NES instrument</td>
-    <td class="waveInfoCell">A rough and harmonically rich tone. Sounds like crude synth brass</td>
-    <td class="waveInfoCell">A fairly pure tone similar to a sine wave but with more overtones</td>
+    <td class="cellStyleWaveInfo">A pure and smooth tone. Sounds similar to a whistle on the high-end</button></td>
+    <td class="cellStyleWaveInfo">A bright and sharp tone. Sounds similar to an NES instrument</td>
+    <td class="cellStyleWaveInfo">A rough and harmonically rich tone. Sounds like crude synth brass</td>
+    <td class="cellStyleWaveInfo">A fairly pure tone similar to a sine wave but with more overtones</td>
   </tr>
-</table>
-<hr class="smallLine" id="trailingRuler">
+</table><br>
 
+<!-- Tempo: <input type="text" id="txtCurrentBPM" minlength="24" maxlength="3"></input> -->
+
+<hr class="smallGrayLine" id="trailingRuler">
 <span class="warningMessage">⚠️ Warning: this website will not look optimal in portrait mode ⚠️</span>
 
 </center>
