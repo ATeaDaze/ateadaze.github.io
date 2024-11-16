@@ -7,21 +7,39 @@ body {
 
 table {
   width: 15svw;
+  padding: 4px;
+}
+th {
+  font-family: monospace;
+  font-size: 14pt;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 2px;
+
+}
+tr {
+  padding: 5px;
 }
 td {
+/*  border: 2px solid #555555; */
   padding: 2px;
+  vertical-align: middle;
+}
+
+table {
+  border: 1px solid #000000;
 }
 
 /* Layout debugging */
 /*
 table {
-  border: 1px solid forestgreen;
+  border: 1px solid mediumorchid;
 }
 tr {
-  border: 1px solid green;
+  border: 1px solid chartreuse;
 }
 td {
-  border: 1px solid limegreen;
+  border: 1px solid cyan;
 }
 */
 
@@ -39,7 +57,12 @@ a {
 
 a:hover {
   color: deepskyblue;
+  animation: flashText 1s linear infinite;
   text-decoration: underline;
+  filter: brightness(1.2);
+}
+@keyframes flashText {
+  75% { opacity: 0.75; }
 }
 
 ul {
@@ -50,9 +73,28 @@ ul {
 */
 }
 
+.leadCell {
+  text-align: right;
+  width: 50%;
+}
+
+.valueCell {
+  text-align: left;
+  color: cyan;
+}
+
+.leadCell, .valueCell {
+  border: 1px solid #333333;
+}
+
 .tableTOC {
   vertical-align: top;
   position: fixed;
+/* Disable cursor selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .toc {
@@ -70,7 +112,7 @@ ul {
 }
 
 .mainSubheader {
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
@@ -80,4 +122,34 @@ ul {
 
 .bannerLogo {
   width: 40svw;
+}
+
+.debugTableStyle {
+  width: 14svw;
+}
+
+.debugTxtStyle {
+  font-family: monospace;
+  font-size: 14pt;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.invisible {
+  visibility: hidden;
+  display: none;
+}
+
+#btnTop, #btnBottom {
+  cursor: pointer;
+}
+
+#txtQuickLinks {
+  cursor: pointer;
+}
+
+#txtQuickLinks:hover {
+  filter: brightness(1.5);
 }

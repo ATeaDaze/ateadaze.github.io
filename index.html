@@ -94,8 +94,9 @@
     <td class="tableTOC">
       <!-- TABLE OF CONTENTS (FIXED TO THE TOP RIGHT) -->
       <span class="mainTitle" id="toc">
-        <img src="images/owl_cave.png" class="mainLogo">&nbsp;Quick Links
-      </span><!--<hr>-->
+        <span id="txtQuickLinks"><img src="images/owl_cave.png" class="mainLogo">&nbsp;Quick Links</span>
+      </span>
+      <center>
       <span class="mainSubheader">
         <table>
           <tr>
@@ -116,12 +117,42 @@
           <tr>
             <td><img src="simple_waves/images/simple_waves.png" class="toc">&nbsp;<a href="#simple_waves">Simple Waves</a></td>
           </tr>
-          <tr>
+<!--          <tr>
             <td><img src="images/github-mark-white.png" class="toc">&nbsp;<a href="#github">GitHub</a></td>
           </tr>
+-->
         </table>
-      </span><br>
-      <center>[ <a target="_self" href="#top" title="Go to top of page">Jump to top</a> ]</center>
+      </span><hr>
+      ⬆️&nbsp;<a title="Jump to top of page" id="btnTop" onclick="updateDebugInfo();">Jump to top</a><br><br>
+
+      <table class="debugTableStyle">
+        <tr>
+          <th colspan="2">Debug Information</th>
+        </tr>
+        <tr class="debugTxtStyle">
+          <td class="leadCell"><span><b>Position</b>:</span></td>
+          <td class="valueCell"><span id="txtDebug1"></span></td>
+        </tr>
+        <tr class="debugTxtStyle">
+          <td class="leadCell"><span class="debugTxtStyle"><b>Window</b>:</span></td>
+          <td class="valueCell"><span id="txtDebug2"></td>
+        </tr>
+        <tr class="invisible">
+          <td class="leadCell"><span class="debugTxtStyle"><b>scrollSize</b>:</span></td>
+          <td class="valueCell"><span id="txtDebug3"></span></td>
+        </tr>
+        <tr class="invisible">
+          <td class="leadCell"><span class="debugTxtStyle"><b>scrollLimit</b>:</span></td>
+          <td class="valueCell"><span id="txtDebug4"></span></td>
+        </tr>
+        <tr class="debugTxtStyle">
+          <td class="leadCell"><span class="debugTxtStyle"><b>P-W</b> = </span></td>
+          <td class="valueCell"><span id="txtDebug5"></td>
+        </tr>
+        </table><br>
+        ⬇️&nbsp;<a title="Jump to bottom of page" id="btnBottom" onclick="updateDebugInfo();">Jump to bottom</a>
+
+      </center>
 
     </td>
 
@@ -131,12 +162,8 @@
 <!-- GITHUB -->
 <a href="https://github.com/ATeaDaze/ateadaze.github.io" target="_blank" id="github">
   <img src="images/github-mark-white.png" class="gitHubLogo" title="GitHub"><br>
-  <b>GitHub</b>
-</a><br><br><!--<hr>-->
-
-
-
-[ <a target="_self" href="#top" title="Go to top of page">Return to top</a> ]
+  <b>GitHub</b><br><br>
+</a>
 
 </center>
 </body>
