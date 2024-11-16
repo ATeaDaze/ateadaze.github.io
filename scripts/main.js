@@ -1,14 +1,16 @@
 // scrollSize = 920, totalHeight ~3680
 let scrollSize = document.documentElement.scrollHeight;
 let scrollSizeDouble = scrollSize.toFixed(0)
-let windowX = document.documentElement.clientHeight;
+//let windowX = document.documentElement.clientHeight;
 let windowY = document.documentElement.clientWidth;
-let offsetX = window.scrollX;
-let offsetY = window.scrollY;
+//let offsetX = window.scrollX;
+//let offsetY = window.scrollY;
 let scrollPos = $(document).scrollTop();
 //let scrollLimit = window.innerHeight;
 let scrollLimit = document.documentElement.scrollHeight;
 //let scrollLimit = getScrollLimit();
+// scrollProgress = (scollbar position / window height)
+let scrollProgress = scrollPos / windowY;
 let bEnableDebug = true;
 
 $(window).scroll(function(){
@@ -56,5 +58,7 @@ function updateDebugInfo() {
   $("#txtDebug2").html(windowY); // + "x" + windowX);
   $("#txtDebug3").html(scrollSizeDouble);
   $("#txtDebug4").html(scrollLimit);
-  $("#txtDebug5").html(scrollPos - windowY);
+  scrollProgress = (scrollPos / windowY).toFixed(2)
+  scrollProgressPercent = ( (scrollPos / windowY) * 100).toFixed(2)
+  $("#txtDebug5").html(scrollProgressPercent + "%");
 }
