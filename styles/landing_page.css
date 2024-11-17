@@ -15,15 +15,15 @@ th {
   font-weight: bold;
   text-decoration: underline;
   padding: 2px;
-
+  border: 1px solid #555555;
+  background-color: #111111;
 }
 tr {
   padding: 5px;
 }
 td {
-/*  border: 2px solid #555555; */
+/*  border: 1px solid #555555; */
   padding: 2px;
-  vertical-align: middle;
 }
 
 table {
@@ -38,6 +38,9 @@ table {
 tr {
   border: 1px solid chartreuse;
 }
+th {
+  border: 1px solid #c0c0c0;
+}
 td {
   border: 1px solid cyan;
 }
@@ -45,8 +48,8 @@ td {
 
 hr {
   height: 3px;
-  background-color: #333333;
-  border: 1.5px solid #202020;
+  background-color: #555555;
+  border: 1.5px solid #333333;
   padding: 0px;
 }
 
@@ -73,6 +76,15 @@ ul {
 */
 }
 
+
+.grayCell {
+  border: 1px solid #333333;
+}
+
+.grayCell:hover {
+  border: 1px solid #555555;
+}
+
 .leadCell {
   text-align: right;
   width: 50%;
@@ -80,7 +92,7 @@ ul {
 
 .valueCell {
   text-align: left;
-  color: cyan;
+/*  color: cyan; */
 }
 
 .leadCell, .valueCell {
@@ -98,7 +110,7 @@ ul {
 }
 
 .toc {
-  width: 30px;
+  width: 24px;
   padding: 2px;
 }
 
@@ -124,8 +136,66 @@ ul {
   width: 40svw;
 }
 
+#progressBar1, #progressBar2 {
+  max-width: 90%;
+  height: 0.75em;
+  cursor: pointer;
+}
+
+#progressBar1:hover, #progressBar2:hover {
+  animation: flashText 1.5s linear infinite;
+}
+
+#progressBar1:active, #progressBar2:active {
+  filter: brightness(0.75);
+}
+
+#progressBar1 {
+  border: 2px outset red;
+  background-image: linear-gradient(darkred, indianred);
+  width: 93%;
+}
+
+#progressBar2 {
+  border: 2px outset limegreen;
+  background-image: linear-gradient(green, chartreuse);
+/*  border: 2px outset blue;
+  background-image: linear-gradient(darkblue, dodgerblue); */
+  width: 0%;
+}
+
+#pwInverse, #pw {
+}
+
+#pwInverse {
+  color: #ff5555;
+}
+#pw {
+  color: #55ff55;
+}
+
+
+#txtDebug0 {
+  font-weight: bold;
+  color: deepskyblue;
+}
+
+#totalLead, #totalValue {
+  background-color: #121212;
+}
+
+#totalValue {
+  color: cyan;
+}
+
+.smallText {
+  font-size: 10pt;
+  text-align: left;
+  cursor: help;
+}
+
 .debugTableStyle {
-  width: 14svw;
+  width: 15svw;
 }
 
 .debugTxtStyle {
@@ -147,9 +217,4 @@ ul {
 }
 
 #txtQuickLinks {
-  cursor: pointer;
-}
-
-#txtQuickLinks:hover {
-  filter: brightness(1.5);
 }

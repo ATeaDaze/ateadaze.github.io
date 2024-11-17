@@ -94,7 +94,7 @@
     <td class="tableTOC">
       <!-- TABLE OF CONTENTS (FIXED TO THE TOP RIGHT) -->
       <span class="mainTitle" id="toc">
-        <span id="txtQuickLinks"><img src="images/owl_cave.png" class="mainLogo">&nbsp;Quick Links</span>
+        <span id="txtQuickLinks"><a href="images/owl_cave.png" target="_blank" title="Listen to the sounds. It is in our house now"><img src="images/owl_cave.png" class="mainLogo"></a>&nbsp;Quick Links</span>
       </span>
       <center>
       <span class="mainSubheader">
@@ -117,40 +117,74 @@
           <tr>
             <td><img src="simple_waves/images/simple_waves.png" class="toc">&nbsp;<a href="#simple_waves">Simple Waves</a></td>
           </tr>
-<!--          <tr>
-            <td><img src="images/github-mark-white.png" class="toc">&nbsp;<a href="#github">GitHub</a></td>
-          </tr>
--->
         </table>
       </span><hr>
-      ⬆️&nbsp;<a title="Jump to top of page" id="btnTop" onclick="updateDebugInfo();">Jump to top</a><br><br>
 
-      <table class="debugTableStyle">
+      ⬆️&nbsp;<a title="Jump to top of page" id="btnTop" onclick="updateDebugInfo();">Jump to top</a><br>
+
+      <table>
+
+      <tr>
+        <th colspan="2">Red vs Green</th>
+      </tr>
+
+        <tr class="invisible">
+          <td class="leadCell"><span class="debugTxtStyle"><b>hrWidth1</b>:</span></td>
+          <td class="valueCell"><span id="txtDebugHRWidth1"></td>
+        </tr>
+
+        <tr class="debugTxtStyle" id="pwInverse">
+          <td class="leadCell"><span class="debugTxtStyle"><b>1-(P/W)</b>=</span></td>
+          <td class="valueCell"><span id="txtDebugPwInverse"></td>
+        </tr>
+
         <tr>
-          <th colspan="2">Debug Information</th>
+          <td class="grayCell" id="progressCell" colspan="2">
+            <hr id="progressBar1">
+            <hr id="progressBar2">
+          </td>
         </tr>
-        <tr class="debugTxtStyle">
+
+        <tr class="debugTxtStyle" id="pw">
+          <td class="leadCell"><span class="debugTxtStyle"><b>(P/W)</b>=</span></td>
+          <td class="valueCell"><span id="txtDebugPW"></td>
+        </tr>
+    
+        <tr class="invisible">
+          <td class="leadCell"><span class="debugTxtStyle"><b>hrWidth2</b>:</span></td>
+          <td class="valueCell"><span id="txtDebugHRWidth2"></td>
+        </tr>
+
+        <tr class="invisible">
+          <th colspan="2">height / maxHeight</th>
+        </tr>
+
+        <tr class="invisible">
           <td class="leadCell"><span><b>Position</b>:</span></td>
-          <td class="valueCell"><span id="txtDebug1"></span></td>
+          <td class="valueCell"><span id="txtDebugPos"></span></td>
         </tr>
-        <tr class="debugTxtStyle">
+
+        <tr class="invisible">
           <td class="leadCell"><span class="debugTxtStyle"><b>Window</b>:</span></td>
-          <td class="valueCell"><span id="txtDebug2"></td>
+          <td class="valueCell"><span id="txtDebugWindow"></td>
         </tr>
+
         <tr class="invisible">
-          <td class="leadCell"><span class="debugTxtStyle"><b>scrollSize</b>:</span></td>
-          <td class="valueCell"><span id="txtDebug3"></span></td>
+          <td class="leadCell" id="totalLead"><span class="debugTxtStyle"><b>TOTAL</b>:</span></td>
+          <td class="valueCell" id="totalValue"><span id="txtDebugTotal"></td>
         </tr>
-        <tr class="invisible">
-          <td class="leadCell"><span class="debugTxtStyle"><b>scrollLimit</b>:</span></td>
-          <td class="valueCell"><span id="txtDebug4"></span></td>
-        </tr>
-        <tr class="debugTxtStyle">
-          <td class="leadCell"><span class="debugTxtStyle"><b>P / W</b> = </span></td>
-          <td class="valueCell"><span id="txtDebug5"></td>
-        </tr>
-        </table><br>
+
+        </table>
         ⬇️&nbsp;<a title="Jump to bottom of page" id="btnBottom" onclick="updateDebugInfo();">Jump to bottom</a>
+        <br><br>
+        <b>Fun with Percentages</b><br>
+        <span class="smallText"><ul>
+          <li><b>(P/W)</b> = percent of page scrolled</li>
+          <li><b>1-(P/W)</b> = percent of page <i>not</i> scrolled</li>
+          <li>All numbers range from 0 to 1*</li>
+          <li>Adding both numbers always equals 1</li>
+        </ul>
+        <b>*</b>Range will sometimes reach 1.02</span>
 
       </center>
 
