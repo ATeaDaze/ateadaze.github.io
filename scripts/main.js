@@ -1,50 +1,79 @@
-let windowY = document.documentElement.clientWidth; // 1920
-let scrollPos = $(document).scrollTop();
-let scrollLimit = document.documentElement.scrollHeight;
-let scrollLimitY = document.documentElement.scrollWidth;
-let scrollProgress = scrollPos / windowY;
-let scrollProgressInverse = scrollProgress - 1;
-let bEnableDebug = true;
-let hrWidth1 = $("#progressBar1").width();
-let hrWidth2 = $("#progressBar2").width();
-
-$(window).scroll(function(){
-  windowY = document.documentElement.clientWidth;
-  scrollPos = $(document).scrollTop();
-  scrollPos = Number(scrollPos.toFixed(0));
-  updateDebugInfo();
-/*  if(bEnableDebug) {
-    console.log(`scrollPos\t${scrollPos}\tscrollLimit\t${scrollLimit}`);
-  } */
-  $("#progressBar1").css({
-    'width' : scrollProgressInverse*250
-  });
-  $("#progressBar2").css({
-    'width' : scrollProgress*250
-  });
-
-});
+// Maximum window height
+let scrollMaximum;
+// Current scollbar position
+let scrollPosition = $(document).scrollTop();
+// Size of one page scroll
+let scrollPageSize = document.documentElement.scrollHeight;
+// Percent scrolled
+let pctScrolled = 0;
+// Percent not scrolled = pctScrolled-1 (complement value)
+let pctNotScrolled = 1;
+let bEnableDebug = false;
+let hrRedSize = $("#progressBar1").width();
+let hrGreenSize = $("#progressBar2").width();
 
 $(document).ready(function() {
+  // Find window scroll height
+  scrollMaximum = getDocumentHeight();
+  // Update stats
   updateDebugInfo();
-
-  $("#btnTop").on("click", function() {
+  // Quick links for top and bottom of page
+  $("#btnTop, #progressBar1").on("click", function() {
     scrollToTop(0);
     updateDebugInfo();
   });
-  $("#btnBottom").on("click", function() {
+  $("#btnBottom, #progressBar2").on("click", function() {
     scrollToBottom(0);
     updateDebugInfo();
   });
-
-  $("#progressCell").on("click", function() {
-    hrWidth1 = $("#progressBar1").width();
-    hrWidth2 = $("#progressBar2").width();
-    $("#txtDebugHRWidth1").html(hrWidth1);
-    $("#txtDebugHRWidth2").html(hrWidth2);
-  });
-
 });
+
+$(window).scroll(function() {
+  // Update position on scroll
+  scrollPosition = $(document).scrollTop();
+//  scrollPosition = Number(scrollPosition.toFixed(0));
+  updateDebugInfo();
+//  console.log(`${scrollPosition} / ${scrollMaximum} = ${pctScrolled}, scrollPageSize = ${scrollPageSize}`);
+  // Convert values to raw percentages to use as CSS variables
+  let scrollProgressPct = pctScrolled*100 + "%";
+  let scrollProgressInversePct = pctNotScrolled*100 + "%";
+  // Update width of both bars
+  $("#progressBar1").css({
+    'width' : scrollProgressInversePct
+  });
+  $("#progressBar2").css({
+    'width' : scrollProgressPct
+  });
+});
+
+function updateDebugInfo() {
+  // Get size of red and green bars
+  hrRedSize = $("#progressBar1").width();
+  hrGreenSize = $("#progressBar2").width();
+  // Perent scrolled = current position / (maximum size - page size)
+  pctScrolled = (scrollPosition / (scrollMaximum - scrollPageSize)).toFixed(4)
+  // Find complement of percent scrolled
+  pctNotScrolled = 1 - pctScrolled;
+  pctNotScrolled = pctNotScrolled.toFixed(4);
+  scrollProgressPercent = (pctScrolled * 100).toFixed(2);
+  // Update debug table information
+  $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
+  $("#txtDebugPwInverse").html(pctNotScrolled);
+  $("#txtDebugPW").html(pctScrolled);
+  $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
+  $("#txtDebugPos").html(scrollPosition);
+  $("#txtDebugWindow").html(scrollMaximum)
+  $("#txtDebugTotal").html(scrollProgressPercent + "%");
+  $("#txtDebugOffset").html(scrollPageSize);
+}
+
+// Get the entire document height (scroll limit)
+function getDocumentHeight() {
+  let x = document;
+  return Math.max ( Math.max(x.body.scrollHeight, x.documentElement.scrollHeight),
+                    Math.max(x.body.offsetHeight, x.documentElement.offsetHeight),
+                    Math.max(x.body.clientHeight, x.documentElement.clientHeight) );
+}
 
 function scrollToBottom(msec) {
   window.scrollTo(msec, document.body.scrollHeight);
@@ -55,21 +84,4 @@ function scrollToTop(msec) {
     top: msec,
     behavior: 'auto'
   });
-}
-
-function updateDebugInfo() {
-  hrWidth1 = $("#progressBar1").width();
-  hrWidth2 = $("#progressBar2").width();
-  scrollProgress = (scrollPos / windowY).toFixed(4)
-  scrollProgressInverse = 1 - scrollProgress;
-  scrollProgressInverse = scrollProgressInverse.toFixed(4);
-  scrollProgressPercent = ( (scrollPos / windowY) * 100).toFixed(2);
-
-  $("#txtDebugHRWidth1").html(hrWidth1);
-  $("#txtDebugPwInverse").html(scrollProgressInverse);
-  $("#txtDebugPW").html(scrollProgress);
-  $("#txtDebugHRWidth2").html(hrWidth2);
-  $("#txtDebugPos").html(scrollPos);
-  $("#txtDebugWindow").html(windowY)
-  $("#txtDebugTotal").html(scrollProgressPercent + "%");
 }

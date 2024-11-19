@@ -1,6 +1,18 @@
+/* Trivial example of CSS variable */
+
+:root {
+  --pure-black: #000000;
+}
+
+@property --off-white {
+  syntax: "<color>";
+  initial-value: #dddddd;
+  inherits: false;
+}
+
 body {
-  background-color: #000000;
-  color: #dddddd;
+  background-color: var(--pure-black);
+  color: var(--off-white);
   font-size: 12pt;
   font-family: sans-serif;
 }
@@ -136,8 +148,12 @@ ul {
   width: 40svw;
 }
 
+.legacyIcon {
+  height: 16px;
+}
+
 #progressBar1, #progressBar2 {
-  max-width: 90%;
+  max-width: 95%;
   height: 0.75em;
   cursor: pointer;
 }
@@ -153,7 +169,7 @@ ul {
 #progressBar1 {
   border: 2px outset red;
   background-image: linear-gradient(darkred, indianred);
-  width: 93%;
+  width: 100%;
 }
 
 #progressBar2 {
@@ -165,6 +181,7 @@ ul {
 }
 
 #pwInverse, #pw {
+  font-weight: bold;
 }
 
 #pwInverse {
