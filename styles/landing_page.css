@@ -1,7 +1,5 @@
-/* TODO: add alternate sheet dimensions for mobile, implement light mode */
-/*@media (orientation: portrait), (max-width: 800px) {
-  /* MOBILE DIMENSION CHANGES GO HERE
-}*/
+/* TODO: revise and test alternate styles for smaller screens, hide the quick bar with a toggle, 
+    implement light mode */
 
 body {
   background-color: #000000;
@@ -13,6 +11,8 @@ body {
 table {
   width: 15svw;
   padding: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 th {
   font-family: monospace;
@@ -70,38 +70,59 @@ a:hover {
   filter: brightness(1.2);
 }
 @keyframes flashText {
-  75% { opacity: 0.75; }
+  75% {
+    opacity: 0.75;
+  }
+}
+a:active {
+  color: #0061bf;
+}
+
+.warningMessage {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #cd5c5c;
+  cursor: pointer;;
+  visibility: hidden;
+  display: none;
+  animation: flashText 2s linear infinite;
 }
 
 ul {
   list-style-type: square;
 /* ⬛◼️◾▪️⬜◽▫️ */
-/*
-  list-style-image: url('../images/bullet_point.png');
-*/
 }
 
-.grayCell {
-  border: 1px solid #333333;
-}
+/* PROJECT LIST (left main table cell) */
 
-.grayCell:hover {
-  border: 1px solid #555555;
-}
-
-.leadCell {
-  text-align: right;
-  width: 50%;
-}
-
-.valueCell {
+.siteTable {
+  width: 35svw;
   text-align: left;
-/*  color: cyan; */
 }
 
-.leadCell, .valueCell {
-  border: 1px solid #333333;
+.mainTitle {
+  font-size: 1.75em;
+  font-weight: bold;
 }
+
+.mainSubheader {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.mainLogo {
+  width: 32px;
+}
+
+.bannerLogo {
+  width: 28svw;
+}
+
+.gitHubLogo {
+  width: 64px;
+}
+
+/* QUICK LINKS (right main table cell) */
 
 .tableTOC {
   vertical-align: top;
@@ -114,39 +135,51 @@ ul {
 }
 
 .toc {
-  width: 22px;
+  width: 20px;
   padding: 2px;
 }
 
-.gitHubLogo {
-  width: 64px;
+#btnTop, #btnBottom {
+  cursor: pointer;
 }
 
-.mainTitle {
-  font-size: 2em;
-  font-weight: bold;
+.debugTxtStyle {
+  font-family: monospace;
+  font-size: 14pt;
 }
 
-.mainSubheader {
-  font-size: 1.5em;
-  font-weight: bold;
+/*.debugTableStyle {
+  width: 15svw;
+}*/
+
+.leadCell, .valueCell {
+  border: 1px solid #333333;
 }
 
-.mainLogo {
-  width: 40px;
+.leadCell {
+  text-align: right;
+  width: 50%;
 }
 
-.siteTable {
-  width: 35svw;
+.valueCell {
   text-align: left;
+/*  color: cyan; */
 }
 
-.bannerLogo {
-  width: 25svw;
+/*table#someID <child_element> */
+table.plainCell th{
+  background-color: #000000;
+  border-color: #000000;
+  font-family: sans-serif;
+  text-align: center;
 }
 
-.legacyIcon {
-  height: 16px;
+
+.grayCell {
+  border: 1px solid #333333;
+}
+.grayCell:hover {
+  border: 1px solid #555555;
 }
 
 #progressBar1, #progressBar2 {
@@ -172,8 +205,6 @@ ul {
 #progressBar2 {
   border: 2px outset limegreen;
   background-image: linear-gradient(green, chartreuse);
-/*  border: 2px outset blue;
-  background-image: linear-gradient(darkblue, dodgerblue); */
   width: 0%;
 }
 
@@ -185,14 +216,9 @@ ul {
 #pwInverse {
   color: #ff5555;
 }
+
 #pw {
   color: #55ff55;
-}
-
-
-#txtDebug0 {
-  font-weight: bold;
-  color: deepskyblue;
 }
 
 #totalLead, #totalValue {
@@ -203,19 +229,14 @@ ul {
   color: cyan;
 }
 
+.legacyIcon {
+  height: 16px;
+}
+
 .smallText {
   font-size: 10pt;
   text-align: left;
   cursor: help;
-}
-
-.debugTableStyle {
-  width: 15svw;
-}
-
-.debugTxtStyle {
-  font-family: monospace;
-  font-size: 14pt;
 }
 
 .hidden {
@@ -227,9 +248,320 @@ ul {
   display: none;
 }
 
-#btnTop, #btnBottom {
-  cursor: pointer;
+
+@media (max-width: 1300px) {
+
+  body {
+    font-size: 12pt;
+  }
+
+  table {
+    width: 20svw;
+    padding: 4px;
+  }
+  th {
+    font-size: 14pt;
+    font-weight: bold;
+  /*  text-decoration: underline; */
+    padding: 2px;
+    border: 1px solid #555555;
+    background-color: #111111;
+  }
+  tr {
+    padding: 5px;
+  }
+  td {
+  /*  border: 1px solid #555555; */
+    padding: 2px;
+  }
+
+  table {
+    border: 1px solid #000000;
+  }
+
+  /* Layout debugging */
+  /*
+  table {
+    border: 1px solid mediumorchid;
+  }
+  tr {
+    border: 1px solid chartreuse;
+  }
+  th {
+    border: 1px solid #c0c0c0;
+  }
+  td {
+    border: 1px solid cyan;
+  }
+  */
+
+  hr {
+    height: 3px;
+    border: 1.5px solid #333333;
+    padding: 0px;
+  }
+
+  /* PROJECT LIST (left main table cell) */
+
+  .siteTable {
+    width: 50svw;
+    text-align: left;
+  }
+
+  .mainTitle {
+    font-size: 1.75em;
+    font-weight: bold;
+  }
+
+  .mainSubheader {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .mainLogo {
+    width: 28px;
+  }
+
+  .bannerLogo {
+    width: 40svw;
+  }
+
+  .gitHubLogo {
+    width: 65px;
+  }
+
+  /* QUICK LINKS (right main table cell) */
+
+  .tableTOC {
+    vertical-align: top;
+    position: fixed;
+  /* Disable cursor selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .toc {
+    width: 20px;
+    padding: 2px;
+  }
+
+  .debugTxtStyle {
+    font-family: monospace;
+    font-size: 14pt;
+  }
+
+  /*.debugTableStyle {
+    width: 15svw;
+  }*/
+
+  .leadCell, .valueCell {
+    border: 1px solid #333333;
+  }
+
+  .leadCell {
+    text-align: right;
+    width: 50%;
+  }
+
+  .valueCell {
+    text-align: left;
+  /*  color: cyan; */
+  }
+
+  .grayCell {
+    border: 1px solid #333333;
+  }
+  .grayCell:hover {
+    border: 1px solid #555555;
+  }
+
+  #progressBar1, #progressBar2 {
+    max-width: 95%;
+    height: 0.75em;
+    cursor: pointer;
+  }
+
+  .legacyIcon {
+    height: 16px;
+  }
+
+  .smallText {
+    font-size: 10pt;
+    text-align: left;
+    cursor: help;
+  }
+
 }
 
-#txtQuickLinks {
+@media (orientation: portrait), (max-width: 800px) {
+  body {
+    font-size: 1em;
+  }
+
+  table {
+    width: 40svw;
+    padding: 4px;
+  }
+  th {
+    font-size: 1em;
+    font-weight: bold;
+  /*  text-decoration: underline; */
+    padding: 1px;
+    border: 1px solid #555555;
+    background-color: #111111;
+  }
+  tr {
+    padding: 5px;
+  }
+  td {
+  /*  border: 1px solid #555555; */
+    padding: 2px;
+  }
+
+  table {
+    border: 1px solid #000000;
+    margin-left: unset;
+    margin-right: unset;
+  }
+
+  /* Layout debugging */
+  /*
+  table {
+    border: 1px solid mediumorchid;
+  }
+  tr {
+    border: 1px solid chartreuse;
+  }
+  th {
+    border: 1px solid #c0c0c0;
+  }
+  td {
+    border: 1px solid cyan;
+  }
+  */
+
+  hr {
+    height: 3px;
+    border: 1.5px solid #333333;
+    padding: 0px;
+  }
+
+  li {
+    font-size: 0.8em;
+  }
+
+  /* PROJECT LIST (left main table cell) */
+
+  .siteTable {
+    width: 60svw;
+    text-align: left;
+  }
+
+  .mainTitle {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .mainSubheader {
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .mainLogo {
+    width: 16px;
+  }
+
+  .bannerLogo {
+    width: 50svw;
+  }
+
+  .gitHubLogo {
+    width: 32px;
+  }
+
+  /* QUICK LINKS (right main table cell) */
+
+  .tableTOC {
+    vertical-align: top;
+    position: fixed;
+  /* Disable cursor selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .toc {
+    width: 12px;
+    padding: 2px;
+  }
+
+  .debugTxtStyle {
+    font-family: monospace;
+    font-size: 1em;
+  }
+
+  #pw, #pwInverse {
+    font-size: 1em;
+    visibility: hidden;
+    display: none;
+  }
+
+  #btnTop, #btnBottom {
+    font-size: 0.8em;
+  }
+
+.plainCell {
+  visibility: hidden;
+  display: none;
+}
+
+  /*.debugTableStyle {
+    width: 15svw;
+  }*/
+
+  .leadCell, .valueCell {
+    border: 1px solid #333333;
+  }
+
+  .leadCell {
+    text-align: right;
+    width: 50%;
+  }
+
+  .valueCell {
+    text-align: left;
+  /*  color: cyan; */
+  }
+
+  .grayCell {
+    border: 1px solid #333333;
+  }
+  .grayCell:hover {
+    border: 1px solid #555555;
+  }
+
+  #progressBar1, #progressBar2 {
+    max-width: 95%;
+    height: 0.75em;
+    cursor: pointer;
+  }
+
+  .legacyIcon {
+    height: 16px;
+  }
+
+  .smallText {
+    font-size: 10pt;
+    text-align: left;
+    cursor: help;
+  }
+
+  .warningMessage {
+    visibility: visible;
+    display: initial;
+  }
+
 }

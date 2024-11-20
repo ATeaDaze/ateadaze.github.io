@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<!-- Google Analytics (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1GSELVZ3W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-B1GSELVZ3W');
 </script>
   <meta charset="UTF-8" />
@@ -19,9 +20,12 @@
   <script src="scripts/main.js"></script>
 </head>
 <body>
-<center>
 
-<table id="top" class="siteTable">
+<!--<center>-->
+<!-- Show a warning if screen is < 800px and in portrait mode -->
+<center><span id="warningHeader" class="warningMessage">⚠️ Warning: this website will not look optimal in portrait mode ⚠️<hr></span></center>
+
+<table class="siteTable">
   <tr>
     <td>
       <!-- YAHTZEE -->
@@ -112,7 +116,7 @@
       <span class="mainTitle" id="toc">
         <span id="txtQuickLinks"><a href="images/owl_cave.png" target="_blank" title="Listen to the sounds. It is in our house now"><img src="images/owl_cave.png" class="mainLogo"></a>&nbsp;Quick Links</span>
       </span>
-      <center>
+      </center>
       <span class="mainSubheader">
         <table>
           <tr>
@@ -136,7 +140,13 @@
         </table>
       </span><hr>
 
-      ⬆️&nbsp;<a title="Jump to top of page" id="btnTop">Jump to top</a><br>
+      <table class="plainCell">
+        <tr>
+          <th colspan="2">
+            ⬆️&nbsp;<a title="Jump to top of page" id="btnTop">Jump to top</a>
+          </th>
+        </tr>
+      </table>      
 
       <table>
       <!-- Superfluous header -->
@@ -149,7 +159,7 @@
           <td class="valueCell"><span id="txtDebugHRWidth1"></td>
         </tr>
         <!-- 1 - (P/W) -->
-        <tr class="debugTxtStyle" id="pwInverse" title="% not scrolled">
+        <tr class="debugTxtStyle" id="pwInverse" title="% of page not scrolled">
           <td class="leadCell"><span class="debugTxtStyle"><b>1-(P/W)</b>=</span></td>
           <td class="valueCell"><span id="txtDebugPctNotScrolled"></td>
         </tr>
@@ -162,7 +172,7 @@
           </td>
         </tr>
         <!-- (P/W) -->
-        <tr class="debugTxtStyle" id="pw" title="% scrolled">
+        <tr class="debugTxtStyle" id="pw" title="% of page scrolled">
           <td class="leadCell"><span class="debugTxtStyle"><b>(P/W)</b>=</span></td>
           <td class="valueCell"><span id="txtDebugPctScrolled"></td>
         </tr>
@@ -197,8 +207,15 @@
         </tr>
         </table>
 
-        ⬇️&nbsp;<a title="Jump to bottom of page" id="btnBottom">Jump to bottom</a>
-        <br><br>
+      <table class="plainCell">
+        <tr>
+          <th colspan="2">
+            ⬇️&nbsp;<a title="Jump to bottom of page" id="btnBottom">Jump to bottom
+          </th>
+        </tr>
+      </table> 
+
+<!--        <br><br>
         <b>Additional Information</b><br>
         <span class="smallText"><ul>
           <li><b>P</b> = Position, <b>W</b> = Window height</li>
@@ -207,19 +224,21 @@
           <li><b><span id="pwInverse">1-(P/W)</span></b> = % of page <i>not</i> scrolled</li>
           <li><b><span id="pwInverse">1-(P/W)</span> + <span id="pw">(P/W)</span> = 1</b></li>
         </ul>
+-->
 
       </center>
-
     </td>
   </tr>
 </table>
 
 <!-- GITHUB -->
+<center>
 <a href="https://github.com/ATeaDaze/ateadaze.github.io" target="_blank" id="github">
   <img src="images/github-mark-white.png" class="gitHubLogo" title="GitHub"><br>
   <b>GitHub</b><br><br>
 </a>
-
 </center>
+
+<!--</center>-->
 </body>
 </html>

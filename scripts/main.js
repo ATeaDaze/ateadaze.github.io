@@ -42,6 +42,11 @@ $(document).ready(function() {
     scrollToBottom(0);
     updateDebugInfo();
   });
+  // Remove warning message on click/tap
+  $("#warningHeader").on("click touchstart", function() {
+    $(this).removeClass("warningMessage");
+    $(this).addClass("invisible");
+  });
 
   // TODO: make the progress bars interactive
   // $("#progressBar1").on("click", function(e) {
@@ -56,16 +61,20 @@ function updateDebugInfo() {
   hrRedSize = $("#progressBar1").width();
   hrGreenSize = $("#progressBar2").width();
   // Perent scrolled = current position / (maximum size - page size)
-  pctScrolled = (scrollPosition / (scrollMax - scrollPageSize)).toFixed(2)
+  pctScrolled = (scrollPosition / (scrollMax - scrollPageSize)).toFixed(3)
   // Find complement of percent scrolled
   pctNotScrolled = 1 - pctScrolled;
-  pctNotScrolled = pctNotScrolled.toFixed(2);
+  pctNotScrolled = pctNotScrolled.toFixed(3);
   scrollProgressPercent = (pctScrolled * 100).toFixed(2);
   // Update debug table information
-  $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
+//  $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
+//  $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
   $("#txtDebugPctNotScrolled").html(pctNotScrolled);
   $("#txtDebugPctScrolled").html(pctScrolled);
-  $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
+
+//  $("#txtDebugPctNotScrolled").html((Math.round(pctNotScrolled * 100) / 100).toFixed(2));
+//  $("#txtDebugPctScrolled").html((Math.round(pctScrolled * 100) / 100).toFixed(2));
+
 //  $("#txtDebugPos").html(scrollPosition);
 //  $("#txtDebugWindow").html(scrollMax - scrollPageSize);
 //  $("#txtDebugTotal").html(scrollProgressPercent + "%");
