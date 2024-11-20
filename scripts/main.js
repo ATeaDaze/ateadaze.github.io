@@ -1,5 +1,5 @@
 // Maximum window height
-let scrollMaximum;
+let scrollMax;
 // Current scollbar position
 let scrollPosition = $(document).scrollTop();
 // Size of one page scroll
@@ -8,42 +8,47 @@ let scrollPageSize = document.documentElement.scrollHeight;
 let pctScrolled = 0;
 // Percent not scrolled = pctScrolled-1 (complement value)
 let pctNotScrolled = 1;
-let bEnableDebug = false;
+// Get inital width of each bar
 let hrRedSize = $("#progressBar1").width();
 let hrGreenSize = $("#progressBar2").width();
 
 $(document).ready(function() {
-  // Find window scroll height
-  scrollMaximum = getDocumentHeight();
-  // Update stats
+  // Find maximum window scroll height
+  scrollMax = getDocumentHeight();
   updateDebugInfo();
-  // Quick links for top and bottom of page
-  $("#btnTop, #progressBar1").on("click", function() {
+
+  $(window).scroll(function() {
+    // Update position on scroll
+    scrollPosition = $(document).scrollTop();
+    updateDebugInfo();
+    // Convert values to raw percentages to use as CSS variables
+    let scrollPercent = pctScrolled*100 + "%";
+    let scrollPercentComplement = pctNotScrolled*100 + "%";
+    // Update width of both bars
+    $("#progressBar1").css({
+      'width' : scrollPercentComplement
+    });
+    $("#progressBar2").css({
+      'width' : scrollPercent
+    });
+  });
+
+  // Buttons: jump to top and bottom of page
+  $("#btnTop").on("click", function() {
     scrollToTop(0);
     updateDebugInfo();
   });
-  $("#btnBottom, #progressBar2").on("click", function() {
+  $("#btnBottom").on("click", function() {
     scrollToBottom(0);
     updateDebugInfo();
   });
-});
 
-$(window).scroll(function() {
-  // Update position on scroll
-  scrollPosition = $(document).scrollTop();
-//  scrollPosition = Number(scrollPosition.toFixed(0));
-  updateDebugInfo();
-//  console.log(`${scrollPosition} / ${scrollMaximum} = ${pctScrolled}, scrollPageSize = ${scrollPageSize}`);
-  // Convert values to raw percentages to use as CSS variables
-  let scrollProgressPct = pctScrolled*100 + "%";
-  let scrollProgressInversePct = pctNotScrolled*100 + "%";
-  // Update width of both bars
-  $("#progressBar1").css({
-    'width' : scrollProgressInversePct
-  });
-  $("#progressBar2").css({
-    'width' : scrollProgressPct
-  });
+  // TODO: make the progress bars interactive
+  // $("#progressBar1").on("click", function(e) {
+    // let leftOffset = e.pageX - $(this).offset().left;
+    // console.log(`left=${leftOffset}, total = ${pctNotScrolled}`);
+  // });
+
 });
 
 function updateDebugInfo() {
@@ -51,28 +56,28 @@ function updateDebugInfo() {
   hrRedSize = $("#progressBar1").width();
   hrGreenSize = $("#progressBar2").width();
   // Perent scrolled = current position / (maximum size - page size)
-  pctScrolled = (scrollPosition / (scrollMaximum - scrollPageSize)).toFixed(4)
+  pctScrolled = (scrollPosition / (scrollMax - scrollPageSize)).toFixed(2)
   // Find complement of percent scrolled
   pctNotScrolled = 1 - pctScrolled;
-  pctNotScrolled = pctNotScrolled.toFixed(4);
+  pctNotScrolled = pctNotScrolled.toFixed(2);
   scrollProgressPercent = (pctScrolled * 100).toFixed(2);
   // Update debug table information
   $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
-  $("#txtDebugPwInverse").html(pctNotScrolled);
-  $("#txtDebugPW").html(pctScrolled);
+  $("#txtDebugPctNotScrolled").html(pctNotScrolled);
+  $("#txtDebugPctScrolled").html(pctScrolled);
   $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
-  $("#txtDebugPos").html(scrollPosition);
-  $("#txtDebugWindow").html(scrollMaximum)
-  $("#txtDebugTotal").html(scrollProgressPercent + "%");
-  $("#txtDebugOffset").html(scrollPageSize);
+//  $("#txtDebugPos").html(scrollPosition);
+//  $("#txtDebugWindow").html(scrollMax - scrollPageSize);
+//  $("#txtDebugTotal").html(scrollProgressPercent + "%");
+//  $("#txtDebugOffset").html(scrollPageSize);
 }
 
-// Get the entire document height (scroll limit)
+// Get the entire document height (scrollMax)
 function getDocumentHeight() {
-  let x = document;
-  return Math.max ( Math.max(x.body.scrollHeight, x.documentElement.scrollHeight),
-                    Math.max(x.body.offsetHeight, x.documentElement.offsetHeight),
-                    Math.max(x.body.clientHeight, x.documentElement.clientHeight) );
+  let d = document;
+  return Math.max ( Math.max(d.body.scrollHeight, d.documentElement.scrollHeight),
+                    Math.max(d.body.offsetHeight, d.documentElement.offsetHeight),
+                    Math.max(d.body.clientHeight, d.documentElement.clientHeight) );
 }
 
 function scrollToBottom(msec) {

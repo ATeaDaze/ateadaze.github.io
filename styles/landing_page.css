@@ -1,18 +1,11 @@
-/* Trivial example of CSS variable */
-
-:root {
-  --pure-black: #000000;
-}
-
-@property --off-white {
-  syntax: "<color>";
-  initial-value: #dddddd;
-  inherits: false;
-}
+/* TODO: add alternate sheet dimensions for mobile, implement light mode */
+/*@media (orientation: portrait), (max-width: 800px) {
+  /* MOBILE DIMENSION CHANGES GO HERE
+}*/
 
 body {
-  background-color: var(--pure-black);
-  color: var(--off-white);
+  background-color: #000000;
+  color: #dddddd;
   font-size: 12pt;
   font-family: sans-serif;
 }
@@ -25,7 +18,7 @@ th {
   font-family: monospace;
   font-size: 14pt;
   font-weight: bold;
-  text-decoration: underline;
+/*  text-decoration: underline; */
   padding: 2px;
   border: 1px solid #555555;
   background-color: #111111;
@@ -88,7 +81,6 @@ ul {
 */
 }
 
-
 .grayCell {
   border: 1px solid #333333;
 }
@@ -144,8 +136,13 @@ ul {
   width: 40px;
 }
 
+.siteTable {
+  width: 35svw;
+  text-align: left;
+}
+
 .bannerLogo {
-  width: 40svw;
+  width: 25svw;
 }
 
 .legacyIcon {
@@ -182,6 +179,7 @@ ul {
 
 #pwInverse, #pw {
   font-weight: bold;
+  cursor: help;
 }
 
 #pwInverse {

@@ -19,28 +19,36 @@ body {
 }
 
 /* FOR UI TESTING */
-/*div {
-  border: 1px solid forestgreen;
+/*
+div {
+  border: 1px solid coral;
 }
-
 span {
-  border: 1px solid limegreen;
+  border: 1px solid yellow;
 }
-
+*/
+/*
 table {
-  border: 1px solid green;
-}*/
+  border: 1px solid cyan;
+}
+th {
+  border: 1px solid chartreuse;
+}
+td {
+  border: 1px solid magenta;
+}
+*/
 
 button {
   background-color: #111111;
   border-color: #777777;
   color: #dddddd;
-  font-size: 22pt;
+  font-size: 20pt;
   font-weight: bold;
   cursor: pointer;
   padding: 3pt;
   width: 120pt;
-  height: 50px;
+  height: 55px;
 }
 button:hover {
   color: #ffffff;
@@ -76,7 +84,7 @@ a:hover {
 /* A smaller, invisible <hr> for smaller gaps */
 .smallLine {
   visibility: hidden;
-  height: 7px;
+  height: 5px;
   width: 100px;
   margin-top: 0pt;
   margin-bottom: 0pt;
@@ -188,9 +196,12 @@ a:hover {
   filter: brightness(0.8);
 }
 
+.gbCount {
+  font-size: 12pt;
+}
+
 /* Gameplay buttons */
 #btnHit {
-  height: 60px;
   color: chartreuse;
   border-color: chartreuse;
   -webkit-text-stroke: 0px;
@@ -203,7 +214,6 @@ a:hover {
 
 /* [STAND] button */
 #btnStand {
-  height: 60px;
   color: indianred;
   border-color: indianred;
   -webkit-text-stroke: 0px;
@@ -216,13 +226,11 @@ a:hover {
 
 /* [DEAL NEW HAND] button */
 #btnDealNewHand {
-  height: 60px;
   width: 250pt;
   letter-spacing: 2px;
 }
 
 #btnDoubleDown {
-  height: 60px;
   width: 250pt;
   letter-spacing: 3px;
 }
@@ -242,10 +250,72 @@ a:hover {
   padding: 5px;
 }
 
+/* Casino Green: #154700, Darker Green: #0F3300 */
+
+/* Wildcard: element[id^="someIDName"] or [id^="someIDName"] */
+
+.deckPicker {
+  width: 705px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.deckLead {
+  width: 12%;
+  cursor: help;
+}
+
+.deckLead, .deckValue {
+  text-align: center;
+}
+
+.deckValue {
+  border: 2.5px solid transparent;
+  color: #d0d0d0;
+  background-image: unset;
+  cursor: pointer;
+}
+.deckValue:hover, .deckValueActive:hover {
+  color: #ffffff;
+  background-color: #154700;
+  border-color: #ffffff;
+  filter: brightness(1.2);
+  animation: flashText 1s linear infinite;
+}
+@keyframes flashText {
+  75% { opacity: 0.75; }
+}
+.deckValueActive {
+  background-color: #0F3300;
+  border: 2.5px solid #ffffff;
+  cursor: pointer;
+  filter: brightness(1.0);
+/*  text-shadow: #FC0 1px 0 8px; */
+}
+
+
+/*input[type=text] {
+  color: #fefefe;
+  background-color: #101010;
+  font-size: 14pt;
+  font-family: monospace;
+  -webkit-text-stroke: initial;
+}
+
+.txtDeckInputStyle {
+  color: #ffffff;
+  background-color: #121212;
+}
+
+#txtCustomDeck {
+}*/
+
 /* Help button and popup menu */
 .btnHelpStyle {
   color: #d0d0d0;
-  font-size: 20pt;
+  font-size: 18pt;
   cursor: help;
   text-align: center;
 }
@@ -255,7 +325,7 @@ a:hover {
 
 .btnAudioStatus {
   color: #d0d0d0;
-  font-size: 20pt;
+  font-size: 18pt;
   cursor: pointer;
 }
 .btnAudioStatus:hover {
@@ -264,6 +334,7 @@ a:hover {
 
 #cardCounterTxt {
   color: #d0d0d0;
+  font-size: 18pt;
   cursor: pointer;
   width: 10%;
 }
@@ -276,11 +347,16 @@ a:hover {
 }
 
 .evenWidthCell {
-  width: 50%;
+  width: 33%;
 }
 .evenRightCell {
-  width: 50%;
+  width: 33%;
   text-align: right;
+}
+
+.centerCell {
+  width: 33%;
+  text-align: center;
 }
 
 #btnAudioStatusLead {

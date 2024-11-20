@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1GSELVZ3W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B1GSELVZ3W');
-</script>
+
 <!-- Keywords and metadata -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -26,7 +19,7 @@
 <img src="images/main_banner.png" width="650">
 
 <!-- Notification when 104 cards have been used -->
-<span id="toastMessage">All 6 Decks Used 🎲 Shuffling Cards</span>
+<span id="toastMessage">All Decks Used 🎲 Shuffling Cards</span>
 
 <!-- Status bar -->
 <table class="fixedTable">
@@ -102,7 +95,22 @@
       <button onclick="drawPlayerCard();" id="btnHit">HIT</button>
     </td>
   </tr>
-</table><hr class="hidden">
+</table><hr class="smallLine">
+<table class="deckPicker" id="deckTable">
+  <tr>
+    <td class="deckLead" title="Click a number to select the number of decks">Decks</td>
+    <td class="deckValue" id="btnDeckSize1">1</td>
+    <td class="deckValue" id="btnDeckSize2">2</td>
+    <td class="deckValue" id="btnDeckSize3">3</td>
+    <td class="deckValue" id="btnDeckSize4">4</td>
+    <td class="deckValue" id="btnDeckSize5">5</td>
+    <td class="deckValue" id="btnDeckSize6">6</td>
+    <td class="deckValue" id="btnDeckSize7">7</td>
+    <td class="deckValue" id="btnDeckSize8">8</td>
+<!--    <td><input type="text" id="txtCustomDeck" class="txtDeckInputStyle" placeholder="1:10" maxlength="2"></input></td>
+    <td>Custom</td> -->
+  </tr>
+</table><hr class="smallLine"><hr>
 
 <!-- Footer -->
 <table class="fixedTable">
@@ -114,7 +122,7 @@
       </span>
   </td>
 
-  <td><span id="cardCounterTxt" onclick="hideTrueCount();" title="True Count (click to hide)"></td>
+  <td class="centerCell"><span id="cardCounterTxt" onclick="hideTrueCount();" title="True Count (click to hide)"></td>
 
   <td class="evenRightCell">
   <!-- Help button: clicking toggles help window, div centers text -->
@@ -170,6 +178,7 @@
 <audio src="audio/tick.mp3" class="hidden"></audio>
 <audio src="audio/draw.mp3" class="hidden"></audio>
 <audio src="audio/jackpot.mp3" class="hidden"></audio>
+<audio src="audio/select.wav" class="hidden"></audio>
 
 <!-- Preload images to prevent load latency -->
 <img src="images/25.png" class="hidden">

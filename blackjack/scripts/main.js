@@ -7,10 +7,13 @@ const btnDisableCSS = "background-color: #222222; cursor: not-allowed";
 const btnEnableCSS = "background-color: #111111; cursor: pointer";
 const statusBarWinCSS = "color: chartreuse; animation: 1.5s anim-flipX ease 1;";
 const statusBarLoseCSS = "color: #ff6161";
-let deck = [6];
-let fullDeck = [];
-let decksLeft = 6;
+// Number of decks
+let totalDecks = 4;
+let deck = [totalDecks];
+let decksLeft = totalDecks;
 let deckSize = 52 * decksLeft;
+let fullDeck = [];
+let newFullDeck = [];
 let usedCards = [];
 let playerScore = 0;
 let dealerScore = 0;
@@ -39,6 +42,7 @@ let bPlayerWin = false;
 let bPushRound = false;
 let bEnableSound = true;
 let bShowHelp = false;
+let bRandomizeDecks = false;
 let bDuplicateFound;
 let cardFaceSuit;
 let cardFaceRank;
@@ -48,6 +52,7 @@ const audioWin = new Audio("audio/casino_chip.mp3");
 const audioLose = new Audio("audio/tick.mp3");
 const audioDraw = new Audio("audio/draw.mp3");
 const audioJackpot = new Audio("audio/jackpot.mp3");
+const audioDeckSelect = new Audio("audio/select.wav");
 
 // Generate a base deck of 52 cards
 deck[0] = generateBaseDeck();
@@ -55,7 +60,18 @@ deck[0] = generateBaseDeck();
 fullDeck = generateFullDeck(deck);
 shuffleDeck(fullDeck);
 audioShuffle.play();
+
 getKeyboardInput();
+
+if(bRandomizeDecks) {
+  let randomDeckCount = Math.floor(Math.random() * 8) + 1;
+  totalDecks = randomDeckCount;
+  //console.log(randomDeckCount);
+}
+
+updateDeckCell();
+formatDeckCell();
+updateTrueCount();
 
 function mainGameLoop() {
   statusBarTxt.innerHTML = defaultGreeting;
@@ -69,11 +85,12 @@ function mainGameLoop() {
   // If the entire deck has been used then shuffle it
   if(nTotalCards > nCardOffset) {
     nTotalCards = 0;
-    decksLeft = 6;
+    decksLeft = totalDecks;
     runningCount = 0;
     trueCount = 0;
     shuffleDeck(fullDeck);
     displayShuffleToast();
+    updateTrueCount();
   }
 }
 
@@ -101,17 +118,24 @@ function generateBaseDeck() {
   return(baseDeck);
 }
 
-// Copy 1st deck into 5 more decks
+// Copy 1st deck into 6 more decks
 function generateFullDeck(newDeck) {
-  for(let i = 1; i < 6; i++) {
+  for(let i = 1; i < totalDecks; i++) {
     let j = i - 1;
     newDeck[i] = newDeck[j];
   }
-  newFullDeck = [ ...newDeck[0], ...newDeck[1], ...newDeck[2],
-                  ...newDeck[3], ...newDeck[4], ...newDeck[5] ];
+  // Previous method to combine decks (static)
+/*    newFullDeck = [ ...newDeck[0], ...newDeck[1], ...newDeck[2],
+                    ...newDeck[3], ...newDeck[4], ...newDeck[5] ]; */
+
+  // Add each deck to the full deck/shoe
+  for(let i = 0; i < totalDecks; i++) {
+    newFullDeck.push( ...newDeck[i] );
+  }
   return(newFullDeck);
 }
 
+// Shuffle entire shoe: 6 decks x 52 cards = 312 cards
 function shuffleDeck(newRandDeck) {
   usedCards = [];
   newRandDeck = newRandDeck.sort((a, b) => 0.5 - Math.random());
@@ -134,11 +158,14 @@ function findUniqueCard() {
   }
 }
 
+// TODO: fix the damn true count
 function getCardValue(score, bAceDrawn) {
   if((newCardValue > 1)&&(newCardValue < 7)) {
     runningCount = runningCount + 1;
   }
-  if((isNaN(newCardTxt)) || (newCardValue > 9)) runningCount = runningCount - 1;
+  if((isNaN(newCardTxt)) || (newCardValue > 9)) {
+    runningCount = runningCount - 1;
+  }
   decksLeft = (deckSize - nTotalCards) / 52;
   // Round remaining decks down to nearest integer
   decksLeft = Math.floor(decksLeft);
@@ -285,8 +312,7 @@ function updateCards(gb, nc) {
 }
 
 function updateTrueCount() {
-  cardCounterTxt.innerHTML = trueCount;
-  cardCounterTxt.title = "True count: " + runningCount + " / " + decksLeft + " = " + trueCount;
+  cardCounterTxt.innerHTML = runningCount + " / " + decksLeft + " ≈ " + trueCount;
 }
 
 function clearScoreboard() {
@@ -471,6 +497,34 @@ function endCurrentRound() {
     statusBarTxt.innerHTML = "💵 YOU BROKE THE BANK 💵";
   }
   disableGameButtons();
+
+  updateDeckCell();
+  updateTrueCount();
+}
+
+// TODO: reset values, generate new deck, shuffle
+function updateDeckCell() {
+  $("[id^=btnDeckSize]").on("click", function() {
+    let activeDeckCell = $(this).closest('td').index();
+    let activeCell = $(this).closest('tr').children('td:last');
+    totalDecks = activeDeckCell;
+
+    // Reset count if deck number is changed
+    decksLeft = totalDecks;
+    deckSize = 52 * decksLeft;
+    nTotalCards = 0;
+    runningCount = 0;
+    trueCount = 0;
+    updateTrueCount();
+
+    formatDeckCell();
+    audioDeckSelect.play();
+  });
+}
+
+function formatDeckCell() {
+  $("[id^=btnDeckSize]").removeClass("deckValueActive").addClass("deckValue");
+  $("#btnDeckSize" + totalDecks).addClass("deckValueActive").removeClass("deckValue");
 }
 
 function resetGameValues() {
@@ -557,6 +611,7 @@ function disableBets() {
   btnBet50.style = "cursor:not-allowed";
   btnBet100.style = "cursor:not-allowed";
   btnBet200.style = "cursor:not-allowed";
+  $("#deckTable").css('pointer-events', 'none');
 }
 
 function enableBets() {
@@ -568,6 +623,7 @@ function enableBets() {
   btnBet50.style = "cursor:pointer";
   btnBet100.style = "cursor:pointer";
   btnBet200.style = "cursor:pointer";
+  $("#deckTable").css('pointer-events', 'auto');
 }
 
 function getKeyboardInput() {
