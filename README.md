@@ -1,6 +1,6 @@
 # 🎲 Yahtzee
 
-### The classic dice game written in native JavaScript
+### The classic dice game written in native JavaScript and jQuery
 
 ## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
 <picture>
