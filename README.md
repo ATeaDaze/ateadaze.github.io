@@ -27,6 +27,8 @@
 # JaNK&nbsp;<a href="https://ateadaze.github.io/jank_table/index.html" target="_blank"><img src="/jank_table/images/logo-512.png" width="50" title="JaNK TaBLe"></a>&nbsp;TaBLe
 ## Visualize a 2-dimensional array with a table
 
+## 💻 [Desktop](https://ateadaze.github.io/jank_table)
+
 ![banner](/jank_table/images/jank_table-banner.png)
 
 -----
