@@ -1,11 +1,11 @@
+![main_github_header](/images/github-banner-padded.png)
+
 # 🎲 Yahtzee
 
 ### The classic dice game written in native JavaScript and jQuery
 
 ## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
-<picture>
-<img src="/yahtzee/images/yahtzee-screenshot.png" title="yahtzee screenshot">
-</picture>
+![yahtzee_screenshot](/yahtzee/images/yahtzee-screenshot.png)
 
 * **[README](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/README.md)**
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/yahtzee/scripts/main.js)**
