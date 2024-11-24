@@ -1,4 +1,4 @@
-![main_github_header](/images/github-banner-padded.png)
+![main_github_header](/images/github-banner-no_padding.png)
 
 # 🎲 Yahtzee
 
