@@ -50,7 +50,7 @@
 
 ### A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 
-## 💻 [Desktop](https://ateadaze.github.io/) | 📱 [Mobile](https://ateadaze.github.io/m/)
+## 💻 [Desktop](https://ateadaze.github.io/rainbow_noise) | 📱 [Mobile](https://ateadaze.github.io/m/rainbow_noise)
 ![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
 
 ## Features
