@@ -1,3 +1,4 @@
+<!-- TODO: remove old comments, add a <noscript> tag for people with JavaScript disabled -->
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -14,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ATeaDaze &gt; Projects</title>
   <link href="styles/landing_page.css" rel="stylesheet">
-  <link href="images/owl_cave.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/owl_cave-small.png" rel="shortcut icon" type="image/x-icon">
 <!--  <base target="_blank"> -->
   <script src="scripts/jquery-3.7.0.min.js"></script>
   <script src="scripts/main.js"></script>
@@ -23,7 +24,7 @@
 
 <!--<center>-->
 <!-- Show a warning if screen is < 800px and in portrait mode -->
-<center><span id="warningHeader" class="warningMessage">⚠️ Warning: this website will not look optimal in portrait mode ⚠️<hr></span></center>
+<center><span id="warningHeader" class="warningMessage">⚠️ Warning: this website will not look optimal in portrait mode ⚠️<br><span class="warningMessage2">ℹ️ Click here to hide warning messages</span><hr></span></center>
 
 <table class="siteTable">
   <tr>
@@ -32,7 +33,7 @@
       <span class="mainTitle" id="yahtzee">
         <img src="yahtzee/images/yahtzee-icon-3d.png" class="mainLogo">&nbsp;<a href="yahtzee/index.html" target="_blank">Yahtzee</a>
       </span><br><!--<hr>-->
-      <span class="mainSubheader">The classic dice game written in JavaScript<br><br></span>
+      <span class="mainSubheader">The classic dice game written in JavaScript</span><br><br>
       <!-- <img src="yahtzee/images/yahtzee-short-banner.png" class="bannerLogo"> -->
       <img src="yahtzee/images/yahtzee-screenshot.png" class="bannerLogo">
       <ul>
@@ -44,7 +45,7 @@
       <span class="mainTitle" id="blackjack">
         <img src="blackjack/images/blackjack.png" class="mainLogo">&nbsp;<a href="blackjack/index.html" target="_blank">Blackjack</a>&nbsp;🖥️&nbsp;Desktop
       </span><br><!--<hr>-->
-      <span class="mainSubheader">A simple blackjack app written in JavaScript<br><br></span>
+      <span class="mainSubheader">A simple blackjack app written in JavaScript</span><br><br>
       <!-- <img src="blackjack/images/blackjack_banner.png" class="bannerLogo"> -->
       <img src="blackjack/images/blackjack_screenshot.png" class="bannerLogo"><br><br>
 
@@ -85,7 +86,7 @@
       <span class="mainTitle" id="rainbow_noise">
         <img src="rainbow_noise/images/rainbow_noise.png" class="mainLogo">&nbsp;<a href="rainbow_noise/index.html" target="_blank">Rainbow Noise</a>&nbsp;🖥️&nbsp;Desktop
       </span><br><!--<hr>-->
-      <span class="mainSubheader">A time-waster app: draw with random shapes and patterns on a JavaScript canvas<br><br></span>
+      <span class="mainSubheader">A time-waster app: draw with random shapes and patterns on a JavaScript canvas</span><br><br>
       <!-- <img src="rainbow_noise/images/rainbow_noise-header.png" class="bannerLogo"> -->
       <img src="rainbow_noise\images\screenshots\rn_screen-desktop.png" class="bannerLogo"><br><br>
       <!-- MOBILE -->
@@ -112,9 +113,19 @@
     </td>
 
     <td class="tableTOC">
+
       <!-- TABLE OF CONTENTS (FIXED TO THE TOP RIGHT) -->
       <span class="mainTitle" id="toc">
-        <span id="txtQuickLinks"><a href="images/owl_cave.png" target="_blank" title="Listen to the sounds. It is in our house now"><img src="images/owl_cave.png" class="mainLogo"></a>&nbsp;Quick Links</span>
+
+        <span class="imgLogoBottom">
+          <img src="images/owl_cave-small.png">
+          <span class="imgLogoTop">
+            <a href="images/owl_cave.png" target="_blank"><img src="images/fire.png"></a>
+          </span>
+        </span>
+        <!-- <span id="txtQuickLinks"> -->
+          <!--<a href="images/owl_cave.png" target="_blank" title="Listen to the sounds. It is in our house now"><img src="images/owl_cave.png" class="mainLogo">--></a>&nbsp;Quick Links
+        <!-- </span> -->
       </span>
       </center>
       <span class="mainSubheader">
@@ -213,9 +224,9 @@
             ⬇️&nbsp;<a title="Jump to bottom of page" id="btnBottom">Jump to bottom
           </th>
         </tr>
-      </table> 
-
-<!--        <br><br>
+      </table>
+<!--
+        <br><br>
         <b>Additional Information</b><br>
         <span class="smallText"><ul>
           <li><b>P</b> = Position, <b>W</b> = Window height</li>
@@ -235,10 +246,10 @@
 <center>
 <a href="https://github.com/ATeaDaze/ateadaze.github.io" target="_blank" id="github">
   <img src="images/github-mark-white.png" class="gitHubLogo" title="GitHub"><br>
-  <b>GitHub</b><br><br>
+  <b>GitHub</b><br><br><br>
 </a>
+
 </center>
 
-<!--</center>-->
 </body>
 </html>

@@ -58,6 +58,20 @@ hr {
   padding: 0px;
 }
 
+.smallLine {
+  height: 4px;
+  background-color: transparent;
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/*
+.gitTest {
+  width: 45svw;
+}
+*/
+
 a {
   color: dodgerblue;
   text-decoration: none;
@@ -88,6 +102,11 @@ a:active {
   animation: flashText 2s linear infinite;
 }
 
+.warningMessage2 {
+  color: #ffffff;
+  font-size: 10pt;
+}
+
 ul {
   list-style-type: square;
 /* ⬛◼️◾▪️⬜◽▫️ */
@@ -101,7 +120,7 @@ ul {
 }
 
 .mainTitle {
-  font-size: 1.75em;
+  font-size: 2em;
   font-weight: bold;
 }
 
@@ -112,6 +131,43 @@ ul {
 
 .mainLogo {
   width: 32px;
+}
+
+.imgLogoBottom {
+  position: relative;
+  float: left;
+}
+
+.imgLogoBottom .imgLogoTop {
+  position: absolute;
+  left: 0;
+  top: 0;
+/*  display: none; */
+}
+
+/*.imgLogo:hover .imgLogoHover {
+  display: block;
+}*/
+
+/* 184 pixels / 202.4 pixels = .0909%
+   32px * 0.0909 = 2.9088
+   32px - 2.9088 = 29.0912
+
+*/
+.imgLogoBottom img {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+
+.imgLogoBottom:hover {
+  filter: brightness(1.2);
+  animation: flashText 1s linear infinite;
+}
+
+.imgLogoTop img {
+  width: 35.25px;
+  height: 35.25px;
 }
 
 .bannerLogo {
@@ -167,7 +223,7 @@ ul {
 }
 
 /*table#someID <child_element> */
-table.plainCell th{
+table.plainCell th {
   background-color: #000000;
   border-color: #000000;
   font-family: sans-serif;
@@ -465,13 +521,24 @@ table.plainCell th{
   }
 
   .mainSubheader {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-weight: bold;
   }
 
   .mainLogo {
     width: 16px;
   }
+
+.imgLogoBottom img {
+  width: 16px;
+  height: 16px;
+}
+
+.imgLogoTop img {
+  width: 17.125px;
+  height: 17.125px;
+}
+
 
   .bannerLogo {
     width: 50svw;
