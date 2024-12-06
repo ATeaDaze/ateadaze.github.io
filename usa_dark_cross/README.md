@@ -15,5 +15,5 @@
 
 ## Source Code
 
-* **JavaScript:** [main.user.js](usa_dark_cross/main.user.js)
-* **CSS:** [style.css](usa_dark_cross/style.css)
+* **JavaScript:** [main.user.js](main.user.js)
+* **CSS:** [style.css](style.css)
