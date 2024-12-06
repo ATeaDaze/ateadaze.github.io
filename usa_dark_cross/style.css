@@ -213,12 +213,6 @@ span.js-focus-visible {
   background-color: #121212;
 }
 
-/* Pause screen */
-.class-bT5q-gr {
-  background-color: #111111;
-  border-color: #232323;
-}
-
 /* CONGRATULATIONS */
 .class-v-3J2YH h3 {
   color: #ffffff;
@@ -273,7 +267,8 @@ span.js-focus-visible {
   color: dodgerblue;
 }
 
-/* Mini crossword DIV background */
-.class-DBbZ7Lt, .class-miMVbbk {
+/* Mini crossword DIV background / pause screen */
+.class-bT5q-gr, .class-IO9zu-5 {
   background-color: #111111;
+  border-color: #232323;
 }
