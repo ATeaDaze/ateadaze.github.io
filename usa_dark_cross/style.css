@@ -1,0 +1,274 @@
+/* Main document */
+body {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+footer {
+  background-color: #121212;
+}
+
+#footerContainer a {
+  color: #ffffff;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.class-9lQRt5H a {
+  color: cyan;
+}
+
+/* Other link headers */
+h1 {
+  color: #ffffff;
+}
+
+h3, h4 {
+  color: orchid;
+}
+/* Off The Grid */
+.class-YSshAqK {
+  color: #c0c0c0;
+}
+
+/* Other game titles */
+h5, .class-yy5qvAf {
+  color: chartreuse;
+}
+
+/* Other games background */
+.class-bXip-oY, .class-OVqWpaq {
+  background-color: #121212;
+  border-color: #232323;
+}
+
+/* Main header */
+.class-yBqFF5n {
+  background-color: #121212;
+}
+
+/* Main header links */
+.class-zO5-JkI a {
+  filter: brightness(4);
+}
+/* Hamburger menu  */
+.class-tlb57Ms {
+  filter: brightness(3);
+}
+/* USA TODAY header */
+.class-IEL7Xjz {
+  filter: brightness(2);
+}
+/* More Ways To Play */
+.class-rXhFQ5D {
+  filter: brightness(4);
+}
+/* Hi, {username} */
+.class--VByM6c {
+  filter: brightness(4);
+}
+
+a:hover {
+  animation: flashText 1s linear infinite;
+}
+@keyframes flashText {
+  75% {
+    opacity: 0.75;
+  }
+}
+
+/* More Ways to Play (Menu)*/
+.class-HmGF6wQ.class-9vVDsZE .class-HLcd6f8, .class-RHdxLIJ {
+  background-color: #111111;
+  border: 1px solid #232323;
+}
+/* TOP MENU BAR */
+.class-HmGF6wQ.class-9vVDsZE .class-CEvOsZY, .class-ue2sHMi {
+  color: #c0c0c0;
+  background-color: #111111;
+  border-color: #232323 #232323 transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  box-shadow: 0 4px 4px rgba(0,0,0,.25);
+}
+/* DROPDOWN MENU TEXT */
+.class-HlJZXAz p {
+  color: #ffffff;
+}
+.class-nPc12ED {
+  color: #dddddd;
+}
+
+/* DROPDOWN ARROW */
+.class-G9HZVEc::before {
+  border-bottom: .625rem solid #232323;
+}
+
+/* Main header divider */
+.class-POKxZV1::before {
+  visibility: hidden;
+}
+
+/* Main header bottom border */
+.class-3jlzyE6 {
+  border-bottom: .0625rem solid #333333;
+}
+
+/* Hint headers */
+.class-uE8WOpS {
+  color: #dddddd;
+}
+
+/* Hint background */
+.class-IO9zu-5 {
+  background-color: #000000;
+}
+
+/* Inactive hint */
+.class-0430Iv6 {
+  background-color: #121212;
+  color: #c0c0c0;
+}
+
+/* Opposite hint indicator */
+.class-ci9H7Pb::before {
+  background-color: midnightblue;
+}
+
+/* Current hint highlight */
+.class-iFz58-- {
+  background-color: midnightblue;
+  color: #ffffff;
+}
+.class-iFz58--:hover {
+  filter: brightness(1.5);
+}
+
+/* Game buttons lighten by 120% */
+.class-lK-AOkP {
+  background-color: transparent;
+  color: #1665cf;
+  filter: brightness(1.2);
+}
+
+/* Hint bar gradient */
+.class-PXu8w-9::after {
+  background: #c0c0c0;
+  background: linear-gradient(
+    0deg,#121212,
+    hsla(0,0%,100%,0) 100%,
+    hsla(0,0%,100%,1));
+}
+
+/* Hint bar header DIV */
+.class-uai5JHL {
+  background-color: #121212;
+}
+
+/* Hint bar header text */
+.class-mcY28OK span, .class-ILlhflQ {
+  color: #ffffff;
+}
+
+/* Hint header direction image lightened */
+span.js-focus-visible {
+  filter: brightness(4);
+}
+
+/* Game board header */
+.class-eLOkG-i {
+  background-image: none;
+  background-color: #212121;
+}
+
+/* Board background */
+.class-DBbZ7Lt, .class-miMVbbk {
+  background-color: #efefef;
+}
+
+/* Game board cells */
+.class-5-O2i74 {
+  color: #000000;
+}
+
+/* Active game board cells */
+.class-7CNCepw {
+  color: #0000ff;
+}
+
+.class-mcY28OK span, .class-ILlhflQ {
+  color: #ffffff;
+}
+
+/* Hint direction image */
+span.js-focus-visible {
+  filter: brightness(4);
+}
+
+/* Game board header */
+.class-eLOkG-i {
+  background-image: none;
+  background-color: #121212;
+}
+
+/* Pause screen */
+.class-bT5q-gr {
+  background-color: #111111;
+  border-color: #232323;
+}
+
+/* CONGRATULATIONS */
+.class-v-3J2YH h3 {
+  color: #ffffff;
+}
+.class-v-3J2YH p {
+  color: #c0c0c0;
+}
+
+/* ARCHIVES */
+.class-PL9ehl0 p, .class-xQ8lqmm p, .class-hFY9AI4 p {
+  color: #c0c0c0;
+}
+
+.class-AOZhd6i {
+  background-color: #121212;
+  border-color: #333333;
+}
+.class-AOZhd6i p {
+  color: #ffffff;
+}
+
+/* Indicators (done / not done) */
+.class-AOZhd6i::before {
+  background-color: chartreuse;
+}
+.class-oipRR-y::before {
+  background-color: darkgreen;
+}
+
+/* SUBSCRIBE NOW */
+.class--fUerff, .class--fUerff::before {
+  background-color: #333333;
+}
+
+/* Nuclear diamond */
+.class-pN1TNUG {
+  background: none;
+}
+
+/* ARCHIVES - dropdown menus */
+
+.class-ayaUALl .class-wN-rfQK {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.class-nWkq-cE > span, .class--4OeJQV {
+  background-color: #000000;
+}
+
+.class-nWkq-cE a, .class--4OeJQV span {
+  color: dodgerblue;
+}
