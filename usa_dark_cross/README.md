@@ -1,14 +1,18 @@
-# Dark Mode for [USA Today Crossword](https://puzzles.usatoday.com/)
+# Dark Mode for USA Today Crossword Puzzle
 
-### Dark mode CSS stylesheet loaded via Tampermonkey/Greasemonkey
-> **Requirement:** Greasemonkey or Tampermonkey
+### Adds a basic dark mode theme to USA Today's [Crossword Puzzle](https://puzzles.usatoday.com/), [Quick Cross](https://puzzles.usatoday.com/quick-cross), and [Puzzle Archives](https://puzzles.usatoday.com/crosswords-archive). The theme is set by external CSS which is loaded by Tampermonkey/Greasemonkey
+
+> [!IMPORTANT]
+> **Requirements:** Greasemonkey or Tampermonkey, JavaScript enabled in browser
 
 ## Instructions
 
-1. [Download](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js) the userscript
-2. Add the script file `main.user.js` to Tampermonkey or Greasemonkey [^1]
-3. Enable the userscript in the dashboard
-4. (Optional) Test and verify its working: https://puzzles.usatoday.com/
+1. [Download](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js) the userscript from this direct link
+2. Confirm installation of the script file `main.user.js` in Tampermonkey or Greasemonkey [^1]
+3. Enable "Dark Mode for USA Today Crossword Puzzle" userscript in the dashboard
+
+> [!TIP]
+> (Optional) Test and verify its working: https://puzzles.usatoday.com/
 
 ## Requirements
 
@@ -16,6 +20,10 @@
 |---|---|---|
 |<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width="50px">|[Dowload for Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)|[Dowload for Firefox](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)|
 |<img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" width="50px">|[Dowload for Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?pli=1)|Not Available|
+
+## Additional Information
+
+I made this because USA Today doesn't have native dark mode for their crossword puzzles. I tried setting up a static theme with [Dark Reader](https://darkreader.org/) but I had to manually disable and enable the extension to get my sheet to load. It's a great extension but static CSS did not work for me
 
 ## Source Code
 
