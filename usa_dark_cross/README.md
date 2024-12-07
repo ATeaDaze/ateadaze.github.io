@@ -5,6 +5,8 @@
 > [!IMPORTANT]
 > **Requirements:** Greasemonkey or Tampermonkey, JavaScript enabled in browser
 
+<img src="images/usa_today_crossword-dark_mode-1.png">
+
 ## Instructions
 
 1. [Download](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js) the userscript from this direct link
