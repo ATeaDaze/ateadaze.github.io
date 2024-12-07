@@ -1,54 +1,38 @@
-/* Main document */
+/* ********** MAIN ELEMENTS ********** */
 body {
   color: #ffffff;
   background-color: #000000;
 }
 
-footer {
-  background-color: #121212;
-}
-
-#footerContainer a {
-  color: #ffffff;
-}
-
 a {
   color: dodgerblue;
 }
-
-.class-9lQRt5H a {
-  color: cyan;
+a:hover {
+  filter: brightness(1.5);
+  animation: flashText 1s linear infinite;
+}
+@keyframes flashText {
+  75% {
+    opacity: 0.75;
+  }
 }
 
-/* Other link headers */
-h1 {
-  color: #ffffff;
-}
+/* ********** TOP HEADER ********** */
 
-h3, h4 {
-  color: orchid;
-}
-/* Off The Grid */
-.class-YSshAqK {
+/* Main header menu bar */
+.class-HmGF6wQ.class-9vVDsZE .class-CEvOsZY, .class-ue2sHMi {
   color: #c0c0c0;
-}
-
-/* Other game titles */
-h5, .class-yy5qvAf {
-  color: chartreuse;
-}
-
-/* Other games background */
-.class-bXip-oY, .class-OVqWpaq {
-  background-color: #121212;
-  border-color: #232323;
+  background-color: #111111;
+  border-color: #232323 #232323 transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  box-shadow: 0 4px 4px rgba(0,0,0,.25);
 }
 
 /* Main header */
 .class-yBqFF5n {
   background-color: #121212;
 }
-
 /* Main header links */
 .class-zO5-JkI a {
   filter: brightness(4);
@@ -69,30 +53,39 @@ h5, .class-yy5qvAf {
 .class--VByM6c {
   filter: brightness(4);
 }
-
-a:hover {
-  animation: flashText 1s linear infinite;
-}
-@keyframes flashText {
-  75% {
-    opacity: 0.75;
-  }
+/* Nuclear diamond (remove washed-out filter) */
+.class-pN1TNUG {
+  background: none;
 }
 
+/* ********** OTHER GAMES and LINKS ********** */
+
+/* Other link headers */
+h1 {
+  color: #ffffff;
+}
+h3, h4 {
+  color: orchid;
+}
+/* Off The Grid */
+.class-YSshAqK {
+  color: #c0c0c0;
+}
+/* Other game titles */
+h5, .class-yy5qvAf {
+  color: chartreuse;
+}
+/* Other games background */
+.class-bXip-oY, .class-OVqWpaq {
+  background-color: #121212;
+  border-color: #232323;
+}
 /* More Ways to Play (Menu)*/
 .class-HmGF6wQ.class-9vVDsZE .class-HLcd6f8, .class-RHdxLIJ {
   background-color: #111111;
   border: 1px solid #232323;
 }
-/* TOP MENU BAR */
-.class-HmGF6wQ.class-9vVDsZE .class-CEvOsZY, .class-ue2sHMi {
-  color: #c0c0c0;
-  background-color: #111111;
-  border-color: #232323 #232323 transparent;
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
-  box-shadow: 0 4px 4px rgba(0,0,0,.25);
-}
+
 /* DROPDOWN MENU TEXT */
 .class-HlJZXAz p {
   color: #ffffff;
@@ -116,14 +109,11 @@ a:hover {
   border-bottom: .0625rem solid #333333;
 }
 
+/* ********** PUZZLE HINTS ********** */
+
 /* Hint headers */
 .class-uE8WOpS {
   color: #dddddd;
-}
-
-/* Hint background */
-.class-IO9zu-5 {
-  background-color: #000000;
 }
 
 /* Inactive hint */
@@ -177,6 +167,8 @@ span.js-focus-visible {
   filter: brightness(4);
 }
 
+/* ********** GAME BOARD ********** */
+
 /* Game board header */
 .class-eLOkG-i {
   background-image: none;
@@ -198,6 +190,7 @@ span.js-focus-visible {
   color: #0000ff;
 }
 
+/* Hint text - doesn't seem to change anything */
 .class-mcY28OK span, .class-ILlhflQ {
   color: #ffffff;
 }
@@ -213,7 +206,7 @@ span.js-focus-visible {
   background-color: #121212;
 }
 
-/* CONGRATULATIONS */
+/* ********** CONGRATULATIONS SCREEN ********** */
 .class-v-3J2YH h3 {
   color: #ffffff;
 }
@@ -221,7 +214,40 @@ span.js-focus-visible {
   color: #c0c0c0;
 }
 
-/* ARCHIVES */
+/* "Your free trial ends in X days." popup bubbles */
+/* Crossword Puzzle */
+.class-UQeuZRc, .class-cfUPWgy, .class-cfUPWgy::before {
+  color: #ffffff;
+  background-color: #333333;
+}
+/* Quick Cross */
+.class--fUerff, .class--fUerff::before {
+  background-color: #333333;
+}
+
+
+.class--dcP0S9, .class-JNZvPat {
+  border-color: #333333;
+}
+.class--dcP0S9 {
+  background-color: transparent;
+}
+/* Quick Cross Archive */
+.class-JNZvPat {
+  background-color: #121212;
+}
+
+/* ********** PUZZLE ARCHIVES ********** */
+
+/* Game completion indicators (done / not done) */
+.class-AOZhd6i::before, .class--dcP0S9::before {
+  background-color: chartreuse;
+}
+.class-oipRR-y::before, .class-JNZvPat::before {
+  background-color: darkgreen;
+}
+
+/* Archives - header text */
 .class-PL9ehl0 p, .class-xQ8lqmm p, .class-hFY9AI4 p {
   color: #c0c0c0;
 }
@@ -234,41 +260,32 @@ span.js-focus-visible {
   color: #ffffff;
 }
 
-/* Indicators (done / not done) */
-.class-AOZhd6i::before {
-  background-color: chartreuse;
-}
-.class-oipRR-y::before {
-  background-color: darkgreen;
-}
-
-/* SUBSCRIBE NOW */
-.class--fUerff, .class--fUerff::before {
-  background-color: #333333;
-}
-
-/* Nuclear diamond */
-.class-pN1TNUG {
-  background: none;
-}
-
-/* ARCHIVES - dropdown menus */
-
+/* Archives - dropdown menus */
 .class-ayaUALl .class-wN-rfQK {
   color: #ffffff;
   background-color: #000000;
 }
 
+/* Archives - Dropdown menu background */
 .class-nWkq-cE > span, .class--4OeJQV {
   background-color: #000000;
 }
-
+/* Archives - Dropdown menu text */
 .class-nWkq-cE a, .class--4OeJQV span {
   color: dodgerblue;
 }
 
-/* Mini crossword DIV background / pause screen */
+/* Hint background, quick cross DIV background, pause screen */
 .class-bT5q-gr, .class-IO9zu-5, .class-6F1zccC, .class-UyzvkQC {
   background-color: #111111;
-  border-color: #232323;
+  border: 1px solid #232323;
+}
+
+/* Archives - Completion time text (lightskyblue) */
+.class-WUtDsN4.class-cthN5eT {
+  color: #79a1e5;
+}
+/* Archives - Completion time checkmark (SVG blue filter) */
+.class-g69WuZi {
+  filter: hue-rotate(45deg)
 }
