@@ -17,8 +17,6 @@ a:hover {
   }
 }
 
-/* ********** TOP HEADER ********** */
-
 /* Main header menu bar */
 .class-HmGF6wQ.class-9vVDsZE .class-CEvOsZY, .class-ue2sHMi {
   color: #c0c0c0;
@@ -118,23 +116,28 @@ h5, .class-yy5qvAf {
 
 /* Inactive hint */
 .class-0430Iv6 {
-  background-color: #121212;
+  background-color: #202020;
   color: #c0c0c0;
+}
+.class-0430Iv6:hover {
+  background-color: #111111;
+  color: #efefef;
 }
 
 /* Opposite hint indicator */
 .class-ci9H7Pb::before {
-  background-color: midnightblue;
+  background-color: rebeccapurple;
 }
 
 /* Current hint highlight */
 .class-iFz58-- {
-  background-color: midnightblue;
+  background-color: rebeccapurple;
   color: #ffffff;
 }
 .class-iFz58--:hover {
   filter: brightness(1.5);
 }
+
 
 /* Game buttons lighten by 120% */
 .class-lK-AOkP {
@@ -157,27 +160,15 @@ h5, .class-yy5qvAf {
   background-color: #121212;
 }
 
-/* Hint bar header text */
-.class-mcY28OK span, .class-ILlhflQ {
-  color: #ffffff;
-}
-
-/* Hint header direction image lightened */
-span.js-focus-visible {
-  filter: brightness(4);
-}
-
 /* ********** GAME BOARD ********** */
 
-/* Game board header */
-.class-eLOkG-i {
-  background-image: none;
-  background-color: #212121;
+.class-1IqhUM- {
+  background-color: #efefef;
 }
 
-/* Board background */
-.class-DBbZ7Lt, .class-miMVbbk {
-  background-color: #efefef;
+.class-AQmkVw7 {
+  background-color: #303030;
+  border-color: #111111;
 }
 
 /* Game board cells */
@@ -185,15 +176,12 @@ span.js-focus-visible {
   color: #000000;
 }
 
-/* Active game board cells */
-.class-7CNCepw {
-  color: #0000ff;
-}
-
 /* Hint text - doesn't seem to change anything */
 .class-mcY28OK span, .class-ILlhflQ {
   color: #ffffff;
 }
+
+/* ************************************************************ */
 
 /* Hint direction image */
 span.js-focus-visible {
@@ -276,7 +264,7 @@ span.js-focus-visible {
 }
 
 /* Hint background, quick cross DIV background, pause screen */
-.class-bT5q-gr, .class-IO9zu-5, .class-6F1zccC, .class-UyzvkQC {
+.class-bT5q-gr, .class-IO9zu-5, .class-6F1zccC, .class-UyzvkQC, .class-iZZVNyh {
   background-color: #111111;
   border: 1px solid #232323;
 }
@@ -288,4 +276,9 @@ span.js-focus-visible {
 /* Archives - Completion time checkmark (SVG blue filter) */
 .class-g69WuZi {
   filter: hue-rotate(45deg)
+}
+
+/* Quick Cross div */
+.class-DBbZ7Lt, .class-miMVbbk {
+  background-color: #111111;
 }
