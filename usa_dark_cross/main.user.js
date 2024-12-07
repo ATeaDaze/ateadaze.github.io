@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Dark Mode for USA Today Crossword Puzzle
-// @namespace    https://puzzles.usatoday.com/*
+// @namespace    https://github.com/ATeaDaze/ateadaze.github.io
 // @version      2024-12-06
 // @description  Load dark mode CSS remotely
 // @author       Jeff McMillin
-// @match        https://*/*
+// @match        http*://puzzles.usatoday.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @resource   IMPORTED_CSS https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/refs/heads/main/usa_dark_cross/style.css
 // @grant      GM_getResourceText
