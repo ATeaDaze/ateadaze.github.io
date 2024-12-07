@@ -129,15 +129,15 @@ h5, .class-yy5qvAf {
   background-color: rebeccapurple;
 }
 
-/* Current hint highlight */
+/* Active hint highlight */
 .class-iFz58-- {
   background-color: rebeccapurple;
   color: #ffffff;
 }
 .class-iFz58--:hover {
+  background-color: rebeccapurple;
   filter: brightness(1.5);
 }
-
 
 /* Game buttons lighten by 120% */
 .class-lK-AOkP {
@@ -162,21 +162,27 @@ h5, .class-yy5qvAf {
 
 /* ********** GAME BOARD ********** */
 
+/* Entire board */
 .class-1IqhUM- {
   background-color: #efefef;
+  border-color: #202020;
 }
 
+/* Blank spaces (black) .class-CImkp07 */
 .class-AQmkVw7 {
-  background-color: #303030;
-  border-color: #303030;
+  background-color: #202020;
+  border-color: #202020;
+}
+/* Active focused cell */
+.class-a91X470 {
+  background-color: palegreen !important;
+}
+/* Active unfocused cells */
+.class-TH-6BcV {
+  background-color: lightskyblue !important;
 }
 
-/* Game board cells */
-.class-5-O2i74 {
-  color: #000000;
-}
-
-/* Hint text - doesn't seem to change anything */
+/* Main hint text */
 .class-mcY28OK span, .class-ILlhflQ {
   color: #ffffff;
 }
@@ -268,6 +274,11 @@ span.js-focus-visible {
   background-color: #111111;
   border: 1px solid #232323;
 }
+
+.class-miMVbbk:not(.class-bT5q-gr) {
+  border-color: #202020;
+}
+
 
 /* Archives - Completion time text (lightskyblue) */
 .class-WUtDsN4.class-cthN5eT {
