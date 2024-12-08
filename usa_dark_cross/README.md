@@ -5,7 +5,7 @@
 
 > [!IMPORTANT]
 > **[Requirements](#requirements)**
-> * Greasemonkey or Tampermonkey browser extension
+> * Greasemonkey *(or)* Tampermonkey browser extension
 > * JavaScript enabled in browser
 
 <picture>
@@ -15,8 +15,7 @@
 ## Installation
 
 1. [Download the userscript from this direct link](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js)
-2. Install the userscript in Greasemonkey or Tampermonkey
-3. Click `[Install]` to confirm installation of `main.user.js` [^1]
+2. Install the userscript in Greasemonkey or Tampermonkey: click `[Install]` to confirm installation of `main.user.js` [^1]
 
 > [!TIP]
 > 3. (Optional) Test and verify it's working: https://puzzles.usatoday.com/
@@ -26,7 +25,7 @@
 </picture><br><br>
 
 > [!NOTE]
-> Enable "Dark Mode for USA Today Crossword Puzzle" in the [dashboard](#how-to-open-the-dashboard) if it's disabled by default
+> Enable "Dark Mode for USA Today Crossword Puzzle" in the [dashboard](#open-the-dashboard) if it's disabled by default
 
 ## Requirements
 
@@ -107,13 +106,15 @@ I have looked into this one but not deeply. It's hard to keep track of selectors
 > [!NOTE]
 > **Workaround:** open the [puzzle archives](https://puzzles.usatoday.com/crosswords-archive), refresh the page, then click a link [^2]
 
-## How to Open the Dashboard
+## Open the Dashboard
 
 <picture>
   <img src="images/usa_dark_cross-install-2.png">
 </picture><br><br>
 
-🔝&nbsp;[Scroll to Top](#dark-mode-for-usa-today-crossword-puzzle)
+<p align="center">
+  🔝&nbsp;<a href="#dark-mode-for-usa-today-crossword-puzzle">Scroll to Top</a>&nbsp;🔝
+</p>
 
 [^1]: You can use the direct download link and click `[Install]` to confirm it, download and install `main.user.js` locally, *(or)* copy-and-paste the contents of `main.user.js` into a new userscript manually. The first option is the easiest and recommended
 [^2]: All styles appear to work if you click-through all subsequent links in the same window and tab (yeah, I don't know either). Skill issue or CSS being weird
