@@ -9,7 +9,7 @@
 > * JavaScript enabled in browser
 
 <picture>
-<img src="images/usa_today_crossword-dark_mode-1.png">
+<img src="images/usa_today_crossword-dark_mode-v1b.png">
 </picture>
 
 ## Installation
