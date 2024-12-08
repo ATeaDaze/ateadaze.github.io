@@ -191,7 +191,7 @@ h5, .class-yy5qvAf {
 
 /* Hint direction image */
 span.js-focus-visible {
-  filter: brightness(4);
+  filter: brightness(2);
 }
 
 /* Game board header */
@@ -304,7 +304,6 @@ span.js-focus-visible {
 }
 /* Animate when hover overing an award */
 .class-007Zgdl:hover {
-  filter: brightness(1.25);
   animation: flashText 1s infinite;
 }
 
