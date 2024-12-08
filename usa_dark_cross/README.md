@@ -30,10 +30,10 @@
 
 ## Requirements
 
-||<picture><img src="https://addons.mozilla.org/user-media/addon_icons/683/683490-64.png?modified=1625638973" width="50px"></picture><br>Tampermonkey|<picture><img src="https://addons.mozilla.org/user-media/addon_icons/0/748-64.png?modified=1531822767" width="50px"></picture><br>Greasemonkey|
+||<img src="https://addons.mozilla.org/user-media/addon_icons/683/683490-64.png?modified=1625638973" width="50px"><br>Tampermonkey|<img src="https://addons.mozilla.org/user-media/addon_icons/0/748-64.png?modified=1531822767" width="50px"><br>Greasemonkey|
 |:-:|:-:|:-:|
-|<picture><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width="50px"></picture><br>**Firefox**|[Download](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)|[Download](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)|
-|<picture><img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" width="50px"></picture><br>**Chrome**|[Download](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?pli=1)|N/A|
+|<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width="50px"><br>**Firefox**|[Download](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)|[Download](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)|
+|<img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" width="50px"><br>**Chrome**|[Download](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?pli=1)|N/A|
 
 ## Additional Information
 
