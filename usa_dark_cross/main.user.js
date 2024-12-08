@@ -5,6 +5,8 @@
 // @description  Load dark mode CSS remotely
 // @author       Jeff McMillin
 // @match        http*://puzzles.usatoday.com/*
+// @match        http*://puzzles.usatoday.com/*/*
+// @match        http*://www.usatoday.com/services/cobrand/footer/
 // @icon         https://ateadaze.github.io/images/owl_cave-small.png
 // @resource     IMPORTED_CSS https://raw.githubusercontent.com/ATeaDaze/ateadaze.github.io/refs/heads/main/usa_dark_cross/style.css
 // @resource     https://ateadaze.github.io/scripts/jquery-3.7.0.min.js

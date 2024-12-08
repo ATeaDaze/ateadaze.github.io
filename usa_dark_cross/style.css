@@ -279,7 +279,6 @@ span.js-focus-visible {
   border-color: #202020;
 }
 
-
 /* Archives - Completion time text (lightskyblue) */
 .class-WUtDsN4.class-cthN5eT {
   color: #79a1e5;
@@ -318,4 +317,12 @@ span.js-focus-visible {
   color: palegreen;
   font-size: 0.9em;
   font-weight: semibold;
+}
+
+/* Footer: https://www.usatoday.com/services/cobrand/footer/ */
+html body {
+  background-color: #000000;
+}
+.footer-link a {
+  color: dodgerblue;
 }
