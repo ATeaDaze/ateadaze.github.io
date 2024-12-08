@@ -293,3 +293,30 @@ span.js-focus-visible {
 .class-DBbZ7Lt, .class-miMVbbk {
   background-color: #111111;
 }
+
+/* ********** Player Game Statistsics ********** */
+
+/* Stats main div style */
+.class-1S-2KnS {
+  background-color: #121212;
+  border-color: #333333;
+  cursor: pointer;
+}
+/* Animate when hover overing an award */
+.class-007Zgdl:hover {
+  filter: brightness(1.25);
+  animation: flashText 1s infinite;
+}
+
+/* Award value */
+.class-7sqqbOC span {
+  color: #ffffff;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+/* Award title */
+.class-7sqqbOC {
+  color: palegreen;
+  font-size: 0.9em;
+  font-weight: semibold;
+}
