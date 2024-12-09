@@ -1,31 +1,30 @@
 # Dark Mode for USA Today Crossword Puzzle
-
-* Adds a basic dark mode theme to USA Today's Crossword Puzzle, Quick Cross, and Puzzle Archives
-* The theme is set by external CSS loaded with a local userscript
+* Applies a dark mode theme to USA Today's Crossword Puzzle, Quick Cross, and Puzzle Archives
+* Theme is set by external CSS loaded with a local userscript
 
 > [!IMPORTANT]
-> **[Requirements](#requirements)**
-> * Greasemonkey *(or)* Tampermonkey browser extension
-> * JavaScript enabled in browser
+> ### **[Requirements](#requirements)**
+> * **Greasemonkey** *(or)* **Tampermonkey** browser extension
+> * **JavaScript enabled** in browser
 
-<picture>
-  <img src="images/usa_today_crossword-dark_mode-v1b.png">
-</picture>
+<img src="images/usa_today_crossword-dark_mode-v1b.png">
 
 ## Installation
 
-1. [Download the userscript from this direct link](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js)
-2. Install the userscript in Greasemonkey or Tampermonkey: click `[Install]` to confirm installation of `main.user.js` [^1]
+* [**Download userscript** from this direct link](https://github.com/ATeaDaze/ateadaze.github.io/raw/refs/heads/main/usa_dark_cross/main.user.js)
+* **Install userscript** in Greasemonkey or Tampermonkey:
+  * Click `[Install]` buttom to confirm installation of `main.user.js` in your browser
+
+You can also install the script locally or manually [^1]
 
 > [!TIP]
-> 3. (Optional) Test and verify it's working: https://puzzles.usatoday.com/
+> ### (**Optional**)
+> Test and verify it's working: https://puzzles.usatoday.com/
 
-<picture>
-  <img src="images/usa_dark_cross-install-1.png">
-</picture><br><br>
+<img src="images/usa_dark_cross-install-1.png">
 
 > [!NOTE]
-> Enable "Dark Mode for USA Today Crossword Puzzle" in the [dashboard](#open-the-dashboard) if it's disabled by default
+> Enable the "Dark Mode for USA Today Crossword Puzzle" userscript in the [dashboard](#open-the-dashboard) if it's disabled for some reason
 
 ## Requirements
 
@@ -104,13 +103,12 @@ Setting the script to run after the page loads fixed some of the unset styles. T
 I have looked into this one but not deeply. It's hard to keep track of selectors when they have randomly-generated names. My first guess would be a host-side script overwriting my values when the layout changes
 
 > [!NOTE]
-> **Workaround:** open the [puzzle archives](https://puzzles.usatoday.com/crosswords-archive), refresh the page, then click a link [^2]
+> ### **Workaround:**
+> Open the [puzzle archives](https://puzzles.usatoday.com/crosswords-archive), refresh the page, then click a link [^2]
 
 ## Open the Dashboard
 
-<picture>
-  <img src="images/usa_dark_cross-install-2.png">
-</picture><br><br>
+<img src="images/usa_dark_cross-install-2.png">
 
 <p align="center">
   🔝&nbsp;<a href="#dark-mode-for-usa-today-crossword-puzzle">Scroll to Top</a>&nbsp;🔝
