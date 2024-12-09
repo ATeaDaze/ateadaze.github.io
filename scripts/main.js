@@ -1,5 +1,3 @@
-// User's screen width
-//let userScreenWidth;
 // Maximum window height
 let scrollMax;
 // Current scollbar position
@@ -17,7 +15,6 @@ let hrGreenSize = $("#progressBar2").width();
 $(document).ready(function() {
   // Find maximum window scroll height
   scrollMax = getDocumentHeight();
-//  userScreenWidth = getDocumentWidth();
   updateDebugInfo();
 
   // TODO: add check for screen orientation to it works in portrait mode
@@ -53,10 +50,15 @@ $(document).ready(function() {
     $(this).addClass("invisible");
   });
 
+  $("#owlCaveArt").on("click", function() {
+    window.open("images/owl_cave.png", "_blank")
+  });
+
 });
 
+
 function updateDebugInfo() {
-  // Get size of red and green bars
+   // Get size of red and green bars
   hrRedSize = $("#progressBar1").width();
   hrGreenSize = $("#progressBar2").width();
   // Perent scrolled = current position / (maximum size - page size)
@@ -66,18 +68,18 @@ function updateDebugInfo() {
   pctNotScrolled = pctNotScrolled.toFixed(3);
   scrollProgressPercent = (pctScrolled * 100).toFixed(2);
   // Update debug table information
-//  $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
-//  $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
+  // $("#txtDebugHRWidth1").html(hrRedSize.toFixed(1));
+  // $("#txtDebugHRWidth2").html(hrGreenSize.toFixed(1));
   $("#txtDebugPctNotScrolled").html(pctNotScrolled);
   $("#txtDebugPctScrolled").html(pctScrolled);
 
-//  $("#txtDebugPctNotScrolled").html((Math.round(pctNotScrolled * 100) / 100).toFixed(2));
-//  $("#txtDebugPctScrolled").html((Math.round(pctScrolled * 100) / 100).toFixed(2));
+  $("#txtDebugPctNotScrolled").html((Math.round(pctNotScrolled * 100) / 100).toFixed(2));
+  $("#txtDebugPctScrolled").html((Math.round(pctScrolled * 100) / 100).toFixed(2));
 
-//  $("#txtDebugPos").html(scrollPosition);
-//  $("#txtDebugWindow").html(scrollMax - scrollPageSize);
-//  $("#txtDebugTotal").html(scrollProgressPercent + "%");
-//  $("#txtDebugOffset").html(scrollPageSize);
+  $("#txtDebugPos").html(scrollPosition);
+  $("#txtDebugWindow").html(scrollMax - scrollPageSize);
+  // $("#txtDebugTotal").html(scrollProgressPercent + "%");
+  // $("#txtDebugOffset").html(scrollPageSize);
 }
 
 // Get the entire document height (scrollMax)
@@ -86,13 +88,6 @@ function getDocumentHeight() {
   return Math.max ( Math.max(d.body.scrollHeight, d.documentElement.scrollHeight),
                     Math.max(d.body.offsetHeight, d.documentElement.offsetHeight),
                     Math.max(d.body.clientHeight, d.documentElement.clientHeight) );
-}
-
-function getDocumentWidth() {
-  let d = document;
-  return Math.max ( Math.max(d.body.scrollWidth, d.documentElement.scrollWidth),
-                    Math.max(d.body.offsetWidth, d.documentElement.offsetWidth),
-                    Math.max(d.body.clientWidth, d.documentElement.clientWidth) );
 }
 
 function scrollToBottom(msec) {

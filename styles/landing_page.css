@@ -56,6 +56,27 @@ td {
 }
 
 a {
+  --s: 0.1em;   /* line thickness */
+  --c: #00bfff; /* line color */
+  color: dodgerblue;
+  text-decoration: none;
+  padding-bottom: var(--s);
+  background: 
+    linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+    linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: 0.25s;
+}
+a:hover {
+  --_p: 100%;
+  animation: flashText 1s linear infinite;
+  color: #00bfff;
+  filter: brightness(1.2);
+}
+
+/*
+a {
   color: dodgerblue;
   text-decoration: none;
 }
@@ -63,9 +84,10 @@ a {
 a:hover {
   color: deepskyblue;
   animation: flashText 1s linear infinite;
-  text-decoration: underline;
   filter: brightness(1.2);
 }
+*/
+
 @keyframes flashText {
   75% {
     opacity: 0.75;
