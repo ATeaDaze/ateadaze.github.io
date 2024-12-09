@@ -1,6 +1,3 @@
-/* TODO: revise and test alternate styles for smaller screens, hide the quick bar with a toggle, 
-    implement light mode */
-
 body {
   background-color: #000000;
   color: #dddddd;
@@ -9,10 +6,10 @@ body {
 }
 
 table {
-  width: 15svw;
   padding: 4px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid #000000;
 }
 th {
   font-family: monospace;
@@ -31,27 +28,8 @@ td {
   padding: 2px;
 }
 
-table {
-  border: 1px solid #000000;
-}
-
-/* Layout debugging */
-/*
-table {
-  border: 1px solid mediumorchid;
-}
-tr {
-  border: 1px solid chartreuse;
-}
-th {
-  border: 1px solid #c0c0c0;
-}
-td {
-  border: 1px solid cyan;
-}
-*/
-
-hr {
+.tocHR {
+  width: 75%;
   height: 3px;
   background-color: #555555;
   border: 1.5px solid #333333;
@@ -65,12 +43,6 @@ hr {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
-/*
-.gitTest {
-  width: 45svw;
-}
-*/
 
 a {
   color: dodgerblue;
@@ -93,7 +65,7 @@ a:active {
 }
 
 .warningMessage {
-  font-size: 12pt;
+  font-size: 1em;
   font-weight: bold;
   color: #cd5c5c;
   cursor: pointer;;
@@ -104,7 +76,7 @@ a:active {
 
 .warningMessage2 {
   color: #ffffff;
-  font-size: 10pt;
+  font-size: 0.75em;
 }
 
 ul {
@@ -115,9 +87,23 @@ ul {
 /* PROJECT LIST (left main table cell) */
 
 .siteTable {
-  width: 35svw;
+  width: 40svw;
   text-align: left;
 }
+.tableTOCLinks {
+  width: 18svw;
+}
+
+.tableTOC {
+  vertical-align: top;
+  position: fixed;
+/* Disable cursor selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 
 .mainTitle {
   font-size: 2em;
@@ -142,18 +128,8 @@ ul {
   position: absolute;
   left: 0;
   top: 0;
-/*  display: none; */
 }
 
-/*.imgLogo:hover .imgLogoHover {
-  display: block;
-}*/
-
-/* 184 pixels / 202.4 pixels = .0909%
-   32px * 0.0909 = 2.9088
-   32px - 2.9088 = 29.0912
-
-*/
 .imgLogoBottom img {
   cursor: pointer;
   width: 32px;
@@ -171,7 +147,7 @@ ul {
 }
 
 .bannerLogo {
-  width: 28svw;
+  width: 30svw;
 }
 
 .gitHubLogo {
@@ -180,18 +156,8 @@ ul {
 
 /* QUICK LINKS (right main table cell) */
 
-.tableTOC {
-  vertical-align: top;
-  position: fixed;
-/* Disable cursor selection */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .toc {
-  width: 20px;
+  width: 24px;
   padding: 2px;
 }
 
@@ -229,7 +195,6 @@ table.plainCell th {
   font-family: sans-serif;
   text-align: center;
 }
-
 
 .grayCell {
   border: 1px solid #333333;
@@ -285,6 +250,10 @@ table.plainCell th {
   color: cyan;
 }
 
+.mainBarTable {
+  width: 85%;
+}
+
 .legacyIcon {
   height: 16px;
 }
@@ -304,16 +273,15 @@ table.plainCell th {
   display: none;
 }
 
-
-@media (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
 
   body {
     font-size: 12pt;
   }
 
   table {
-    width: 20svw;
     padding: 4px;
+    border: 1px solid #000000;
   }
   th {
     font-size: 14pt;
@@ -331,37 +299,13 @@ table.plainCell th {
     padding: 2px;
   }
 
-  table {
-    border: 1px solid #000000;
-  }
-
-  /* Layout debugging */
-  /*
-  table {
-    border: 1px solid mediumorchid;
-  }
-  tr {
-    border: 1px solid chartreuse;
-  }
-  th {
-    border: 1px solid #c0c0c0;
-  }
-  td {
-    border: 1px solid cyan;
-  }
-  */
-
-  hr {
-    height: 3px;
-    border: 1.5px solid #333333;
-    padding: 0px;
-  }
-
   /* PROJECT LIST (left main table cell) */
-
   .siteTable {
-    width: 50svw;
+    width: 42svw;
     text-align: left;
+  }
+  .tableTOCLinks {
+    width: 29svw;
   }
 
   .mainTitle {
@@ -379,7 +323,7 @@ table.plainCell th {
   }
 
   .bannerLogo {
-    width: 40svw;
+    width: 30svw;
   }
 
   .gitHubLogo {
@@ -387,16 +331,6 @@ table.plainCell th {
   }
 
   /* QUICK LINKS (right main table cell) */
-
-  .tableTOC {
-    vertical-align: top;
-    position: fixed;
-  /* Disable cursor selection */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
 
   .toc {
     width: 20px;
@@ -451,13 +385,15 @@ table.plainCell th {
 
 }
 
-@media (orientation: portrait), (max-width: 800px) {
+@media screen and (max-width: 950px) and (orientation: landscape) {
   body {
     font-size: 1em;
   }
 
   table {
-    width: 40svw;
+    border: 1px solid #000000;
+    margin-left: unset;
+    margin-right: unset;
     padding: 4px;
   }
   th {
@@ -476,72 +412,49 @@ table.plainCell th {
     padding: 2px;
   }
 
-  table {
-    border: 1px solid #000000;
-    margin-left: unset;
-    margin-right: unset;
-  }
-
-  /* Layout debugging */
-  /*
-  table {
-    border: 1px solid mediumorchid;
-  }
-  tr {
-    border: 1px solid chartreuse;
-  }
-  th {
-    border: 1px solid #c0c0c0;
-  }
-  td {
-    border: 1px solid cyan;
-  }
-  */
-
-  hr {
-    height: 3px;
-    border: 1.5px solid #333333;
-    padding: 0px;
-  }
-
   li {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   /* PROJECT LIST (left main table cell) */
 
   .siteTable {
-    width: 60svw;
+    width: 65svw;
     text-align: left;
   }
 
-  .mainTitle {
+  .tableTOCLinks {
     font-size: 1em;
+    width: 32svw;
+  }
+
+  .mainTitle {
+    font-size: 1.5em;
     font-weight: bold;
   }
 
   .mainSubheader {
-    font-size: 0.9em;
+    font-size: 1.25em;
     font-weight: bold;
   }
 
   .mainLogo {
-    width: 16px;
+    width: 28px;
   }
 
-.imgLogoBottom img {
-  width: 16px;
-  height: 16px;
-}
+  .imgLogoBottom img {
+    width: 28px;
+    height: 28px;
+  }
 
-.imgLogoTop img {
-  width: 17.125px;
-  height: 17.125px;
-}
+  .imgLogoTop img {
+    width: 31.125px;
+    height: 31.125px;
+  }
 
 
   .bannerLogo {
-    width: 50svw;
+    width: 55svw;
   }
 
   .gitHubLogo {
@@ -561,7 +474,168 @@ table.plainCell th {
   }
 
   .toc {
-    width: 12px;
+    width: 18px;
+    padding: 2px;
+  }
+
+  .debugTxtStyle {
+    font-family: monospace;
+    font-size: 1em;
+  }
+
+  #pw, #pwInverse {
+    font-size: 1em;
+    visibility: hidden;
+    display: none;
+  }
+
+  #btnTop, #btnBottom {
+    font-size: 0.8em;
+  }
+
+  .plainCell {
+    visibility: hidden;
+    display: none;
+  }
+
+  /*.debugTableStyle {
+    width: 15svw;
+  }*/
+
+  .leadCell, .valueCell {
+    border: 1px solid #333333;
+  }
+
+  .leadCell {
+    text-align: right;
+    width: 50%;
+  }
+
+  .valueCell {
+    text-align: left;
+  /*  color: cyan; */
+  }
+
+  .grayCell {
+    border: 1px solid #333333;
+  }
+  .grayCell:hover {
+    border: 1px solid #555555;
+  }
+
+  #progressBar1, #progressBar2 {
+    max-width: 95%;
+    height: 0.75em;
+    cursor: pointer;
+  }
+
+  .legacyIcon {
+    height: 16px;
+  }
+
+  .smallText {
+    font-size: 10pt;
+    text-align: left;
+    cursor: help;
+  }
+
+  .warningMessage {
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 950px) and (orientation: portrait) {
+  body {
+    font-size: 0.75em;
+  }
+
+  table {
+    border: 1px solid #000000;
+    margin-left: unset;
+    margin-right: unset;
+    padding: 4px;
+  }
+  th {
+    font-size: 0.6em;
+    font-weight: bold;
+  /*  text-decoration: underline; */
+    padding: 1px;
+    border: 1px solid #555555;
+    background-color: #111111;
+  }
+  tr {
+    padding: 5px;
+  }
+  td {
+  /*  border: 1px solid #555555; */
+    padding: 2px;
+  }
+
+  li {
+    font-size: 1.1em;
+  }
+
+  /* PROJECT LIST (left main table cell) */
+
+  .siteTable {
+    width: 40svw;
+    text-align: left;
+  }
+
+  .tableTOCLinks {
+    width: 40svw;
+    font-size: 1.125em;
+  }
+
+  .mainTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  .mainSubheader {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .mainLogo {
+    width: 16px;
+  }
+
+  .imgLogoBottom img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .imgLogoTop img {
+    width: 17.65px;
+    height: 17.65px;
+  }
+
+
+  .bannerLogo {
+    width: 55svw;
+  }
+
+  .gitHubLogo {
+    width: 32px;
+  }
+
+  /* QUICK LINKS (right main table cell) */
+
+  .tableTOC {
+    vertical-align: top;
+    position: fixed;
+  /* Disable cursor selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .toc {
+    width: 16px;
     padding: 2px;
   }
 
@@ -613,7 +687,6 @@ table.plainCell th {
   #progressBar1, #progressBar2 {
     max-width: 95%;
     height: 0.75em;
-    cursor: pointer;
   }
 
   .legacyIcon {
@@ -627,8 +700,26 @@ table.plainCell th {
   }
 
   .warningMessage {
+    font-size: 1.25em;
     visibility: visible;
     display: initial;
   }
+  .warningMessage2 {
+    font-size: 1em;
+  }
 
 }
+
+/* Debugging tables */
+/*table {
+  border: 1px solid cyan;
+}
+tr {
+  border: 1px solid orchid;
+}
+th {
+  border: 1px solid coral;
+}
+td {
+  border: 1px solid lightgreen;
+}*/

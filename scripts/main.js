@@ -1,3 +1,5 @@
+// User's screen width
+//let userScreenWidth;
 // Maximum window height
 let scrollMax;
 // Current scollbar position
@@ -15,8 +17,11 @@ let hrGreenSize = $("#progressBar2").width();
 $(document).ready(function() {
   // Find maximum window scroll height
   scrollMax = getDocumentHeight();
+//  userScreenWidth = getDocumentWidth();
   updateDebugInfo();
 
+  // TODO: add check for screen orientation to it works in portrait mode
+  // Update value for maximum scroll height when orientation changes
   $(window).scroll(function() {
     // Update position on scroll
     scrollPosition = $(document).scrollTop();
@@ -34,11 +39,11 @@ $(document).ready(function() {
   });
 
   // Buttons: jump to top and bottom of page
-  $("#btnTop").on("click", function() {
+  $("#btnTop, #progressBar1").on("click", function() {
     scrollToTop(0);
     updateDebugInfo();
   });
-  $("#btnBottom").on("click", function() {
+  $("#btnBottom, #progressBar2").on("click", function() {
     scrollToBottom(0);
     updateDebugInfo();
   });
@@ -47,12 +52,6 @@ $(document).ready(function() {
     $(this).removeClass("warningMessage");
     $(this).addClass("invisible");
   });
-
-  // TODO: make the progress bars interactive
-  // $("#progressBar1").on("click", function(e) {
-    // let leftOffset = e.pageX - $(this).offset().left;
-    // console.log(`left=${leftOffset}, total = ${pctNotScrolled}`);
-  // });
 
 });
 
@@ -87,6 +86,13 @@ function getDocumentHeight() {
   return Math.max ( Math.max(d.body.scrollHeight, d.documentElement.scrollHeight),
                     Math.max(d.body.offsetHeight, d.documentElement.offsetHeight),
                     Math.max(d.body.clientHeight, d.documentElement.clientHeight) );
+}
+
+function getDocumentWidth() {
+  let d = document;
+  return Math.max ( Math.max(d.body.scrollWidth, d.documentElement.scrollWidth),
+                    Math.max(d.body.offsetWidth, d.documentElement.offsetWidth),
+                    Math.max(d.body.clientWidth, d.documentElement.clientWidth) );
 }
 
 function scrollToBottom(msec) {
