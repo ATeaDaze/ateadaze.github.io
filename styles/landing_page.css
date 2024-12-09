@@ -195,6 +195,7 @@ ul {
 }
 
 #btnTop, #btnBottom {
+  color: orchid;
   cursor: pointer;
 }
 

@@ -1,5 +1,7 @@
 // Maximum window height
 let scrollMax;
+let viewportX;
+let viewportY;
 // Current scollbar position
 let scrollPosition = $(document).scrollTop();
 // Size of one page scroll
@@ -51,7 +53,12 @@ $(document).ready(function() {
   });
 
   $("#owlCaveArt").on("click", function() {
-    window.open("images/owl_cave.png", "_blank")
+    viewportX = $(window).width();
+    viewportY = $(window).height();
+    viewportX = (viewportX / 8);
+    viewportY = (viewportY / 6) + 512;
+    console.log(`viewportX = ${viewportX}, viewportY = ${viewportY}`);
+    window.open("images/owl_cave.html", "_blank", "width=512,height=517,top=" + viewportX + ",left=" + viewportY);
   });
 
 });
