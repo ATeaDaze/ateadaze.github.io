@@ -1,7 +1,8 @@
 // Maximum window height
 let scrollMax;
-let viewportX;
-let viewportY;
+let viewportWidth;
+let viewportHeight;
+let pixelRatio;
 // Current scollbar position
 let scrollPosition = $(document).scrollTop();
 // Size of one page scroll
@@ -15,6 +16,7 @@ let hrRedSize = $("#progressBar1").width();
 let hrGreenSize = $("#progressBar2").width();
 
 $(document).ready(function() {
+
   // Find maximum window scroll height
   scrollMax = getDocumentHeight();
   updateDebugInfo();
@@ -35,6 +37,7 @@ $(document).ready(function() {
     $("#progressBar2").css({
       'width' : scrollPercent
     });
+
   });
 
   // Buttons: jump to top and bottom of page
@@ -53,16 +56,10 @@ $(document).ready(function() {
   });
 
   $("#owlCaveArt").on("click", function() {
-    viewportX = $(window).width();
-    viewportY = $(window).height();
-    viewportX = (viewportX / 8);
-    viewportY = (viewportY / 6) + 512;
-    console.log(`viewportX = ${viewportX}, viewportY = ${viewportY}`);
-    window.open("images/owl_cave.html", "_blank", "width=512,height=517,top=" + viewportX + ",left=" + viewportY);
+    window.open("images/owl_cave.png");
   });
 
 });
-
 
 function updateDebugInfo() {
    // Get size of red and green bars

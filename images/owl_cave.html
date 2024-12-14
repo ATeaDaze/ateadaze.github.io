@@ -7,28 +7,55 @@
   <link href="images/owl_cave-small.png" rel="shortcut icon" type="image/x-icon">
   <script src="../scripts/jquery-3.7.0.min.js"></script>
 <style>
-  body {
-    background-color: #000000;
-  }
-  img {
-    cursor: pointer;
-  }
-  #viewFullScreen {
-  max-width: 100%;
-  max-height: 100vh;
+body {
+  background-color: #000000;
+}
+#viewFullScreen {
+  max-width: 75svw;
+  max-height: 75svh;
   width: auto;
   margin: auto;
+}
+button {
+  cursor: pointer;
+}
+#btnCloseWindow img {
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+  filter: brightness(0.75);
+}
+#btnCloseWindow {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #c0c0c0;
+  background-color: #222222;
+  border-color: #555555;
+  width: 37svw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#btnCloseWindow:hover {
+  filter: brightness(1.25);
+}
 </style>
 </head>
 <body>
+  <center>
 
-<img src="owl_cave.png" id="viewFullScreen" title="click to close window">
+  <img src="owl_cave.png" id="viewFullScreen"><br>
+  <button id="btnCloseWindow">
+    <img src="close_button.png">&nbsp;<u>Close window</u>
+  </button>
 
-<script>
-  $("#viewFullScreen").on("click", function() {
+</center>
+
+  <script>
+  $("#btnCloseWindow").on("click", function() {
     window.close();
   });
-</script>
-
+  </script>
 </body>
 </html>
