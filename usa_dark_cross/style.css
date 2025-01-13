@@ -302,6 +302,11 @@ span.js-focus-visible {
   background-color: #333333;
 }
 
+/* Overly bright Subscribe button */
+.class-mEPNAsk a {
+  background: none;
+}
+
 /* ********** Player Game Statistsics ********** */
 
 /* Stats main div style */
