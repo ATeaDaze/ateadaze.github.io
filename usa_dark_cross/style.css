@@ -258,10 +258,6 @@ span.js-focus-visible {
   color: #ffffff;
 }
 
-.class-TjjyOjy::before, .class-TjjyOjy {
-  background-color: #333333;
-}
-
 /* Archives - dropdown menus */
 .class-ayaUALl .class-wN-rfQK {
   color: #ffffff;
@@ -299,6 +295,11 @@ span.js-focus-visible {
 /* Quick Cross div */
 .class-DBbZ7Lt, .class-miMVbbk {
   background-color: #111111;
+}
+
+/* Subscribe / Play X More Games banner bubble */
+.class-TjjyOjy::before, .class-TjjyOjy, .class-TjjyOjy:before {
+  background-color: #333333;
 }
 
 /* ********** Player Game Statistsics ********** */
