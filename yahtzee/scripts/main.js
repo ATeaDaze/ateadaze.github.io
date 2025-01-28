@@ -79,8 +79,9 @@ let swapHoldAll = false;
 // Status bar text to display instructions depending on game state
 let statusBarMessage = "Roll the dice to start playing";
 let bonusDifference;
+let testScore;
 let bLocalStorageOK = true;
-let playerName = "Jeff";
+let playerName = "Player";
 
 // Active set info used on row selection: has global scope (need to test this with limited scope)
 var activeSetName;
@@ -116,7 +117,7 @@ $(document).ready(function() {
   // TODO: fix NS_ERROR... issue with local storage
 
   try {
-    localStorage.getItem("lsHighScore");
+    testScore = localStorage.getItem("lsHighScore");
   } catch(e) {
     if(e.name == "NS_ERROR_FILE_CORRUPTED") {
       $("#txtStatusHeader").html("ERROR: browser storage corrupted").css({
@@ -125,14 +126,16 @@ $(document).ready(function() {
       });
       $("#txtHighScoreLead, #txtHighScore, #txtPlayerName").html("---");
       bLocalStorageOK = false;
-    } else {
-      if(localStorage.getItem("lsHighScore") != null) {
-        $("#txtHighScore").html(localStorage.lsHighScore);
+    }
+  }
+
+  if(bLocalStorageOK) {
+      if(localStorage.getItem("lsHighScore")) {
+        $("#txtHighScore").html(testScore);
+        $("#txtPlayerName").html(localStorage.lsPlayerName);
       } else {
         $("#txtHighScore").html("0");
       }
-      $("#txtPlayerName").html(playerName);
-    }
   }
 
       // Add player name for high scores
@@ -668,8 +671,8 @@ function setScoreRecord() {
 }
 
 function setPlayerName() {
-  playerName = prompt("Enter name:", "Jeff");
-  localStorage.setItem("lsUserName", playerName);
+  playerName = prompt("Enter name:", "Player");
+  localStorage.setItem("lsPlayerName", playerName);
   $("#txtPlayerName").html(playerName);
 }
 

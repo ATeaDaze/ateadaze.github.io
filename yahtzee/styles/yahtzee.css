@@ -228,7 +228,7 @@ td {
   background-color: #111111;
 }
 
-#txtHighScore {
+#txtHighScore, #txtPlayerName {
   color: #dedede;
   cursor: pointer;
 }
