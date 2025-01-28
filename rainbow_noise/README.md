@@ -3,7 +3,7 @@
 ### A time-waster app: draw with random shapes and patterns on a JavaScript canvas
 
 ## 💻 [Desktop](https://ateadaze.github.io/) | 📱 [Mobile](https://ateadaze.github.io/m/)
-![rainbow_noise-repo_banner](/images/rainbow_noise-header.png)
+![rainbow_noise-repo_banner](images/rainbow_noise-header.png)
 
 ## Features
 * **Draw abstract shapes** with your mouse or touch screen
@@ -34,32 +34,32 @@
 |🎲|**Randomly generated**|
 
 #### ⧎ Triangle Web 🖌️ Faded
-![triangles-faded](/images/screenshots/rn_screen-triangles-faded-drawn-1.png)
+![triangles-faded](images/screenshots/rn_screen-triangles-faded-drawn-1.png)
 
 #### ▧ Line Scatter 🖌️ Ice
-![line_scatter-ice](/images/screenshots/rn_screen-line_scatter-ice.png)
+![line_scatter-ice](images/screenshots/rn_screen-line_scatter-ice.png)
 
 #### ✺ Starburst 🎲 Fire
-![starburst-fire](/images/screenshots/rn_screen-starburst-fire-gen.png)
+![starburst-fire](images/screenshots/rn_screen-starburst-fire-gen.png)
 
 #### ⧎ Triangle Web 🎲 CGA-8
-![triangles-cga8](/images/screenshots/rn_screen-triangles-cga8-gen-2.png)
+![triangles-cga8](images/screenshots/rn_screen-triangles-cga8-gen-2.png)
 
 #### ▧ Line Scatter 🎲 RGB
-![line_scatter-rgb](/images/screenshots/rn_screen-line_scatter-rgb-1.png)
+![line_scatter-rgb](images/screenshots/rn_screen-line_scatter-rgb-1.png)
 
 #### ⧎ Triangle  Web 🖌️ Grayscale
-![line_scatter-grayscale](/images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
+![line_scatter-grayscale](images/screenshots/rn_screen-triangles-grayscale-drawn-1.png)
 
 #### ✺ Starburst 🎲 Patriot
-![starburst](/images/screenshots/rn_screen-starburst-patriot-gen.png)
+![starburst](images/screenshots/rn_screen-starburst-patriot-gen.png)
 
 
 #### ⧎ Triangle Web + ▧ Line Scatter + ✺ Starburst 🎲 Faded
-![mix-faded](/images/screenshots/rn_screen-mix-faded-gen-1.png)
+![mix-faded](images/screenshots/rn_screen-mix-faded-gen-1.png)
 
 # 💻 [Desktop](https://ateadaze.github.io/)
-![screenshot-faded](/images/screenshots/rn_screen-desktop.png)
+![screenshot-faded](images/screenshots/rn_screen-desktop.png)
 
 ## Keyboard Shortcuts
 
@@ -106,11 +106,11 @@
 
 |Button|Key|&nbsp;|
 |---|---|---|
-|![Spacebar](/images/buttons/palette_button.png)|**`Space`**|Select the next palette|
-|![Random](/images/buttons/random_palette_button.png)|**`*`**|Select a random palette|
-|![E](/images/buttons/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode|
-|![?](/images/buttons/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)|
-|![O](/images/buttons/origin_reset_button.png)|**`o`**|Reset origin to center|
+|![Spacebar](images/buttons/palette_button.png)|**`Space`**|Select the next palette|
+|![Random](images/buttons/random_palette_button.png)|**`*`**|Select a random palette|
+|![E](images/buttons/draw_button-color.png)|**`Enter`**|Enable or disable free draw mode|
+|![?](images/buttons/help_button.png)|**`?`**|Print help screen (overwrites canvas with confirmation)|
+|![O](images/buttons/origin_reset_button.png)|**`o`**|Reset origin to center|
 
 # Instructions
 ▶  **Press RUN repeatedly** to increase the animation speed
@@ -129,7 +129,7 @@
 🏠 **Click the canvas** to set a new origin for the starburst animation (setpoint=canvas.mouseup)
 
 # 📱 [Mobile](https://ateadaze.github.io/m/)
-![mobile_screenshot](/images/screenshots/rn_screen-mobile.jpg)
+![mobile_screenshot](images/screenshots/rn_screen-mobile.jpg)
 ## Instructions (Mobile)
 🖌️ **Tap and drag across the canvas** to paint with shapes
 
