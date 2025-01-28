@@ -4,7 +4,7 @@
 
 ## 💻 [Desktop and Mobile](https://ateadaze.github.io/emoji_table/) 📱 (landscape mode _highly_ recommended for mobile)
 
-![emoji_table-repo_banner](/images/emoji_table-header.png)
+![emoji_table-repo_banner](images/emoji_table-header.png)
 
 * **[Source Code](https://github.com/ATeaDaze/ateadaze.github.io/blob/main/emoji_table/scripts/main.js)**
 
