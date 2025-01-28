@@ -27,17 +27,13 @@ $(document).ready(function() {
     // Update position on scroll
     scrollPosition = $(document).scrollTop();
     updateDebugInfo();
-    // Convert values to raw percentages to use as CSS variables
-    let scrollPercent = pctScrolled*100 + "%";
-    let scrollPercentComplement = pctNotScrolled*100 + "%";
-    // Update width of both bars
-    $("#progressBar1").css({
-      'width' : scrollPercentComplement
-    });
-    $("#progressBar2").css({
-      'width' : scrollPercent
-    });
+    updateBarGraphs();
+  });
 
+  $(window).on("orientationchange", function() {
+    scrollMax = getDocumentHeight();
+    updateDebugInfo();
+    console.log(`orientationchange`);
   });
 
   // Buttons: jump to top and bottom of page
@@ -50,10 +46,10 @@ $(document).ready(function() {
     updateDebugInfo();
   });
   // Remove warning message on click/tap
-  $("#warningHeader").on("click touchstart", function() {
-    $(this).removeClass("warningMessage");
-    $(this).addClass("invisible");
-  });
+  // $("#warningHeader").on("click touchstart", function() {
+  //   $(this).removeClass("warningMessage");
+  //   $(this).addClass("invisible");
+  // });
 
   $("#owlCaveArt").on("click", function() {
     window.open("images/owl_cave.png");
@@ -84,6 +80,20 @@ function updateDebugInfo() {
   $("#txtDebugWindow").html(scrollMax - scrollPageSize);
   // $("#txtDebugTotal").html(scrollProgressPercent + "%");
   // $("#txtDebugOffset").html(scrollPageSize);
+}
+
+function updateBarGraphs() {
+    // Convert values to raw percentages to use as CSS variables
+    let scrollPercent = pctScrolled*100 + "%";
+    let scrollPercentComplement = pctNotScrolled*100 + "%";
+    // Update width of both bars
+    $("#progressBar1").css({
+      'width' : scrollPercentComplement
+    });
+    $("#progressBar2").css({
+      'width' : scrollPercent
+    });
+
 }
 
 // Get the entire document height (scrollMax)

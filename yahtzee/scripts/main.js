@@ -79,8 +79,8 @@ let swapHoldAll = false;
 // Status bar text to display instructions depending on game state
 let statusBarMessage = "Roll the dice to start playing";
 let bonusDifference;
-
-//let userName = "High Score";
+let bLocalStorageOK = true;
+let playerName = "Jeff";
 
 // Active set info used on row selection: has global scope (need to test this with limited scope)
 var activeSetName;
@@ -102,6 +102,9 @@ $(document).ready(function() {
   $("#txtHighScore").click(function() {
     clearHighScore();
   });
+  $("#txtPlayerName").click(function() {
+    setPlayerName();
+  });
 
   // Disable all rows and roll button
   setRowSelectionState(rowListScoreSetAll, 'none');
@@ -110,15 +113,40 @@ $(document).ready(function() {
   $("#txtStatusHeader").html(statusBarMessage);
 
   // Display the all-time high score if it exists in local storage
-  if(localStorage.lsHighScore) {
-//    userName = localStorage.getItem("lsUserName");
-    $("#txtHighScore").html(localStorage.lsHighScore);
-//    $("#txtHighScoreLead").html(localStorage.lsUserName);
+  // TODO: fix NS_ERROR... issue with local storage
+
+  try {
+    localStorage.getItem("lsHighScore");
+  } catch(e) {
+    if(e.name == "NS_ERROR_FILE_CORRUPTED") {
+      $("#txtStatusHeader").html("ERROR: browser storage corrupted").css({
+        'color' : '#ff5555',
+        'animation' : 'flashText 1.5s linear infinite'
+      });
+      $("#txtHighScoreLead, #txtHighScore, #txtPlayerName").html("---");
+      bLocalStorageOK = false;
+    } else {
+      if(localStorage.getItem("lsHighScore") != null) {
+        $("#txtHighScore").html(localStorage.lsHighScore);
+      } else {
+        $("#txtHighScore").html("0");
+      }
+      $("#txtPlayerName").html(playerName);
+    }
   }
+
+      // Add player name for high scores
+//    playerName = localStorage.getItem("lsUserName");
+//    $("#txtPlayerName").html(localStorage.lsUserName);
 
   // START: main gameplay loop triggered by [Roll Dice] button
   $("#btnRoll").click(function() {
     updateGameState();
+    if(!bLocalStorageOK) {
+      $("#txtStatusHeader").css({
+        'color':'dodgerblue'
+      });
+    }
   });
 
   // Hold or release dice when clicked and update style
@@ -275,6 +303,7 @@ function updateGameState() {
   }
   $("#txtStatusHeader").html(statusBarMessage);
 }
+
 // TODO: find a better solution for animations without using setTimeout()
 // POSSIBLE FIX: remove/add table cells and dice images on each roll
 function rollDice() {
@@ -318,12 +347,12 @@ function startNewTurn() {
   // END: show game over screen
   if(nTurnsTaken == 13) {
     if(userScoreUpperBonus == 35) {
-//      audioUpperBonus.play();
-//      highlightText("#txtScoreUpperBonus");
+      audioUpperBonus.play();
+      highlightText("#txtScoreUpperBonus");
     }
 
     if(nYahtzeeScores > 1) {
-//      audioYahtzeeBonus.play();
+      audioYahtzeeBonus.play();
       highlightText("#txtScoreYahtzeeBonus");
     }    
     disableRollButton();
@@ -388,18 +417,15 @@ function findSumOfEqualValueDice(pScore, uScore, bValue, txtLbl) {
       if(dValue == bValue) pScore = pScore + bValue;
     });
     $('#' + txtLbl).html(pScore)
-
     // Highlight valid upper scores
     // TODO: use classes, remove highlight class once submitted
-/*
-    if(pScore != 0) {
+/*    if(pScore != 0) {
       $('#' + txtLbl).css({
         'color' : 'turquoise',
         'animation' : 'flashText 1.5s linear infinite'
       });
     }
 */
-
   }
 }
 
@@ -483,6 +509,7 @@ function updateTotalScores() {
 //    audioUpperBonus.play();
     userScoreUpperBonus = 35;
     bPlayUpperBonusSound = false;
+    //$("#txtHighScore").html("0");
     highlightText("#txtScoreUpperBonus");
   }
   // Upper Total
@@ -504,6 +531,12 @@ function updateTotalScores() {
   $("#txtGrandTotalUpper").html(userScoreUpperTotal);
   $("#txtGrandTotalLower").html(userScoreLowerTotal);
   $("#txtGrandTotalFinal").html(userScoreGrandTotal);
+  // Update points needed for upper bonus
+  // if((63 - userScoreUpperSubtotal) > 0) {
+  //   $("#txtHighScore").html(63 - userScoreUpperSubtotal);
+  // } else {
+  //   $("#txtHighScore").html("✅");
+  // }
 }
 
 function updateTurns() {
@@ -610,33 +643,34 @@ function setRowSelectionState(rowList, rowState) {
   });
 }
 
-// TODO: add player name prompt, use a proper CSS-formatted toast message instead of alert
+// TODO: fix NS_FILE error, add player name prompt, use a proper CSS-formatted toast message instead of alert
 function setScoreRecord() {
-  let currentHighScore = localStorage.getItem("lsHighScore");
-
+  // if(bLocalStorageOK) {
+    let currentHighScore = localStorage.getItem("lsHighScore");
   // Set local storage score if it does not exist
-
-  if(!localStorage.lsHighScore) {
-    localStorage.setItem("lsHighScore", userScoreGrandTotal);
-    $("#txtHighScore").html(userScoreGrandTotal);
-//    $("#txtHighScoreLead").html(userName);
-
-  } else {
-    // Update high score and flash cell if new high score is reached
-    if(userScoreGrandTotal > currentHighScore) {
-      audioNewHighScore.play();
+    if(!localStorage.lsHighScore) {
       localStorage.setItem("lsHighScore", userScoreGrandTotal);
-        $("#txtHighScore").css({
-          'color' : 'cyan',
-          'animation' : 'flashText 1.5s linear infinite'
-        }).html(userScoreGrandTotal);
-      $("#txtStatusHeader").html("NEW HIGH SCORE");
-//      userName = prompt("NEW HIGH SCORE!\n\nEnter name:", "Jeff");
-//      localStorage.setItem("lsUserName", userName);
-//      $("#txtHighScoreLead").html(userName);
+      $("#txtHighScore").html(userScoreGrandTotal);
+  //    $("#txtPlayerName").html(userName);
+    } else {
+      // Update high score and flash cell if new high score is reached
+      if(userScoreGrandTotal > currentHighScore) {
+        audioNewHighScore.play();
+        localStorage.setItem("lsHighScore", userScoreGrandTotal);
+          $("#txtHighScore").css({
+            'color' : 'cyan',
+            'animation' : 'flashText 1.5s linear infinite'
+          }).html(userScoreGrandTotal);
+        $("#txtStatusHeader").html("NEW HIGH SCORE");
+      }
     }
-  }
+  // }
+}
 
+function setPlayerName() {
+  playerName = prompt("Enter name:", "Jeff");
+  localStorage.setItem("lsUserName", playerName);
+  $("#txtPlayerName").html(playerName);
 }
 
 // Reset high score with confirmation

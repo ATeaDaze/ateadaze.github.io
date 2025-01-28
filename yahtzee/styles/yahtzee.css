@@ -210,26 +210,42 @@ td {
   background-color: #1a1a1a;
 }
 
-#txtBonusGoalLead, #txtHighScoreLead {
+/*#txtHighScoreLead, #txtPlayerNameLead, #txtBonusGoalLead {
   font-family: monospace;
   font-size: 16pt;
   text-align: left;
   padding-left: 10px;
   color: #dddddd;
   background-color: #111111;
-}
-#txtBonusGoal, #txtHighScore {
+}*/
+
+#txtHighScoreLead, #txtHighScore, #txtPlayerName, #txtBonusGoal {
   font-family: monospace;
   font-size: 16pt;
+  font-weight: bold;
   text-align: center;
   color: #ffffff;
   background-color: #111111;
-  width: 15%;
 }
 
 #txtHighScore {
   color: #dedede;
   cursor: pointer;
+}
+
+#txtHighScoreLead {
+  width: 25%;
+}
+#txtPlayerName {
+  width: 50%;
+}
+#txtHighScore {
+  width: 25%;
+}
+
+
+#txtPlayerNameLead, #txtPlayerName {
+  text-align: center;
 }
 
 #txtHighScore:hover {
@@ -304,7 +320,7 @@ hr {
     text-align: center;
     color: #ffffff;
     background-color: #111111;
-    width: 13%;
+/*    width: 13%;*/
   }
 
   .disabledButton {
@@ -385,20 +401,37 @@ hr {
     width: 95svw;
   }
 
-  #txtBonusGoalLead, #txtHighScoreLead {
+  #txtPlayerName, #txtHighScoreLead, #txtHighScore, #txtBonusGoalLead, #txtBonusGoal {
     font-family: monospace;
-    text-align: left;
     color: #ffffff;
     background-color: #111111;
+    font-size: 0.75em;
+  }
+
+  #txtBonusGoal, #txtHighScore {
+    font-family: monospace;
+    color: #ffffff;
+    background-color: #111111;
+  }
+
+  #txtBonusGoalLead, #txtHighScoreLead {
+    text-align: left;
     padding-left: 5px;
   }
   #txtBonusGoal, #txtHighScore {
-    font-family: monospace;
     text-align: center;
-    color: #ffffff;
-    background-color: #111111;
-    width: 20%;
   }
+
+#txtHighScoreLead {
+  font-weight: bold;
+  width: 30%;
+}
+#txtPlayerName {
+  width: 40%;
+}
+#txtHighScore {
+  width: 30%;
+}
 
   .enabledButton {
     width: 92svw;
