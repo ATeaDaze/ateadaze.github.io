@@ -4,9 +4,7 @@
 
 ## 💻📱 [Desktop / Mobile](https://ateadaze.github.io/yahtzee)
 
-<picture>
-<img src="images/yahtzee-screenshot.png">
-</picture>
+![yahtzee-screnshot](images/yahtzee-screenshot.png)
 
 ## Features
 * **Play Yahtzee in your browser without ads**
