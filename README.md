@@ -1,4 +1,4 @@
-![main_github_header](/images/github-banner-no_padding.png)
+<a href="main-header">![main_github_header](/images/github-banner-no_padding.png)</a>
 
 # 🎲 Yahtzee
 
