@@ -1,0 +1,53 @@
+body {
+  font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
+  background-color: #000000;
+  font-size: 14pt;
+  color: #ffffff;
+  height: 100%;
+  overflow: hidden;
+}
+
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  border: none;
+}
+
+html, body, div, canvas {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/* Toast message for deck shuffle */
+#toastMessage {
+  font-size: 24pt;
+  font-weight: bold;
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  border-radius: 2px;
+  padding: 10px;
+  left: 50%;
+  bottom: 50%;
+  position: fixed;
+  z-index: 1;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+#toastMessage.show {
+  visibility: visible;
+  animation: fadeintoast 0.5s;
+}
+@keyframes fadeintoast {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

@@ -30,18 +30,26 @@ $(document).ready(function() {
     updateBarGraphs();
   });
 
-  $(window).on("orientationchange", function() {
+  // $(window).on("orientationchange", function() {
+  //   scrollMax = getDocumentHeight();
+  //   updateDebugInfo();
+  //   console.log(`orientationchange`);
+  // });
+
+  window.addEventListener('resize', function() {
+    scrollPosition = $(document).scrollTop();
+//    scrollPageSize = document.documentElement.scrollHeight;
     scrollMax = getDocumentHeight();
     updateDebugInfo();
-    console.log(`orientationchange`);
+    updateBarGraphs();
   });
 
   // Buttons: jump to top and bottom of page
-  $("#btnTop, #progressBar1").on("click", function() {
+  $("#btnTop, #progressBar1, #pwInverse").on("click", function() {
     scrollToTop(0);
     updateDebugInfo();
   });
-  $("#btnBottom, #progressBar2").on("click", function() {
+  $("#btnBottom, #progressBar2, #pw").on("click", function() {
     scrollToBottom(0);
     updateDebugInfo();
   });
