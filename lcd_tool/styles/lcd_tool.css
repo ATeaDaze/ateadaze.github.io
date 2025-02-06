@@ -22,7 +22,7 @@ html, body, div, canvas {
   display: none;
 }
 
-#toastMessage, #start {
+#toastMessage, #btnStart {
   font-size: 24pt;
   font-weight: bold;
   min-width: 250px;
@@ -55,13 +55,19 @@ html, body, div, canvas {
   to {opacity: 1;}
 }
 
-#start {
+#btnStart {
   margin-left: -150px;
   background-color: #1a1a1a;
   border: 1px solid limegreen;
   color: #dddddd;
   cursor: pointer;
+  animation: flashButton 1.5s linear infinite;
 }
-#start:hover {
+@keyframes flashButton {
+  75% {
+    opacity: 0.75;
+  }
+}
+#btnStart:hover {
   filter: brightness(1.25);
 }

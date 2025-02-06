@@ -42,7 +42,7 @@ $(document).ready(function () {
     toggleFullscreen();
   });
   // Hide [START] button and run animation
-  $("#start").on("click", function() {
+  $("#btnStart").on("click", function() {
     hideStartButton();
     newAnimationInstance();
   });
@@ -180,7 +180,7 @@ function resizeCanvas() {
 }
 
 function hideStartButton() {
-  $("#start").addClass("hidden");
+  $("#btnStart").addClass("hidden");
 }
 
 // There is definitely a better way to this
