@@ -1,8 +1,6 @@
 body {
   font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
   background-color: #000000;
-  font-size: 14pt;
-  color: #ffffff;
   height: 100%;
   overflow: hidden;
 }
@@ -21,27 +19,32 @@ html, body, div, canvas {
 
 .hidden {
   visibility: hidden;
+  display: none;
 }
 
-/* Toast message for deck shuffle */
-#toastMessage {
+#toastMessage, #start {
   font-size: 24pt;
   font-weight: bold;
-  visibility: hidden;
   min-width: 250px;
-  margin-left: -150px;
   border-radius: 2px;
   padding: 10px;
   left: 50%;
   bottom: 50%;
   position: fixed;
   z-index: 1;
-  background-color: #1a1a1a;
-  color: #ffffff;
   font-weight: bold;
   letter-spacing: 5px;
   text-align: center;
   text-transform: uppercase;
+}
+
+/* Toast message for deck shuffle */
+#toastMessage {
+  visibility: hidden;
+  margin-left: -160px;
+  background-color: #111111;
+  color: #ffffff;
+  border: 2px solid #303030;
 }
 #toastMessage.show {
   visibility: visible;
@@ -50,4 +53,15 @@ html, body, div, canvas {
 @keyframes fadeintoast {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+#start {
+  margin-left: -150px;
+  background-color: #1a1a1a;
+  border: 1px solid limegreen;
+  color: #dddddd;
+  cursor: pointer;
+}
+#start:hover {
+  filter: brightness(1.25);
 }

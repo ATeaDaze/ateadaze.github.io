@@ -1,6 +1,4 @@
-// TODO: [DONE] [TESTING] Make the canvas resize on window/screen changes
-// ISSUE: [FIXED] [TESTING] freezes if fullscreen mode is already enabled with F11 browser keybind
-const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale');
+const paletteList = new Array('faded', 'rainbow', 'fire', 'ice', 'rgb', 'cmy', 'cga', 'cga16', 'pyxel', 'gb', 'usa', 'grayscale', 'ukraine');
 const randFadedColor = new Array("indianred", "coral", "khaki", "#90ee90", "dodgerblue", "#5d3fd3", "#cf9fff");
 const randRainbowColor = new Array("red", "orange", "yellow", "green", "blue", "indigo", "mediumorchid");
 const randFireColor = new Array("firebrick", "orangered", "#ffaa33", "khaki");
@@ -11,24 +9,24 @@ const randGrayscaleColor = new Array( "#1e1e1e", "#3e3e3e", "#5e5e5e", "#7e7e7e"
 const randCGAColor = new Array( "#5555ff", "#55ffff", "#55ff55", "#ff5555", "#ff55ff", "#ffff55", "#ffffff", "#aaaaaa", "#0000aa", "#00aaaa", "#00aa00", "#aa0000", "#aa00aa", "#aa5500", "#555555");
 const randPyxelColor = new Array( "#9b9b9b", "#fdfdfd", "#de6e89", "#bc2532", "#493c2b", "#a26321", "#e98730", "#f5e06a", "#a1cc26", "#44891a", "#2f484e", "#1b2632", "#005784", "#31a2f2", "#b0daed");
 const randGameBoyColor = new Array("#003f00", "#2e7320", "#688c07", "#a0cf0a");
+const randUkraineColor = new Array("#0056b9","#ffd800 ");
 let paletteIndex = 0;
 let activeColorPalette = 'faded'
 let bIsRunning = false;
 let bScreenIsClear = true;
-let bEnableRandomPalette = false;
-let xCanvasBound;
-let yCanvasBound;
-let xOrigin;
-let yOrigin;
+let xCanvasBound, yCanvasBound;
+let xOrigin, yOrigin;
 let animationSpeed = 0;
 let shapeType = 'triangle';
+let nShapes;
+let nMaxShapes;
 let randomTriangleLength, randomTriangleOffset;
 let x1, y1, x2, y2;
 let brushSize = 3.0;
 let textMidpoint = (window.innerHeight / 4.1); // No idea where I got a divisor of 4.1
 const leftTextOffset = 70;
 
-// Create new 2D canvas element
+// Create new 2D canvas element that fills screen
 const canvas = document.createElement('canvas');
 document.body.appendChild(canvas);
 const rect = canvas.getBoundingClientRect();
@@ -36,31 +34,31 @@ const ctx = canvas.getContext('2d');
 resizeCanvas();
 
 $(document).ready(function () {
-  if(bEnableRandomPalette) setRandomPalette();
-  drawHelpScreen();
   getKeyboardInput();
-  // Event handler to resize the canvas when the document view is changed
+  // Resize canvas when the window size changes
   window.addEventListener('resize', resizeCanvas, false);
   // Toggle fullscreen on double-click
   $(document).on("dblclick", function() {
     toggleFullscreen();
   });
+  // Hide [START] button and run animation
+  $("#start").on("click", function() {
+    hideStartButton();
+    newAnimationInstance();
+  });
 });
 
-// Screen saver mode: animation runs and clears screen after 512 shapes
+// Animation runs and clears screen after X shapes are drawn
 function runAnimation() {
-  let nShapes = 0;
-  // Multiply shape count by animation speed (faster speeds won't immediately the clear screen)
-  // 1024 = 17 seconds, 2048 = 34 seconds, 4096 = 68 seconds, etc. (approximately)
-  let nMaxShapes = 1024 * animationSpeed;
+  nShapes = 0;
+  // Speed multiplier: 1024 = 17 seconds, 2048 = 34 seconds...
+  nMaxShapes = 1024 * animationSpeed;
   window.requestAnimationFrame(function loop() {
     x1 = Math.floor(Math.random() * xCanvasBound);
     y1 = Math.floor(Math.random() * yCanvasBound);
     ctx.beginPath();
     setBrushColor();
     ctx.lineWidth = brushSize;
-    // Randomize brush stroke size (~1.5 to 6.5)
-//    ctx.lineWidth = ((Math.random() * brushSize )+2).toFixed(2);
     if(shapeType == 'triangle') {
       drawRandomTriangle();
     } else if(shapeType == 'line') {
@@ -113,7 +111,6 @@ function drawStarburstLine() {
   ctx.closePath();
 }
 
-// Select a random color palette
 function setRandomPalette() {
   let lastColorPalette = activeColorPalette;
   let randomPaletteIndex = Math.floor(Math.random() * 12)
@@ -144,12 +141,10 @@ function newAnimationInstance() {
   runAnimation();
 }
 
-// Cycle through available color palettes and display notification
+// Cycle through available color palettes and display toast
 function swapColorMode() {
-  // Reset index to the start if the last element is called
-  if(paletteIndex == 11) {
+  if(paletteIndex == 12) {
     paletteIndex = 0;
-    // Otherwise advance to the next palette
   } else {
     paletteIndex++;
   }
@@ -158,7 +153,6 @@ function swapColorMode() {
   displayPaletteToast(activeColorPalette);
 }
 
-// Switch between windowed and fullscreen mode
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
@@ -178,10 +172,18 @@ function resizeCanvas() {
   yCanvasBound = (window.innerHeight)-20;
   xOrigin = xCanvasBound / 2;
   yOrigin = yCanvasBound / 2;
-  if(!bIsRunning) drawHelpScreen();
+  // Reset animation
+  if(!bIsRunning) {
+    pauseAnimation();
+    runAnimation();
+  }
 }
 
-// Select random brush color from active palette
+function hideStartButton() {
+  $("#start").addClass("hidden");
+}
+
+// There is definitely a better way to this
 function setBrushColor() {
   switch(activeColorPalette) {
     case 'faded':
@@ -232,6 +234,10 @@ function setBrushColor() {
       currentColor = Math.floor(Math.random() * 8);
       ctx.strokeStyle = randGrayscaleColor[currentColor];
       break;
+    case 'ukraine':
+      currentColor = Math.floor(Math.random() * 2);
+      ctx.strokeStyle = randUkraineColor[currentColor];
+      break;
     default:
       break;
     }    
@@ -242,7 +248,7 @@ function getKeyboardInput() {
   document.addEventListener('keypress', e => {
   switch(e.key) {
     case 'r':
-      clearScreen();
+      hideStartButton();
       newAnimationInstance();
       break;
     case 'p':
@@ -261,13 +267,6 @@ function getKeyboardInput() {
     case 't':
       shapeType = 'triangle'
       break;
-    case 'o':
-      xOrigin = xCanvasBound / 2;
-      yOrigin = yCanvasBound / 2;
-      break;
-    case '?':
-      drawHelpScreen();
-      break;
     case 'f':
       toggleFullscreen();
       break;
@@ -283,43 +282,7 @@ function getKeyboardInput() {
   })
 }
 
-// ISSUE: need to use flexible values for variable screen and window sizes
-function drawHelpScreen() {
-  // Clear screen if it's not running so you can read the text
-  if(!bIsRunning) clearScreen();
-  // Main title with brief description
-  ctx.fillStyle = "#eeeeee";
-  ctx.font = "bold 42px Arial,Helvetica";
-  ctx.fillText("LCD Tool 🖥️ Prevent or Fix Screen Image Persistence", leftTextOffset+105, textMidpoint-115);
-  // Main header with GitHub link
-  ctx.font = "bold 40px Consolas, Ubuntu Mono, monospace";
-  ctx.fillStyle = "#cf9fff";
-  ctx.fillText("ateadaze.github.io", leftTextOffset+1250,textMidpoint-115);
-  // General help section
-  ctx.fillStyle = "white";
-  ctx.font = "34px Consolas, Ubuntu Mono, monospace";
-  let helpTextOffset = leftTextOffset + 100;
-  ctx.fillText("✔️ Run this in fullscreen mode for maximum coverage (results may vary)", helpTextOffset, textMidpoint-50);
-  ctx.fillText("✔️ Press [R] repeatedly to increase speed (2x or higher is recommended)", helpTextOffset, textMidpoint-5);
-  ctx.fillText("✔️ Let it run for 2-10 minutes to reset pixels or keep it running to prevent them", helpTextOffset, textMidpoint+40);
-  ctx.fillStyle = "#777777";
-  // Keyboard map
-  ctx.fillRect(helpTextOffset, textMidpoint+60, (canvas.width-355), 5);
-  ctx.fillStyle = "white";
-  ctx.font = "35px Consolas, Ubuntu Mono, monospace";
-  ctx.fillText("Keyboard Map: [R] = Run animation   [P] = Pause animation      [F] = Fullscreen", helpTextOffset, textMidpoint+105);
-  ctx.fillText("              [C] = Clear screen    [?] = Help", helpTextOffset, textMidpoint+150);
-  ctx.fillText("Palettes:     [*] = Random palette  [Spacebar] = Next palette",helpTextOffset, textMidpoint+240)
-  // Keyboard map small line
-  ctx.fillStyle = "#333333";
-  ctx.fillRect(helpTextOffset, textMidpoint+180, (canvas.width-355), 5);
-  // Animation keybinds
-  ctx.fillStyle = "white";
-  ctx.fillText("Animations:   [T] = Triangle Web    [L] = Line Scatter         [S] = Starburst",helpTextOffset, textMidpoint+285)
-  ctx.fillStyle = "#000000";
-  bScreenIsClear = true;
-}
-
+// Display palette toast for 2.5 seconds
 function displayPaletteToast(txtActivePalette) {
   let x = document.getElementById("toastMessage");
   x.innerHTML = txtActivePalette;
