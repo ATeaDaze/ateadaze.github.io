@@ -1,22 +1,18 @@
 /* TODO: separate JS into several files, clean up variables, refactor large checks, 
   # GAME FLOW
-  - Add new game button and track states
-  - Clean up the score selection function (ugly case statement / activeRow and activeSet redundancies)
+  [X] [TESTING] Use objects for scores instead of 2 separate variable sets
+  [ ] Add new game button and track states
+  [ ] Clean up the score selection function (ugly case statement / activeRow and activeSet redundancies)
 
   # KEYBOARD INPUT
-  - Fix getKeyboardInput so it uses existing checks
+  [ ] Fix getKeyboardInput so it uses existing checks
     - [WIP] Add a  hold/unhold all dice button
     - [WIP] Hotkey added (has bugs)
 
   # QUALITY OF LIFE
-  - Add an undo button for the last score submission -or-
-    - Find a more elegant solution for entering scores
-  - Add outline or CSS filter to make valid score rows stand out more
-
-  # HIGH SCORE
-  - Add name prompt for saving high scores and function to clear high score
-  - Store list of high scores and print the saved table sorted by score (top 5 or 10)
-*/
+  [ ] Find a more elegant solution for entering scores
+    [ ] A confirmation box would suffice
+  [ ] Add outline or CSS filter to make valid score rows stand out more */
 let currentDice =  [ 5, 5, 5, 5, 5 ];
 let selectedDice = [ false, false, false, false, false ];
 // Rows used *only* for score calculations (never selectable by user)
@@ -31,43 +27,28 @@ let rowListScoreSetDisabled = [];
 let lastUserScoreSetName = null;
 let lastUserScoreRowID = null;
 let lastUserScoreValue = null;
-// Display score previews shown after each roll
-let previewScoreAces = 0;
-let previewScoreTwos = 0;
-let previewScoreThrees = 0;
-let previewScoreFours = 0;
-let previewScoreFives = 0;
-let previewScoreSixes = 0;
-let previewScoreUpperTotal = 0;
-let previewScoreThreeOfAKind = 0;
-let previewScoreFourOfAKind = 0;
-let previewScoreFullHouse = 0;
-let previewScoreSmallStraight = 0;
-let previewScoreLargeStraight = 0;
-let previewScoreYahtzee = 0;
-let previewScoreChance = 0;
-let previewScoreYahtzeeBonus = 0;
-let previewScoreLowerTotal = 0;
-// Final scores entered by player when they select a row
-let userScoreAces = null;
-let userScoreTwos = null;
-let userScoreThrees = null;
-let userScoreFours = null;
-let userScoreFives = null;
-let userScoreSixes = null;
-let userScoreThreeOfAKind = null;
-let userScoreFourOfAKind = null;
-let userScoreFullHouse = null;
-let userScoreSmallStraight = null;
-let userScoreLargeStraight = null;
-let userScoreYahtzee = null;
-let userScoreChance = null;
-let userScoreUpperSubtotal = 0;
-let userScoreUpperTotal = 0;
-let userScoreUpperBonus = 0;
-let userScoreLowerTotal = 0;
-let userScoreYahtzeeBonus = 0;
-let userScoreGrandTotal = 0;
+// Upper scores
+let aces  = { preview: 0, score: null };
+let twos  = { preview: 0, score: null };
+let threes = { preview: 0, score: null };
+let fours  = { preview: 0, score: null };
+let fives  = { preview: 0, score: null };
+let sixes  = { preview: 0, score: null };
+// Lower scores
+let threeOfAKind = { preview: 0, score: null };
+let fourOfAKind = { preview: 0, score: null };
+let fullHouse = { preview: 0, score: null };
+let smallStraight = { preview: 0, score: null };
+let largeStraight = { preview: 0, score: null };
+let yahtzee = { preview: 0, score: null };
+let chance = { preview: 0, score: null };
+// Sub and grand totals
+let upperSubtotal = 0;
+let upperBonus = 0;
+let upperTotal = 0;
+let yahtzeeBonus = 0;
+let lowerTotal = 0;
+let grandTotal = 0;
 // Track number of yahtzees for bonus multiplier
 let nYahtzeeScores = 0;
 let nRollsLeft = 3;
@@ -82,7 +63,6 @@ let bonusDifference;
 let testScore;
 let bLocalStorageOK = true;
 let playerName = "Player";
-
 // Active set info used on row selection: has global scope (need to test this with limited scope)
 var activeSetName;
 // Audio objects for SFX
@@ -114,8 +94,6 @@ $(document).ready(function() {
   $("#txtStatusHeader").html(statusBarMessage);
 
   // Display the all-time high score if it exists in local storage
-  // TODO: fix NS_ERROR... issue with local storage
-
   try {
     testScore = localStorage.getItem("lsHighScore");
   } catch(e) {
@@ -172,70 +150,70 @@ $(document).ready(function() {
         .addClass("diceButtonSelected");
     }
   });
-
   // Select a score based on the row clicked by the player
   $("[id^=row]").on("click", function() {
     // Enable calculation rows so they can be updated
     setRowSelectionState(rowListCalculation, 'auto');
     // Get IDs of row and cell clicked by player
     let activeRow = $(this).closest('tr');
-    let activeCell = $(this).closest('tr').children('td:last');
+    let activeCell = $(this).closest('tr').children('td:nth-child(2)');
     let activeRowID = this.id;
     let previewRowTxt = $(activeCell).text();
     previewRowTxt = parseInt(previewRowTxt);
-    activeSetName = activeRowID.replace("row", "userScore");
+    activeSetName = activeRowID.replace("row", "").toLowerCase();
+//    console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
     // There is definitely a more elegant solution to... this
     switch(activeSetName) {
-      case "userScoreAces":
-        userScoreAces = previewRowTxt;
+      case "aces":
+        aces.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreTwos":
-        userScoreTwos = previewRowTxt;
+      case "twos":
+        twos.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreThrees":
-        userScoreThrees = previewRowTxt;
+      case "threes":
+        threes.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreFours":
-        userScoreFours = previewRowTxt;
+      case "fours":
+        fours.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreFives":
-        userScoreFives = previewRowTxt;
+      case "fives":
+        fives.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreSixes":
-        userScoreSixes = previewRowTxt;
+      case "sixes":
+        sixes.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreThreeOfAKind":
-        userScoreThreeOfAKind = previewRowTxt;
+      case "threeofakind":
+        threeOfAKind.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreFourOfAKind":
-        userScoreFourOfAKind = previewRowTxt;
+      case "fourofakind":
+        fourOfAKind.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreFullHouse":
-        userScoreFullHouse = previewRowTxt;
+      case "fullhouse":
+        fullHouse.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreSmallStraight":
-        userScoreSmallStraight = previewRowTxt;
+      case "smallstraight":
+        smallStraight.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreLargeStraight":
-        userScoreLargeStraight = previewRowTxt;
+      case "largestraight":
+        largeStraight.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreYhatzee":
-        userScoreYahtzee = previewRowTxt;
+      case "yhatzee":
+        yahtzee.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
-      case "userScoreChance":
-        userScoreChance = previewRowTxt;
+      case "chance":
+        chance.score = previewRowTxt;
         bNewScoreAdded = true;
         break;
       default:
@@ -243,19 +221,12 @@ $(document).ready(function() {
         console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
         break;
     }
+
     // Update table if a score is submitted
     if(bNewScoreAdded) {
       audioFillScore.play();
 
       // TODO: add [UNDO] button, only allowed on if there are 3 turns left
-      // Store last score values to undo changes
-      // If the user clicks it then re-enable the row and revert the values
-
-/*
-      lastUserScoreSetName = activeSetName;
-      lastUserScoreRowID = activeRowID;
-      lastUserScoreValue = previewRowTxt;
-*/
 
       $(activeRow).addClass("usedRow");
       // Add row to running list so it can't be clicked on subsequent turns
@@ -263,12 +234,6 @@ $(document).ready(function() {
       // Disable calculation and score rows after updating them
       setRowSelectionState(rowListCalculation, 'none');
       setRowSelectionState(rowListScoreSetAll, 'none');
-
-//      console.log(`${lastUserScoreRowID} | ${lastUserScoreSetName} = ${lastUserScoreValue}`);
-/*
-      console.log("Disabled Rows:");
-      console.table(rowListScoreSetDisabled);
-*/
 
       $("#txtStatusHeader").html("Roll again to start a new turn");
       // Disable roll button and all dice after turn
@@ -325,12 +290,12 @@ function rollDice() {
     }
   }
   // Set lower score values to 0 for consistency with upper scores, TODO: find a cleaner way to check these values
-  if(userScoreThreeOfAKind == null) $("#txtScoreThreeOfAKind").html(0);
-  if(userScoreFourOfAKind == null) $("#txtScoreFourOfAKind").html(0);
-  if(userScoreFullHouse == null) $("#txtScoreFullHouse").html(0);
-  if(userScoreSmallStraight == null) $("#txtScoreSmallStraight").html(0);
-  if(userScoreLargeStraight == null) $("#txtScoreLargeStraight").html(0);
-  if(userScoreYahtzee == null) $("#txtScoreYahtzee").html(0);
+  if(threeOfAKind.score == null) $("#txtScoreThreeOfAKind").html(0);
+  if(fourOfAKind.score == null) $("#txtScoreFourOfAKind").html(0);
+  if(fullHouse.score == null) $("#txtScoreFullHouse").html(0);
+  if(smallStraight.score == null) $("#txtScoreSmallStraight").html(0);
+  if(largeStraight.score == null) $("#txtScoreLargeStraight").html(0);
+  if(yahtzee.score == null) $("#txtScoreYahtzee").html(0);
   updateScorePreviews();
   updateTotalScores();
   nRollsLeft--;
@@ -349,7 +314,7 @@ function startNewTurn() {
   updateTurns();
   // END: show game over screen
   if(nTurnsTaken == 13) {
-    if(userScoreUpperBonus == 35) {
+    if(upperBonus == 35) {
       audioUpperBonus.play();
       highlightText("#txtScoreUpperBonus");
     }
@@ -375,31 +340,31 @@ function updateScorePreviews() {
   findAllUpperScores();
   // LOWER SECTION, TODO: combine findXOfAkind(x) and userScoreX == null
   if(findXOfAKind(3)) {
-    if(userScoreThreeOfAKind == null) {
-      findSumOfAllDice(previewScoreThreeOfAKind, userScoreThreeOfAKind, txtScoreThreeOfAKind);
+    if(threeOfAKind.score == null) {
+      findSumOfAllDice(threeOfAKind.preview, threeOfAKind.score, txtScoreThreeOfAKind);
     }
   }
   if(findXOfAKind(4)) {
-    if(userScoreFourOfAKind == null) {
-      findSumOfAllDice(previewScoreFourOfAKind, userScoreFourOfAKind, txtScoreFourOfAKind);
+    if(fourOfAKind.score == null) {
+      findSumOfAllDice(fourOfAKind.preview, fourOfAKind.score, txtScoreFourOfAKind);
     }
   }
-  findSmallStraight(diceSorted, userScoreSmallStraight);
-  findLargeStraight(diceSorted, userScoreLargeStraight);
+  findSmallStraight(diceSorted, smallStraight.score);
+  findLargeStraight(diceSorted, largeStraight.score);
   // Yahtzee: score normally unless a previous one was scored as 0
   const findYahtzee = arr => arr.every( v => v === arr[0] );
   if(findYahtzee(currentDice)) {
     audioYahtzee.play();
     nYahtzeeScores++;
     // First yahtzee is worth 50 points
-    if( (nYahtzeeScores < 2) && (userScoreYahtzee == null) ) {
+    if( (nYahtzeeScores < 2) && (yahtzee.score == null) ) {
       $("#txtScoreYahtzee").html(50);
     } else {
       // Joker if more than 1 yahtzee was scored (sum of all dice scored in 1 of 10 rows)
       audioYahtzeeBonus.play();
       findAllUpperScores();
-      findSumOfAllDice(previewScoreThreeOfAKind, userScoreThreeOfAKind, txtScoreThreeOfAKind);
-      findSumOfAllDice(previewScoreFourOfAKind, userScoreFourOfAKind, txtScoreFourOfAKind);
+      findSumOfAllDice(threeOfAKind.preview, threeOfAKind.score, txtScoreThreeOfAKind);
+      findSumOfAllDice(fourOfAKind.preview, fourOfAKind.score, txtScoreFourOfAKind);
       // Full house, small straight, and large straight are scored with fixed values
       $("#txtScoreFullHouse").html(25);
       $("#txtScoreSmallStraight").html(30);
@@ -407,9 +372,9 @@ function updateScorePreviews() {
     }
   } else {
     // Check for a full house if not Yahtzee (mutually exclusive)
-    findFullHouse(diceSorted, userScoreFullHouse);
+    findFullHouse(diceSorted, fullHouse.score);
   }
-  findSumOfAllDice(previewScoreChance, userScoreChance, txtScoreChance);
+  findSumOfAllDice(chance.preview, chance.score, txtScoreChance);
 
 }
 
@@ -420,15 +385,7 @@ function findSumOfEqualValueDice(pScore, uScore, bValue, txtLbl) {
       if(dValue == bValue) pScore = pScore + bValue;
     });
     $('#' + txtLbl).html(pScore)
-    // Highlight valid upper scores
-    // TODO: use classes, remove highlight class once submitted
-/*    if(pScore != 0) {
-      $('#' + txtLbl).css({
-        'color' : 'turquoise',
-        'animation' : 'flashText 1.5s linear infinite'
-      });
-    }
-*/
+    // TODO: highlight valid upper scores
   }
 }
 
@@ -494,52 +451,45 @@ function findLargeStraight(dS, uS) {
 }
 
 function findAllUpperScores() {
-  findSumOfEqualValueDice(previewScoreAces, userScoreAces, 1, txtScoreAces);
-  findSumOfEqualValueDice(previewScoreTwos, userScoreTwos, 2, txtScoreTwos);
-  findSumOfEqualValueDice(previewScoreThrees, userScoreThrees, 3, txtScoreThrees);
-  findSumOfEqualValueDice(previewScoreFours, userScoreFours, 4, txtScoreFours);
-  findSumOfEqualValueDice(previewScoreFives, userScoreFives, 5, txtScoreFives);
-  findSumOfEqualValueDice(previewScoreSixes, userScoreSixes, 6, txtScoreSixes);
+  findSumOfEqualValueDice(aces.preview, aces.score, 1, txtScoreAces);
+  findSumOfEqualValueDice(twos.preview, twos.score, 2, txtScoreTwos);
+  findSumOfEqualValueDice(threes.preview, threes.score, 3, txtScoreThrees);
+  findSumOfEqualValueDice(fours.preview, fours.score, 4, txtScoreFours);
+  findSumOfEqualValueDice(fives.preview, fives.score, 5, txtScoreFives);
+  findSumOfEqualValueDice(sixes.preview, sixes.score, 6, txtScoreSixes);
 }
 
 function updateTotalScores() {
   // UPPER SECTION
-  userScoreUpperSubtotal = userScoreAces + userScoreTwos + userScoreThrees
-                         + userScoreFours + userScoreFives + userScoreSixes;
-  $("#txtScoreUpperSubtotal").html(userScoreUpperSubtotal);
+  upperSubtotal = aces.score + twos.score + threes.score
+                         + fours.score + fives.score + sixes.score;
+  $("#txtScoreUpperSubtotal").html(upperSubtotal);
   // Upper Bonus: play bonus SFX one time
-  if((userScoreUpperSubtotal > 62) && (bPlayUpperBonusSound)) {
+  if((upperSubtotal > 62) && (bPlayUpperBonusSound)) {
 //    audioUpperBonus.play();
-    userScoreUpperBonus = 35;
+    upperBonus = 35;
     bPlayUpperBonusSound = false;
     //$("#txtHighScore").html("0");
     highlightText("#txtScoreUpperBonus");
   }
   // Upper Total
-  userScoreUpperTotal = userScoreUpperSubtotal + userScoreUpperBonus;
-  $("#txtScoreUpperTotal").html(userScoreUpperTotal);
-  $("#txtScoreUpperBonus").html(userScoreUpperBonus);
+  upperTotal = upperSubtotal + upperBonus;
+  $("#txtScoreUpperTotal").html(upperTotal);
+  $("#txtScoreUpperBonus").html(upperBonus);
   // Yahtzee bonus(es)
-  if((nYahtzeeScores > 1) && (userScoreYahtzee > 0)) {
-    userScoreYahtzeeBonus = (nYahtzeeScores - 1) * 100;
+  if((nYahtzeeScores > 1) && (yahtzee.score > 0)) {
+    yahtzeeBonus = (nYahtzeeScores - 1) * 100;
   }
   // LOWER SECTION
-  userScoreLowerTotal = userScoreThreeOfAKind + userScoreFourOfAKind + userScoreFullHouse
-                      + userScoreSmallStraight + userScoreLargeStraight + userScoreYahtzee + userScoreChance
-                      + userScoreYahtzeeBonus;
-  $("#txtScoreLowerTotal").html(userScoreLowerTotal);
-  $("#txtScoreYahtzeeBonus").html(userScoreYahtzeeBonus);
+  lowerTotal = threeOfAKind.score + fourOfAKind.score + fullHouse.score + smallStraight.score
+             + largeStraight.score + yahtzee.score + chance.score + yahtzeeBonus;
+  $("#txtScoreLowerTotal").html(lowerTotal);
+  $("#txtScoreYahtzeeBonus").html(yahtzeeBonus);
   // GRAND TOTALS
-  userScoreGrandTotal = userScoreLowerTotal + userScoreUpperTotal;
-  $("#txtGrandTotalUpper").html(userScoreUpperTotal);
-  $("#txtGrandTotalLower").html(userScoreLowerTotal);
-  $("#txtGrandTotalFinal").html(userScoreGrandTotal);
-  // Update points needed for upper bonus
-  // if((63 - userScoreUpperSubtotal) > 0) {
-  //   $("#txtHighScore").html(63 - userScoreUpperSubtotal);
-  // } else {
-  //   $("#txtHighScore").html("✅");
-  // }
+  grandTotal = lowerTotal + upperTotal;
+  $("#txtGrandTotalUpper").html(upperTotal);
+  $("#txtGrandTotalLower").html(lowerTotal);
+  $("#txtGrandTotalFinal").html(grandTotal);
 }
 
 function updateTurns() {
@@ -652,18 +602,18 @@ function setScoreRecord() {
     let currentHighScore = localStorage.getItem("lsHighScore");
   // Set local storage score if it does not exist
     if(!localStorage.lsHighScore) {
-      localStorage.setItem("lsHighScore", userScoreGrandTotal);
-      $("#txtHighScore").html(userScoreGrandTotal);
+      localStorage.setItem("lsHighScore", grandTotal);
+      $("#txtHighScore").html(grandTotal);
   //    $("#txtPlayerName").html(userName);
     } else {
       // Update high score and flash cell if new high score is reached
-      if(userScoreGrandTotal > currentHighScore) {
+      if(grandTotal > currentHighScore) {
         audioNewHighScore.play();
-        localStorage.setItem("lsHighScore", userScoreGrandTotal);
+        localStorage.setItem("lsHighScore", grandTotal);
           $("#txtHighScore").css({
             'color' : 'cyan',
             'animation' : 'flashText 1.5s linear infinite'
-          }).html(userScoreGrandTotal);
+          }).html(grandTotal);
         $("#txtStatusHeader").html("NEW HIGH SCORE");
       }
     }
