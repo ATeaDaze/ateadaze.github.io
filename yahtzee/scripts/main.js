@@ -161,67 +161,69 @@ $(document).ready(function() {
     let previewRowTxt = $(activeCell).text();
     previewRowTxt = parseInt(previewRowTxt);
     activeSetName = activeRowID.replace("row", "").toLowerCase();
-//    console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
+    console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
     // There is definitely a more elegant solution to... this
-    switch(activeSetName) {
-      case "aces":
-        aces.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "twos":
-        twos.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "threes":
-        threes.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "fours":
-        fours.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "fives":
-        fives.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "sixes":
-        sixes.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "threeofakind":
-        threeOfAKind.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "fourofakind":
-        fourOfAKind.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "fullhouse":
-        fullHouse.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "smallstraight":
-        smallStraight.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "largestraight":
-        largeStraight.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "yhatzee":
-        yahtzee.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      case "chance":
-        chance.score = previewRowTxt;
-        bNewScoreAdded = true;
-        break;
-      default:
-        // How did I end up here?
-        console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
-        break;
+    // Temporary workaround: a stupid confirmation box
+    if( confirm(`Enter score for ${previewRowTxt} points?`) ) {
+      switch(activeSetName) {
+        case "aces":
+          aces.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "twos":
+          twos.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "threes":
+          threes.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "fours":
+          fours.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "fives":
+          fives.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "sixes":
+          sixes.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "threeofakind":
+          threeOfAKind.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "fourofakind":
+          fourOfAKind.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "fullhouse":
+          fullHouse.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "smallstraight":
+          smallStraight.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "largestraight":
+          largeStraight.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "yhatzee":
+          yahtzee.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        case "chance":
+          chance.score = previewRowTxt;
+          bNewScoreAdded = true;
+          break;
+        default:
+          // How did I end up here?
+          console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
+          break;
+      }
     }
-
     // Update table if a score is submitted
     if(bNewScoreAdded) {
       audioFillScore.play();
