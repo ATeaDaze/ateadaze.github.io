@@ -20,7 +20,7 @@ const rowListCalculation = [ rowUpperSubtotal, rowUpperBonus, rowUpperTotal, row
   rowLowerTotal, rowUpperGrandTotal, rowLowerGrandTotal, rowFinalGrandTotal ];
 // List of all score rows (disabled on page load)
 const rowListScoreSetAll = [ rowAces, rowTwos, rowThrees, rowFours, rowFives, rowSixes,
-  rowThreeOfAKind, rowFourOfAKind, rowFullHouse, rowSmallStraight, rowLargeStraight, rowYhatzee, rowChance ];
+  rowThreeOfAKind, rowFourOfAKind, rowFullHouse, rowSmallStraight, rowLargeStraight, rowYahtzee, rowChance ];
 // Running list of used rows to disable user selection (empty by default)
 let rowListScoreSetDisabled = [];
 // Save value of previous score
@@ -56,6 +56,7 @@ let nTurnsTaken = 0;
 let bIsKeyboardEnabled = true;
 let bNewScoreAdded = false;
 let bPlayUpperBonusSound = true;
+let bEnableConfirmation = false;
 let swapHoldAll = false;
 // Status bar text to display instructions depending on game state
 let statusBarMessage = "Roll the dice to start playing";
@@ -63,6 +64,7 @@ let bonusDifference;
 let testScore;
 let bLocalStorageOK = true;
 let playerName = "Player";
+let previewRowTxt;
 // Active set info used on row selection: has global scope (need to test this with limited scope)
 var activeSetName;
 // Audio objects for SFX
@@ -78,6 +80,7 @@ const audioNewHighScore = new Audio("audio/new_highscore.ogg");
 // Wait for document to load, update number of turns left, and check for keyboard input
 $(document).ready(function() {
   updateTurns();
+  updateConfigText();
   getKeyboardInput();
 
   $("#txtHighScore").click(function() {
@@ -130,6 +133,10 @@ $(document).ready(function() {
     }
   });
 
+  $("#txtConfig").click(function() {
+    toggleScoreConfirmation();
+  });
+
   // Hold or release dice when clicked and update style
   $("[id^=currentDiceImg-]").click(function() {
     let activeDie = $(this).closest('td').index();
@@ -150,6 +157,7 @@ $(document).ready(function() {
         .addClass("diceButtonSelected");
     }
   });
+
   // Select a score based on the row clicked by the player
   $("[id^=row]").on("click", function() {
     // Enable calculation rows so they can be updated
@@ -158,85 +166,30 @@ $(document).ready(function() {
     let activeRow = $(this).closest('tr');
     let activeCell = $(this).closest('tr').children('td:nth-child(2)');
     let activeRowID = this.id;
-    let previewRowTxt = $(activeCell).text();
+    previewRowTxt = $(activeCell).text();
     previewRowTxt = parseInt(previewRowTxt);
     activeSetName = activeRowID.replace("row", "").toLowerCase();
     console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
-    // There is definitely a more elegant solution to... this
-    // Temporary workaround: a stupid confirmation box
-    if( confirm(`Enter score for ${previewRowTxt} points?`) ) {
-      switch(activeSetName) {
-        case "aces":
-          aces.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "twos":
-          twos.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "threes":
-          threes.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "fours":
-          fours.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "fives":
-          fives.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "sixes":
-          sixes.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "threeofakind":
-          threeOfAKind.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "fourofakind":
-          fourOfAKind.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "fullhouse":
-          fullHouse.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "smallstraight":
-          smallStraight.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "largestraight":
-          largeStraight.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "yhatzee":
-          yahtzee.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        case "chance":
-          chance.score = previewRowTxt;
-          bNewScoreAdded = true;
-          break;
-        default:
-          // How did I end up here?
-          console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
-          break;
+
+    // TODO: change this to an element or dialog
+    if(bEnableConfirmation) {
+      if( confirm(`Enter score for ${previewRowTxt} points?`) ) {
+        enterNewScore();
       }
+    } else {
+      enterNewScore();
     }
+
     // Update table if a score is submitted
     if(bNewScoreAdded) {
       audioFillScore.play();
-
       // TODO: add [UNDO] button, only allowed on if there are 3 turns left
-
       $(activeRow).addClass("usedRow");
       // Add row to running list so it can't be clicked on subsequent turns
       rowListScoreSetDisabled.push(activeRow);
       // Disable calculation and score rows after updating them
       setRowSelectionState(rowListCalculation, 'none');
       setRowSelectionState(rowListScoreSetAll, 'none');
-
       $("#txtStatusHeader").html("Roll again to start a new turn");
       // Disable roll button and all dice after turn
       bIsKeyboardEnabled = false;
@@ -250,6 +203,69 @@ $(document).ready(function() {
   });
 
 });
+
+// There is definitely a more elegant solution to
+// Temporary workaround: a stupid confirmation box
+function enterNewScore() {
+  switch(activeSetName) {
+    case "aces":
+      aces.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "twos":
+      twos.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "threes":
+      threes.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "fours":
+      fours.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "fives":
+      fives.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "sixes":
+      sixes.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "threeofakind":
+      threeOfAKind.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "fourofakind":
+      fourOfAKind.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "fullhouse":
+      fullHouse.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "smallstraight":
+      smallStraight.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "largestraight":
+      largeStraight.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "yahtzee":
+      yahtzee.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    case "chance":
+      chance.score = previewRowTxt;
+      bNewScoreAdded = true;
+      break;
+    default:
+      // How did I end up here?
+      console.log(`This should not happen:\nactiveSetName = ${activeSetName}`);
+      break;
+  }
+}
 
 function updateGameState() {
   bIsKeyboardEnabled = true;
@@ -496,6 +512,23 @@ function updateTotalScores() {
 
 function updateTurns() {
   $("#btnRoll").html("ROLL DICE (" + nRollsLeft + " left)");
+}
+
+function toggleScoreConfirmation() {
+  if(bEnableConfirmation) {
+    bEnableConfirmation = false;
+  } else {
+    bEnableConfirmation = true;
+  }
+  updateConfigText()
+}
+
+function updateConfigText() {
+  if(bEnableConfirmation) {
+    $("#txtConfig").html("🟩 Enabled");
+  } else {
+    $("#txtConfig").html("🟥 Disabled");
+  }
 }
 
 function highlightText(txt) {

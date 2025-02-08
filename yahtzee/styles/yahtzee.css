@@ -254,6 +254,57 @@ td {
 /*  -webkit-text-stroke: 0.025em #a0a0a0; */
 }
 
+.configTable {
+  font-size: 0.85em;
+  width: 17svw;
+  padding: 0px;
+}
+
+.evenWidthTable {
+  width: 50%;
+  text-align: right;
+}
+
+#txtConfig {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1em;
+  font-weight: bold;
+  transition: 0.25s;
+  cursor: pointer;
+}
+#txtConfig:hover {
+  animation: flashUnderline 1s linear infinite;
+  filter: brightness(1.2);
+}
+@keyframes flashUnderline {
+  75% {
+    opacity: 0.75;
+  }
+}
+
+.configTable {
+  width: 95svw;
+}
+
+.evenWidthTable {
+  width: 50%;
+  text-align: right;
+}
+
+#txtConfig {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1em;
+  font-weight: bold;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
 hr {
   color: #555555;
   background-color: #555555;
