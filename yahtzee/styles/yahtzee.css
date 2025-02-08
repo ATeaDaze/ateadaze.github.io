@@ -403,7 +403,7 @@ hr {
 }
 
 /* Alternate dimension for small screens or portrait mode */
-@media (orientation: portrait), (max-width: 800px) {
+@media (orientation: portrait), (max-width: 875px) {
 
   body {
     font-size: 12pt;

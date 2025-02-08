@@ -79,6 +79,8 @@ const audioNewHighScore = new Audio("audio/new_highscore.ogg");
 
 // Wait for document to load, update number of turns left, and check for keyboard input
 $(document).ready(function() {
+  // Enable score confirmation for smaller viewports
+  if(window.innerWidth < 801) bEnableConfirmation = true;
   updateTurns();
   updateConfigText();
   getKeyboardInput();
