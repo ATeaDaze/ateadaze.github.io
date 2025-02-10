@@ -14,6 +14,8 @@ let paletteIndex = 0;
 let activeColorPalette = 'faded'
 let bIsRunning = false;
 let bScreenIsClear = true;
+let bFullScreen = false;
+let bHideCursor = false;
 let xCanvasBound, yCanvasBound;
 let xOrigin, yOrigin;
 let animationSpeed = 0;
@@ -46,6 +48,25 @@ $(document).ready(function () {
     hideStartButton();
     newAnimationInstance();
   });
+
+  // Toggle mouse cursor visibility, source: https://stackoverflow.com/a/39756131/14192820
+  let mouseStartedMoving, mouseMoved = false;
+  let MINIMUM_MOVE_TIME = 2000;
+  setInterval(() => { 
+    // Hide cursor if mouse stops for 2 seconds in fullscreen
+    if(!mouseMoved && mouseStartedMoving && bFullScreen) {
+      $("canvas").css({'cursor':'none'});
+      mouseStartedMoving = false;
+    }
+    mouseMoved = false;
+  }, MINIMUM_MOVE_TIME);
+  // Show cursor on mouse move
+  $("canvas").on("mousemove", function() {
+    mouseStartedMoving = true;
+    mouseMoved = true;
+    $("canvas").css({'cursor':'default'});
+  });
+
 });
 
 // Animation runs and clears screen after X shapes are drawn
@@ -156,8 +177,10 @@ function swapColorMode() {
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
+    bFullScreen = true;
   } else if (document.exitFullscreen) {
     document.exitFullscreen();
+    bFullScreen = false;
   } else {
     console.log("Warning ⚠️ This should not happen");
   }
