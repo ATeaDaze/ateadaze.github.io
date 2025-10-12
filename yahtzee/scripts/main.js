@@ -174,9 +174,12 @@ $(document).ready(function() {
     console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
 
     // TODO: change this to an element or dialog
+    // Use a better loop structure
     if(bEnableConfirmation) {
       if( confirm(`Enter score for ${previewRowTxt} points?`) ) {
         enterNewScore();
+      } else {
+        // Do nothing
       }
     } else {
       enterNewScore();
@@ -673,3 +676,4 @@ function clearHighScore() {
 //    $("#txtHighScoreLead").html("High Score");
   }
 }
+
