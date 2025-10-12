@@ -173,13 +173,10 @@ $(document).ready(function() {
     activeSetName = activeRowID.replace("row", "").toLowerCase();
     console.log(`activeRowID=${activeRowID}, previewRowTxt=${previewRowTxt}`);
 
-    // TODO: change this to an element or dialog
-    // Use a better loop structure
+    // TODO: fix this, needs more checks and conditions, change this to an element or dialog
     if(bEnableConfirmation) {
       if( confirm(`Enter score for ${previewRowTxt} points?`) ) {
         enterNewScore();
-      } else {
-        // Do nothing
       }
     } else {
       enterNewScore();
@@ -676,4 +673,5 @@ function clearHighScore() {
 //    $("#txtHighScoreLead").html("High Score");
   }
 }
+
 
